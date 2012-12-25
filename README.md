@@ -1,4 +1,4 @@
-# Elemental Tinkerer
+![](https://dl.dropbox.com/u/34938401/ET%20Logo.png)
 
 Welcome to the Elemental Tinkerer mod source code github place thingy.
 
