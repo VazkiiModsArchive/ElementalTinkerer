@@ -8,6 +8,7 @@ package vazkii.tinkerer.block;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import vazkii.tinkerer.item.ItemMetadataCompatBlock;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.BlockNames;
 import net.minecraft.block.Block;
@@ -42,8 +43,8 @@ public final class ElementalTinkererBlocks {
 		
 
 		// Register them in the game
-		GameRegistry.registerBlock(elementiumOre, BlockNames.ELEMENTIUM_ORE_NAME);
-		GameRegistry.registerBlock(elementiumOreSpawner, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
+		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
+		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
 		
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);

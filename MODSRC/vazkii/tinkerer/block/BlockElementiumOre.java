@@ -7,11 +7,14 @@
 package vazkii.tinkerer.block;
 
 import java.awt.Color;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -70,6 +73,14 @@ public class BlockElementiumOre extends BlockET {
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
 		return ItemIDs.elementiumGem;
+	}
+	
+	@Override
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+		super.getSubBlocks(par1, par2CreativeTabs, par3List);
+		
+		for(int i = 0; i < 16; i++)
+			par3List.add(new ItemStack(par1, 1, i));
 	}
 	
 	@Override
