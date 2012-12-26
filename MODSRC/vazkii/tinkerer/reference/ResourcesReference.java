@@ -15,14 +15,26 @@ package vazkii.tinkerer.reference;
  */
 public final class ResourcesReference {
 
+	/** Root location for all resources **/
+	public static final String ROOT = "/vazkii/tinkerer/res/";
+	
+	/** Root location for model texture resources **/
+	public static final String ROOT_MODEL = ROOT + "model/";
+	
+	/** Root location for entity texture resources **/
+	public static final String ROOT_ENTITY = ROOT + "entity/";
+	
 	/** The Spritesheet containing the in-world block textures **/
-	public static final String BLOCKS_SPRITESHEET = "/vazkii/tinkerer/res/blocks.png";
+	public static final String BLOCKS_SPRITESHEET = ROOT + "blocks.png";
 
 	/** The Spritesheet containing the item sprites **/
-	public static final String ITEMS_SPRITESHEET = "/vazkii/tinkerer/res/items32.png";
+	public static final String ITEMS_SPRITESHEET = ROOT + "items32.png";
 
 	/** The Spritesheet containing the item sprites in 32x32 resolution **/
-	public static final String ITEMS_32_SPRITESHEET = "/vazkii/tinkerer/res/items32.png";
+	public static final String ITEMS_32_SPRITESHEET = ROOT + "items32.png";
+	
+	/** The location of the Texture File for the Elemental Desk Model **/
+	public static final String MODEL_TEX_ELEMENTAL_DESK = ROOT_MODEL + "elementalDesk.png";
 
 	/** Integers for the Blocks Spritesheet indexes **/
 	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_NON_AIMATED = 5;
@@ -44,7 +56,7 @@ public final class ResourcesReference {
 	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GEM = 60;
 
 	/** The file that contains the Elementium Guardian Mob Texture **/
-	public static final String MOB_ELEMENTAL_GUARDIAN_TEXTURE = "/vazkii/tinkerer/res/mob/oreGuardian.png";
+	public static final String MOB_ELEMENTAL_GUARDIAN_TEXTURE = ROOT_ENTITY + "oreGuardian.png";
 
 	/** The Elementium Guardian mob is colored trough the spectrum, this integer is
 	 ** the divisor for the cosine function's speed that defines the color. **/
