@@ -7,7 +7,7 @@
 package vazkii.tinkerer;
 
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
-import vazkii.tinkerer.client.handlers.ClientTickHandler;
+import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.core.CommonProxy;
 import vazkii.tinkerer.entity.ElementalTinkererEntities;
 import vazkii.tinkerer.handler.ConfigurationHandler;

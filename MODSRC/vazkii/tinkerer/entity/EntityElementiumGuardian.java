@@ -15,7 +15,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.client.handlers.ClientTickHandler;
+import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.reference.EntityReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 

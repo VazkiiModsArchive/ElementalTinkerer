@@ -4,7 +4,7 @@
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  */
 // Created @ 23 Dec 2012
-package vazkii.tinkerer.client.handlers;
+package vazkii.tinkerer.client.handler;
 
 import java.util.EnumSet;
 

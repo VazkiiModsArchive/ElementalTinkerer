@@ -27,9 +27,9 @@ public class CreativeTabET extends CreativeTabs {
 	}
 
 	@Override
-    public String getTranslatedTabLabel() {
-        return FormattingCode.ITALICS + AnnotationConstants.MOD_NAME;
-    }
+	public String getTranslatedTabLabel() {
+		return FormattingCode.ITALICS + AnnotationConstants.MOD_NAME;
+	}
 
 	@Override
 	public int getTabIconItemIndex() {

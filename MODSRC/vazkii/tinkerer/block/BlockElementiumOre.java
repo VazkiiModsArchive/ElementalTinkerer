@@ -16,7 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.client.handlers.ClientTickHandler;
+import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.reference.EffectReference;
 import vazkii.tinkerer.reference.ItemIDs;

@@ -13,7 +13,7 @@ import net.minecraft.entity.monster.EntitySilverfish;
 
 import org.lwjgl.opengl.GL11;
 
-import vazkii.tinkerer.client.handlers.ClientTickHandler;
+import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.reference.ResourcesReference;
 
 /**

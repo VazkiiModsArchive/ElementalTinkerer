@@ -9,7 +9,7 @@ package vazkii.tinkerer.item;
 import java.awt.Color;
 
 import net.minecraft.item.ItemStack;
-import vazkii.tinkerer.client.handlers.ClientTickHandler;
+import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
