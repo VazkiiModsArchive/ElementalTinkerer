@@ -17,13 +17,13 @@ public final class ResourcesReference {
 
 	/** Root location for all resources **/
 	public static final String ROOT = "/vazkii/tinkerer/res/";
-	
+
 	/** Root location for model texture resources **/
 	public static final String ROOT_MODEL = ROOT + "model/";
-	
+
 	/** Root location for entity texture resources **/
 	public static final String ROOT_ENTITY = ROOT + "entity/";
-	
+
 	/** The Spritesheet containing the in-world block textures **/
 	public static final String BLOCKS_SPRITESHEET = ROOT + "blocks.png";
 
@@ -32,12 +32,13 @@ public final class ResourcesReference {
 
 	/** The Spritesheet containing the item sprites in 32x32 resolution **/
 	public static final String ITEMS_32_SPRITESHEET = ROOT + "items32.png";
-	
+
 	/** The location of the Texture File for the Elemental Desk Model **/
 	public static final String MODEL_TEX_ELEMENTAL_DESK = ROOT_MODEL + "elementalDesk.png";
 
 	/** Integers for the Blocks Spritesheet indexes **/
-	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_NON_AIMATED = 5;
+	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_NON_AIMATED = 5,
+							BLOCK_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Blocks Spritesheet Animations **/
 	public static final int BLOCK_ANIM_ELEMENTIUM_ORE_START = 0,

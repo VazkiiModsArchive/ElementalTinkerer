@@ -29,4 +29,7 @@ public final class MiscReference {
 
 	/** The Character for formatting codes in the Font Renderer **/
 	public static final char FORMATTING_CODE_CHAR = '\u00a7';
+
+	/** The default render scale for models (1/16) **/
+	public static final float MODEL_DEFAULT_RENDER_SCALE = 0.0625F;
 }

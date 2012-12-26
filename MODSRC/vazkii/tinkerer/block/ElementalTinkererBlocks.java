@@ -23,7 +23,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public final class ElementalTinkererBlocks {
 
 	public static Block elementiumOre,
-						elementiumOreSpawner;
+						elementiumOreSpawner,
+						elementalDesk;
 
 	public static void init() {
 		// Construct the blocks
@@ -41,14 +42,21 @@ public final class ElementalTinkererBlocks {
 						.setStepSound(Block.soundStoneFootstep)
 						.setBlockName(BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
 
+		elementalDesk = new BlockElementalDesk(BlockIDs.elementalDesk)
+						.setHardness(1F)
+						.setStepSound(Block.soundWoodFootstep)
+						.setBlockName(BlockNames.ELEMENTAL_DESK_NAME);
+
 
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
 		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
+		GameRegistry.registerBlock(elementalDesk,BlockNames.ELEMENTAL_DESK_NAME);
+
 
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumOreSpawner, BlockNames.ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME);
+		LanguageRegistry.addName(elementalDesk, BlockNames.ELEMENTAL_DESK_DISPLAY_NAME);
 	}
-
 }

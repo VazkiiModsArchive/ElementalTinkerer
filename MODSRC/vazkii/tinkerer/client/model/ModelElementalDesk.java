@@ -8,7 +8,7 @@ package vazkii.tinkerer.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
+import vazkii.tinkerer.reference.MiscReference;
 
 /**
  * ModelElementalDesk
@@ -18,6 +18,8 @@ import net.minecraft.entity.Entity;
  * @author Vazkii
  */
 public class ModelElementalDesk extends ModelBase {
+
+	public static final ModelElementalDesk INSTANCE = new ModelElementalDesk();
 
 	ModelRenderer Leg1,
 				  Leg2,
@@ -37,11 +39,11 @@ public class ModelElementalDesk extends ModelBase {
 				  InterLeg2,
 				  InterLeg3,
 				  Shape1;
-  
-  public ModelElementalDesk(){
+
+  private ModelElementalDesk(){
 	  textureWidth = 64;
 	  textureHeight = 32;
-    
+
       Leg1 = new ModelRenderer(this, 26, 17);
       Leg1.addBox(0F, 0F, 0F, 2, 6, 2);
       Leg1.setRotationPoint(3F, 17F, -5F);
@@ -132,6 +134,28 @@ public class ModelElementalDesk extends ModelBase {
       Shape1.setRotationPoint(0F, 0F, 0F);
       Shape1.setTextureSize(64, 32);
       Shape1.mirror = true;
+  }
+
+  /** Renders the model, must be translated previously **/
+  public void render() {
+    Leg1.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Leg2.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Leg3.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Leg4.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Top.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    LegEnd1.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    LegEnd2.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    LegEnd3.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    LegEnd4.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Receptacle1.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Receptacle2.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    InterLeg4.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Receptacle3.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Receptacle4.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    InterLeg1.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    InterLeg2.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    InterLeg3.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+    Shape1.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
   }
 
 }

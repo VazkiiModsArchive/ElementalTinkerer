@@ -12,8 +12,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import vazkii.tinkerer.client.particle.EntityFXColoredPortal;
 import vazkii.tinkerer.client.render.RenderElementiumGuardian;
+import vazkii.tinkerer.client.tilerender.TileEntityRenderElementalDesk;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
+import vazkii.tinkerer.reference.RenderIDs;
 import vazkii.tinkerer.reference.ResourcesReference;
+import vazkii.tinkerer.tile.TileEntityElementalDesk;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,9 +33,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ClientProxy extends CommonProxy {
 
 	@Override
+	public void registerTileEntities() {
+		super.registerTileEntities();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElementalDesk.class, TileEntityRenderElementalDesk.INSTANCE);
+	}
+
+	@Override
 	public void mapEntityRenderers() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityElementiumGuardian.class,
 														 new RenderElementiumGuardian());
+	}
+
+	@Override
+	public void registerBlockRenders() {
+		RenderIDs.elementalDesk = RenderingRegistry.getNextAvailableRenderId();
 	}
 
 	@Override

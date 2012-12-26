@@ -9,6 +9,10 @@ package vazkii.tinkerer.core;
 import java.awt.Color;
 
 import net.minecraft.world.World;
+import vazkii.tinkerer.reference.AnnotationConstants;
+import vazkii.tinkerer.reference.BlockNames;
+import vazkii.tinkerer.tile.TileEntityElementalDesk;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * CommonProxy
@@ -20,10 +24,21 @@ import net.minecraft.world.World;
  */
 public class CommonProxy {
 
+	/** Registers the tile entities, used by the client to
+	 * also register the renderers **/
+	public void registerTileEntities() {
+		GameRegistry.registerTileEntity(TileEntityElementalDesk.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTAL_DESK_NAME);
+	}
+
 	/** Used by the client to map entity classes to their adequate
 	 *  render instances. NO-OP in server side. **/
 	public void mapEntityRenderers() {
 		// NO-OP
+	}
+
+	/** Registers various block Renders. NO-OP in server side **/
+	public void registerBlockRenders() {
+		//NO-OP
 	}
 
 	/** Preloads the textures, to avoid render glitches, NO-OP

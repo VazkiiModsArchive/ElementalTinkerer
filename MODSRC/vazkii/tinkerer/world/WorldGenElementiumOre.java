@@ -36,12 +36,12 @@ public class WorldGenElementiumOre extends WorldGenMinable {
     {
         float var6 = par2Random.nextFloat() * (float)Math.PI;
         int numberOfBlocks = WorldGenRates.ELEMENTIUM_ORE_MAX_VEIN_SIZE;
-        double var7 = (par3 + 8 + MathHelper.sin(var6) * numberOfBlocks / 8.0F);
-        double var9 = (par3 + 8 - MathHelper.sin(var6) * numberOfBlocks / 8.0F);
-        double var11 = (par5 + 8 + MathHelper.cos(var6) * numberOfBlocks / 8.0F);
-        double var13 = (par5 + 8 - MathHelper.cos(var6) * numberOfBlocks / 8.0F);
-        double var15 = (par4 + par2Random.nextInt(3) - 2);
-        double var17 = (par4 + par2Random.nextInt(3) - 2);
+        double var7 = par3 + 8 + MathHelper.sin(var6) * numberOfBlocks / 8.0F;
+        double var9 = par3 + 8 - MathHelper.sin(var6) * numberOfBlocks / 8.0F;
+        double var11 = par5 + 8 + MathHelper.cos(var6) * numberOfBlocks / 8.0F;
+        double var13 = par5 + 8 - MathHelper.cos(var6) * numberOfBlocks / 8.0F;
+        double var15 = par4 + par2Random.nextInt(3) - 2;
+        double var17 = par4 + par2Random.nextInt(3) - 2;
 
         for (int var19 = 0; var19 <= numberOfBlocks; ++var19) {
             double var20 = var7 + (var9 - var7) * var19 / numberOfBlocks;

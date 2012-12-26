@@ -72,6 +72,9 @@ public class ElementalTinkerer {
 		// Register the World Generation
 		GameRegistry.registerWorldGenerator(WorldGenerationHandler.INSTANCE);
 
+		// Proxy: Register the mod's Tile Entities
+		proxy.registerTileEntities();
+
 		// Proxy: Map the Entity Renders
 		proxy.mapEntityRenderers();
 	}

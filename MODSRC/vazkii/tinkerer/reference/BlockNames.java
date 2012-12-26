@@ -17,10 +17,12 @@ public final class BlockNames {
 
 	/** Internal/Config names **/
 	public static final String ELEMENTIUM_ORE_NAME = "elementiumOre",
-							   ELEMENTIUM_ORE_SPAWNER_NAME = "elementiumOreSpawner";
+							   ELEMENTIUM_ORE_SPAWNER_NAME = "elementiumOreSpawner",
+							   ELEMENTAL_DESK_NAME = "elementalDesk";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
-							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)";
+							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)",
+							   ELEMENTAL_DESK_DISPLAY_NAME = "Elemental Desk";
 
 }
