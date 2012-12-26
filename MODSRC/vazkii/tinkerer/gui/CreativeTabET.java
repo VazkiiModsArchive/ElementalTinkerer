@@ -6,13 +6,10 @@
 // Created @ 23 Dec 2012
 package vazkii.tinkerer.gui;
 
-import vazkii.tinkerer.item.ElementalTinkererItems;
+import net.minecraft.creativetab.CreativeTabs;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.ItemIDs;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StringTranslate;
 
 /**
  * CreativeTabET
@@ -22,21 +19,21 @@ import net.minecraft.util.StringTranslate;
  * @author Vazkii
  */
 public class CreativeTabET extends CreativeTabs {
-	
+
 	public static final CreativeTabs INSTANCE = new CreativeTabET();
-	
+
 	private CreativeTabET() {
 		super(AnnotationConstants.MOD_ID);
 	}
-	
+
 	@Override
     public String getTranslatedTabLabel() {
         return FormattingCode.ITALICS + AnnotationConstants.MOD_NAME;
     }
-	
+
 	@Override
 	public int getTabIconItemIndex() {
 		return ItemIDs.elementiumGem;
 	}
-	
+
 }

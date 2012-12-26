@@ -19,19 +19,19 @@ import net.minecraft.world.World;
  * @author Vazkii
  */
 public class CommonProxy {
-	
+
 	/** Used by the client to map entity classes to their adequate
 	 *  render instances. NO-OP in server side. **/
-	public void mapEntityRenderers() { 
+	public void mapEntityRenderers() {
 		// NO-OP
 	}
-	
+
 	/** Preloads the textures, to avoid render glitches, NO-OP
 	 * in server side **/
 	public void preloadTextures() {
 		// NO-OP
 	}
-	
+
 	/** Used by the client to spawn a colored portal particle at
 	 * the location passed in, with the color and motion passed
 	 * in. NO-OP in server side. **/

@@ -6,10 +6,10 @@
 // Created @ 23 Dec 2012
 package vazkii.tinkerer.block;
 
-import vazkii.tinkerer.gui.CreativeTabET;
-import vazkii.tinkerer.reference.ResourcesReference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import vazkii.tinkerer.gui.CreativeTabET;
+import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ElementalTinkererBlock

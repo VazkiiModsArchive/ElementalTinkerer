@@ -18,9 +18,9 @@ public final class BlockIDs {
 	/** Defaults **/
 	public static final int DEFAULT_ELEMENTIUM_ORE = 2110,
 							DEFAULT_ELEMENTIUM_ORE_SPAWNER = 2111;
-	
+
 	/** Set via the config **/
 	public static int elementiumOre,
 					  elementiumOreSpawner;
-	
+
 }

@@ -18,17 +18,17 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
  * @author Vazkii
  */
 public final class ElementalTinkererEntities {
-	
+
 	public static void init() {
 		// Register entity IDs, passing in classes, names and spawn egg colors
-		EntityRegistry.registerGlobalEntityID(EntityElementiumGuardian.class, 
-											  EntityReference.NAME_ELEMENTIUM_GUARDIAN, 
+		EntityRegistry.registerGlobalEntityID(EntityElementiumGuardian.class,
+											  EntityReference.NAME_ELEMENTIUM_GUARDIAN,
 											  EntityRegistry.findGlobalUniqueEntityId(),
 											  EntityReference.SPAWN_EGG_BG_COLOR_ELEMENTIUM_GUARDIAN,
 											  EntityReference.SPAWN_EGG_FG_COLOR_ELEMENTIUM_GUARDIAN);
-		
+
 		// Register the entity's names, mostly used for the Spawn Eggs
-		LanguageRegistry.instance().addStringLocalization("entity." + EntityReference.NAME_ELEMENTIUM_GUARDIAN + ".name", 
+		LanguageRegistry.instance().addStringLocalization("entity." + EntityReference.NAME_ELEMENTIUM_GUARDIAN + ".name",
 														  EntityReference.DISPLAY_NAME_ELEMENTIUM_GUARDIAN);
 	}
 

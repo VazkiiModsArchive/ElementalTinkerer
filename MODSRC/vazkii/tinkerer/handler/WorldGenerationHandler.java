@@ -11,8 +11,6 @@ import java.util.Random;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.MiscReference;
 import vazkii.tinkerer.reference.WorldGenRates;
 import vazkii.tinkerer.world.WorldGenElementiumOre;
@@ -28,15 +26,15 @@ import cpw.mods.fml.common.IWorldGenerator;
 public final class WorldGenerationHandler implements IWorldGenerator {
 
 	public static final WorldGenerationHandler INSTANCE = new WorldGenerationHandler();
-	
+
 	private WorldGenerationHandler() { }
-	
+
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		// Generate Elementium Ore
 		tryGenerateElementium(random, world, chunkX, chunkZ);
 	}
-	
+
 	/** Generate Elementium Ore in the world, passing in the world instance and chunk coords **/
 	public void tryGenerateElementium(Random worldRand, World world, int chunkX, int chunkZ) {
 		if(worldRand.nextInt(100) < WorldGenRates.ELEMENTIUM_ORE_RARITY) {

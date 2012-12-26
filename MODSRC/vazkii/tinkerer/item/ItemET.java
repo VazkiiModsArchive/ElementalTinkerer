@@ -6,10 +6,10 @@
 // Created @ 23 Dec 2012
 package vazkii.tinkerer.item;
 
+import net.minecraft.item.Item;
 import vazkii.tinkerer.gui.CreativeTabET;
 import vazkii.tinkerer.reference.MiscReference;
 import vazkii.tinkerer.reference.ResourcesReference;
-import net.minecraft.item.Item;
 
 /**
  * ItemET
@@ -30,7 +30,7 @@ public class ItemET extends Item {
 	public String getTextureFile() {
 		return useDoubleResolution() ? ResourcesReference.ITEMS_32_SPRITESHEET : ResourcesReference.ITEMS_SPRITESHEET;
 	}
-	
+
 	/**
 	 * Flag to set if the item sprite is rendered in 32x32 rather than 16x16.
 	 */

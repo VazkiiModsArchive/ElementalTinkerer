@@ -6,12 +6,12 @@
 // Created @ 23 Dec 2012
 package vazkii.tinkerer.block;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.block.Block;
 import vazkii.tinkerer.item.ItemMetadataCompatBlock;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.BlockNames;
-import net.minecraft.block.Block;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
  * ElementalTinkererBlocks
@@ -24,7 +24,7 @@ public final class ElementalTinkererBlocks {
 
 	public static Block elementiumOre,
 						elementiumOreSpawner;
-	
+
 	public static void init() {
 		// Construct the blocks
 		elementiumOre = new BlockElementiumOre(BlockIDs.elementiumOre)
@@ -33,22 +33,22 @@ public final class ElementalTinkererBlocks {
 						.setLightValue(0.8F)
 						.setStepSound(Block.soundStoneFootstep)
 						.setBlockName(BlockNames.ELEMENTIUM_ORE_NAME);
-		
+
 		elementiumOreSpawner = new BlockElementiumOreSpawner(BlockIDs.elementiumOreSpawner)
 						.setHardness(2F)
 						.setResistance(5F)
 						.setLightValue(0.8F)
 						.setStepSound(Block.soundStoneFootstep)
 						.setBlockName(BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
-		
+
 
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
 		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
-		
+
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumOreSpawner, BlockNames.ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME);
 	}
-	
+
 }

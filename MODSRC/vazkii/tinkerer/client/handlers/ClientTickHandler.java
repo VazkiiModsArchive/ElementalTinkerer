@@ -10,7 +10,6 @@ import java.util.EnumSet;
 
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
-
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
@@ -24,18 +23,18 @@ import cpw.mods.fml.common.TickType;
 public class ClientTickHandler implements ITickHandler {
 
 	public static final ClientTickHandler INSTANCE = new ClientTickHandler();
-	
+
 	/** The total client ticks that have elapsed **/
 	public static long elapsedClientTicks = 0L;
-	
+
 	/** The total render ticks that have elapsed **/
 	public static long elapsedRenderTicks = 0L;
-	
+
 	/** The Current partial ticks, passed in every render tick **/
 	public static float currentPartialTicks;
-	
+
 	private ClientTickHandler() { }
-	
+
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		if(type.equals(EnumSet.of(TickType.CLIENT)))
@@ -55,15 +54,15 @@ public class ClientTickHandler implements ITickHandler {
 	public String getLabel() {
 		return AnnotationConstants.MOD_ID;
 	}
-	
+
 	/** Called every Client Tick  **/
 	public void clientTick() {
 		// Update Tick for the Simple Animations
 		SimpleAnimations.updateTick();
-	
+
 		++elapsedClientTicks;
 	}
-	
+
 	/** Called every Render Tick  **/
 	public void renderTick(float partialTicks) {
 		currentPartialTicks = partialTicks;

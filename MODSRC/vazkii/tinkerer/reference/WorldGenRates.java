@@ -21,5 +21,5 @@ public final class WorldGenRates {
 							ELEMENTIUM_ORE_HEIGHT_MIN = 16,
 							ELEMENTIUM_ORE_MAX_VEIN_SIZE = 32,
 							ELEMENTIUM_ORE_GUARDIAN_CHANCE = 8; //Percentage chance of an ore block being a guardian block
-	
+
 }

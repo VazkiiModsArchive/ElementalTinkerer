@@ -27,19 +27,19 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
-	
+
 	@Override
 	public void mapEntityRenderers() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityElementiumGuardian.class, 
+		RenderingRegistry.registerEntityRenderingHandler(EntityElementiumGuardian.class,
 														 new RenderElementiumGuardian());
 	}
-	
+
 	@Override
 	public void preloadTextures() {
 		MinecraftForgeClient.preloadTexture(ResourcesReference.BLOCKS_SPRITESHEET);
 		MinecraftForgeClient.preloadTexture(ResourcesReference.ITEMS_32_SPRITESHEET);
 	}
-	
+
 	@Override
 	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		EntityFXColoredPortal.spawn(color, world, x, y, z, motionX, motionY, motionZ);

@@ -6,12 +6,10 @@
 // Created @ 22 Dec 2012
 package vazkii.tinkerer;
 
-import net.minecraft.creativetab.CreativeTabs;
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
 import vazkii.tinkerer.client.handlers.ClientTickHandler;
 import vazkii.tinkerer.core.CommonProxy;
 import vazkii.tinkerer.entity.ElementalTinkererEntities;
-import vazkii.tinkerer.gui.CreativeTabET;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.handler.WorldGenerationHandler;
 import vazkii.tinkerer.item.ElementalTinkererItems;
@@ -36,48 +34,48 @@ import cpw.mods.fml.relauncher.Side;
  *
  * @author Vazkii
  */
-@Mod(modid = AnnotationConstants.MOD_ID, 
-     name = AnnotationConstants.MOD_NAME, 
+@Mod(modid = AnnotationConstants.MOD_ID,
+     name = AnnotationConstants.MOD_NAME,
      version = AnnotationConstants.VERSION)
 public class ElementalTinkerer {
-	
+
 	@Instance(AnnotationConstants.MOD_ID)
 	public static ElementalTinkerer instance;
-	
-	@SidedProxy(clientSide = AnnotationConstants.CLIENT_PROXY_CLASS, 
+
+	@SidedProxy(clientSide = AnnotationConstants.CLIENT_PROXY_CLASS,
 			    serverSide = AnnotationConstants.COMMON_PROXY_CLASS)
 	public static CommonProxy proxy;
-		
+
 	@PreInit
 	public void onPreInit(FMLPreInitializationEvent event) {
 		// Init the config, passing in the configuration file FML suggests for this mod
 		ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
-	
+
 		// Preloads the textures, in order to avoid possible visual anomalies
 		proxy.preloadTextures();
 	}
-	
+
 	@Init
 	public void onInit(FMLInitializationEvent event) {
 		// Register the client tick handler
 		TickRegistry.registerTickHandler(ClientTickHandler.INSTANCE, Side.CLIENT);
-		
+
 		// Init the mod's Items
 		ElementalTinkererItems.init();
-		
+
 		// Init the mod's Blocks
 		ElementalTinkererBlocks.init();
-		
+
 		// Init the mod's Entities
 		ElementalTinkererEntities.init();
-		
+
 		// Register the World Generation
 		GameRegistry.registerWorldGenerator(WorldGenerationHandler.INSTANCE);
-		
+
 		// Proxy: Map the Entity Renders
 		proxy.mapEntityRenderers();
 	}
-	
+
 	@PostInit
 	public void onPostInit(FMLPostInitializationEvent event) {
 		//NO-OP for now

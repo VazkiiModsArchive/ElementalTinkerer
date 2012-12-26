@@ -14,14 +14,14 @@ package vazkii.tinkerer.reference;
  * @author Vazkii
  */
 public final class AnnotationConstants {
-	
+
 	/** Used on the @Mod annotation on the Main mod class **/
 	public static final String MOD_ID = "ElementalTinkerer",
 							   MOD_NAME = "Elemental Tinkerer",
 							   VERSION = "0.0.1";
-	
+
 	/** Proxy Class Names **/
 	public static final String CLIENT_PROXY_CLASS = "vazkii.tinkerer.core.ClientProxy",
 							   COMMON_PROXY_CLASS = "vazkii.tinkerer.core.CommonProxy";
-	
+
 }

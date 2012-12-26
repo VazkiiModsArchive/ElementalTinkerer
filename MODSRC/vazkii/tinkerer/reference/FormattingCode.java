@@ -15,7 +15,7 @@ package vazkii.tinkerer.reference;
  * @author Vazkii
  */
 public enum FormattingCode {
-	
+
 	BLACK('0'),
 	DARK_BLUE('1'),
 	DARK_GREEN('2'),
@@ -38,13 +38,14 @@ public enum FormattingCode {
 	UNDERLINE('n'),
 	ITALICS('o'),
 	RESET('r');
-	
+
 	private FormattingCode(char c) {
 		this.c = c;
 	}
-	
+
 	private char c;
-	
+
+	@Override
 	public String toString() {
 		return MiscReference.FORMATTING_CODE_CHAR + "" + c;
 	}

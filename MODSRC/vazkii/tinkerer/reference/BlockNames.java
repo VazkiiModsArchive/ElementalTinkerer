@@ -14,13 +14,13 @@ package vazkii.tinkerer.reference;
  * @author Vazkii
  */
 public final class BlockNames {
-	
+
 	/** Internal/Config names **/
 	public static final String ELEMENTIUM_ORE_NAME = "elementiumOre",
 							   ELEMENTIUM_ORE_SPAWNER_NAME = "elementiumOreSpawner";
-	
+
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
-							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)"; 
+							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)";
 
 }

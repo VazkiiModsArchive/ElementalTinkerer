@@ -16,20 +16,20 @@ import vazkii.tinkerer.reference.ResourcesReference;
  * @author Vazkii
  */
 public final class SimpleAnimations {
-	
+
 	/** Array with the animations **/
-	public static final TickBasedIntegerCycle[] ANIMATIONS =  new TickBasedIntegerCycle[] {	
-			new TickBasedIntegerCycle(ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_GEM_START, 
-					ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_GEM_END, 
+	public static final TickBasedIntegerCycle[] ANIMATIONS =  new TickBasedIntegerCycle[] {
+			new TickBasedIntegerCycle(ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_GEM_START,
+					ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_GEM_END,
 					ResourcesReference.ANIM_SPEED_ELEMENTIUM_GEM), // Elementium Gem Animation
 	};
-	
+
 	/** Integers for the array indexes for the various animations **/
 	public static final int ELEMENTIUM_GEM_ANIM_INDEX = 0;
-	
+
 	public static void updateTick() {
 		for(TickBasedIntegerCycle c : ANIMATIONS)
 			c.updateTick(); //Update all the animations
 	}
-	
+
 }

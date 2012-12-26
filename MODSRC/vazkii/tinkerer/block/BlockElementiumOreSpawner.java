@@ -6,14 +6,8 @@
 // Created @ 24 Dec 2012
 package vazkii.tinkerer.block;
 
-import java.awt.Color;
-
 import net.minecraft.world.World;
-import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.client.handlers.ClientTickHandler;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
-import vazkii.tinkerer.reference.EntityReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * BlockElementiumOreSpawner
@@ -29,7 +23,7 @@ public class BlockElementiumOreSpawner extends BlockElementiumOre {
 	public BlockElementiumOreSpawner(int par1) {
 		super(par1);
 	}
-	
+
 	/** Used to spawn the Guardian, copy of the same method on the BlockSilverfish
 	 * class, except this one spawns a different mob with different particles. **/
 	@Override

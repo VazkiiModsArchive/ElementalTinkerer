@@ -17,5 +17,5 @@ public final class EffectReference {
 
 	/** Particles emmited by the Elementium Ore block when broken **/
 	public static final int ELEMENTIUM_ORE_PARTICLE_COUNT = 12;
-	
+
 }

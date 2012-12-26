@@ -17,13 +17,13 @@ public final class MiscReference {
 
 	/** Simple and dirty debug mode flag. **/ // VAZ_TODO Set to false for potential releases
 	public static final boolean DEBUG_MODE = true;
-	
+
 	/** The amount of game ticks in a second **/
 	public static final byte TICKS_IN_SECOND = 20;
-	
+
 	/** The Lenght of a square chunk **/
 	public static final byte CHUNK_LENGHT = 16;
-	
+
 	/** The index that item IDs are shifted by **/
 	public static final int ITEM_INDEX_SHIFT = 256;
 

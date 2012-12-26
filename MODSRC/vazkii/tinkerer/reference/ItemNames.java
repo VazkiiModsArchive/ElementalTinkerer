@@ -14,11 +14,11 @@ package vazkii.tinkerer.reference;
  * @author Vazkii
  */
 public final class ItemNames {
-	
+
 	/** Internal/Config names **/
 	public static final String ELEMENTIUM_GEM_NAME = "elementiumGem";
-	
+
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem";
-	
+
 }
