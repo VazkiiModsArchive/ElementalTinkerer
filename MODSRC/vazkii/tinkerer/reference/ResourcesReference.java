@@ -24,6 +24,9 @@ public final class ResourcesReference {
 	/** Root location for entity texture resources **/
 	public static final String ROOT_ENTITY = ROOT + "entity/";
 
+	/** Root location for gui texture resources **/
+	public static final String ROOT_GUI = ROOT + "gui/";
+
 	/** The Spritesheet containing the in-world block textures **/
 	public static final String BLOCKS_SPRITESHEET = ROOT + "blocks.png";
 
@@ -52,14 +55,17 @@ public final class ResourcesReference {
 	public static final int ANIM_SPEED_ELEMENTIUM_ORE = 3,
 							ANIM_SPEED_ELEMENTIUM_GEM = 2;
 
-	/** The Elementium Gem is colored trough the spectrum, this integer is
-	 ** the divisor for the cosine function's speed that defines the color. **/
-	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GEM = 60;
-
 	/** The file that contains the Elementium Guardian Mob Texture **/
 	public static final String MOB_ELEMENTAL_GUARDIAN_TEXTURE = ROOT_ENTITY + "oreGuardian.png";
+
+	/** The file that contains the Elemental Desk GUI texture **/
+	public static final String GUI_ELEMENTAL_DESK_TEXTURE = ROOT_GUI + "elementalDesk.png";
 
 	/** The Elementium Guardian mob is colored trough the spectrum, this integer is
 	 ** the divisor for the cosine function's speed that defines the color. **/
 	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GUARDIAN = 20;
+
+	/** The Elementium Gem is colored trough the spectrum, this integer is
+	 ** the divisor for the cosine function's speed that defines the color. **/
+	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GEM = 60;
 }

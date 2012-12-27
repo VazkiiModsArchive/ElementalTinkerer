@@ -14,6 +14,7 @@ import vazkii.tinkerer.client.particle.EntityFXColoredPortal;
 import vazkii.tinkerer.client.render.RenderElementiumGuardian;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderElementalDesk;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
+import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.RenderIDs;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
@@ -47,6 +48,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerBlockRenders() {
 		RenderIDs.elementalDesk = RenderingRegistry.getNextAvailableRenderId();
+		MinecraftForgeClient.registerItemRenderer(BlockIDs.elementalDesk, TileEntityRenderElementalDesk.INSTANCE);
 	}
 
 	@Override
