@@ -6,6 +6,8 @@
 // Created @ 26 Dec 2012
 package vazkii.tinkerer.tile;
 
+import java.util.Random;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -13,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.reference.TileEntityReference;
 
@@ -179,7 +182,7 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 			progress++;
 
 		if(progress >= TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME) {
-			setInventorySlotContents(4, new ItemStack(Item.diamond, 64)); // VAZ_TODO Obvious Placeholder
+			setInventorySlotContents(4, new ItemStack(ElementalTinkererItems.elementalBook, 1, new Random().nextInt(4))); // VAZ_TODO Obvious Placeholder
 		}
 	}
 

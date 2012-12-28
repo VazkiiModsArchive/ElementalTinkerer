@@ -16,9 +16,11 @@ package vazkii.tinkerer.reference;
 public final class ItemIDs {
 
 	/** Defaults **/
-	public static final int DEFAULT_ELEMENTIUM_GEM = 21100;
+	public static final int DEFAULT_ELEMENTIUM_GEM = 21100,
+							DEFAULT_ELEMENTAL_BOOK = 21101;
 
 	/** Set via the config **/
-	public static int elementiumGem;
+	public static int elementiumGem,
+					  elementalBook;
 
 }

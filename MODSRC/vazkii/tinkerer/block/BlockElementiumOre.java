@@ -73,7 +73,7 @@ public class BlockElementiumOre extends BlockET {
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		super.getSubBlocks(par1, par2CreativeTabs, par3List);
 
-		for(int i = 0; i < 16; i++)
+		for(int i = 1; i < 16; i++)
 			par3List.add(new ItemStack(par1, 1, i));
 	}
 

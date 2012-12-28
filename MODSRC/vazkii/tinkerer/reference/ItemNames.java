@@ -16,9 +16,10 @@ package vazkii.tinkerer.reference;
 public final class ItemNames {
 
 	/** Internal/Config names **/
-	public static final String ELEMENTIUM_GEM_NAME = "elementiumGem";
+	public static final String ELEMENTIUM_GEM_NAME = "elementiumGem",
+							   ELEMENT_BOOK_NAME = "elementBook";
 
 	/** Display Names **/
-	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem";
-
+	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
+							   ELEMENT_BOOK_NAME_PREFIX = "Book of ";
 }

@@ -20,7 +20,9 @@ import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.client.model.ModelElementalDesk;
+import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.item.ElementalTinkererItems;
+import vazkii.tinkerer.reference.ItemIDs;
 import vazkii.tinkerer.reference.MiscReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.TileEntityReference;
@@ -42,9 +44,7 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
 
 	EntityItem entity = null;
 
-	TileEntityRenderElementalDesk() {
-
-	}
+	TileEntityRenderElementalDesk() {}
 
 	/** Synthetic bridge method, casts the tile entity object to
 	 * TileEntityElementalDesk and passes it in to another method. **/
@@ -54,9 +54,10 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
 	}
 
 	public void renderElementalDeskAt(TileEntityElementalDesk desk, double x, double y, double z, float ticks) {
+		
 		if(entity == null)
 			entity = new EntityItem(desk.worldObj, desk.xCoord, desk.yCoord, desk.zCoord, new ItemStack(ElementalTinkererItems.elementiumGem));
-		else entity.age++;
+		else entity.age = (int) ClientTickHandler.elapsedClientTicks;
 
 		// The entity is not in the world, it's client sided and doessn't get updated,
 		// this ensures that the age can be advanced continuously without any problems
@@ -74,7 +75,8 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
 
         // Render the Book, if present
         ItemStack shouldBeABook = desk.getStackInSlot(4);
-        if(shouldBeABook != null && shouldBeABook.itemID == Item.book.shiftedIndex) {
+        if(shouldBeABook != null && (shouldBeABook.itemID == Item.book.shiftedIndex || shouldBeABook.itemID == ItemIDs.elementalBook)) {
+        	boolean isNonEnchantedBook = shouldBeABook.itemID == Item.book.shiftedIndex;
         	GL11.glPushMatrix();
             GL11.glTranslatef(0.1F, 0.1F + (desk.getIsAdvancing() ? (float)(Math.cos(ClientTickHandler.elapsedClientTicks / 3) / 20) : 0.07F), -0.2F);
             GL11.glRotatef(-1F * 180.0F / (float)Math.PI, 0.0F, 1.0F, 0.0F);
@@ -84,9 +86,9 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
             GL11.glRotatef(90F, 0F, 1F, 0F);
             GL11.glTranslatef(-0.7F, 0.1F, 0.1F);
             GL11.glScalef(0.75F, 0.75F, 0.75F);
-            bindTextureByName("/item/book.png");
+            bindTextureByName(isNonEnchantedBook || shouldBeABook.getItemDamage() >= 4 ? "/item/book.png" : ResourcesReference.ROOT_BOOK_TEXTURES + Element.getName(shouldBeABook.getItemDamage()) + ".png");
             GL11.glEnable(GL11.GL_CULL_FACE);
-            book.render(null, 0F, 0F, 0F, (float)desk.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+            book.render(null, 0F, 0F, 0F, isNonEnchantedBook ? ((float)desk.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME) : 1F, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
         	GL11.glPopMatrix();
         }
 

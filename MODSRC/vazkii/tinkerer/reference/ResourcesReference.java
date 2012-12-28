@@ -31,13 +31,16 @@ public final class ResourcesReference {
 	public static final String BLOCKS_SPRITESHEET = ROOT + "blocks.png";
 
 	/** The Spritesheet containing the item sprites **/
-	public static final String ITEMS_SPRITESHEET = ROOT + "items32.png";
+	public static final String ITEMS_SPRITESHEET = ROOT + "items.png";
 
 	/** The Spritesheet containing the item sprites in 32x32 resolution **/
 	public static final String ITEMS_32_SPRITESHEET = ROOT + "items32.png";
 
 	/** The location of the Texture File for the Elemental Desk Model **/
 	public static final String MODEL_TEX_ELEMENTAL_DESK = ROOT_MODEL + "elementalDesk.png";
+	
+	/** The location of book textures **/
+	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";
 
 	/** Integers for the Blocks Spritesheet indexes **/
 	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_NON_AIMATED = 5,
@@ -46,6 +49,9 @@ public final class ResourcesReference {
 	/** Integers for the Blocks Spritesheet Animations **/
 	public static final int BLOCK_ANIM_ELEMENTIUM_ORE_START = 0,
 							BLOCK_ANIM_ELEMENTIUM_ORE_END = 15;
+	
+	/** Integers for the Items Spritesheet indexes **/
+	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
