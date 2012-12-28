@@ -4,7 +4,7 @@
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  */
 // Created @ 27 Dec 2012
-package vazkii.tinkerer.client.research;
+package vazkii.tinkerer.research;
 
 /**
  * ResearchCategory

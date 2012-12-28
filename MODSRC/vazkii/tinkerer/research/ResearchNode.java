@@ -4,12 +4,13 @@
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  */
 // Created @ 27 Dec 2012
-package vazkii.tinkerer.client.research;
+package vazkii.tinkerer.research;
 
 /**
  * ResearchNode
  *
- * A Node of research. This stores the name
+ * A Node of research. This stores the name, and some other data regarding it,
+ * it also allows to check if the node has been researched.
  *
  * @author Vazkii
  */

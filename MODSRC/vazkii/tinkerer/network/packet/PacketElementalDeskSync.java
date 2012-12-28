@@ -10,9 +10,9 @@ import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import net.minecraft.network.packet.Packet250CustomPayload;
 
 /**
- * PacketElementalTableSync
+ * PacketElementalDeskSync
  *
- * TODO Add Desc.
+ * Packet to sync the Elemental Desk
  *
  * @author Vazkii
  */
@@ -29,13 +29,11 @@ public class PacketElementalDeskSync extends ETPacket {
 	
 	@Override
 	public Packet250CustomPayload asCustomPayload() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean readPayload(Packet250CustomPayload packet) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -18,10 +18,6 @@ import net.minecraft.network.packet.Packet250CustomPayload;
  */
 public abstract class ETPacket {
 	
-	public ETPacket() { 
-		doNothing(this);
-	}
-	
 	/** Returns in the instance as a custom payload, ready to be sent. **/
 	public abstract Packet250CustomPayload asCustomPayload();
 	
@@ -29,7 +25,5 @@ public abstract class ETPacket {
 	 *  this type of packet, true if it read it, stopping the execution of
 	 *  further attempts to pass in the packet **/
 	public abstract boolean readPayload(Packet250CustomPayload packet);
-
-	public static void doNothing(ETPacket packet) { }
 	
 }
