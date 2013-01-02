@@ -14,8 +14,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
+import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.item.ElementalTinkererItems;
+import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
 import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.reference.TileEntityReference;
 
@@ -29,7 +32,7 @@ import vazkii.tinkerer.reference.TileEntityReference;
 public class TileEntityElementalDesk extends TileEntity implements IInventory {
 
 	/** The Charge of the various crystals inputed **/
-	int[] charges = new int[4];
+	byte[] charges = new byte[4];
 
 	/** The progress of enchanting the book in the slot **/
 	int progress = 0;
@@ -44,12 +47,28 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 		return progress;
 	}
 
-	public int getCharge(int index) {
+	public void setProgress(int progress) {
+		this.progress = progress;
+	}
+
+	public byte[] getCharges() {
+		return charges;
+	}
+
+	public byte getCharge(int index) {
 		return charges[index];
+	}
+
+	public void setCharge(int index, byte charge) {
+		charges[index] = charge;
 	}
 
 	public boolean getIsAdvancing() {
 		return isAdvancing;
+	}
+
+	public void setAdvancing(boolean advancing) {
+		isAdvancing = advancing;
 	}
 
 	@Override
@@ -89,13 +108,8 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
         super.readFromNBT(par1NBTTagCompound);
 
         progress = par1NBTTagCompound.getInteger("progress");
-        charges = par1NBTTagCompound.getIntArray("charges");
+        charges = par1NBTTagCompound.getByteArray("charges");
         isAdvancing = par1NBTTagCompound.getBoolean("isAdvancing");
-
-        //VAZ_TODO Sync trough the network
-
-    	// Item reading code "stolen" from TileEntityFurnace
-    	// (because I'm lazy and that one works well enough)
 
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
         inventorySlots = new ItemStack[getSizeInventory()];
@@ -107,12 +121,17 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
         }
     }
 
+	@Override
+	public Packet getDescriptionPacket() {
+		return PacketHelper.generatePacket(new PacketElementalDeskSync(this));
+	}
+
     @Override
     public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
 
         par1NBTTagCompound.setInteger("progress", progress);
-        par1NBTTagCompound.setIntArray("charges", charges);
+        par1NBTTagCompound.setByteArray("charges", charges);
         par1NBTTagCompound.setBoolean("isAdvancing", isAdvancing);
 
     	// Item writing code "stolen" from TileEntityFurnace
@@ -182,7 +201,9 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 			progress++;
 
 		if(progress >= TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME) {
-			setInventorySlotContents(4, new ItemStack(ElementalTinkererItems.elementalBook, 1, new Random().nextInt(4))); // VAZ_TODO Obvious Placeholder
+			// VAZ_TODO Add enchanted book support and particles
+			setInventorySlotContents(4, new ItemStack(ElementalTinkererItems.elementalBook, 1, new Random().nextInt(4)));
+        	PacketHelper.sendPacketToAllClients(new PacketElementalDeskSync(this));
 		}
 	}
 

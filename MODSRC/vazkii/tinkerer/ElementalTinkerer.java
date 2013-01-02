@@ -6,15 +6,20 @@
 // Created @ 22 Dec 2012
 package vazkii.tinkerer;
 
+import java.util.logging.Logger;
+
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.core.CommonProxy;
 import vazkii.tinkerer.entity.ElementalTinkererEntities;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.handler.GuiHandler;
+import vazkii.tinkerer.handler.PlayerTrackingHandler;
 import vazkii.tinkerer.handler.WorldGenerationHandler;
 import vazkii.tinkerer.item.ElementalTinkererItems;
+import vazkii.tinkerer.network.PacketHandler;
 import vazkii.tinkerer.reference.AnnotationConstants;
+import vazkii.tinkerer.reference.NetworkReference;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -41,8 +46,12 @@ import cpw.mods.fml.relauncher.Side;
      name = AnnotationConstants.MOD_NAME,
      version = AnnotationConstants.VERSION)
 
-@NetworkMod()
+@NetworkMod(clientSideRequired = true,
+			channels = { NetworkReference.CHANNEL_NAME },
+			packetHandler = PacketHandler.class)
 public class ElementalTinkerer {
+
+	public static Logger logger;
 
 	@Instance(AnnotationConstants.MOD_ID)
 	public static ElementalTinkerer instance;
@@ -53,6 +62,9 @@ public class ElementalTinkerer {
 
 	@PreInit
 	public void onPreInit(FMLPreInitializationEvent event) {
+		// Get the logger
+		logger = event.getModLog();
+
 		// Init the config, passing in the configuration file FML suggests for this mod
 		ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
 
@@ -67,6 +79,9 @@ public class ElementalTinkerer {
 
 		// Register the Gui Handler
 		NetworkRegistry.instance().registerGuiHandler(instance, GuiHandler.INSTANCE);
+
+		// Register the Player Tracker
+		GameRegistry.registerPlayerTracker(PlayerTrackingHandler.INSTANCE);
 
 		// Init the mod's Items
 		ElementalTinkererItems.init();
@@ -88,6 +103,9 @@ public class ElementalTinkerer {
 
 		// Proxy: Register the Block Renders
 		proxy.registerBlockRenders();
+
+		// Proxy: Register the mod's packets
+		proxy.registerPackets();
 	}
 
 	@PostInit

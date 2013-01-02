@@ -38,7 +38,7 @@ public final class ResourcesReference {
 
 	/** The location of the Texture File for the Elemental Desk Model **/
 	public static final String MODEL_TEX_ELEMENTAL_DESK = ROOT_MODEL + "elementalDesk.png";
-	
+
 	/** The location of book textures **/
 	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";
 
@@ -49,7 +49,7 @@ public final class ResourcesReference {
 	/** Integers for the Blocks Spritesheet Animations **/
 	public static final int BLOCK_ANIM_ELEMENTIUM_ORE_START = 0,
 							BLOCK_ANIM_ELEMENTIUM_ORE_END = 15;
-	
+
 	/** Integers for the Items Spritesheet indexes **/
 	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0;
 

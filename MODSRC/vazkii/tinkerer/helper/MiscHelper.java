@@ -8,6 +8,7 @@ package vazkii.tinkerer.helper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -28,5 +29,9 @@ public class MiscHelper {
 	@SideOnly(Side.CLIENT)
 	public static final EntityPlayer getClientPlayer() {
 		return getMc().thePlayer;
+	}
+
+	public static final MinecraftServer getServer() {
+		return MinecraftServer.getServer();
 	}
 }

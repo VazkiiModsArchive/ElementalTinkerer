@@ -8,6 +8,8 @@ package vazkii.tinkerer.client.handler;
 
 import java.util.EnumSet;
 
+import vazkii.tinkerer.helper.MiscHelper;
+import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
 import cpw.mods.fml.common.ITickHandler;
@@ -60,7 +62,16 @@ public class ClientTickHandler implements ITickHandler {
 		// Update Tick for the Simple Animations
 		SimpleAnimations.updateTick();
 
+		checkWorld();
+
 		++elapsedClientTicks;
+	}
+
+	/** Checks if there's no client world, if so, resets the "current server verified"
+	 * flag for networking purposes **/
+	public void checkWorld() {
+		if(MiscHelper.getMc().theWorld == null)
+			PacketHelper.currentServerVerified = false;
 	}
 
 	/** Called every Render Tick  **/

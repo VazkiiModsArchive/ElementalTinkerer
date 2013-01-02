@@ -27,7 +27,7 @@ public final class ElementalTinkererItems {
 		// Construct the items
 		elementiumGem = new ItemElementiumGem(ItemIDs.elementiumGem).setItemName(ItemNames.ELEMENTIUM_GEM_NAME);
 		elementalBook = new ItemElementalBook(ItemIDs.elementalBook).setItemName(ItemNames.ELEMENT_BOOK_NAME);
-		
+
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
 	}

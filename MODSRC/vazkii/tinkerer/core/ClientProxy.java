@@ -14,6 +14,8 @@ import vazkii.tinkerer.client.particle.EntityFXColoredPortal;
 import vazkii.tinkerer.client.render.RenderElementiumGuardian;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderElementalDesk;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
+import vazkii.tinkerer.helper.PacketHelper;
+import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.RenderIDs;
 import vazkii.tinkerer.reference.ResourcesReference;
@@ -37,6 +39,12 @@ public class ClientProxy extends CommonProxy {
 	public void registerTileEntities() {
 		super.registerTileEntities();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElementalDesk.class, TileEntityRenderElementalDesk.INSTANCE);
+	}
+
+	@Override
+	public void registerPackets() {
+		super.registerPackets();
+		PacketHelper.packetHandlers.add(PacketVerification.RECIEVER_INSTANCE);
 	}
 
 	@Override

@@ -15,7 +15,7 @@ package vazkii.tinkerer.research;
  * @author Vazkii
  */
 public class ResearchNode {
-	
+
 	public String spritesheet, label, displayName;
 	public int spriteIndex;
 
@@ -25,5 +25,5 @@ public class ResearchNode {
 		this.displayName = displayName;
 		this.spriteIndex = spriteIndex;
 	}
-	
+
 }

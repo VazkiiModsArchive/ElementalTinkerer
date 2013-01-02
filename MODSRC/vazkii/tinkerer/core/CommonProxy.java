@@ -9,6 +9,8 @@ package vazkii.tinkerer.core;
 import java.awt.Color;
 
 import net.minecraft.world.World;
+import vazkii.tinkerer.helper.PacketHelper;
+import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
@@ -17,8 +19,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 /**
  * CommonProxy
  *
- * Common proxy, used between the client and the server. The client proxy extends
- * this class to add functionality only available on client side.
+ * Common proxy, used between the client and the server.
+ * The client and server proxies extend this class to
+ * add functionality only available on the specific side.
  *
  * @author Vazkii
  */
@@ -28,6 +31,18 @@ public class CommonProxy {
 	 * also register the renderers **/
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityElementalDesk.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTAL_DESK_NAME);
+	}
+
+	/** Registers the mod's packets. Some packets use different
+	 * instances per side. **/
+	public void registerPackets() {
+		PacketHelper.packetHandlers.add(PacketElementalDeskSync.RECIEVER_INSTANCE);
+	}
+
+	/** Registers the player tracker for the network, to help
+	 * with verifying a server. NO-OP in client side. **/
+	public void registerPlayerTracker() {
+		//NO-OP
 	}
 
 	/** Used by the client to map entity classes to their adequate

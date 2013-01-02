@@ -54,7 +54,7 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
 	}
 
 	public void renderElementalDeskAt(TileEntityElementalDesk desk, double x, double y, double z, float ticks) {
-		
+
 		if(entity == null)
 			entity = new EntityItem(desk.worldObj, desk.xCoord, desk.yCoord, desk.zCoord, new ItemStack(ElementalTinkererItems.elementiumGem));
 		else entity.age = (int) ClientTickHandler.elapsedClientTicks;
@@ -88,7 +88,7 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
             GL11.glScalef(0.75F, 0.75F, 0.75F);
             bindTextureByName(isNonEnchantedBook || shouldBeABook.getItemDamage() >= 4 ? "/item/book.png" : ResourcesReference.ROOT_BOOK_TEXTURES + Element.getName(shouldBeABook.getItemDamage()) + ".png");
             GL11.glEnable(GL11.GL_CULL_FACE);
-            book.render(null, 0F, 0F, 0F, isNonEnchantedBook ? ((float)desk.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME) : 1F, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+            book.render(null, 0F, 0F, 0F, isNonEnchantedBook ? (float)desk.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME : 1F, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
         	GL11.glPopMatrix();
         }
 
