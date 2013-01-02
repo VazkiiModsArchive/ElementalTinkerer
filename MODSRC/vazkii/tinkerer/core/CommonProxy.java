@@ -39,12 +39,6 @@ public class CommonProxy {
 		PacketHelper.packetHandlers.add(PacketElementalDeskSync.RECIEVER_INSTANCE);
 	}
 
-	/** Registers the player tracker for the network, to help
-	 * with verifying a server. NO-OP in client side. **/
-	public void registerPlayerTracker() {
-		//NO-OP
-	}
-
 	/** Used by the client to map entity classes to their adequate
 	 *  render instances. NO-OP in server side. **/
 	public void mapEntityRenderers() {
