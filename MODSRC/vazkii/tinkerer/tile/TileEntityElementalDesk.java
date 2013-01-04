@@ -6,8 +6,11 @@
 // Created @ 26 Dec 2012
 package vazkii.tinkerer.tile;
 
+import java.util.List;
 import java.util.Random;
 
+import net.minecraft.enchantment.EnchantmentData;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -201,10 +204,22 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 			progress++;
 
 		if(progress >= TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME) {
-			// VAZ_TODO Add enchanted book support and particles
-			setInventorySlotContents(4, new ItemStack(ElementalTinkererItems.elementalBook, 1, new Random().nextInt(4)));
+			setInventorySlotContents(4, getStackOnEnchanting());
+			for(int i = 0; i < 30; i++)
+        		worldObj.spawnParticle("explode", xCoord + worldObj.rand.nextFloat(), yCoord + worldObj.rand.nextFloat() / 4 + 0.75F, zCoord + worldObj.rand.nextFloat(), 0F, 0F, 0F);
         	PacketHelper.sendPacketToAllClients(new PacketElementalDeskSync(this));
 		}
+	}
+
+	public ItemStack getStackOnEnchanting() {
+		int rand = worldObj.rand.nextInt(100);
+		if(rand < TileEntityReference.ELEMENTAL_DESK_ENCHANTED_BOOK_CHANCE) {
+			ItemStack enchantedBook = new ItemStack(Item.field_92053_bW);
+			List<EnchantmentData> allEnchants =  EnchantmentHelper.buildEnchantmentList(worldObj.rand, new ItemStack(Item.book), TileEntityReference.ELEMENTAL_DESK_ENCHANTED_BOOK_LEVEL);
+			if(allEnchants != null)
+				Item.field_92053_bW.func_92060_a(enchantedBook, allEnchants.get(worldObj.rand.nextInt(allEnchants.size())));
+			return enchantedBook;
+		} else return new ItemStack(ElementalTinkererItems.elementalBook, 1, new Random().nextInt(4));
 	}
 
 	/** Spends as much charge as requested. Will return false if
@@ -280,7 +295,6 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 		}
 	}
 
-	//VAZ_TODO Shift click Stack overflows
 	//VAZ_TODO Drop items on breaking
 
 	@Override

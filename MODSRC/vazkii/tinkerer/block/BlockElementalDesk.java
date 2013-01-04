@@ -8,7 +8,10 @@ package vazkii.tinkerer.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -76,5 +79,42 @@ public class BlockElementalDesk extends BlockETContainer {
         }
 
         return true;
+    }
+
+	@Override
+    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
+            TileEntityElementalDesk tile = (TileEntityElementalDesk)par1World.getBlockTileEntity(par2, par3, par4);
+
+            if (tile != null) {
+                for (int i = 0; i < tile.getSizeInventory(); ++i) {
+                    ItemStack stack = tile.getStackInSlot(i);
+
+                    if (stack != null) {
+                        float xOffset = par1World.rand.nextFloat() * 0.8F + 0.1F;
+                        float yOffset = par1World.rand.nextFloat() * 0.8F + 0.1F;
+                        float zOffset = par1World.rand.nextFloat() * 0.8F + 0.1F;
+
+                        while (stack.stackSize > 0) {
+                            int dropSize = par1World.rand.nextInt(21) + 10;
+
+                            if (dropSize > stack.stackSize)
+                                dropSize = stack.stackSize;
+
+                            stack.stackSize -= dropSize;
+                            EntityItem item = new EntityItem(par1World, (par2 + xOffset), (par3 + yOffset), (par4 + zOffset), new ItemStack(stack.itemID, dropSize, stack.getItemDamage()));
+
+                            if (stack.hasTagCompound())
+                                item.func_92014_d().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
+
+                            item.motionX = ((float)par1World.rand.nextGaussian() / 20);
+                            item.motionY = ((float)par1World.rand.nextGaussian() / 20 + 0.2F);
+                            item.motionZ = ((float)par1World.rand.nextGaussian() / 20);
+                            par1World.spawnEntityInWorld(item);
+                        }
+                    }
+                }
+            }
+
+        super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
 }

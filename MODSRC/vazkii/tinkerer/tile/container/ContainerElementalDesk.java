@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.slot.SlotElementalDeskBook;
 import vazkii.tinkerer.tile.slot.SlotElementalDeskGem;
@@ -47,4 +48,8 @@ public class ContainerElementalDesk extends Container {
 		return true;
 	}
 
+	@Override
+    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
+    	return null; // Returns null so no stack overflows happen...
+	}
 }

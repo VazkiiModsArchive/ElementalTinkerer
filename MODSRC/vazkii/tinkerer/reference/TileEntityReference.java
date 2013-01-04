@@ -21,4 +21,11 @@ public final class TileEntityReference {
 	/** The charge provided by an elementium gem in the elemental desk **/
 	public static final int ELEMENTAL_DESK_GEM_CHARGE = 14;
 
+	/** The chance (%) of getting an enchanted book out of an enchantment
+	 * on the Elemental Desk **/
+	public static final int ELEMENTAL_DESK_ENCHANTED_BOOK_CHANCE = 4;
+
+	/** The level of the enchanted book that gets created in an Elemental
+	 * Desk if that's the case **/
+	public static final int ELEMENTAL_DESK_ENCHANTED_BOOK_LEVEL = 45;
 }
