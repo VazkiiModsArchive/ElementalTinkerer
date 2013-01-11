@@ -14,6 +14,7 @@ import net.minecraft.client.model.ModelBook;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -22,11 +23,16 @@ import org.lwjgl.opengl.GL12;
 import org.lwjgl.util.glu.GLU;
 
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.reference.FormattingCode;
+import vazkii.tinkerer.reference.ItemNames;
 import vazkii.tinkerer.reference.MiscReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.TileEntityReference;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.container.ContainerElementalDesk;
+import vazkii.tinkerer.tile.slot.SlotElementalDeskBook;
+import vazkii.tinkerer.tile.slot.SlotElementalDeskGem;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
  * GuiElementalDesk
@@ -128,5 +134,15 @@ public class GuiElementalDesk extends GuiContainer {
 	@Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         fontRenderer.drawString("Inventory", 8, ySize - 94, 4210752);
+
+        int xStart = (width - xSize) / 2;
+        int yStart = (height - ySize) / 2;
+        Slot hoveredSlot = ReflectionHelper.getPrivateValue(GuiContainer.class, this, 6);
+        if(hoveredSlot != null && hoveredSlot.getStack() == null) {
+        	if(hoveredSlot instanceof SlotElementalDeskGem)
+    			vazkii.tinkerer.client.helper.RenderHelper.renderTooltip(par1 - xStart, par2 - yStart, FormattingCode.AQUA + ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME + " Slot", FormattingCode.GRAY + "Place a Gem here to charge the desk.");
+        	else if(hoveredSlot instanceof SlotElementalDeskBook)
+    			vazkii.tinkerer.client.helper.RenderHelper.renderTooltip(par1 - xStart, par2 - yStart, FormattingCode.AQUA + "Book Slot", FormattingCode.GRAY + "Place a Book here to have it charged.");
+        }
 	}
 }

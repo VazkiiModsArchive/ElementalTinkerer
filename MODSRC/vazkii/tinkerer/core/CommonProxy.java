@@ -56,6 +56,13 @@ public class CommonProxy {
 		// NO-OP
 	}
 
+	/** Reads the research descriptions, used to show the text
+	 * for the researches in the Elementalist's Lexicon GUI,
+	 * NO-OP in server side. **/
+	public void readResearchDescriptions() {
+		// NO-OP
+	}
+
 	/** Used by the client to spawn a colored portal particle at
 	 * the location passed in, with the color and motion passed
 	 * in. NO-OP in server side. **/

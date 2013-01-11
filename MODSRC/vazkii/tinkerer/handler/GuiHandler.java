@@ -9,6 +9,7 @@ package vazkii.tinkerer.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import vazkii.tinkerer.gui.GuiElementalDesk;
+import vazkii.tinkerer.gui.GuiElementalistLexiconIndex;
 import vazkii.tinkerer.reference.GuiIDs;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.container.ContainerElementalDesk;
@@ -33,8 +34,6 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 		case GuiIDs.ID_ELEMENTAL_DESK :
 			return new ContainerElementalDesk(player.inventory, (TileEntityElementalDesk) world.getBlockTileEntity(x, y, z));
-
-		// Will be expanded when more guis are added
 		}
 
 		return null;
@@ -45,8 +44,10 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 		case GuiIDs.ID_ELEMENTAL_DESK :
 			return new GuiElementalDesk(player.inventory, (TileEntityElementalDesk) world.getBlockTileEntity(x, y, z));
-		}
 
+		case GuiIDs.ID_ELEMENTALIST_LEXICON :
+			return new GuiElementalistLexiconIndex();
+		}
 
 		return null;
 	}

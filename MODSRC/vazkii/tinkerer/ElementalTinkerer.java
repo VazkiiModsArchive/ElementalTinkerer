@@ -20,6 +20,7 @@ import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.network.PacketHandler;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.NetworkReference;
+import vazkii.tinkerer.research.ResearchLibrary;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -68,8 +69,14 @@ public class ElementalTinkerer {
 		// Init the config, passing in the configuration file FML suggests for this mod
 		ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
 
-		// Preloads the textures, in order to avoid possible visual anomalies
+		// Proxy: Preloads the textures, in order to avoid possible visual anomalies
 		proxy.preloadTextures();
+
+		// Init the research data
+		ResearchLibrary.initResearch();
+
+		// Proxy: Read the research descriptions
+		proxy.readResearchDescriptions();
 	}
 
 	@Init

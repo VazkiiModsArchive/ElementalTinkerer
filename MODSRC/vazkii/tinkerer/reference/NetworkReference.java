@@ -21,6 +21,7 @@ public class NetworkReference {
 	/** Subchannels, used by the mod's packet handler to see how to handle the packet
 	 * recieved, while still keeping the mod only using one network channel. **/
 	public static final String SUBCHANNEL_VERIFY = "verify",
-							   SUBCHANNEL_ELEMENTAL_DESK_SYNC = "elementalDeskSync";
+							   SUBCHANNEL_ELEMENTAL_DESK_SYNC = "elementalDeskSync",
+							   SUBCHANNEL_RESEARCH = "research";
 
 }

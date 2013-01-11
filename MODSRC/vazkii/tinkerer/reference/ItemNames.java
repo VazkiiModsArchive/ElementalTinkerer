@@ -17,9 +17,11 @@ public final class ItemNames {
 
 	/** Internal/Config names **/
 	public static final String ELEMENTIUM_GEM_NAME = "elementiumGem",
-							   ELEMENT_BOOK_NAME = "elementBook";
+							   ELEMENT_BOOK_NAME = "elementBook",
+							   ELEMENTALIST_LEXICON_NAME = "elementalistLexicon";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
-							   ELEMENT_BOOK_NAME_PREFIX = "Book of ";
+							   ELEMENT_BOOK_NAME_PREFIX = "Book of ",
+							   ELEMENTALIST_LEXICON_DISPLAY_NAME = "Elementalist's Lexicon";
 }

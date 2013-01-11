@@ -295,8 +295,6 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 		}
 	}
 
-	//VAZ_TODO Drop items on breaking
-
 	@Override
 	public void openChest() {
 		// NO-OP

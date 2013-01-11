@@ -6,6 +6,7 @@
 // Created @ 27 Dec 2012
 package vazkii.tinkerer.research;
 
+
 /**
  * ResearchNode
  *
@@ -14,16 +15,41 @@ package vazkii.tinkerer.research;
  *
  * @author Vazkii
  */
-public class ResearchNode {
+public class ResearchNode implements Comparable<ResearchNode> {
 
 	public String spritesheet, label, displayName;
 	public int spriteIndex;
+	public short index;
+	public ResearchType type;
 
-	public ResearchNode(String spritesheet, String label, String displayName, int spriteIndex) {
+	/** If this is set to true, then it will be instantly added
+	 * to the list of acquired researches **/
+	private boolean isDefaultEnabled = false;
+
+	public ResearchNode(short index, String spritesheet, String label, String displayName, int spriteIndex, ResearchType type) {
 		this.spritesheet = spritesheet;
 		this.label = label;
 		this.displayName = displayName;
 		this.spriteIndex = spriteIndex;
+		this.index = index;
+		this.type = type;
 	}
 
+	public ResearchNode setDefaultEnabled() {
+		isDefaultEnabled = true;
+		return this;
+	}
+
+	public ResearchNode addToCategory(ResearchCategory category) {
+		return category.addNode(this);
+	}
+
+	@Override
+	public int compareTo(ResearchNode o) {
+		return Integer.compare(index, o.index);
+	}
+
+	public boolean isDefaultEnabled() {
+		return isDefaultEnabled;
+	}
 }

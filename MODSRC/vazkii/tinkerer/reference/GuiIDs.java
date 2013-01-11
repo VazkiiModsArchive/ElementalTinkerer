@@ -15,6 +15,7 @@ package vazkii.tinkerer.reference;
  */
 public final class GuiIDs {
 
-	public static final byte ID_ELEMENTAL_DESK = 1;
+	public static final byte ID_ELEMENTAL_DESK = 1,
+							 ID_ELEMENTALIST_LEXICON = 2;
 
 }

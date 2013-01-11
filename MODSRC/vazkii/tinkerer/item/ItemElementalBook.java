@@ -50,7 +50,7 @@ public class ItemElementalBook extends ItemET {
 
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.rare;
+		return EnumRarity.uncommon;
 	}
 
 }

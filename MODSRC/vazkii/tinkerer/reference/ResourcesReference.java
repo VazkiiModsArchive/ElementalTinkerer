@@ -36,6 +36,9 @@ public final class ResourcesReference {
 	/** The Spritesheet containing the item sprites in 32x32 resolution **/
 	public static final String ITEMS_32_SPRITESHEET = ROOT + "items32.png";
 
+	/** The Spritesheet containing research sprites **/
+	public static final String RESEARCH_SPRITESHEET = ROOT + "research.png";
+
 	/** The location of the Texture File for the Elemental Desk Model **/
 	public static final String MODEL_TEX_ELEMENTAL_DESK = ROOT_MODEL + "elementalDesk.png";
 
@@ -51,11 +54,20 @@ public final class ResourcesReference {
 							BLOCK_ANIM_ELEMENTIUM_ORE_END = 15;
 
 	/** Integers for the Items Spritesheet indexes **/
-	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0;
+	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0,
+							ITEM_INDEX_ELEMENTALIST_LEXICON = 4;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
 							ITEM_32_ANIM_ELEMENTIUM_GEM_END = 7;
+
+	/** Integers for the Research Spritesheet indexes **/
+	public static final int RESEARCH_INDEX_QUESTIONMARK = 0,
+							RESEARCH_INDEX_ELLIPSES = 1,
+							RESEARCH_INDEX_ELEMENTIUM_ORE = 2,
+							RESEARCH_INDEX_ELEMENTIUM_GEM = 3,
+							RESEARCH_INDEX_ELEMENTAL_DESK = 4,
+							RESEARCH_INDEX_RESEARCH_BOOKS = 5;
 
 	/** Integers for Animation tick speeds **/
 	public static final int ANIM_SPEED_ELEMENTIUM_ORE = 3,
@@ -64,8 +76,10 @@ public final class ResourcesReference {
 	/** The file that contains the Elementium Guardian Mob Texture **/
 	public static final String MOB_ELEMENTAL_GUARDIAN_TEXTURE = ROOT_ENTITY + "oreGuardian.png";
 
-	/** The file that contains the Elemental Desk GUI texture **/
-	public static final String GUI_ELEMENTAL_DESK_TEXTURE = ROOT_GUI + "elementalDesk.png";
+	/** The files that contain the background textures for the guis **/
+	public static final String GUI_ELEMENTAL_DESK_TEXTURE = ROOT_GUI + "elementalDesk.png",
+							   GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE = ROOT_GUI + "researchBook.png",
+							   GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE = ROOT_GUI + "recipeBook.png";
 
 	/** The Elementium Guardian mob is colored trough the spectrum, this integer is
 	 ** the divisor for the cosine function's speed that defines the color. **/
@@ -74,4 +88,23 @@ public final class ResourcesReference {
 	/** The Elementium Gem is colored trough the spectrum, this integer is
 	 ** the divisor for the cosine function's speed that defines the color. **/
 	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GEM = 60;
+
+	/** The root folder where the research data (texts) is located. **/
+	public static final String RESEARCH_DATA_FOLDER = ROOT + "research";
+
+	/** The location of the world cache folder in a world **/
+	public static final String WORLD_CACHE_FOLDER = "/" + AnnotationConstants.MOD_ID;
+
+	/** The location of the name of a global cache file **/
+	public static final String CACHE_FILE_NAME = "cache.dat";
+
+
+	/** The prefix of a player folder in the world cache folder, this is
+	 * used to format the folder names to see who's the player that
+	 * the file inside belongs to **/
+	public static final String WORLD_PLAYER_CACHE_FOLDER_PREFIX = "player_";
+
+	/** The location of a player folder in the world cache folder, this is
+	 * meant to be formatted with the player's name **/
+	public static final String WORLD_PLAYER_CACHE_FOLDER = WORLD_CACHE_FOLDER + "/" + WORLD_PLAYER_CACHE_FOLDER_PREFIX + "%s";
 }

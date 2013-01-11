@@ -101,14 +101,14 @@ public class BlockElementalDesk extends BlockETContainer {
                                 dropSize = stack.stackSize;
 
                             stack.stackSize -= dropSize;
-                            EntityItem item = new EntityItem(par1World, (par2 + xOffset), (par3 + yOffset), (par4 + zOffset), new ItemStack(stack.itemID, dropSize, stack.getItemDamage()));
+                            EntityItem item = new EntityItem(par1World, par2 + xOffset, par3 + yOffset, par4 + zOffset, new ItemStack(stack.itemID, dropSize, stack.getItemDamage()));
 
                             if (stack.hasTagCompound())
                                 item.func_92014_d().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
 
-                            item.motionX = ((float)par1World.rand.nextGaussian() / 20);
-                            item.motionY = ((float)par1World.rand.nextGaussian() / 20 + 0.2F);
-                            item.motionZ = ((float)par1World.rand.nextGaussian() / 20);
+                            item.motionX = (float)par1World.rand.nextGaussian() / 20;
+                            item.motionY = (float)par1World.rand.nextGaussian() / 20 + 0.2F;
+                            item.motionZ = (float)par1World.rand.nextGaussian() / 20;
                             par1World.spawnEntityInWorld(item);
                         }
                     }

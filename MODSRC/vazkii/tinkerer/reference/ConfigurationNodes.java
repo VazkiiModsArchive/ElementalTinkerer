@@ -23,6 +23,10 @@ public final class ConfigurationNodes {
 							   NODE_ELEMENTIUM_GEM_ANIMATED = ItemNames.ELEMENTIUM_GEM_NAME + ".animate",
 							   NODE_ELEMENTIUM_ORE_COLORED = BlockNames.ELEMENTIUM_ORE_NAME + ".variousColors";
 
+	/** Config nodes for the general catergory **/
+	public static final String NODE_RESEARCH_SHARE = "research.share",
+							   COMMENT_RESEARCH_SHARE = "Set to the username of a player to have that player hold all of the research for the server (shared research data), set to '" + ResearchReference.CONFIG_SHARE_WILDCARD + "' to don't have the research being shared, but rather, per player.";
+
 	/** Default nodes for the graphics category **/
 	public static final boolean DEFAULT_ELEMENTIUM_GEM_SPECTRUM = true,
 								DEFAULT_ELEMENTIUM_GEM_ANIMATE = true,

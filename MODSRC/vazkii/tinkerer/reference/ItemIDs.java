@@ -17,10 +17,12 @@ public final class ItemIDs {
 
 	/** Defaults **/
 	public static final int DEFAULT_ELEMENTIUM_GEM = 21100,
-							DEFAULT_ELEMENTAL_BOOK = 21101;
+							DEFAULT_ELEMENTAL_BOOK = 21101,
+							DEFAULT_ELEMENTALIST_LEXICON = 21102;
 
 	/** Set via the config **/
 	public static int elementiumGem,
-					  elementalBook;
+					  elementalBook,
+					  elementalistLexicon;
 
 }

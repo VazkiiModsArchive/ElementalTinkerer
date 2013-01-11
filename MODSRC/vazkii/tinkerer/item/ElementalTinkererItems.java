@@ -21,15 +21,18 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public final class ElementalTinkererItems {
 
 	public static Item elementiumGem,
-					   elementalBook;
+					   elementalBook,
+					   elementalistLexicon;
 
 	public static void init() {
 		// Construct the items
 		elementiumGem = new ItemElementiumGem(ItemIDs.elementiumGem).setItemName(ItemNames.ELEMENTIUM_GEM_NAME);
 		elementalBook = new ItemElementalBook(ItemIDs.elementalBook).setItemName(ItemNames.ELEMENT_BOOK_NAME);
+		elementalistLexicon = new ItemElementalistLexicon(ItemIDs.elementalistLexicon).setItemName(ItemNames.ELEMENTALIST_LEXICON_NAME);
 
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
+		LanguageRegistry.addName(elementalistLexicon, ItemNames.ELEMENTALIST_LEXICON_DISPLAY_NAME);
 	}
 
 }

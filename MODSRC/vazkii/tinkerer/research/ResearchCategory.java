@@ -6,6 +6,9 @@
 // Created @ 27 Dec 2012
 package vazkii.tinkerer.research;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 /**
  * ResearchCategory
  *
@@ -16,7 +19,20 @@ package vazkii.tinkerer.research;
  */
 public class ResearchCategory {
 
-	public ResearchCategory(String label, String displayName) {
+	public int index;
+
+	Set<ResearchNode> nodes = new LinkedHashSet();
+
+	public ResearchCategory(int index) {
+		this.index = index;
 	}
 
+	public ResearchNode addNode(ResearchNode node) {
+		nodes.add(node);
+		return node;
+	}
+
+	public boolean hasNode(ResearchNode node) {
+		return nodes.contains(node);
+	}
 }

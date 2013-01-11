@@ -15,6 +15,8 @@ import vazkii.tinkerer.client.render.RenderElementiumGuardian;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderElementalDesk;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
 import vazkii.tinkerer.helper.PacketHelper;
+import vazkii.tinkerer.helper.ResearchHelper;
+import vazkii.tinkerer.network.packet.PacketResearchData;
 import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.RenderIDs;
@@ -45,6 +47,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerPackets() {
 		super.registerPackets();
 		PacketHelper.packetHandlers.add(PacketVerification.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketResearchData.RECIEVER_INSTANCE);
 	}
 
 	@Override
@@ -63,6 +66,11 @@ public class ClientProxy extends CommonProxy {
 	public void preloadTextures() {
 		MinecraftForgeClient.preloadTexture(ResourcesReference.BLOCKS_SPRITESHEET);
 		MinecraftForgeClient.preloadTexture(ResourcesReference.ITEMS_32_SPRITESHEET);
+	}
+
+	@Override
+	public void readResearchDescriptions() {
+		ResearchHelper.readResearchDescriptions();
 	}
 
 	@Override
