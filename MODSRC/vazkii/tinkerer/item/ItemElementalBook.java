@@ -6,14 +6,24 @@
 // Created @ 27 Dec 2012
 package vazkii.tinkerer.item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import vazkii.tinkerer.helper.Element;
+import vazkii.tinkerer.helper.PacketHelper;
+import vazkii.tinkerer.helper.ResearchHelper;
+import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.ItemNames;
 import vazkii.tinkerer.reference.ResourcesReference;
+import vazkii.tinkerer.research.PlayerResearch;
+import vazkii.tinkerer.research.ResearchCategory;
+import vazkii.tinkerer.research.ResearchLibrary;
+import vazkii.tinkerer.research.ResearchNode;
 
 /**
  * ItemElementalBook
@@ -29,6 +39,41 @@ public class ItemElementalBook extends ItemET {
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 		iconIndex = ResourcesReference.ITEM_INDEX_ELEMENTAL_BOOK_START;
+	}
+
+	@Override
+    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+    	if(!par2World.isRemote) {
+    		short s = foundReadyResearch(par3EntityPlayer, par1ItemStack.getItemDamage());
+    		if(s >= 0) {
+    			PlayerResearch research = ResearchHelper.getResearchDataForPlayer(par3EntityPlayer.username);
+    			research.research(s, true, par2World);
+    			ResearchHelper.syncResearchData(par3EntityPlayer);
+    			ResearchNode node = ResearchLibrary.allNodes.get(s);
+    			PacketHelper.sendMessageToPlayer(par3EntityPlayer, "You have formulated a theory for " + node.displayName + " in the " + Element.getName(par1ItemStack.getItemDamage()) + " tree.");
+    			par1ItemStack.stackSize--;
+    		} else {
+    			PacketHelper.sendMessageToPlayer(par3EntityPlayer, FormattingCode.RED + "There seems to be nothing this book can teach you.");
+
+    		}
+    	}
+    	return par1ItemStack;
+    }
+
+	public short foundReadyResearch(EntityPlayer player, int element) {
+		element += 2;
+		ResearchCategory category = ResearchLibrary.categories.get((byte) element);
+		List<ResearchNode> availableNodes = new ArrayList();
+		PlayerResearch research = ResearchHelper.getResearchDataForPlayer(player.username);
+		for(ResearchNode node : category.getNodes())
+			if(node.isAvailable(research))
+				availableNodes.add(node);
+
+		if(availableNodes.isEmpty())
+			return -1;
+
+		ResearchNode node = availableNodes.get(player.worldObj.rand.nextInt(availableNodes.size()));
+		return node.index;
 	}
 
 	@Override

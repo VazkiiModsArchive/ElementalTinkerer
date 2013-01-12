@@ -39,9 +39,9 @@ public final class RenderHelper {
 	public static void renderResearchIcon(ResearchNode node, boolean checkStatus, double x, double y, double z) {
 		Minecraft mc = MiscHelper.getMc();
     	RenderEngine engine = mc.renderEngine;
-    	int textureID = engine.getTexture(!checkStatus || ResearchHelper.clientResearch.isResearchDone(node.index) ? node.spritesheet : ResourcesReference.RESEARCH_SPRITESHEET);
+    	int textureID = engine.getTexture(!checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spritesheet : ResourcesReference.RESEARCH_SPRITESHEET);
     	engine.bindTexture(textureID);
-    	int index = !checkStatus || ResearchHelper.clientResearch.isResearchDone(node.index) ?  node.spriteIndex : ResourcesReference.RESEARCH_INDEX_QUESTIONMARK;
+    	int index = !checkStatus || ResearchHelper.clientResearch.isResearchDone(node.index) ? ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spriteIndex : ResourcesReference.RESEARCH_INDEX_ELLIPSES : ResourcesReference.RESEARCH_INDEX_QUESTIONMARK;
     	int xSpritesheetStart = index % 16 * 16;
     	int ySpritesheetStart = index / 16 * 16;
     	drawTexturedModalRect(x, y, z, xSpritesheetStart, ySpritesheetStart, 16, 16);
@@ -110,10 +110,10 @@ public final class RenderHelper {
         float var8 = 0.00390625F;
         Tessellator var9 = Tessellator.instance;
         var9.startDrawingQuads();
-        var9.addVertexWithUV((par1 + 0), (par2 + par6), z, ((par3 + 0) * var7), ((par4 + par6) * var8));
-        var9.addVertexWithUV((par1 + par5), (par2 + par6), z, ((par3 + par5) * var7), ((par4 + par6) * var8));
-        var9.addVertexWithUV((par1 + par5), (par2 + 0), z, ((par3 + par5) * var7), ((par4 + 0) * var8));
-        var9.addVertexWithUV((par1 + 0), (par2 + 0), z, ((par3 + 0) * var7), ((par4 + 0) * var8));
+        var9.addVertexWithUV(par1 + 0, par2 + par6, z, (par3 + 0) * var7, (par4 + par6) * var8);
+        var9.addVertexWithUV(par1 + par5, par2 + par6, z, (par3 + par5) * var7, (par4 + par6) * var8);
+        var9.addVertexWithUV(par1 + par5, par2 + 0, z, (par3 + par5) * var7, (par4 + 0) * var8);
+        var9.addVertexWithUV(par1 + 0, par2 + 0, z, (par3 + 0) * var7, (par4 + 0) * var8);
         var9.draw();
     }
 

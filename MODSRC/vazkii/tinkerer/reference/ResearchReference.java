@@ -29,14 +29,16 @@ public final class ResearchReference {
 							  ID_ELEMENTIUM_GEM = 1,
 							  ID_ELEMENTAL_DESK = 2,
 							  ID_RESEARCH_BOOKS = 3,
-							  ID_ELEMENTALIST_LEXICON = 4;
+							  ID_ELEMENTALIST_LEXICON = 4,
+							  ID_CATALYST_START = 5;
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
 							   LABEL_ELEMENTIUM_GEM = ItemNames.ELEMENTIUM_GEM_NAME,
 							   LABEL_ELEMENTAL_DESK = BlockNames.ELEMENTAL_DESK_NAME,
 							   LABEL_RESEARCH_BOOKS = "researchBooks",
-							   LABEL_ELEMENTALIST_LEXICON = ItemNames.ELEMENTALIST_LEXICON_NAME;
+							   LABEL_ELEMENTALIST_LEXICON = ItemNames.ELEMENTALIST_LEXICON_NAME,
+							   LABEL_CATALSYT = ItemNames.CATALYST_ITEM_NAME + "%s";
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,

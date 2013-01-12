@@ -102,7 +102,7 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 			updateButtons();
 		} else {
 			ResearchNode node = currentShowingNodes[par1GuiButton.id - 6];
-			GuiElementalistLexiconResearch researchGui = new GuiElementalistLexiconResearch(node);
+			GuiElementalistLexiconResearch researchGui = new GuiElementalistLexiconResearch(node, currentSection);
 			MiscHelper.getMc().displayGuiScreen(researchGui);
 		}
 	}
@@ -134,7 +134,6 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         	RenderEngine engine = MiscHelper.getMc().renderEngine;
         	int textureID = engine.getTexture(node.spritesheet);
         	engine.bindTexture(textureID);
-        	int index = node.spriteIndex;
         	GL11.glPushMatrix();
         	GL11.glScalef(0.5F, 0.5F, 0.5F);
         	GL11.glColor3f(0F, 0F, 0F);

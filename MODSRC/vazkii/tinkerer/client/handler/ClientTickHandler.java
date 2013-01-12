@@ -10,6 +10,7 @@ import java.util.EnumSet;
 
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.PacketHelper;
+import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
 import cpw.mods.fml.common.ITickHandler;
@@ -68,10 +69,14 @@ public class ClientTickHandler implements ITickHandler {
 	}
 
 	/** Checks if there's no client world, if so, resets the "current server verified"
-	 * flag for networking purposes **/
+	 * flag for networking purposes, and clears all the world based research data **/
 	public void checkWorld() {
-		if(MiscHelper.getMc().theWorld == null)
+		if(MiscHelper.getMc().theWorld == null) {
 			PacketHelper.currentServerVerified = false;
+			ResearchHelper.clientResearch = null;
+			ResearchHelper.researchForPlayers.clear();
+			ResearchHelper.hasReadResearch = false;
+		}
 	}
 
 	/** Called every Render Tick  **/

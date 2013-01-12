@@ -28,11 +28,13 @@ import vazkii.tinkerer.research.ResearchNode;
  */
 public class GuiElementalistLexiconResearch extends GuiScreen {
 
+	public int category;
 	public ResearchNode node;
     int xStart, yStart;
 
-	public GuiElementalistLexiconResearch(ResearchNode node) {
+	public GuiElementalistLexiconResearch(ResearchNode node, int category) {
 		this.node = node;
+		this.category = category;
 	}
 
 	@Override
@@ -66,16 +68,19 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 
 
         boolean isResearched = ResearchHelper.clientResearch.isResearchDone(node.index);
+        boolean isCompleted = ResearchHelper.clientResearch.isResearchCompleted(node.index);
         String display = isResearched ? node.displayName : FormattingCode.ITALICS + "???";
         fontRenderer.drawStringWithShadow(display, xStart + 73 - fontRenderer.getStringWidth(display) / 2, yStart - 11, 0xFFFFFF);
 		String[] description = ResearchHelper.getDesciptionForResearch(node);
 
 		int i = 0;
 		fontRenderer.setUnicodeFlag(true);
-		if(isResearched)
+		if(isCompleted)
 		for(String s : description) {
 			fontRenderer.drawString(s, xStart + 16, yStart + 56 + i * 8, 0);
 			++i;
+		} else if(isResearched) {
+			MiscHelper.getMc().displayGuiScreen(new GuiResearchGame(node, category));
 		}
 		fontRenderer.setUnicodeFlag(false);
 

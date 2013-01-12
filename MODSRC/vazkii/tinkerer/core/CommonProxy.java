@@ -10,6 +10,7 @@ import java.awt.Color;
 
 import net.minecraft.world.World;
 import vazkii.tinkerer.helper.PacketHelper;
+import vazkii.tinkerer.network.packet.PacketCompleteResearch;
 import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.BlockNames;
@@ -37,6 +38,7 @@ public class CommonProxy {
 	 * instances per side. **/
 	public void registerPackets() {
 		PacketHelper.packetHandlers.add(PacketElementalDeskSync.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketCompleteResearch.RECIEVER_INSTANCE);
 	}
 
 	/** Used by the client to map entity classes to their adequate

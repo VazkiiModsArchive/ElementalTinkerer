@@ -61,6 +61,7 @@ public final class ConfigurationHandler {
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);
 		ItemIDs.elementalBook = config.getItem(ItemNames.ELEMENT_BOOK_NAME, ItemIDs.DEFAULT_ELEMENTAL_BOOK).getInt(ItemIDs.DEFAULT_ELEMENTAL_BOOK);
 		ItemIDs.elementalistLexicon = config.getItem(ItemNames.ELEMENTALIST_LEXICON_NAME, ItemIDs.DEFAULT_ELEMENTALIST_LEXICON).getInt(ItemIDs.DEFAULT_ELEMENTALIST_LEXICON);
+		ItemIDs.catalyst = config.getItem(ItemNames.CATALYST_ITEM_NAME, ItemIDs.DEFAULT_CATALYST).getInt(ItemIDs.DEFAULT_CATALYST);
 
 		// Load Graphics Nodes
 		elementiumGemAnimate = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_ELEMENTIUM_GEM_ANIMATED, elementiumGemAnimate).getBoolean(elementiumGemAnimate);

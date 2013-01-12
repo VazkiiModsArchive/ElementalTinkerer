@@ -9,9 +9,9 @@ package vazkii.tinkerer.reference;
 import net.minecraft.potion.Potion;
 
 /**
- * MobNames
+ * EntityReference
  *
- * Reference for Entity Names.
+ * Reference for Entity behaviour and internal constants.
  *
  * @author Vazkii
  */

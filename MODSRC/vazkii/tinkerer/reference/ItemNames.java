@@ -18,10 +18,15 @@ public final class ItemNames {
 	/** Internal/Config names **/
 	public static final String ELEMENTIUM_GEM_NAME = "elementiumGem",
 							   ELEMENT_BOOK_NAME = "elementBook",
-							   ELEMENTALIST_LEXICON_NAME = "elementalistLexicon";
+							   ELEMENTALIST_LEXICON_NAME = "elementalistLexicon",
+							   CATALYST_ITEM_NAME = "catalyst";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
 							   ELEMENT_BOOK_NAME_PREFIX = "Book of ",
-							   ELEMENTALIST_LEXICON_DISPLAY_NAME = "Elementalist's Lexicon";
+							   ELEMENTALIST_LEXICON_DISPLAY_NAME = "Elementalist's Lexicon",
+							   CATALYST_ITEM_DISPLAY_NAME = "%s%s Catalyst";
+
+	/** The levels for the names of the catalyst item **/
+	public static final String[] CATALYST_LEVELS = {"Lesser ", "Elemental ", "Greater ", "Ender " };
 }

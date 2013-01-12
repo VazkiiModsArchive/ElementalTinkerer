@@ -75,8 +75,9 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
 
         // Render the Book, if present
         ItemStack shouldBeABook = desk.getStackInSlot(4);
-        if(shouldBeABook != null && (shouldBeABook.itemID == Item.book.shiftedIndex || shouldBeABook.itemID == ItemIDs.elementalBook)) {
+        if(shouldBeABook != null && (shouldBeABook.itemID == Item.book.shiftedIndex || shouldBeABook.itemID == ItemIDs.elementalBook || shouldBeABook.itemID == Item.field_92053_bW.shiftedIndex)) {
         	boolean isNonEnchantedBook = shouldBeABook.itemID == Item.book.shiftedIndex;
+        	boolean isEnchantedBook = shouldBeABook.itemID == Item.field_92053_bW.shiftedIndex;
         	GL11.glPushMatrix();
             GL11.glTranslatef(0.1F, 0.1F + (desk.getIsAdvancing() ? (float)(Math.cos(ClientTickHandler.elapsedClientTicks / 3) / 20) : 0.07F), -0.2F);
             GL11.glRotatef(-1F * 180.0F / (float)Math.PI, 0.0F, 1.0F, 0.0F);
@@ -86,7 +87,7 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
             GL11.glRotatef(90F, 0F, 1F, 0F);
             GL11.glTranslatef(-0.7F, 0.1F, 0.1F);
             GL11.glScalef(0.75F, 0.75F, 0.75F);
-            bindTextureByName(isNonEnchantedBook || shouldBeABook.getItemDamage() >= 4 ? "/item/book.png" : ResourcesReference.ROOT_BOOK_TEXTURES + Element.getName(shouldBeABook.getItemDamage()) + ".png");
+            bindTextureByName(isNonEnchantedBook || shouldBeABook.getItemDamage() >= 4 ? "/item/book.png" : isEnchantedBook ? ResourcesReference.ROOT_BOOK_TEXTURES + "Enchanting.png" : ResourcesReference.ROOT_BOOK_TEXTURES + Element.getName(shouldBeABook.getItemDamage()) + ".png");
             GL11.glEnable(GL11.GL_CULL_FACE);
             book.render(null, 0F, 0F, 0F, isNonEnchantedBook ? (float)desk.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME : 1F, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
         	GL11.glPopMatrix();

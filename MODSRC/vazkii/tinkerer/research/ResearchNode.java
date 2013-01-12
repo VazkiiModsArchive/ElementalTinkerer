@@ -22,6 +22,9 @@ public class ResearchNode implements Comparable<ResearchNode> {
 	public short index;
 	public ResearchType type;
 
+	/** The Node required for this one to be researched **/
+	public short requirement;
+
 	/** If this is set to true, then it will be instantly added
 	 * to the list of acquired researches **/
 	private boolean isDefaultEnabled = false;
@@ -33,6 +36,7 @@ public class ResearchNode implements Comparable<ResearchNode> {
 		this.spriteIndex = spriteIndex;
 		this.index = index;
 		this.type = type;
+		requirement = -1;
 	}
 
 	public ResearchNode setDefaultEnabled() {
@@ -44,6 +48,11 @@ public class ResearchNode implements Comparable<ResearchNode> {
 		return category.addNode(this);
 	}
 
+	public ResearchNode setRequirement(short s) {
+		requirement = s;
+		return this;
+	}
+
 	@Override
 	public int compareTo(ResearchNode o) {
 		return Integer.compare(index, o.index);
@@ -51,5 +60,9 @@ public class ResearchNode implements Comparable<ResearchNode> {
 
 	public boolean isDefaultEnabled() {
 		return isDefaultEnabled;
+	}
+
+	public boolean isAvailable(PlayerResearch research) {
+		return !research.isResearchDone(index) && (requirement == -1 || research.isResearchCompleted(requirement));
 	}
 }

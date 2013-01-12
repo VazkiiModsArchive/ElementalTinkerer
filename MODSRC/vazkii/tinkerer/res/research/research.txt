@@ -51,3 +51,103 @@ is kept here for reference.
 do you want to know what it 
 is again?"
 #----------------------------------------------------
+catalyst0:
+A lesser catalyst of the water
+element. It can be used to
+fuel simple infusions.
+#----------------------------------------------------
+catalyst1:
+A lesser catalyst of the air
+element. It can be used to
+fuel simple infusions.
+#----------------------------------------------------
+catalyst2:
+A lesser catalyst of the earth
+element. It can be used to
+fuel simple infusions.
+#----------------------------------------------------
+catalyst3:
+A lesser catalyst of the fire
+element. It can be used to
+fuel simple infusions.
+#----------------------------------------------------
+catalyst4:
+A normal catalyst of the
+water element. It can be used
+to fuel medium power demanding
+infusions.
+#----------------------------------------------------
+catalyst5:
+A normal catalyst of the
+air element. It can be used
+to fuel medium power demanding
+infusions.
+#----------------------------------------------------
+catalyst6:
+A normal catalyst of the
+earth element. It can be used
+to fuel medium power demanding
+infusions.
+#----------------------------------------------------
+catalyst7:
+A normal catalyst of the
+fire element. It can be used
+to fuel medium power demanding
+infusions.
+#----------------------------------------------------
+catalyst8:
+A greater catalyst of the
+water element. It can be used
+to fuel high power demanding
+infusions.
+#----------------------------------------------------
+catalyst9:
+A greater catalyst of the
+air element. It can be used
+to fuel high power demanding
+infusions.
+#----------------------------------------------------
+catalyst10:
+A greater catalyst of the
+earth element. It can be used
+to fuel high power demanding
+infusions.
+#----------------------------------------------------
+catalyst11:
+A greater catalyst of the
+fire element. It can be used
+to fuel high power demanding
+infusions.
+#----------------------------------------------------
+catalyst12:
+An extremely powerful
+catalyst of the water
+element, provenient of the
+power of the Ender. It can
+be used to fuel extremlely
+powerful infusions.
+#----------------------------------------------------
+catalyst13:
+An extremely powerful
+catalyst of the air
+element, provenient of the
+power of the Ender. It can
+be used to fuel extremlely
+powerful infusions.
+#----------------------------------------------------
+catalyst14:
+An extremely powerful
+catalyst of the earth
+element, provenient of the
+power of the Ender. It can
+be used to fuel extremlely
+powerful infusions.
+#----------------------------------------------------
+catalyst15:
+An extremely powerful
+catalyst of the fire
+element, provenient of the
+power of the Ender. It can
+be used to fuel extremlely
+powerful infusions.
+#----------------------------------------------------

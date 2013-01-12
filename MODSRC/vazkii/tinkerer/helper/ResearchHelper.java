@@ -43,7 +43,7 @@ public final class ResearchHelper {
 
 	/** The map that maps the player research instances to each
 	 * player **/
-	private static Map<String, PlayerResearch> researchForPlayers = new HashMap();
+	public static Map<String, PlayerResearch> researchForPlayers = new HashMap();
 
 	/** Used only in the client, where the research for the client is stored,
 	 * the data here is recieved from packets **/
@@ -76,10 +76,6 @@ public final class ResearchHelper {
 		}
 	}
 
-	public static void readResearchDescription(File f) {
-
-	}
-
 	public static String[] getDesciptionForResearch(ResearchNode node) {
 		String label = node.label;
 		if(descriptions.containsKey(label))
@@ -101,11 +97,20 @@ public final class ResearchHelper {
 		return getResearchDataForPlayer(player);
 	}
 
+	public static boolean hasReadResearch = false;
+
 	/** Handles the login of a player, syncing the research data, or creating
 	 * it if it doesn't exist **/
 	public static void handlePlayerLogin(EntityPlayer player) {
 		// Is the player a new player, if so, init their data
-		boolean isPlayerNew = !researchForPlayers.containsKey(player);
+		boolean isPlayerNew = ConfigurationHandler.sharedResearch.equals(ResearchReference.CONFIG_SHARE_WILDCARD) && !researchForPlayers.containsKey(player);
+
+		// Cheap way of reading the research with a valid world instance
+		if(!hasReadResearch) {
+			loadAllResearchData(player.worldObj);
+			hasReadResearch = true;
+		}
+
 		if(isPlayerNew)
 			updateResearchForPlayer(player);
 		syncResearchData(player);
@@ -134,27 +139,36 @@ public final class ResearchHelper {
 		NBTTagCompound researchCmp = cmp.hasKey(ResearchReference.COMPOUND_TAG_NAME) ? cmp.getCompoundTag(ResearchReference.COMPOUND_TAG_NAME) : new NBTTagCompound();
 		for(Short i : ResearchLibrary.allNodes.keySet()) {
 			ResearchNode node = ResearchLibrary.allNodes.get(i);
-			researchCmp.setBoolean("" + node.index, research.isResearchDone(node.index));
+			researchCmp.setBoolean("r" + node.index, research.isResearchDone(node.index));
+			researchCmp.setBoolean("c" + node.index, research.isResearchCompleted(node.index));
 		}
 		cmp.setCompoundTag(ResearchReference.COMPOUND_TAG_NAME, researchCmp);
 		IOHelper.updatePlayerNBTTagCompound(world, research.playerLinkedTo, cmp);
 	}
 
 	public static void readResearchDataFromNBT(NBTTagCompound cmp, PlayerResearch research) {
-		if(cmp.hasKey(ResearchReference.COMPOUND_TAG_NAME))
-		for(Short i : ResearchLibrary.allNodes.keySet()) {
-			boolean has = cmp.hasKey("" + i);
-			if(!has)
-				continue;
+		if(cmp.hasKey(ResearchReference.COMPOUND_TAG_NAME)) {
+			NBTTagCompound subCmp = cmp.getCompoundTag(ResearchReference.COMPOUND_TAG_NAME);
+			for(Short i : ResearchLibrary.allNodes.keySet()) {
+				boolean hasRsc = subCmp.hasKey("r" + i);
+				if(!hasRsc || !subCmp.getBoolean("r" + i))
+					continue;
 
-			cmp.getShort("" + i);
-			research.research(i, false, null);
+				research.research(i, false, null);
+
+				boolean hasCmp = subCmp.hasKey("c" + i);
+				if(!hasCmp || !subCmp.getBoolean("c" + i))
+					continue;
+
+				research.completeResearch(i, false, null);
+			}
 		}
+
   	}
 
 	/** Loads all the research data, looking at the various research data folders **/
 	public static void loadAllResearchData(World world) {
-		File cacheFolder = IOHelper.getWorldDirectory(world);
+		File cacheFolder = new File(IOHelper.getWorldDirectory(world), ResourcesReference.WORLD_CACHE_FOLDER);
 		for(File file : cacheFolder.listFiles()) {
 			if(file.isDirectory() && file.getName().startsWith(ResourcesReference.WORLD_PLAYER_CACHE_FOLDER_PREFIX)) {
 				File subFile = new File(file, ResourcesReference.CACHE_FILE_NAME);

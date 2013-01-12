@@ -9,6 +9,7 @@ package vazkii.tinkerer.research;
 import java.util.Map;
 import java.util.TreeMap;
 
+import vazkii.tinkerer.item.ItemCatalyst;
 import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 
@@ -68,7 +69,7 @@ public final class ResearchLibrary {
 				  ResourcesReference.RESEARCH_INDEX_ELEMENTAL_DESK,
 				  ResearchType.ITEM)
 				  .setDefaultEnabled()
-				  .addToCategory(general));
+				  .addToCategory(pure));
 
 		// Research Books Research Node
 		registerNode(new ResearchNode(ResearchReference.ID_RESEARCH_BOOKS,
@@ -89,6 +90,21 @@ public final class ResearchLibrary {
 				  ResearchType.ITEM)
 				  .setDefaultEnabled()
 				  .addToCategory(general));
+
+		// Catalyst Research Nodes
+		for(short i = 0; i < 16; i++) {
+			ResearchNode node = new ResearchNode((short) (ResearchReference.ID_CATALYST_START + i),
+					  ResourcesReference.ITEMS_SPRITESHEET,
+					  String.format(ResearchReference.LABEL_CATALSYT, i),
+					  ItemCatalyst.nameFromMeta(i),
+					  ResourcesReference.ITEM_INDEX_CATALYST_START + i,
+					  ResearchType.ITEM)
+					  .addToCategory(categories.get((byte) (ItemCatalyst.getElement(i) + 2)));
+			if(i <= 3)
+				node.setDefaultEnabled();
+			else node.setRequirement((short) (node.index - 4));
+			registerNode(node);
+		}
 	}
 
 	public static void registerNode(ResearchNode node) {

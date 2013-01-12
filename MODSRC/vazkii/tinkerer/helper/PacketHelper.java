@@ -15,10 +15,12 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.network.packet.Packet3Chat;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import vazkii.tinkerer.network.packet.ETPacket;
@@ -128,5 +130,14 @@ public final class PacketHelper {
 		byte size = stream.readByte();
 		short dmg = stream.readShort();
 		return new ItemStack(id, size, dmg);
+	}
+
+	/** Sends a chat message to a player. **/
+	public static void sendMessageToPlayer(EntityPlayer player, String msg) {
+		Packet3Chat chatPacket = new Packet3Chat(msg);
+		EntityPlayerMP mpPlayer = MiscHelper.getServer().getConfigurationManager().getPlayerForUsername(player.username);
+
+		if (player != null)
+			mpPlayer.playerNetServerHandler.sendPacketToPlayer(chatPacket);
 	}
 }

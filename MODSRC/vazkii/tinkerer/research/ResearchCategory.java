@@ -35,4 +35,8 @@ public class ResearchCategory {
 	public boolean hasNode(ResearchNode node) {
 		return nodes.contains(node);
 	}
+
+	public Set<ResearchNode> getNodes() {
+		return nodes;
+	}
 }

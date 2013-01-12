@@ -22,13 +22,15 @@ public final class ElementalTinkererItems {
 
 	public static Item elementiumGem,
 					   elementalBook,
-					   elementalistLexicon;
+					   elementalistLexicon,
+					   catalyst;
 
 	public static void init() {
 		// Construct the items
 		elementiumGem = new ItemElementiumGem(ItemIDs.elementiumGem).setItemName(ItemNames.ELEMENTIUM_GEM_NAME);
 		elementalBook = new ItemElementalBook(ItemIDs.elementalBook).setItemName(ItemNames.ELEMENT_BOOK_NAME);
 		elementalistLexicon = new ItemElementalistLexicon(ItemIDs.elementalistLexicon).setItemName(ItemNames.ELEMENTALIST_LEXICON_NAME);
+		catalyst = new ItemCatalyst(ItemIDs.catalyst).setItemName(ItemNames.CATALYST_ITEM_NAME);
 
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);

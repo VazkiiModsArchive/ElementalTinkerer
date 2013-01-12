@@ -22,6 +22,7 @@ public class NetworkReference {
 	 * recieved, while still keeping the mod only using one network channel. **/
 	public static final String SUBCHANNEL_VERIFY = "verify",
 							   SUBCHANNEL_ELEMENTAL_DESK_SYNC = "elementalDeskSync",
-							   SUBCHANNEL_RESEARCH = "research";
+							   SUBCHANNEL_RESEARCH = "research",
+							   SUBCHANNEL_RESEARCH_COMPLETE = "researchComplete";
 
 }

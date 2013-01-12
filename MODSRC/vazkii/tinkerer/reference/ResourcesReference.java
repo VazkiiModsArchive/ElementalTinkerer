@@ -55,7 +55,8 @@ public final class ResourcesReference {
 
 	/** Integers for the Items Spritesheet indexes **/
 	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0,
-							ITEM_INDEX_ELEMENTALIST_LEXICON = 4;
+							ITEM_INDEX_ELEMENTALIST_LEXICON = 4,
+							ITEM_INDEX_CATALYST_START = 16;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
@@ -79,7 +80,12 @@ public final class ResourcesReference {
 	/** The files that contain the background textures for the guis **/
 	public static final String GUI_ELEMENTAL_DESK_TEXTURE = ROOT_GUI + "elementalDesk.png",
 							   GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE = ROOT_GUI + "researchBook.png",
-							   GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE = ROOT_GUI + "recipeBook.png";
+							   GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE = ROOT_GUI + "recipeBook.png",
+							   GUI_RESEARCH_GAME_TEXTURE = ROOT_GUI + "researchGame.png";
+
+	/** The reserach background coordinates on the research spritesheet **/
+	public static final int RESEARCH_BACKGROUND_X_COORD = 160,
+							RESEARCH_BACKGROUND_Y_COORD = 240;
 
 	/** The Elementium Guardian mob is colored trough the spectrum, this integer is
 	 ** the divisor for the cosine function's speed that defines the color. **/
@@ -97,7 +103,6 @@ public final class ResourcesReference {
 
 	/** The location of the name of a global cache file **/
 	public static final String CACHE_FILE_NAME = "cache.dat";
-
 
 	/** The prefix of a player folder in the world cache folder, this is
 	 * used to format the folder names to see who's the player that
