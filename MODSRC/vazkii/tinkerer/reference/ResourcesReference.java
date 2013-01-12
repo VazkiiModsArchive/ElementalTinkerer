@@ -90,7 +90,7 @@ public final class ResourcesReference {
 	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GEM = 60;
 
 	/** The root folder where the research data (texts) is located. **/
-	public static final String RESEARCH_DATA_FOLDER = ROOT + "research";
+	public static final String RESEARCH_DATA_FILE = ROOT + "research/research.txt";
 
 	/** The location of the world cache folder in a world **/
 	public static final String WORLD_CACHE_FOLDER = "/" + AnnotationConstants.MOD_ID;

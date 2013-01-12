@@ -1,0 +1,53 @@
+#----------------------------------------------------
+elementiumOre:
+Elementium Ore is found around
+the world. It can be spotted 
+around sea level, never too 
+deep though, when found, 
+it's generally in a big cluster. 
+But most of the elementium ore 
+blocks are trapped with 
+guardians, which will inflict 
+a Mining Fatigue effect to try 
+to prevent the natural order 
+from being shattered. When 
+mined, Elementium Ore drops an 
+Elementium Gem.
+#----------------------------------------------------
+elementiumGem:
+Elementium Gems are dropped by
+mining Elementium Ore. It's a
+gem infused with the powers of
+the various elements. It's used
+for various enchantments in the
+areas of the various elements.
+#----------------------------------------------------
+elementalDesk:
+The Elemental Desk is the
+Elementalist's Study. By
+charging with with Elementium
+Gems and setting a book in it
+the book will be revived to
+it's former glory as an ancient
+book, or as an enchanted book.
+#----------------------------------------------------
+researchBooks:
+Ancient books, left behind by
+elementalists of the olden days
+that studied specific branches
+of the elemental magics. Each
+of these books holds the study
+logs of that elementalist, with
+these logs, you can formulate a
+new theory.
+#----------------------------------------------------
+elementalistLexicon:
+The Elementalist's Lexicon is
+your guide to what you've been
+studying. All that you discover
+is kept here for reference.
+
+"Aren't you reading it now? Why
+do you want to know what it 
+is again?"
+#----------------------------------------------------

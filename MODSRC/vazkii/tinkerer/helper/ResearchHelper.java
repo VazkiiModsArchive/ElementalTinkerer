@@ -8,9 +8,9 @@ package vazkii.tinkerer.helper;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,31 +50,34 @@ public final class ResearchHelper {
 	public static PlayerResearch clientResearch;
 
 	public static void readResearchDescriptions() {
+		InputStream stream = ElementalTinkerer.class.getResourceAsStream(ResourcesReference.RESEARCH_DATA_FILE);
 		try {
-			File researchFolder = new File(ElementalTinkerer.class.getResource(ResourcesReference.RESEARCH_DATA_FOLDER).toURI());
-			for(File file : researchFolder.listFiles()) {
-				String fileName = file.getName();
-				if(fileName.endsWith(".rsc")) // Only search for real research files
-					readResearchDescription(file);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
+			List<String> lineList = new ArrayList<String>();
+			String line = null;
+			String currentResearch = "";
+			while ((line = bufferedReader.readLine()) != null) {
+				if(line.startsWith("#")) {
+					descriptions.put(currentResearch, lineList.toArray(new String[lineList.size()]));
+					currentResearch = "";
+					lineList.clear();
+					continue;
+				}
+				if(line.endsWith(":")) {
+					currentResearch = line.substring(0, line.length() - 1);
+					continue;
+				}
+				lineList.add(line);
 			}
-		} catch (URISyntaxException e) {
+			bufferedReader.close();
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static void readResearchDescription(File f) {
-		try {
-			BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
-			List<String> lineList = new ArrayList<String>();
-			String line = null;
-			while ((line = bufferedReader.readLine()) != null)
-				lineList.add(line);
-			bufferedReader.close();
-			String fileName = f.getName().replaceAll(".rsc", "");
-			descriptions.put(fileName, lineList.toArray(new String[lineList.size()]));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
 	}
 
 	public static String[] getDesciptionForResearch(ResearchNode node) {
