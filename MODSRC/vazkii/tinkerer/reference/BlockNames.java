@@ -19,10 +19,14 @@ public final class BlockNames {
 	public static final String ELEMENTIUM_ORE_NAME = "elementiumOre",
 							   ELEMENTIUM_ORE_SPAWNER_NAME = "elementiumOreSpawner",
 							   ELEMENTAL_DESK_NAME = "elementalDesk",
-							   ELEMENTIUM_GEM_BLOCK_NAME = "elementiumBlock";
+							   ELEMENTIUM_GEM_BLOCK_NAME = "elementiumBlock",
+							   ELEMENTALIST_TINKERING_ALTAR_NAME = "elementalistAltar",
+							   CATALYST_CAPSULE_NAME = "catalystCapsule";
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
 							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)",
 							   ELEMENTAL_DESK_DISPLAY_NAME = "Elemental Desk",
-							   ELEMENTIUM_GEM_BLOCK_DISPLAY_NAME = "Block of Elementium";
+							   ELEMENTIUM_GEM_BLOCK_DISPLAY_NAME = "Block of Elementium",
+							   ELEMENTALIST_TINKERING_ALTAR_DISPLAY_NAME = "Elementalist's Tinkering Altar (WIP)",
+							   CATALYST_CAPSULE_DISPLAY_NAME = "Catalyst Capsule (WIP)";
 }

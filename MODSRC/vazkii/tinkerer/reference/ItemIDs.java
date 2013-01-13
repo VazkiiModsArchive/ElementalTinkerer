@@ -20,13 +20,14 @@ public final class ItemIDs {
 							DEFAULT_ELEMENTAL_BOOK = 21101,
 							DEFAULT_ELEMENTALIST_LEXICON = 21102,
 							DEFAULT_CATALYST = 21103,
-							DEFAULT_ELEMENTAL_BARK = 21104;
+							DEFAULT_ELEMENTAL_BARK = 21104,
+							DEFAULT_WAND = 21105;
 
 	/** Set via the config **/
 	public static int elementiumGem,
 					  elementalBook,
 					  elementalistLexicon,
 					  catalyst,
-					  elementalBark;
-
+					  elementalBark,
+					  wand;
 }

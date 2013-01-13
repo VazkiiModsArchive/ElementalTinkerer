@@ -19,11 +19,15 @@ public final class BlockIDs {
 	public static final int DEFAULT_ELEMENTIUM_ORE = 2110,
 							DEFAULT_ELEMENTIUM_ORE_SPAWNER = 2111,
 							DEFAULT_ELEMENTAL_DESK = 2112,
-							DEFAULT_ELEMENTIUM_GEM_BLOCK = 2113;
+							DEFAULT_ELEMENTIUM_GEM_BLOCK = 2113,
+							DEFAULT_ELEMENTALIST_TINKERING_ALTAR = 2114,
+							DEFAULT_CATALYST_CAPSULE = 2115;
 
 	/** Set via the config **/
 	public static int elementiumOre,
 					  elementiumOreSpawner,
 					  elementalDesk,
-					  elementiumGemBlock;
+					  elementiumGemBlock,
+					  elementalistTinkeringAltar,
+					  catalystCapsule;
 }

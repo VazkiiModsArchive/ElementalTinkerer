@@ -30,6 +30,9 @@ public final class ResourcesReference {
 	/** The Spritesheet containing the in-world block textures **/
 	public static final String BLOCKS_SPRITESHEET = ROOT + "blocks.png";
 
+	/** The Spritesheet containing the in-world block textures in 64x64 resolution **/
+	public static final String BLOCKS_64_SPRITESHEET = ROOT + "blocks64.png";
+
 	/** The Spritesheet containing the item sprites **/
 	public static final String ITEMS_SPRITESHEET = ROOT + "items.png";
 
@@ -42,6 +45,9 @@ public final class ResourcesReference {
 	/** The location of the Texture File for the Elemental Desk Model **/
 	public static final String MODEL_TEX_ELEMENTAL_DESK = ROOT_MODEL + "elementalDesk.png";
 
+	/** The Location of the Texture File for the Catalyst Capsule Model **/
+	public static final String MODEL_TEX_CATALYST_CAPSULE = ROOT_MODEL + "catalystCapsule.png";
+
 	/** The location of book textures **/
 	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";
 
@@ -52,6 +58,9 @@ public final class ResourcesReference {
 							BLOCK_INDEX_MYSTIC_WILLOW_LEAVES = 18,
 							BLOCK_INDEX_TRANSPARENT = 255;
 
+	/** Integers for the Blocks Spritesheet (64x) indexes **/
+	public static final int BLOCK_64_INDEX_ELEMENTALIST_TINKERING_ALTAR = 0;
+
 	/** Integers for the Blocks Spritesheet Animations **/
 	public static final int BLOCK_ANIM_ELEMENTIUM_ORE_START = 0,
 							BLOCK_ANIM_ELEMENTIUM_ORE_END = 15;
@@ -60,7 +69,9 @@ public final class ResourcesReference {
 	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0,
 							ITEM_INDEX_ELEMENTALIST_LEXICON = 4,
 							ITEM_INDEX_CATALYST_START = 16,
-							ITEM_INDEX_ELEMENTAL_BARK = 32;
+							ITEM_INDEX_ELEMENTAL_BARK = 32,
+							ITEM_INDEX_WAND_REGULAR = 33,
+							ITEM_INDEX_WAND_COLORIZE = 34;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
@@ -98,6 +109,10 @@ public final class ResourcesReference {
 	/** The Elementium Gem is colored trough the spectrum, this integer is
 	 ** the divisor for the cosine function's speed that defines the color. **/
 	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GEM = 60;
+
+	/** The Wands are colored with a varying brightess, this integer is
+	 * the divisor for the consine function's speed that defines the color **/
+	public static final int BRIGHTNESS_DIVISOR_WAND = 35;
 
 	/** The root folder where the research data (texts) is located. **/
 	public static final String RESEARCH_DATA_FILE = ROOT + "research/research.txt";

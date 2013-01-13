@@ -160,5 +160,7 @@ A Material, created by mixing
 four elementium gems and a log,
 it's enchanted with the power
 of the various elements and it
-can be used to create wands.
+can be used to create wands
+and to make the top of the
+Elemental Desk.
 #----------------------------------------------------

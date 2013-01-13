@@ -102,6 +102,12 @@ public class ElementalTinkerer {
 		// Register the World Generation
 		GameRegistry.registerWorldGenerator(WorldGenerationHandler.INSTANCE);
 
+		// Init the Block Recipes
+		ElementalTinkererBlocks.initBlockRecipes();
+
+		// Init the Item Recipes
+		ElementalTinkererItems.initItemRecipes();
+
 		// Proxy: Register the mod's Tile Entities
 		proxy.registerTileEntities();
 
@@ -119,5 +125,4 @@ public class ElementalTinkerer {
 	public void onPostInit(FMLPostInitializationEvent event) {
 		//NO-OP for now
 	}
-
 }

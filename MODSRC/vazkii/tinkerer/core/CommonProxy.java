@@ -14,6 +14,7 @@ import vazkii.tinkerer.network.packet.PacketCompleteResearch;
 import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.BlockNames;
+import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -32,6 +33,7 @@ public class CommonProxy {
 	 * also register the renderers **/
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityElementalDesk.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTAL_DESK_NAME);
+		GameRegistry.registerTileEntity(TileEntityCatalystCapsule.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.CATALYST_CAPSULE_NAME);
 	}
 
 	/** Registers the mod's packets. Some packets use different

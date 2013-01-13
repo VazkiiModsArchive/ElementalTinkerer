@@ -15,6 +15,6 @@ package vazkii.tinkerer.reference;
  */
 public final class RenderIDs {
 
-	public static int elementalDesk;
-
+	public static int elementalDesk,
+					  catalystContainer;
 }

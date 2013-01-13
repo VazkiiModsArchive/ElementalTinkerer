@@ -7,6 +7,10 @@
 package vazkii.tinkerer.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.item.ItemMetadataCompatBlock;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.BlockNames;
@@ -25,7 +29,10 @@ public final class ElementalTinkererBlocks {
 	public static Block elementiumOre,
 						elementiumOreSpawner,
 						elementalDesk,
-						elementiumGemBlock;
+						elementiumGemBlock,
+						elementalistTinkeringAltar,
+						catalystCapsule;
+
 	public static void init() {
 		// Construct the blocks
 		elementiumOre = new BlockElementiumOre(BlockIDs.elementiumOre)
@@ -53,16 +60,46 @@ public final class ElementalTinkererBlocks {
 						.setStepSound(Block.soundMetalFootstep)
 						.setBlockName(BlockNames.ELEMENTIUM_GEM_BLOCK_NAME);
 
+		elementalistTinkeringAltar = new BlockElementalistTinkeringAltar(BlockIDs.elementalistTinkeringAltar)
+						.setHardness(5F)
+						.setResistance(2000F)
+						.setStepSound(Block.soundMetalFootstep)
+						.setBlockName(BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
+
+		catalystCapsule = new BlockCatalystCapsule(BlockIDs.catalystCapsule)
+						.setHardness(8F)
+						.setResistance(2000F)
+						.setLightValue(0.8F)
+						.setStepSound(Block.soundMetalFootstep)
+						.setBlockName(BlockNames.CATALYST_CAPSULE_NAME);
+
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
 		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
 		GameRegistry.registerBlock(elementalDesk, BlockNames.ELEMENTAL_DESK_NAME);
 		GameRegistry.registerBlock(elementiumGemBlock, BlockNames.ELEMENTIUM_GEM_BLOCK_NAME);
+		GameRegistry.registerBlock(elementalistTinkeringAltar, BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
+		GameRegistry.registerBlock(catalystCapsule, BlockNames.CATALYST_CAPSULE_NAME);
 
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumOreSpawner, BlockNames.ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME);
 		LanguageRegistry.addName(elementalDesk, BlockNames.ELEMENTAL_DESK_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumGemBlock, BlockNames.ELEMENTIUM_GEM_BLOCK_DISPLAY_NAME);
+		LanguageRegistry.addName(elementalistTinkeringAltar, BlockNames.ELEMENTALIST_TINKERING_ALTAR_DISPLAY_NAME);
+		LanguageRegistry.addName(catalystCapsule, BlockNames.CATALYST_CAPSULE_DISPLAY_NAME);
+	}
+
+	public static void initBlockRecipes() {
+		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalDesk),
+				"GEG", "BBB", "P P",
+				'G', Item.ingotGold,
+				'E', ElementalTinkererItems.elementiumGem,
+				'B', ElementalTinkererItems.elementalBark,
+				'P', new ItemStack(Block.planks, 1, -1));
+
+		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumGemBlock),
+				"GGG", "GGG", "GGG",
+				'G', ElementalTinkererItems.elementiumGem);
 	}
 }

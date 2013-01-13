@@ -57,6 +57,8 @@ public final class ConfigurationHandler {
 		BlockIDs.elementiumOreSpawner = config.getBlock(BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME, BlockIDs.DEFAULT_ELEMENTIUM_ORE_SPAWNER).getInt(BlockIDs.DEFAULT_ELEMENTIUM_ORE_SPAWNER);
 		BlockIDs.elementalDesk = config.getBlock(BlockNames.ELEMENTAL_DESK_NAME, BlockIDs.DEFAULT_ELEMENTAL_DESK).getInt(BlockIDs.DEFAULT_ELEMENTAL_DESK);
 		BlockIDs.elementiumGemBlock = config.getBlock(BlockNames.ELEMENTIUM_GEM_BLOCK_NAME, BlockIDs.DEFAULT_ELEMENTIUM_GEM_BLOCK).getInt(BlockIDs.DEFAULT_ELEMENTIUM_GEM_BLOCK);
+		BlockIDs.elementalistTinkeringAltar = config.getBlock(BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME, BlockIDs.DEFAULT_ELEMENTALIST_TINKERING_ALTAR).getInt(BlockIDs.DEFAULT_ELEMENTALIST_TINKERING_ALTAR);
+		BlockIDs.catalystCapsule = config.getBlock(BlockNames.CATALYST_CAPSULE_NAME, BlockIDs.DEFAULT_CATALYST_CAPSULE).getInt(BlockIDs.DEFAULT_CATALYST_CAPSULE);
 
 		// Load Item IDs
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);
@@ -64,6 +66,7 @@ public final class ConfigurationHandler {
 		ItemIDs.elementalistLexicon = config.getItem(ItemNames.ELEMENTALIST_LEXICON_NAME, ItemIDs.DEFAULT_ELEMENTALIST_LEXICON).getInt(ItemIDs.DEFAULT_ELEMENTALIST_LEXICON);
 		ItemIDs.catalyst = config.getItem(ItemNames.CATALYST_ITEM_NAME, ItemIDs.DEFAULT_CATALYST).getInt(ItemIDs.DEFAULT_CATALYST);
 		ItemIDs.elementalBark = config.getItem(ItemNames.ELEMENTAL_BARK_ITEM_NAME, ItemIDs.DEFAULT_ELEMENTAL_BARK).getInt(ItemIDs.DEFAULT_ELEMENTAL_BARK);
+		ItemIDs.wand = config.getItem(ItemNames.WAND_NAME, ItemIDs.DEFAULT_WAND).getInt(ItemIDs.DEFAULT_WAND);
 
 		// Load Graphics Nodes
 		elementiumGemAnimate = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_ELEMENTIUM_GEM_ANIMATED, elementiumGemAnimate).getBoolean(elementiumGemAnimate);

@@ -20,14 +20,16 @@ public final class ItemNames {
 							   ELEMENT_BOOK_NAME = "elementBook",
 							   ELEMENTALIST_LEXICON_NAME = "elementalistLexicon",
 							   CATALYST_ITEM_NAME = "catalyst",
-							   ELEMENTAL_BARK_ITEM_NAME = "elementalBark";
+							   ELEMENTAL_BARK_ITEM_NAME = "elementalBark",
+							   WAND_NAME = "wand";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
 							   ELEMENT_BOOK_NAME_PREFIX = "Book of ",
 							   ELEMENTALIST_LEXICON_DISPLAY_NAME = "Elementalist's Lexicon",
 							   CATALYST_ITEM_DISPLAY_NAME = "%s%s Catalyst",
-							   ELEMENTAL_BARK_ITEM_DISPLAY_NAME = "Elemental Bark";
+							   ELEMENTAL_BARK_ITEM_DISPLAY_NAME = "Elemental Bark",
+							   WAND_NAME_PREFIX = "Wand of ";
 
 	/** The levels for the names of the catalyst item **/
 	public static final String[] CATALYST_LEVELS = {"Lesser ", "Elemental ", "Greater ", "Ender " };
