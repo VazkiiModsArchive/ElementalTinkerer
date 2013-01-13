@@ -8,8 +8,8 @@ package vazkii.tinkerer.gui;
 
 import net.minecraft.creativetab.CreativeTabs;
 import vazkii.tinkerer.reference.AnnotationConstants;
+import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.FormattingCode;
-import vazkii.tinkerer.reference.ItemIDs;
 
 /**
  * CreativeTabET
@@ -33,7 +33,7 @@ public class CreativeTabET extends CreativeTabs {
 
 	@Override
 	public int getTabIconItemIndex() {
-		return ItemIDs.elementiumGem;
+		return BlockIDs.elementalDesk;
 	}
 
 }

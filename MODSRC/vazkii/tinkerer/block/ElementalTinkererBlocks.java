@@ -24,8 +24,8 @@ public final class ElementalTinkererBlocks {
 
 	public static Block elementiumOre,
 						elementiumOreSpawner,
-						elementalDesk;
-
+						elementalDesk,
+						elementiumGemBlock;
 	public static void init() {
 		// Construct the blocks
 		elementiumOre = new BlockElementiumOre(BlockIDs.elementiumOre)
@@ -47,16 +47,22 @@ public final class ElementalTinkererBlocks {
 						.setStepSound(Block.soundWoodFootstep)
 						.setBlockName(BlockNames.ELEMENTAL_DESK_NAME);
 
+		elementiumGemBlock = new BlockElementiumGem(BlockIDs.elementiumGemBlock)
+						.setHardness(3.0F)
+						.setResistance(10.0F)
+						.setStepSound(Block.soundMetalFootstep)
+						.setBlockName(BlockNames.ELEMENTIUM_GEM_BLOCK_NAME);
 
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
 		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
-		GameRegistry.registerBlock(elementalDesk,BlockNames.ELEMENTAL_DESK_NAME);
-
+		GameRegistry.registerBlock(elementalDesk, BlockNames.ELEMENTAL_DESK_NAME);
+		GameRegistry.registerBlock(elementiumGemBlock, BlockNames.ELEMENTIUM_GEM_BLOCK_NAME);
 
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumOreSpawner, BlockNames.ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME);
 		LanguageRegistry.addName(elementalDesk, BlockNames.ELEMENTAL_DESK_DISPLAY_NAME);
+		LanguageRegistry.addName(elementiumGemBlock, BlockNames.ELEMENTIUM_GEM_BLOCK_DISPLAY_NAME);
 	}
 }

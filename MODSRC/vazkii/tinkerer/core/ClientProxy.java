@@ -59,6 +59,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerBlockRenders() {
 		RenderIDs.elementalDesk = RenderingRegistry.getNextAvailableRenderId();
+
 		MinecraftForgeClient.registerItemRenderer(BlockIDs.elementalDesk, TileEntityRenderElementalDesk.INSTANCE);
 	}
 

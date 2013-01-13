@@ -44,5 +44,4 @@ public final class WorldGenerationHandler implements IWorldGenerator {
 			WorldGenElementiumOre.INSTANCE.generate(world, worldRand, posX, posY, posZ);
 		}
 	}
-
 }

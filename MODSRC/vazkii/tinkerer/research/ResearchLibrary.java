@@ -105,6 +105,16 @@ public final class ResearchLibrary {
 			else node.setRequirement((short) (node.index - 4));
 			registerNode(node);
 		}
+
+		// Elemental Bark Research Nodes
+		registerNode(new ResearchNode(ResearchReference.ID_ELEMENTAL_BARK,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_ELEMENTAL_BARK,
+				  ResearchReference.DISPLAY_NAME_ELEMENTAL_BARK,
+				  ResourcesReference.ITEM_INDEX_ELEMENTAL_BARK,
+				  ResearchType.ITEM)
+				  .setDefaultEnabled()
+				  .addToCategory(pure));
 	}
 
 	public static void registerNode(ResearchNode node) {

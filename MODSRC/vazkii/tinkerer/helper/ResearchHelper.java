@@ -169,16 +169,17 @@ public final class ResearchHelper {
 	/** Loads all the research data, looking at the various research data folders **/
 	public static void loadAllResearchData(World world) {
 		File cacheFolder = new File(IOHelper.getWorldDirectory(world), ResourcesReference.WORLD_CACHE_FOLDER);
-		for(File file : cacheFolder.listFiles()) {
-			if(file.isDirectory() && file.getName().startsWith(ResourcesReference.WORLD_PLAYER_CACHE_FOLDER_PREFIX)) {
-				File subFile = new File(file, ResourcesReference.CACHE_FILE_NAME);
-				if(subFile.exists()) {
-					NBTTagCompound cmp = IOHelper.getTagCompoundInFile(subFile);
-					String playerName = file.getName().replaceAll(ResourcesReference.WORLD_PLAYER_CACHE_FOLDER_PREFIX, "");
-					PlayerResearch research = getResearchDataForPlayer(playerName);
-					readResearchDataFromNBT(cmp, research);
+		if(cacheFolder.listFiles() != null)
+			for(File file : cacheFolder.listFiles()) {
+				if(file.isDirectory() && file.getName().startsWith(ResourcesReference.WORLD_PLAYER_CACHE_FOLDER_PREFIX)) {
+					File subFile = new File(file, ResourcesReference.CACHE_FILE_NAME);
+					if(subFile.exists()) {
+						NBTTagCompound cmp = IOHelper.getTagCompoundInFile(subFile);
+						String playerName = file.getName().replaceAll(ResourcesReference.WORLD_PLAYER_CACHE_FOLDER_PREFIX, "");
+						PlayerResearch research = getResearchDataForPlayer(playerName);
+						readResearchDataFromNBT(cmp, research);
+					}
 				}
 			}
-		}
 	}
 }

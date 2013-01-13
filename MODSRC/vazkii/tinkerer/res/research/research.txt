@@ -21,6 +21,10 @@ gem infused with the powers of
 the various elements. It's used
 for various enchantments in the
 areas of the various elements.
+
+A Storage block can be made
+with it, it's apearence in the
+world can be unstable.
 #----------------------------------------------------
 elementalDesk:
 The Elemental Desk is the
@@ -150,4 +154,11 @@ element, provenient of the
 power of the Ender. It can
 be used to fuel extremlely
 powerful infusions.
+#----------------------------------------------------
+elementalBark:
+A Material, created by mixing
+four elementium gems and a log,
+it's enchanted with the power
+of the various elements and it
+can be used to create wands.
 #----------------------------------------------------

@@ -47,6 +47,9 @@ public final class ResourcesReference {
 
 	/** Integers for the Blocks Spritesheet indexes **/
 	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_NON_AIMATED = 5,
+							BLOCK_INDEX_ELEMENTIUM_GEM = 16,
+							BlOCK_INDEX_MYSTIC_WILLOW_PLANKS = 17,
+							BLOCK_INDEX_MYSTIC_WILLOW_LEAVES = 18,
 							BLOCK_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Blocks Spritesheet Animations **/
@@ -56,7 +59,8 @@ public final class ResourcesReference {
 	/** Integers for the Items Spritesheet indexes **/
 	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0,
 							ITEM_INDEX_ELEMENTALIST_LEXICON = 4,
-							ITEM_INDEX_CATALYST_START = 16;
+							ITEM_INDEX_CATALYST_START = 16,
+							ITEM_INDEX_ELEMENTAL_BARK = 32;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,

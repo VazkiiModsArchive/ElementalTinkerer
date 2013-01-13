@@ -30,7 +30,8 @@ public final class ResearchReference {
 							  ID_ELEMENTAL_DESK = 2,
 							  ID_RESEARCH_BOOKS = 3,
 							  ID_ELEMENTALIST_LEXICON = 4,
-							  ID_CATALYST_START = 5;
+							  ID_CATALYST_START = 5,
+							  ID_ELEMENTAL_BARK = 21;
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
@@ -38,14 +39,16 @@ public final class ResearchReference {
 							   LABEL_ELEMENTAL_DESK = BlockNames.ELEMENTAL_DESK_NAME,
 							   LABEL_RESEARCH_BOOKS = "researchBooks",
 							   LABEL_ELEMENTALIST_LEXICON = ItemNames.ELEMENTALIST_LEXICON_NAME,
-							   LABEL_CATALSYT = ItemNames.CATALYST_ITEM_NAME + "%s";
+							   LABEL_CATALSYT = ItemNames.CATALYST_ITEM_NAME + "%s",
+							   LABEL_ELEMENTAL_BARK = ItemNames.ELEMENTAL_BARK_ITEM_NAME;
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,
 							   DISPLAY_NAME_ELEMENTIUM_GEM = ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME,
 							   DISPLAY_NAME_ELEMENTAL_DESK = BlockNames.ELEMENTAL_DESK_DISPLAY_NAME,
 							   DISPLAY_NAME_RESEARCH_BOOKS = "Ancient Magic Books",
-							   DISPLAY_NAME_ELEMENTALIST_LEXICON = ItemNames.ELEMENTALIST_LEXICON_DISPLAY_NAME;
+							   DISPLAY_NAME_ELEMENTALIST_LEXICON = ItemNames.ELEMENTALIST_LEXICON_DISPLAY_NAME,
+							   DISPLAY_NAME_ELEMENTAL_BARK = ItemNames.ELEMENTAL_BARK_ITEM_DISPLAY_NAME;
 
 	/** The Compound Tag name of the Research Data **/
 	public static final String COMPOUND_TAG_NAME = "researchData";

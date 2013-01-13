@@ -18,7 +18,7 @@ import vazkii.tinkerer.reference.ResourcesReference;
  *
  * @author Vazkii
  */
-public abstract class BlockET extends Block {
+public class BlockET extends Block {
 
 	public BlockET(int par1, int par2, Material par3Material) {
 		super(par1, par2, par3Material);
