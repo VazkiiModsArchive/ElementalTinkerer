@@ -13,6 +13,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ItemNames;
 import vazkii.tinkerer.reference.ResourcesReference;
@@ -28,6 +29,7 @@ public class ItemWand extends ItemET {
 
 	public ItemWand(int par1) {
 		super(par1);
+		setMaxStackSize(1);
 		setHasSubtypes(true);
 	}
 
@@ -38,7 +40,11 @@ public class ItemWand extends ItemET {
 
 	@Override
 	public String getItemDisplayName(ItemStack par1ItemStack) {
-		return ItemNames.WAND_NAME_PREFIX + Element.getSuffix(par1ItemStack.getItemDamage()) + " (WIP)"; //VAZ_TODO Remove WIP flag
+		return nameFromMeta(par1ItemStack.getItemDamage());
+	}
+
+	public static String nameFromMeta(int meta) {
+		return ItemNames.WAND_NAME_PREFIX + Element.getSuffix(meta) + " (NYI)"; //VAZ_TODO Remove NYI Flag
 	}
 
 	@Override
@@ -65,6 +71,6 @@ public class ItemWand extends ItemET {
 
 		Element element = Element.class.getEnumConstants()[par1ItemStack.getItemDamage()];
 		float bright = (float) Math.cos((double) ClientTickHandler.elapsedClientTicks / (double) ResourcesReference.BRIGHTNESS_DIVISOR_WAND);
-		return Color.HSBtoRGB(element.getHue() / 360F, 1F, Math.max(0.2F, (bright + 1F) / 2F));
+		return Color.HSBtoRGB(element.getHue() / 360F, 1F, ConfigurationHandler.wandFlicker ? Math.max(0.2F, (bright + 1F) / 2F) : 0.9F);
 	}
 }

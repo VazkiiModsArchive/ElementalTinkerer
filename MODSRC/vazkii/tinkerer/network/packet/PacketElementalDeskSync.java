@@ -24,7 +24,7 @@ import cpw.mods.fml.common.network.Player;
 /**
  * PacketElementalDeskSync
  *
- * Packet to sync the Elemental Desk
+ * Packet to sync the Elemental Desk Tile Entities.
  *
  * @author Vazkii
  */

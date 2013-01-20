@@ -23,6 +23,7 @@ public class NetworkReference {
 	public static final String SUBCHANNEL_VERIFY = "verify",
 							   SUBCHANNEL_ELEMENTAL_DESK_SYNC = "elementalDeskSync",
 							   SUBCHANNEL_RESEARCH = "research",
-							   SUBCHANNEL_RESEARCH_COMPLETE = "researchComplete";
-
+							   SUBCHANNEL_RESEARCH_COMPLETE = "researchComplete",
+							   SUBCHANNEL_ELEMENTAL_TINKERING_ALTAR_SYNC = "altarSync",
+							   SUBCHANNEL_ELEMENTAL_TINKERING_START_RECIPE = "altarStartRecipe";
 }

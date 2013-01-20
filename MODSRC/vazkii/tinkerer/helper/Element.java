@@ -6,6 +6,8 @@
 // Created @ 27 Dec 2012
 package vazkii.tinkerer.helper;
 
+import vazkii.tinkerer.reference.ResearchReference;
+
 /**
  * Element
  *
@@ -15,10 +17,10 @@ package vazkii.tinkerer.helper;
  */
 public enum Element {
 
-	WATER("Water", "Tides", 244),
-	AIR("Air", "Winds", 154),
-	EARTH("Earth", "Terra", 32),
-	FIRE("Fire", "Flame", 0);
+	WATER(ResearchReference.CATEGORY_NAME_WATER, "Tides", 244),
+	AIR(ResearchReference.CATEGORY_NAME_AIR, "Winds", 154),
+	EARTH(ResearchReference.CATEGORY_NAME_EARTH, "Terra", 32),
+	FIRE(ResearchReference.CATEGORY_NAME_FIRE, "Flame", 0);
 
 	private Element(String elementName, String suffix, int hue) {
 		this.elementName = elementName;

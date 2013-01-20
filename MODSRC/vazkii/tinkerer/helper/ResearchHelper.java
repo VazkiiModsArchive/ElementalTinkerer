@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
@@ -113,7 +114,7 @@ public final class ResearchHelper {
 
 		if(isPlayerNew)
 			updateResearchForPlayer(player);
-		syncResearchData(player);
+		forcefullySyncOneResearchData(player);
 	}
 
 	/** Updates the research for this player, saves it to NBT. **/
@@ -122,10 +123,31 @@ public final class ResearchHelper {
 	}
 
 	/** Sends a packet with the research data of a player to
-	 * said player. **/
+	 * said player. If the shared research utility is
+	 * enabled it redirects to syncResearchDataForAllPlayers() **/
 	public static void syncResearchData(EntityPlayer player) {
+		if(!syncResearchDataForAllPlayers())
+			forcefullySyncOneResearchData(player);
+	}
+
+	/** Sends a packet with the research data of a player to
+	 * said player. This implementation doesn't check if the
+	 * shared research utility is enabled. **/
+	public static void forcefullySyncOneResearchData(EntityPlayer player) {
 		PacketResearchData dataPacket = new PacketResearchData(getResearchDataForPlayer(player.username));
 		PacketHelper.sendPacketToClient((Player) player, dataPacket);
+	}
+
+	/** Sends a packet for research data for all the players,
+	 * this method is only used if the shared research utility
+	 * is used **/
+	public static boolean syncResearchDataForAllPlayers() {
+		if(!ConfigurationHandler.sharedResearch.equals(ResearchReference.CONFIG_SHARE_WILDCARD)) {
+			PacketResearchData dataPacket = new PacketResearchData(getResearchDataForPlayer(""));
+			PacketHelper.sendPacketToAllClients(dataPacket);
+			return true;
+		}
+		return false;
 	}
 
 	/** Just updates the research and writes it to NBT,
@@ -181,5 +203,29 @@ public final class ResearchHelper {
 					}
 				}
 			}
+	}
+
+	/** "Formulates" research data for a player and sends a packet to that player
+	 * telling that a new research has been formulated **/
+	public static boolean formulateResearchNode(short s, EntityPlayer player, String tree) {
+		PlayerResearch research = ResearchHelper.getResearchDataForPlayer(player.username);
+		ResearchNode node = ResearchLibrary.allNodes.get(s);
+		if(!research.isResearchDone(s) && node.isAvailable(research)) {
+			research.research(s, false, player.worldObj);
+			ResearchHelper.syncResearchData(player);
+			PacketHelper.sendMessageToPlayer(player, "You have formulated a theory for " + node.displayName + " in the " + tree + " tree.");
+			updateResearch(player.worldObj, research);
+			return true;
+		}
+		return false;
+	}
+
+	/** Quick and simple method to set an iconic item for a
+	 * research. **/
+	public static ResearchNode setIconicItem(ItemStack stack, short id) {
+		ResearchNode node = ResearchLibrary.allNodes.get(id);
+		if(node != null)
+			node.setIconicItem(stack);
+		return node;
 	}
 }

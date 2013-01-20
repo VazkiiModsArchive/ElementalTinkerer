@@ -28,4 +28,8 @@ public final class TileEntityReference {
 	/** The level of the enchanted book that gets created in an Elemental
 	 * Desk if that's the case **/
 	public static final int ELEMENTAL_DESK_ENCHANTED_BOOK_LEVEL = 45;
+
+	/** The time in the Elementalist Tinkering Altar to create
+	 * an item. **/
+	public static final int ELEMENTALIST_TINKERING_ALTAR_TIME = 100;
 }

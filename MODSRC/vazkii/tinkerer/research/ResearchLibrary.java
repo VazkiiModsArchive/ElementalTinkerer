@@ -6,10 +6,18 @@
 // Created @ 9 Jan 2013
 package vazkii.tinkerer.research;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import vazkii.tinkerer.block.ElementalTinkererBlocks;
+import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.item.ItemCatalyst;
+import vazkii.tinkerer.item.ItemWand;
 import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 
@@ -25,6 +33,8 @@ public final class ResearchLibrary {
 	public static Map<Short, ResearchNode> allNodes = new TreeMap();
 
 	public static Map<Byte, ResearchCategory> categories = new TreeMap();
+
+	public static final List<TinkeringAltarRecipe> recipes = new ArrayList();
 
 	public static void initResearch() {
 		ResearchCategory general = new ResearchCategory(0),
@@ -106,7 +116,7 @@ public final class ResearchLibrary {
 			registerNode(node);
 		}
 
-		// Elemental Bark Research Nodes
+		// Elemental Bark Research Node
 		registerNode(new ResearchNode(ResearchReference.ID_ELEMENTAL_BARK,
 				  ResourcesReference.ITEMS_SPRITESHEET,
 				  ResearchReference.LABEL_ELEMENTAL_BARK,
@@ -115,6 +125,101 @@ public final class ResearchLibrary {
 				  ResearchType.ITEM)
 				  .setDefaultEnabled()
 				  .addToCategory(pure));
+
+		// Elementium Dust Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ELEMENTIUM_DUST,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_ELEMENTIUM_DUST,
+				  ResearchReference.DISPLAY_NAME_ELEMENTIUM_DUST,
+				  ResourcesReference.ITEM_INDEX_ELEMENTIUM_DUST,
+				  ResearchType.ITEM)
+				  .setDefaultEnabled()
+				  .addToCategory(pure));
+
+		// Elementium Ingot Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ELEMENTIUM_INGOT,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_ELEMENTIUM_INGOT,
+				  ResearchReference.DISPLAY_NAME_ELEMENTIUM_INGOT,
+				  ResourcesReference.RESERACH_INDEX_ELEMENTIUM_INGOT,
+				  ResearchType.ITEM)
+				  .addToCategory(pure));
+
+		// Wand Research Nodes
+		for(short i = 0; i < 4; i++) {
+			registerNode(new ResearchNode((short) (ResearchReference.ID_WAND_START + i),
+					  ResourcesReference.RESEARCH_SPRITESHEET,
+					  String.format(ResearchReference.LABEL_WAND, i),
+					  ItemWand.nameFromMeta(i),
+					  ResourcesReference.RESEARCH_INDEX_WAND_START + i,
+					  ResearchType.ITEM)
+					  .addToCategory(categories.get((byte) (i + 2)))
+					  .setNoBook());
+		}
+
+		// Elemental Tinkering Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ELEMENTAL_TINKERING,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_ELEMENTAL_TINKERING,
+				  ResearchReference.DISPLAY_NAME_ELEMENTAL_TINKERING,
+				  ResourcesReference.RESEARCH_INDEX_ELEMENTAL_TINKERING,
+				  ResearchType.ITEM)
+				  .setDefaultEnabled()
+				  .addToCategory(pure));
+
+		// Catalyst Capsule Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_CATALYST_CAPSULE,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_CATALYST_CAPSULE,
+				  ResearchReference.DISPLAY_NAME_CATALYST_CAPSULE,
+				  ResourcesReference.RESEARCH_INDEX_CATALYST_CAPSULE,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+
+		// Magical Attuning Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ATTUNER,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_ATTUNER,
+				  ResearchReference.DISPLAY_NAME_ATTUNER,
+				  ResourcesReference.RESEARCH_INDEX_ATTUNER,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+
+	}
+
+	public static void initTinkeringRecipes() {
+		// Wand Recipes
+		for(int i = 0; i < 4; i++) {
+			TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.wand, 1, i),
+					new ItemStack(ElementalTinkererItems.catalyst, 1, i),
+					new ItemStack(ElementalTinkererItems.catalyst, 1, i),
+					"  B  ",
+					"  B  ",
+					"  BBB",
+					" G   ",
+					"G    ",
+					'B', ElementalTinkererItems.elementalBark,
+					'G', Item.ingotGold);
+			allNodes.get((short) (ResearchReference.ID_WAND_START + i)).bindLatestTinkeringRecipe();
+		}
+
+		// Attuner Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.attuner),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 0),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 1),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 2),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 3),
+			"IPIPI",
+			"P   P",
+			"I B I",
+			"P   P",
+			"IPIPI",
+			'B', ElementalTinkererBlocks.elementiumGemBlock,
+			'I', ElementalTinkererItems.elementiumIngot,
+			'P', Block.thinGlass);
+			allNodes.get(ResearchReference.ID_ATTUNER).bindLatestTinkeringRecipe();
 	}
 
 	public static void registerNode(ResearchNode node) {

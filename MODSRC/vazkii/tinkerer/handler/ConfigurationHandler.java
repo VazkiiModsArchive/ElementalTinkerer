@@ -34,7 +34,9 @@ public final class ConfigurationHandler {
 	/** Config nodes **/
 	public static boolean elementiumGemAnimate = ConfigurationNodes.DEFAULT_ELEMENTIUM_GEM_ANIMATE,
 						  elementiumGemSpectrum = ConfigurationNodes.DEFAULT_ELEMENTIUM_GEM_SPECTRUM,
-						  elementiumOreColored = ConfigurationNodes.DEFAULT_ELEMENTIUM_ORE_COLORED;
+						  elementiumOreColored = ConfigurationNodes.DEFAULT_ELEMENTIUM_ORE_COLORED,
+						  wandFlicker = ConfigurationNodes.DEFAULT_WAND_FLICKER,
+						  elementiumIngotAnimate = ConfigurationNodes.DEFAULT_ELEMENTIUM_INGOT_ANIMATE;
 
 	/** Player to hold the shared research, this player will keep the
 	 * research data for the entire server and all the players in it,
@@ -59,6 +61,7 @@ public final class ConfigurationHandler {
 		BlockIDs.elementiumGemBlock = config.getBlock(BlockNames.ELEMENTIUM_GEM_BLOCK_NAME, BlockIDs.DEFAULT_ELEMENTIUM_GEM_BLOCK).getInt(BlockIDs.DEFAULT_ELEMENTIUM_GEM_BLOCK);
 		BlockIDs.elementalistTinkeringAltar = config.getBlock(BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME, BlockIDs.DEFAULT_ELEMENTALIST_TINKERING_ALTAR).getInt(BlockIDs.DEFAULT_ELEMENTALIST_TINKERING_ALTAR);
 		BlockIDs.catalystCapsule = config.getBlock(BlockNames.CATALYST_CAPSULE_NAME, BlockIDs.DEFAULT_CATALYST_CAPSULE).getInt(BlockIDs.DEFAULT_CATALYST_CAPSULE);
+		BlockIDs.attuner = config.getBlock(BlockNames.ATTUNER_NAME, BlockIDs.DEFAULT_ATTUNER).getInt(BlockIDs.DEFAULT_ATTUNER);
 
 		// Load Item IDs
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);
@@ -67,11 +70,15 @@ public final class ConfigurationHandler {
 		ItemIDs.catalyst = config.getItem(ItemNames.CATALYST_ITEM_NAME, ItemIDs.DEFAULT_CATALYST).getInt(ItemIDs.DEFAULT_CATALYST);
 		ItemIDs.elementalBark = config.getItem(ItemNames.ELEMENTAL_BARK_ITEM_NAME, ItemIDs.DEFAULT_ELEMENTAL_BARK).getInt(ItemIDs.DEFAULT_ELEMENTAL_BARK);
 		ItemIDs.wand = config.getItem(ItemNames.WAND_NAME, ItemIDs.DEFAULT_WAND).getInt(ItemIDs.DEFAULT_WAND);
+		ItemIDs.elementiumIngot = config.getItem(ItemNames.ELEMENTIUM_INGOT_NAME, ItemIDs.DEFAULT_ELEMENTIUM_INGOT).getInt(ItemIDs.DEFAULT_ELEMENTIUM_INGOT);
+		ItemIDs.elementiumDust = config.getItem(ItemNames.ELEMENTIUM_DUST_NAME, ItemIDs.DEFAULT_ELEMENTIUM_DUST).getInt(ItemIDs.DEFAULT_ELEMENTIUM_DUST);
 
 		// Load Graphics Nodes
 		elementiumGemAnimate = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_ELEMENTIUM_GEM_ANIMATED, elementiumGemAnimate).getBoolean(elementiumGemAnimate);
 		elementiumGemSpectrum = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_ELEMENTIUM_GEM_SPECTRUM, elementiumGemSpectrum).getBoolean(elementiumGemSpectrum);
 		elementiumOreColored = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_ELEMENTIUM_ORE_COLORED, elementiumOreColored).getBoolean(elementiumOreColored);
+		wandFlicker = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_WAND_FLICKER, wandFlicker).getBoolean(wandFlicker);
+		elementiumIngotAnimate = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_ELEMENTIUM_INGOT_ANIMATED, elementiumIngotAnimate).getBoolean(elementiumIngotAnimate);
 
 		// Load, and comment, if necessary the research share
 		Property researchShareProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_RESEARCH_SHARE, ResearchReference.CONFIG_SHARE_WILDCARD);

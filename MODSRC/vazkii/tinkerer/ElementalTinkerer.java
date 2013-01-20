@@ -13,6 +13,7 @@ import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.core.CommonProxy;
 import vazkii.tinkerer.entity.ElementalTinkererEntities;
 import vazkii.tinkerer.handler.ConfigurationHandler;
+import vazkii.tinkerer.handler.CraftingHandler;
 import vazkii.tinkerer.handler.GuiHandler;
 import vazkii.tinkerer.handler.PlayerTrackingHandler;
 import vazkii.tinkerer.handler.WorldGenerationHandler;
@@ -90,6 +91,9 @@ public class ElementalTinkerer {
 		// Register the Player Tracker
 		GameRegistry.registerPlayerTracker(PlayerTrackingHandler.INSTANCE);
 
+		// Register the Crafting Handler
+		GameRegistry.registerCraftingHandler(CraftingHandler.INSTANCE);
+
 		// Init the mod's Items
 		ElementalTinkererItems.init();
 
@@ -102,11 +106,14 @@ public class ElementalTinkerer {
 		// Register the World Generation
 		GameRegistry.registerWorldGenerator(WorldGenerationHandler.INSTANCE);
 
+		// Init the Item Recipes
+		ElementalTinkererItems.initItemRecipes();
+
 		// Init the Block Recipes
 		ElementalTinkererBlocks.initBlockRecipes();
 
-		// Init the Item Recipes
-		ElementalTinkererItems.initItemRecipes();
+		// Init the Tinkering Altar Recipes
+		ResearchLibrary.initTinkeringRecipes();
 
 		// Proxy: Register the mod's Tile Entities
 		proxy.registerTileEntities();

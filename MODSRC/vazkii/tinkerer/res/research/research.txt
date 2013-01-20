@@ -29,7 +29,7 @@ world can be unstable.
 elementalDesk:
 The Elemental Desk is the
 Elementalist's Study. By
-charging with with Elementium
+charging with Elementium
 Gems and setting a book in it
 the book will be revived to
 it's former glory as an ancient
@@ -128,7 +128,7 @@ An extremely powerful
 catalyst of the water
 element, provenient of the
 power of the Ender. It can
-be used to fuel extremlely
+be used to fuel extremely
 powerful infusions.
 #----------------------------------------------------
 catalyst13:
@@ -136,7 +136,7 @@ An extremely powerful
 catalyst of the air
 element, provenient of the
 power of the Ender. It can
-be used to fuel extremlely
+be used to fuel extremely
 powerful infusions.
 #----------------------------------------------------
 catalyst14:
@@ -144,7 +144,7 @@ An extremely powerful
 catalyst of the earth
 element, provenient of the
 power of the Ender. It can
-be used to fuel extremlely
+be used to fuel extremely
 powerful infusions.
 #----------------------------------------------------
 catalyst15:
@@ -152,7 +152,7 @@ An extremely powerful
 catalyst of the fire
 element, provenient of the
 power of the Ender. It can
-be used to fuel extremlely
+be used to fuel extremely
 powerful infusions.
 #----------------------------------------------------
 elementalBark:
@@ -163,4 +163,105 @@ of the various elements and it
 can be used to create wands
 and to make the top of the
 Elemental Desk.
+#----------------------------------------------------
+elementiumDust:
+Research has found that, when
+exposed to Glowstone and
+Redstone power, Elementium 
+Gem Blocks can cause violent
+reactions with the the 
+glowstone blocks in a 3x3 
+area, turning them into 
+elementium dust, which can
+be used to create advanced
+elemental materials. It is
+highly advised to do the
+reaction in a contained
+environment to prevent
+extreme damage.
+#----------------------------------------------------
+elementiumIngot:
+An Ingot of gold mixed with
+the power of the elements.
+This ingot can contain raw
+elemental power. It can be
+useful to create various
+items that need to contain
+the energy unleashed by
+the elements.
+#----------------------------------------------------
+wand0:
+A wand of Elemental Magic
+infused with the properties
+of the Water Element. This
+wand can cast any spell
+but has benefits when
+casting spells from the
+Water tree.
+#----------------------------------------------------
+wand1:
+A wand of Elemental Magic
+infused with the properties
+of the Air Element. This
+wand can cast any spell
+but has benefits when
+casting spells from the
+Air tree.
+#----------------------------------------------------
+wand2:
+A wand of Elemental Magic
+infused with the properties
+of the Earth Element. This
+wand can cast any spell
+but has benefits when
+casting spells from the
+Earth tree.
+#----------------------------------------------------
+wand3:
+A wand of Elemental Magic
+infused with the properties
+of the Fire Element. This
+wand can cast any spell
+but has benefits when
+casting spells from the
+Fire tree.
+#----------------------------------------------------
+elementalTinkering:
+The Ability to tinker with
+various items by infusing them
+with magical energy is the key
+to the work of an Elemental
+Tinkerer. To do this, an
+Elementalist's Tinkering Altar
+must be created. This powerful
+block allows to create items
+making use of an extended
+crafting grid and catalysts.
+#----------------------------------------------------
+catalystCapsule:
+In order to infuse items with
+magical energy, that energy
+needs to come from somewhere.
+Catalysts can be placed here
+in order to create items in
+the Elementalist's Tinkering
+Altar, this Block can be
+attached to it's side in
+order to unlock slots in
+order to catalyse the
+infusion.
+#----------------------------------------------------
+attuner:
+The Power of the Elements
+can be attuned to the
+body of an Elementalist
+trough an Attuner. The
+Attuner is a block with
+the capacity to bind
+various elemental magics
+to an Elementalist. When
+the magics are bound,
+they can be casted, or,
+if the magic happens to
+be passive, benefited from.
 #----------------------------------------------------

@@ -21,7 +21,9 @@ public final class ConfigurationNodes {
 	/** Config nodes for the graphics category **/
 	public static final String NODE_ELEMENTIUM_GEM_SPECTRUM = ItemNames.ELEMENTIUM_GEM_NAME + ".spectrum",
 							   NODE_ELEMENTIUM_GEM_ANIMATED = ItemNames.ELEMENTIUM_GEM_NAME + ".animate",
-							   NODE_ELEMENTIUM_ORE_COLORED = BlockNames.ELEMENTIUM_ORE_NAME + ".variousColors";
+							   NODE_ELEMENTIUM_ORE_COLORED = BlockNames.ELEMENTIUM_ORE_NAME + ".variousColors",
+							   NODE_WAND_FLICKER = ItemNames.WAND_NAME + ".flicker",
+							   NODE_ELEMENTIUM_INGOT_ANIMATED = ItemNames.ELEMENTIUM_INGOT_NAME + ".animate";
 
 	/** Config nodes for the general catergory **/
 	public static final String NODE_RESEARCH_SHARE = "research.share",
@@ -30,6 +32,8 @@ public final class ConfigurationNodes {
 	/** Default nodes for the graphics category **/
 	public static final boolean DEFAULT_ELEMENTIUM_GEM_SPECTRUM = true,
 								DEFAULT_ELEMENTIUM_GEM_ANIMATE = true,
-								DEFAULT_ELEMENTIUM_ORE_COLORED = true;
+								DEFAULT_ELEMENTIUM_ORE_COLORED = true,
+								DEFAULT_WAND_FLICKER = true,
+								DEFAULT_ELEMENTIUM_INGOT_ANIMATE = true;
 
 }

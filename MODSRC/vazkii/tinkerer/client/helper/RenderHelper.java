@@ -50,19 +50,19 @@ public final class RenderHelper {
 	}
 
 	public static void renderTooltip(int x, int y, String... tooltipData) {
-		renderTooltip(x, y, GuiReference.TOOLTIP_DEFAULT_COLOR, tooltipData);
+		renderTooltip(x, y, GuiReference.TOOLTIP_DEFAULT_COLOR, GuiReference.TOOLTIP_DEFAULT_COLOR_BG, tooltipData);
 	}
 
-	public static void renderTooltip(int x, int y, int color, String... tooltipData) {
-		renderTooltip(x, y, color, Arrays.asList(tooltipData));
+	public static void renderTooltip(int x, int y, int color, int color2, String... tooltipData) {
+		renderTooltip(x, y, color, color2, Arrays.asList(tooltipData));
 	}
 
 	public static void renderTooltip(int x, int y, List<String> tooltipData) {
-		renderTooltip(x, y, GuiReference.TOOLTIP_DEFAULT_COLOR, tooltipData);
+		renderTooltip(x, y, GuiReference.TOOLTIP_DEFAULT_COLOR, GuiReference.TOOLTIP_DEFAULT_COLOR_BG, tooltipData);
 	}
 
 	/** Renders tooltip at the given position, with the given color **/
-	public static void renderTooltip(int x, int y, int color,  List<String> tooltipData) {
+	public static void renderTooltip(int x, int y, int color, int color2, List<String> tooltipData) {
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
         GL11.glDisable(GL11.GL_LIGHTING);
@@ -84,13 +84,12 @@ public final class RenderHelper {
             if (tooltipData.size() > 1)
                 var9 += 2 + (tooltipData.size() - 1) * 10;
             float z = 300.0F;
-            int var10 = -267386864;
-            drawGradientRect(var6 - 3, var7 - 4, z, var6 + var5 + 3, var7 - 3, var10, var10);
-            drawGradientRect(var6 - 3, var7 + var9 + 3, z, var6 + var5 + 3, var7 + var9 + 4, var10, var10);
-            drawGradientRect(var6 - 3, var7 - 3, z, var6 + var5 + 3, var7 + var9 + 3, var10, var10);
-            drawGradientRect(var6 - 4, var7 - 3, z, var6 - 3, var7 + var9 + 3, var10, var10);
-            drawGradientRect(var6 + var5 + 3, var7 - 3, z, var6 + var5 + 4, var7 + var9 + 3, var10, var10);
-            int var12 = (color & 0xFFFFFF) >> 1 | color & 0;
+            drawGradientRect(var6 - 3, var7 - 4, z, var6 + var5 + 3, var7 - 3, color2, color2);
+            drawGradientRect(var6 - 3, var7 + var9 + 3, z, var6 + var5 + 3, var7 + var9 + 4, color2, color2);
+            drawGradientRect(var6 - 3, var7 - 3, z, var6 + var5 + 3, var7 + var9 + 3, color2, color2);
+            drawGradientRect(var6 - 4, var7 - 3, z, var6 - 3, var7 + var9 + 3, color2, color2);
+            drawGradientRect(var6 + var5 + 3, var7 - 3, z, var6 + var5 + 4, var7 + var9 + 3, color2, color2);
+            int var12 = (color & 0xFFFFFF) >> 1 | color & -16777216;
             drawGradientRect(var6 - 3, var7 - 3 + 1, z, var6 - 3 + 1, var7 + var9 + 3 - 1, color, var12);
             drawGradientRect(var6 + var5 + 2, var7 - 3 + 1, z, var6 + var5 + 3, var7 + var9 + 3 - 1, color, var12);
             drawGradientRect(var6 - 3, var7 - 3, z, var6 + var5 + 3, var7 - 3 + 1, color, color);

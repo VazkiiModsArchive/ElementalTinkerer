@@ -3,7 +3,7 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  */
-// Created @ 12 Jan 2013
+// Created @ 20 Jan 2013
 package vazkii.tinkerer.network.packet;
 
 import java.io.ByteArrayInputStream;
@@ -15,33 +15,28 @@ import java.io.IOException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
-import vazkii.tinkerer.helper.PacketHelper;
-import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.NetworkReference;
-import vazkii.tinkerer.research.PlayerResearch;
-import vazkii.tinkerer.research.ResearchNode;
+import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 import cpw.mods.fml.common.network.Player;
 
 /**
- * PacketCompleteResearch
+ * PacketElementalistTinkeringAltarSync
  *
- * A Packet sent by the client to complete the research, the server, when it
- * receives the packet returns a packet to the client with the updated
- * research data.
+ * Packet to sync the Elementalist Tinkering Altar Tile Entities.
  *
  * @author Vazkii
  */
-public class PacketCompleteResearch extends ETPacket {
+public class PacketElementalistTinkeringAltarSync extends ETPacket {
 
-	public static final PacketCompleteResearch RECIEVER_INSTANCE = new PacketCompleteResearch();
+	public static final PacketElementalistTinkeringAltarSync RECIEVER_INSTANCE = new PacketElementalistTinkeringAltarSync();
 
 	/** Constructor with no params required for the reciever end **/
-	private PacketCompleteResearch() { }
+	private PacketElementalistTinkeringAltarSync() { }
 
-	ResearchNode node;
+	TileEntityElementalTinkeringAltar altar;
 
-	public PacketCompleteResearch(ResearchNode node) {
-		this.node = node;
+	public PacketElementalistTinkeringAltarSync(TileEntityElementalTinkeringAltar altar) {
+		this.altar = altar;
 	}
 
 	@Override
@@ -49,7 +44,11 @@ public class PacketCompleteResearch extends ETPacket {
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		DataOutputStream data = new DataOutputStream(stream);
 		writeSubchannel(data);
-		data.writeShort(node.index);
+		data.writeInt(altar.xCoord);
+		data.writeInt(altar.yCoord);
+		data.writeInt(altar.zCoord);
+		data.writeBoolean(altar.getIsCreating());
+		data.writeInt(altar.getProgress());
 		return stream;
 	}
 
@@ -59,22 +58,20 @@ public class PacketCompleteResearch extends ETPacket {
 			ByteArrayInputStream stream = new ByteArrayInputStream(packet.data);
 			DataInputStream inputStream = new DataInputStream(stream);
 			skipSubchannel(inputStream);
-			short id = inputStream.readShort();
-			PlayerResearch research = ResearchHelper.getResearchDataForPlayer(((EntityPlayer)player).username);
-			if(research.isResearchDone(id))
-				research.completeResearch(id, false, ((EntityPlayer)player).worldObj);
-			PacketResearchData dataPacket = new PacketResearchData(research);
-			PacketHelper.sendPacketToClient(player, dataPacket);
-			ResearchHelper.updateResearch(((EntityPlayer)player).worldObj, research);
+			int x = inputStream.readInt();
+			int y = inputStream.readInt();
+			int z = inputStream.readInt();
+			TileEntityElementalTinkeringAltar altar = (TileEntityElementalTinkeringAltar) ((EntityPlayer)player).worldObj.getBlockTileEntity(x, y, z);
+			altar.setCreating(inputStream.readBoolean());
+			altar.setProgress(inputStream.readInt());
 			return true;
 		}
-
 		return false;
 	}
 
 	@Override
 	public String getSubchannel() {
-		return NetworkReference.SUBCHANNEL_RESEARCH_COMPLETE;
+		return NetworkReference.SUBCHANNEL_ELEMENTAL_TINKERING_ALTAR_SYNC;
 	}
 
 }

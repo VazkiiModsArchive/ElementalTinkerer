@@ -44,13 +44,9 @@ public class ItemElementalBook extends ItemET {
 	@Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
     	if(!par2World.isRemote) {
-    		short s = foundReadyResearch(par3EntityPlayer, par1ItemStack.getItemDamage());
+    		short s = findReadyResearch(par3EntityPlayer, par1ItemStack.getItemDamage());
     		if(s >= 0) {
-    			PlayerResearch research = ResearchHelper.getResearchDataForPlayer(par3EntityPlayer.username);
-    			research.research(s, true, par2World);
-    			ResearchHelper.syncResearchData(par3EntityPlayer);
-    			ResearchNode node = ResearchLibrary.allNodes.get(s);
-    			PacketHelper.sendMessageToPlayer(par3EntityPlayer, "You have formulated a theory for " + node.displayName + " in the " + Element.getName(par1ItemStack.getItemDamage()) + " tree.");
+    			ResearchHelper.formulateResearchNode(s, par3EntityPlayer, Element.getName(par1ItemStack.getItemDamage()));
     			par1ItemStack.stackSize--;
     		} else {
     			PacketHelper.sendMessageToPlayer(par3EntityPlayer, FormattingCode.RED + "There seems to be nothing this book can teach you.");
@@ -60,13 +56,15 @@ public class ItemElementalBook extends ItemET {
     	return par1ItemStack;
     }
 
-	public short foundReadyResearch(EntityPlayer player, int element) {
+	/** Finds a research valid for researching. If it can't find any, it
+	 * returns -1. **/
+	public short findReadyResearch(EntityPlayer player, int element) {
 		element += 2;
 		ResearchCategory category = ResearchLibrary.categories.get((byte) element);
 		List<ResearchNode> availableNodes = new ArrayList();
 		PlayerResearch research = ResearchHelper.getResearchDataForPlayer(player.username);
 		for(ResearchNode node : category.getNodes())
-			if(node.isAvailable(research))
+			if(node.isAvailable(research) && !node.isNoBook())
 				availableNodes.add(node);
 
 		if(availableNodes.isEmpty())
@@ -74,6 +72,21 @@ public class ItemElementalBook extends ItemET {
 
 		ResearchNode node = availableNodes.get(player.worldObj.rand.nextInt(availableNodes.size()));
 		return node.index;
+	}
+
+	@Override
+	public ItemStack getContainerItemStack(ItemStack itemStack) {
+		return itemStack;
+	}
+
+	@Override
+    public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack) {
+        return false;
+    }
+
+	@Override
+	public boolean hasContainerItem() {
+		return true;
 	}
 
 	@Override

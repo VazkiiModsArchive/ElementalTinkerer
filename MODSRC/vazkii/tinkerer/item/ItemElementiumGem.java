@@ -35,8 +35,8 @@ public class ItemElementiumGem extends ItemET {
 
 	@Override
 	public int getIconFromDamage(int par1) {
-		return super.getIconFromDamage(par1) + (!ConfigurationHandler.elementiumGemAnimate ? 0 :
-			   SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_GEM_ANIM_INDEX].getCurrentIndex());
+		return !ConfigurationHandler.elementiumGemAnimate ? super.getIconFromDamage(par1) :
+			   SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_GEM_ANIM_INDEX].getCurrentIndex();
 	}
 
 	@Override

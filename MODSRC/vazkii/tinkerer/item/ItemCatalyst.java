@@ -26,7 +26,6 @@ public class ItemCatalyst extends ItemET {
 
 	public ItemCatalyst(int par1) {
 		super(par1);
-		setMaxStackSize(1);
 		setHasSubtypes(true);
 		iconIndex = ResourcesReference.ITEM_INDEX_CATALYST_START;
 	}

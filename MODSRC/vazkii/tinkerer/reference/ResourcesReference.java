@@ -54,8 +54,8 @@ public final class ResourcesReference {
 	/** Integers for the Blocks Spritesheet indexes **/
 	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_NON_AIMATED = 5,
 							BLOCK_INDEX_ELEMENTIUM_GEM = 16,
-							BlOCK_INDEX_MYSTIC_WILLOW_PLANKS = 17,
-							BLOCK_INDEX_MYSTIC_WILLOW_LEAVES = 18,
+							BLOCK_INDEX_ATTUNER_GLASS = 17,
+							BLOCK_INDEX_ATTUNER_TOP = 18,
 							BLOCK_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Blocks Spritesheet (64x) indexes **/
@@ -68,6 +68,7 @@ public final class ResourcesReference {
 	/** Integers for the Items Spritesheet indexes **/
 	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0,
 							ITEM_INDEX_ELEMENTALIST_LEXICON = 4,
+							ITEM_INDEX_ELEMENTIUM_DUST = 15,
 							ITEM_INDEX_CATALYST_START = 16,
 							ITEM_INDEX_ELEMENTAL_BARK = 32,
 							ITEM_INDEX_WAND_REGULAR = 33,
@@ -75,7 +76,9 @@ public final class ResourcesReference {
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
-							ITEM_32_ANIM_ELEMENTIUM_GEM_END = 7;
+							ITEM_32_ANIM_ELEMENTIUM_GEM_END = 7,
+							ITEM_32_ANIM_ELEMENTIUM_INGOT_START = 16,
+							ITEM_32_ANIM_ELEMENTIUM_INGOT_END = 23;
 
 	/** Integers for the Research Spritesheet indexes **/
 	public static final int RESEARCH_INDEX_QUESTIONMARK = 0,
@@ -83,11 +86,16 @@ public final class ResourcesReference {
 							RESEARCH_INDEX_ELEMENTIUM_ORE = 2,
 							RESEARCH_INDEX_ELEMENTIUM_GEM = 3,
 							RESEARCH_INDEX_ELEMENTAL_DESK = 4,
-							RESEARCH_INDEX_RESEARCH_BOOKS = 5;
+							RESEARCH_INDEX_RESEARCH_BOOKS = 5,
+							RESERACH_INDEX_ELEMENTIUM_INGOT = 6,
+							RESEARCH_INDEX_WAND_START = 7,
+							RESEARCH_INDEX_ELEMENTAL_TINKERING = 11,
+							RESEARCH_INDEX_CATALYST_CAPSULE = 12,
+							RESEARCH_INDEX_ATTUNER = 13;
 
 	/** Integers for Animation tick speeds **/
-	public static final int ANIM_SPEED_ELEMENTIUM_ORE = 3,
-							ANIM_SPEED_ELEMENTIUM_GEM = 2;
+	public static final int ANIM_SPEED_ELEMENTIUM_GEM = 2,
+							ANIM_SPEED_ELEMENTIUM_INGOT = 2;
 
 	/** The file that contains the Elementium Guardian Mob Texture **/
 	public static final String MOB_ELEMENTAL_GUARDIAN_TEXTURE = ROOT_ENTITY + "oreGuardian.png";
@@ -96,7 +104,8 @@ public final class ResourcesReference {
 	public static final String GUI_ELEMENTAL_DESK_TEXTURE = ROOT_GUI + "elementalDesk.png",
 							   GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE = ROOT_GUI + "researchBook.png",
 							   GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE = ROOT_GUI + "recipeBook.png",
-							   GUI_RESEARCH_GAME_TEXTURE = ROOT_GUI + "researchGame.png";
+							   GUI_RESEARCH_GAME_TEXTURE = ROOT_GUI + "researchGame.png",
+							   GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE = ROOT_GUI + "infusion.png";
 
 	/** The reserach background coordinates on the research spritesheet **/
 	public static final int RESEARCH_BACKGROUND_X_COORD = 160,
@@ -109,6 +118,11 @@ public final class ResourcesReference {
 	/** The Elementium Gem is colored trough the spectrum, this integer is
 	 ** the divisor for the cosine function's speed that defines the color. **/
 	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_GEM = 60;
+
+	/** The Progress bar on the Elementalist's Tinkering Altar
+	 * GUI  is colored trough the spectrum, this integer is
+	 ** the divisor for the cosine function's speed that defines the color. **/
+	public static final int SPECTRUM_DIVISOR_INFUSION = 25;
 
 	/** The Wands are colored with a varying brightess, this integer is
 	 * the divisor for the consine function's speed that defines the color **/

@@ -11,9 +11,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
+import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.ItemIDs;
 import vazkii.tinkerer.reference.ItemNames;
+import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
+import vazkii.tinkerer.research.ResearchLibrary;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 /**
@@ -30,7 +33,9 @@ public final class ElementalTinkererItems {
 					   elementalistLexicon,
 					   catalyst,
 					   elementalBark,
-					   wand;
+					   wand,
+					   elementiumIngot,
+					   elementiumDust;
 
 	public static void init() {
 		// Construct the items
@@ -40,26 +45,61 @@ public final class ElementalTinkererItems {
 		catalyst = new ItemCatalyst(ItemIDs.catalyst).setItemName(ItemNames.CATALYST_ITEM_NAME);
 		elementalBark = new ItemET(ItemIDs.elementalBark).setItemName(ItemNames.ELEMENTAL_BARK_ITEM_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ELEMENTAL_BARK);
 		wand = new ItemWand(ItemIDs.wand).setItemName(ItemNames.WAND_NAME);
+		elementiumIngot = new ItemElementiumIngot(ItemIDs.elementiumIngot).setItemName(ItemNames.ELEMENTIUM_INGOT_NAME);
+		elementiumDust = new ItemET(ItemIDs.elementiumDust).setItemName(ItemNames.ELEMENTIUM_DUST_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ELEMENTIUM_DUST);
 
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
 		LanguageRegistry.addName(elementalistLexicon, ItemNames.ELEMENTALIST_LEXICON_DISPLAY_NAME);
 		LanguageRegistry.addName(elementalBark, ItemNames.ELEMENTAL_BARK_ITEM_DISPLAY_NAME);
+		LanguageRegistry.addName(elementiumIngot, ItemNames.ELEMENTIUM_INGOT_DISPLAY_NAME);
+		LanguageRegistry.addName(elementiumDust, ItemNames.ELEMENTIUM_DUST_DISPLAY_NAME);
+
+		// Add the items to the researches
+		ResearchHelper.setIconicItem(new ItemStack(elementiumGem), ResearchReference.ID_ELEMENTIUM_GEM);
+		ResearchHelper.setIconicItem(new ItemStack(elementalBook, 1, -1), ResearchReference.ID_RESEARCH_BOOKS);
+		ResearchHelper.setIconicItem(new ItemStack(elementalistLexicon), ResearchReference.ID_ELEMENTALIST_LEXICON);
+		for(int i = 0; i < 16; i++)
+			ResearchHelper.setIconicItem(new ItemStack(catalyst, 1, i), (short) (ResearchReference.ID_CATALYST_START + i));
+		ResearchHelper.setIconicItem(new ItemStack(elementalBark), ResearchReference.ID_ELEMENTAL_BARK);
+		for(int i = 0; i < 4; i++)
+			ResearchHelper.setIconicItem(new ItemStack(wand, 1, i), (short) (ResearchReference.ID_WAND_START + i));
+		ResearchHelper.setIconicItem(new ItemStack(elementiumIngot), ResearchReference.ID_ELEMENTIUM_INGOT);
+		ResearchHelper.setIconicItem(new ItemStack(elementiumDust), ResearchReference.ID_ELEMENTIUM_DUST);
 	}
 
 	public static void initItemRecipes() {
+		// Elementalist Lexicon Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalistLexicon),
 				" G ", "GBG", " G ",
 				'G', elementiumGem,
 				'B', Item.book);
+		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTALIST_LEXICON).bindLatestCraftingRecipe();
 
+		// Elementium Gem Recipe
 		CraftingManager.getInstance().addShapelessRecipe(new ItemStack(elementiumGem, 9),
 				ElementalTinkererBlocks.elementiumGemBlock);
 
+		// Elemental Bark Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalBark),
 				" G ", "GLG", " G ",
 				'G', elementiumGem,
 				'L', new ItemStack(Block.wood, -1));
+		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTAL_BARK).bindLatestCraftingRecipe();
+
+		// Elementium Ingot Recipe
+		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumIngot),
+				"DDD", "DID", "DDD",
+				'D', elementiumDust,
+				'I', Item.ingotGold);
+		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTIUM_INGOT).bindLatestCraftingRecipe();
+
+		// Catalyst Recipes
+		for(int i = 0; i < 4; i++) {
+			CraftingManager.getInstance().addShapelessRecipe(new ItemStack(catalyst, 1, i),
+					new ItemStack(elementalBook, 1, i), elementiumDust);
+			ResearchLibrary.allNodes.get((short) (ResearchReference.ID_CATALYST_START + i)).bindLatestCraftingRecipe();
+		}
 	}
 
 }

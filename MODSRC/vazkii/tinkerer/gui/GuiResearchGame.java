@@ -156,7 +156,7 @@ public class GuiResearchGame extends GuiScreen {
 		super.mouseClicked(par1, par2, par3);
 
 		if(par1 >= xStart + 8 && par1 <= xStart + 136 && par2 >= yStart + 8 && par2 <= yStart + 136) {
-			if(hotSwapX >= 0 && hotSwapY >= 0 && hotSwapActive) {
+			if(hotSwapX >= 0 && hotSwapY >= 0 && hotSwapActive && (hotSwapX != xLooking || hotSwapY != yLooking)) {
 				int swapTile = hotSwapY * 4 + hotSwapX;
 				int lookingTile = yLooking * 4 + xLooking;
 				int looking = squares[lookingTile];

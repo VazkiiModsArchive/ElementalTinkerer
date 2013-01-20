@@ -21,7 +21,8 @@ public final class BlockIDs {
 							DEFAULT_ELEMENTAL_DESK = 2112,
 							DEFAULT_ELEMENTIUM_GEM_BLOCK = 2113,
 							DEFAULT_ELEMENTALIST_TINKERING_ALTAR = 2114,
-							DEFAULT_CATALYST_CAPSULE = 2115;
+							DEFAULT_CATALYST_CAPSULE = 2115,
+							DEFAULT_ATTUNER = 2116;
 
 	/** Set via the config **/
 	public static int elementiumOre,
@@ -29,5 +30,6 @@ public final class BlockIDs {
 					  elementalDesk,
 					  elementiumGemBlock,
 					  elementalistTinkeringAltar,
-					  catalystCapsule;
+					  catalystCapsule,
+					  attuner;
 }

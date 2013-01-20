@@ -21,6 +21,7 @@ import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.GuiReference;
+import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.research.ResearchCategory;
 import vazkii.tinkerer.research.ResearchLibrary;
@@ -118,9 +119,9 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         int bookmarkDifference = 14;
         drawTexturedModalRect(xStart, yStart, 0, 0, 186, 180);
         fontRenderer.setUnicodeFlag(true); // Start the fancy font rendering
-        fontRenderer.drawStringWithShadow((currentSection == 0 ? FormattingCode.UNDERLINE : "") + "General", shiftX, shiftY, 0xFFFFFF);
+        fontRenderer.drawStringWithShadow((currentSection == 0 ? FormattingCode.UNDERLINE : "") + ResearchReference.CATEGORY_NAME_GENERAL, shiftX, shiftY, 0xFFFFFF);
         shiftY += bookmarkDifference;
-        fontRenderer.drawStringWithShadow((currentSection == 1 ? FormattingCode.UNDERLINE : "") + "Pure", shiftX, shiftY, 0xFFFFFF);
+        fontRenderer.drawStringWithShadow((currentSection == 1 ? FormattingCode.UNDERLINE : "") + ResearchReference.CATEGORY_NAME_PURE, shiftX, shiftY, 0xFFFFFF);
         int i = 2;
         for(Element element : Element.class.getEnumConstants()) {
             shiftY += bookmarkDifference;

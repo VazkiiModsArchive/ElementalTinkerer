@@ -12,10 +12,13 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.network.packet.PacketCompleteResearch;
 import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
+import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarStartRecipe;
+import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarSync;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
+import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -34,12 +37,15 @@ public class CommonProxy {
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityElementalDesk.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTAL_DESK_NAME);
 		GameRegistry.registerTileEntity(TileEntityCatalystCapsule.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.CATALYST_CAPSULE_NAME);
+		GameRegistry.registerTileEntity(TileEntityElementalTinkeringAltar.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
 	}
 
 	/** Registers the mod's packets. Some packets use different
 	 * instances per side. **/
 	public void registerPackets() {
 		PacketHelper.packetHandlers.add(PacketElementalDeskSync.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketElementalistTinkeringAltarSync.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketElementalistTinkeringAltarStartRecipe.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketCompleteResearch.RECIEVER_INSTANCE);
 	}
 

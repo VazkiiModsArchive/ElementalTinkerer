@@ -7,11 +7,23 @@
 package vazkii.tinkerer.block;
 
 import java.awt.Color;
+import java.util.List;
+import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.handler.ConfigurationHandler;
+import vazkii.tinkerer.helper.ResearchHelper;
+import vazkii.tinkerer.item.ElementalTinkererItems;
+import vazkii.tinkerer.reference.GameReference;
+import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
@@ -28,6 +40,51 @@ public class BlockElementiumGem extends BlockET {
 	public BlockElementiumGem(int par1) {
 		super(par1, ResourcesReference.BLOCK_INDEX_ELEMENTIUM_GEM, Material.iron);
 	}
+
+    @Override
+	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+        if (par5 > 0 && Block.blocksList[par5].canProvidePower()) {
+            boolean var6 = par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4);
+
+            if (var6)
+                par1World.scheduleBlockUpdate(par2, par3, par4, blockID, 1);
+        }
+    }
+
+    @Override
+	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+    	if (par1World.isBlockIndirectlyGettingPowered(par2, par3, par4) || par1World.isBlockIndirectlyGettingPowered(par2, par3 + 1, par4)) {
+        		if(!par1World.isRemote) {
+        			int glowstoneFound = 0;
+        			int lampsFound = 0;
+        			for(int x = 0; x < 3; x++)
+        				for(int y = 0; y < 3; y++)
+        					for(int z = 0; z < 3; z++) {
+        						if(par1World.getBlockId(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z) == Block.glowStone.blockID) {
+        							par1World.setBlockWithNotify(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z, 0);
+        							glowstoneFound += 1;
+        						}
+        						if(par1World.getBlockId(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z) == Block.redstoneLampIdle.blockID || par1World.getBlockId(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z) == Block.redstoneLampActive.blockID) {
+        							par1World.setBlockWithNotify(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z, 0);
+        							glowstoneFound += 1;
+        							lampsFound += 1;
+        						}
+        					}
+        			par1World.setBlockWithNotify(par2, par3, par4, 0);
+
+        			ItemStack stack = new ItemStack(ElementalTinkererItems.elementiumDust, GameReference.ELEMENTIUM_DUST_PER_BLOCK * glowstoneFound + GameReference.ELEMENTIUM_DUST_PER_LAMP * lampsFound);
+        			EntityItem item = new EntityItem(par1World, par2, par3, par4, stack);
+        			item.delayBeforeCanPickup = 10;
+        			par1World.spawnEntityInWorld(item);
+
+        			par1World.createExplosion(null, par2, par3, par4, glowstoneFound * GameReference.EXPLOSION_MULTIPLIER_GLOWSTONE + lampsFound + GameReference.EXPLOSION_MULTIPLIER_LAMP, true);
+
+        			List<EntityPlayer> playerList = par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2-8, par3-8, par4-8, par2+8, par3+8, par4+8));
+        			for(EntityPlayer player : playerList)
+        				ResearchHelper.formulateResearchNode(ResearchReference.ID_ELEMENTIUM_INGOT, player, ResearchReference.CATEGORY_NAME_PURE);
+        		}
+        }
+    }
 
 	@Override
 	public int getBlockColor() {
