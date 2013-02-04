@@ -37,7 +37,16 @@ public final class ResearchReference {
 							  ID_WAND_START = 24,
 							  ID_ELEMENTAL_TINKERING = 28,
 							  ID_CATALYST_CAPSULE = 29,
-							  ID_ATTUNER = 30;
+							  ID_ATTUNER = 30,
+							  ID_THUNDERBOLT = 31,
+							  ID_FROSTBOLT = 32,
+							  ID_BOULDER_TOSS = 33,
+							  ID_FIREBALL = 34,
+							  ID_AEREAL_PUSH = 35,
+							  ID_FROSTSHOCK = 36,
+							  ID_IMPLOSION = 37,
+							  ID_FLAME_RING = 38,
+							  ID_ELEMENTIUM_DETECTOR = 39;
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
@@ -52,7 +61,16 @@ public final class ResearchReference {
 							   LABEL_WAND = ItemNames.WAND_NAME + "%s",
 							   LABEL_ELEMENTAL_TINKERING = "elementalTinkering",
 							   LABEL_CATALYST_CAPSULE = BlockNames.CATALYST_CAPSULE_NAME,
-							   LABEL_ATTUNER = BlockNames.ATTUNER_NAME;
+							   LABEL_ATTUNER = BlockNames.ATTUNER_NAME,
+							   LABEL_THUNDERBOLT = SpellReference.LABEL_THUNDERBOLT,
+							   LABEL_FROSTBOLT = SpellReference.LABEL_FROSTBOLT,
+							   LABEL_BOULDER_TOSS = SpellReference.LABEL_BOULDER_TOSS,
+							   LABEL_FIREBALL = SpellReference.LABEL_FIREBALL,
+							   LABEL_AEREAL_PUSH = SpellReference.LABEL_AEREAL_PUSH,
+							   LABEL_FROSTSHOCK = SpellReference.LABEL_FROSTSHOCK,
+							   LABEL_IMPLOSION = SpellReference.LABEL_IMPLOSION,
+							   LABEL_FLAME_RING = SpellReference.LABEL_FLAME_RING,
+							   LABEL_ELEMENTIUM_DETECTOR = ItemNames.ELEMENTIUM_DETECTOR_NAME;
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,
@@ -65,7 +83,16 @@ public final class ResearchReference {
 							   DISPLAY_NAME_ELEMENTIUM_INGOT = ItemNames.ELEMENTIUM_INGOT_DISPLAY_NAME,
 							   DISPLAY_NAME_ELEMENTAL_TINKERING = "Elemental Tinkering",
 							   DISPLAY_NAME_CATALYST_CAPSULE = BlockNames.CATALYST_CAPSULE_DISPLAY_NAME,
-							   DISPLAY_NAME_ATTUNER = "Magical Attuning";
+							   DISPLAY_NAME_ATTUNER = "Magical Attuning",
+							   DISPLAY_NAME_THUNDERBOLT = SpellReference.DISPLAY_NAME_THUNDERBOLT,
+							   DISPLAY_NAME_FROSTBOLT = SpellReference.DISPLAY_NAME_FROSTBOLT,
+							   DISPLAY_NAME_BOULDER_TOSS = SpellReference.DISPLAY_NAME_BOULDER_TOSS,
+							   DISPLAY_NAME_FIREBALL = SpellReference.DISPLAY_NAME_FIREBALL,
+							   DISPLAY_NAME_AEREAL_PUSH = SpellReference.DISPLAY_NAME_AEREAL_PUSH,
+							   DISPLAY_NAME_FROSTSHOCK = SpellReference.DISPLAY_NAME_FROSTSHOCK,
+							   DISPLAY_NAME_IMPLOSION = SpellReference.DISPLAY_NAME_IMPLOSION,
+							   DISPLAY_NAME_FLAME_RING = SpellReference.DISPLAY_NAME_FLAME_RING,
+							   DISPLAY_NAME_ELEMENTIUM_DETECTOR = ItemNames.ELEMENTIUM_DETECTOR_DISPLAY_NAME;
 
 	/** The Compound Tag name of the Research Data **/
 	public static final String COMPOUND_TAG_NAME = "researchData";

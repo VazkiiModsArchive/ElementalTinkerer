@@ -87,12 +87,14 @@ public class ResearchNode implements Comparable<ResearchNode> {
 		return this;
 	}
 
+	/** Binds the latest crafting recipe added to the list **/
 	public ResearchNode bindLatestCraftingRecipe() {
 		List<IRecipe> recipeList = CraftingManager.getInstance().getRecipeList();
 		IRecipe recipe = recipeList.get(recipeList.size() - 1);
 		return bindRecipe(recipe);
 	}
 
+	/** Binds the latest tinkering recipe added to the list **/
 	public ResearchNode bindLatestTinkeringRecipe() {
 		List<TinkeringAltarRecipe> recipeList = ResearchLibrary.recipes;
 		TinkeringAltarRecipe recipe = recipeList.get(recipeList.size() - 1);

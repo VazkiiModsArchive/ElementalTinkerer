@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.helper.MathHelper;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
@@ -81,7 +82,7 @@ public class GuiElementalistTinkeringAltar extends GuiContainer {
     	drawTexturedModalRect(xStart + 102, yStart + 123, xSize, 18, 26, 15);
         if(altar.getIsCreating()) {
         	int time = altar.getProgress();
-        	int size = (int) Math.round(MiscHelper.crossMuliply(TileEntityReference.ELEMENTALIST_TINKERING_ALTAR_TIME, 28, time));
+        	int size = (int) Math.round(MathHelper.crossMuliply(TileEntityReference.ELEMENTALIST_TINKERING_ALTAR_TIME, 28, time));
 
             Color color = Color.getHSBColor((float) Math.cos((double) ClientTickHandler.elapsedClientTicks / ResourcesReference.SPECTRUM_DIVISOR_INFUSION), 1F, 1F);
             GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());

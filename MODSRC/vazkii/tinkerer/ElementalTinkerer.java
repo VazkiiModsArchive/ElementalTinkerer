@@ -8,16 +8,25 @@ package vazkii.tinkerer;
 
 import java.util.logging.Logger;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.compat.Thaumcraft3Compat;
 import vazkii.tinkerer.core.CommonProxy;
 import vazkii.tinkerer.entity.ElementalTinkererEntities;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.handler.CraftingHandler;
+import vazkii.tinkerer.handler.ElementiumDustDropsHandler;
+import vazkii.tinkerer.handler.FrozenEntityHandler;
 import vazkii.tinkerer.handler.GuiHandler;
+import vazkii.tinkerer.handler.InteractionAccessHandler;
+import vazkii.tinkerer.handler.PlayerSpellUpdateHandler;
 import vazkii.tinkerer.handler.PlayerTrackingHandler;
 import vazkii.tinkerer.handler.WorldGenerationHandler;
 import vazkii.tinkerer.item.ElementalTinkererItems;
+import vazkii.tinkerer.magic.ElementalTinkererPotions;
+import vazkii.tinkerer.magic.SpellLibrary;
 import vazkii.tinkerer.network.PacketHandler;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.NetworkReference;
@@ -78,13 +87,16 @@ public class ElementalTinkerer {
 
 		// Proxy: Read the research descriptions
 		proxy.readResearchDescriptions();
+		
+		// Init the Spell Data
+		SpellLibrary.initSpells();
 	}
 
 	@Init
 	public void onInit(FMLInitializationEvent event) {
-		// Register the client tick handler
-		TickRegistry.registerTickHandler(ClientTickHandler.INSTANCE, Side.CLIENT);
-
+		// Proxy: Register the tick handler
+		proxy.registerTickHandler();
+		
 		// Register the Gui Handler
 		NetworkRegistry.instance().registerGuiHandler(instance, GuiHandler.INSTANCE);
 
@@ -93,6 +105,18 @@ public class ElementalTinkerer {
 
 		// Register the Crafting Handler
 		GameRegistry.registerCraftingHandler(CraftingHandler.INSTANCE);
+		
+		// Register, in the Event Bus, the Interaction Access Handler
+		MinecraftForge.EVENT_BUS.register(InteractionAccessHandler.INSTANCE);
+		
+		// Register, in the Event Bus, the Frozen Entity Handler
+		MinecraftForge.EVENT_BUS.register(FrozenEntityHandler.INSTANCE);
+		
+		// Register, in the Event Bus, the Elementium Dust Drop Handler
+		MinecraftForge.EVENT_BUS.register(ElementiumDustDropsHandler.INSTANCE);
+		
+		// Proxy: Register the Client Handlers
+		proxy.registerClientHandlers();
 
 		// Init the mod's Items
 		ElementalTinkererItems.init();
@@ -114,6 +138,9 @@ public class ElementalTinkerer {
 
 		// Init the Tinkering Altar Recipes
 		ResearchLibrary.initTinkeringRecipes();
+		
+		// Init the mod's Potion Effects
+		ElementalTinkererPotions.initPotions();
 
 		// Proxy: Register the mod's Tile Entities
 		proxy.registerTileEntities();
@@ -130,6 +157,7 @@ public class ElementalTinkerer {
 
 	@PostInit
 	public void onPostInit(FMLPostInitializationEvent event) {
-		//NO-OP for now
+		// Register the Thaumcraft 3 compatibility stuff
+		Thaumcraft3Compat.init();
 	}
 }

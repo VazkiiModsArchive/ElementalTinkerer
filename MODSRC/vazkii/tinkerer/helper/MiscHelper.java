@@ -6,10 +6,21 @@
 // Created @ 24 Dec 2012
 package vazkii.tinkerer.helper;
 
+import java.awt.Point;
+
+import vazkii.tinkerer.item.ItemWand;
+import vazkii.tinkerer.lightning.Vector3;
+import vazkii.tinkerer.magic.IWand;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -20,20 +31,29 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  * @author Vazkii
  */
-public class MiscHelper {
+public final class MiscHelper {
 
 	@SideOnly(Side.CLIENT)
-	public static final Minecraft getMc() {
+	public static Minecraft getMc() {
 		return Minecraft.getMinecraft();
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static final EntityPlayer getClientPlayer() {
+	public static EntityClientPlayerMP getClientPlayer() {
 		return getMc().thePlayer;
 	}
+	
+	@SideOnly(Side.CLIENT)
+	public static WorldClient getClientWorld() {
+		return getMc().theWorld;
+	}
 
-	public static final MinecraftServer getServer() {
+	public static MinecraftServer getServer() {
 		return MinecraftServer.getServer();
+	}
+	
+	public static boolean isServerPVP() {
+		return getServer().isPVPEnabled();
 	}
 
 	/** Compares two item stacks and checks if their ID
@@ -46,9 +66,16 @@ public class MiscHelper {
 				|| stack1.getItemDamage() == -1
 				|| stack2.getItemDamage() == -1);
 	}
-
-	/** Does a cross multiplication, where it returns d, where in (d = bc / a) **/
-	public static double crossMuliply(int a, int b, int c) {
-		return b*c / a;
+	
+	@SideOnly(Side.CLIENT)
+	public static boolean doesClientPlayerHaveWand() {
+		Minecraft mc = getMc();
+		EntityPlayer clientPlayer = getClientPlayer();
+		return !(clientPlayer == null ||
+				clientPlayer.inventory.getCurrentItem() == null || 
+				clientPlayer.inventory.getCurrentItem().getItem() == null ||
+				!(clientPlayer.inventory.getCurrentItem().getItem() instanceof IWand) || 
+				mc.currentScreen != null ||
+				SpellHelper.clientSpells == null);
 	}
 }

@@ -15,9 +15,6 @@ package vazkii.tinkerer.reference;
  */
 public final class MiscReference {
 
-	/** Simple and dirty debug mode flag. **/ // VAZ_TODO Set to false for potential releases
-	public static final boolean DEBUG_MODE = true;
-
 	/** The amount of game ticks in a second **/
 	public static final byte TICKS_IN_SECOND = 20;
 

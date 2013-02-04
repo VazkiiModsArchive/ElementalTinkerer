@@ -23,7 +23,8 @@ public final class ItemNames {
 							   ELEMENTAL_BARK_ITEM_NAME = "elementalBark",
 							   WAND_NAME = "wand",
 							   ELEMENTIUM_INGOT_NAME = "elementiumIngot",
-							   ELEMENTIUM_DUST_NAME = "elementiumDust";
+							   ELEMENTIUM_DUST_NAME = "elementiumDust",
+							   ELEMENTIUM_DETECTOR_NAME = "elementiumDetector";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
@@ -34,7 +35,8 @@ public final class ItemNames {
 							   ELEMENTAL_BARK_ITEM_DISPLAY_NAME = "Elemental Bark",
 							   WAND_NAME_PREFIX = "Wand of ",
 							   ELEMENTIUM_INGOT_DISPLAY_NAME = "Elementium Ingot",
-							   ELEMENTIUM_DUST_DISPLAY_NAME = "Elementium Dust";
+							   ELEMENTIUM_DUST_DISPLAY_NAME = "Elementium Dust",
+							   ELEMENTIUM_DETECTOR_DISPLAY_NAME = "Elementium Detector";
 
 	/** The levels for the names of the catalyst item **/
 	public static final String[] CATALYST_LEVELS = {"Lesser ", "Elemental ", "Greater ", "Ender " };

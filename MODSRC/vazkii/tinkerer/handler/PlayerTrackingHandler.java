@@ -9,6 +9,7 @@ package vazkii.tinkerer.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
+import vazkii.tinkerer.helper.SpellHelper;
 import vazkii.tinkerer.network.packet.PacketVerification;
 import cpw.mods.fml.common.IPlayerTracker;
 import cpw.mods.fml.common.network.Player;
@@ -27,8 +28,11 @@ public class PlayerTrackingHandler implements IPlayerTracker {
 
 	@Override
 	public void onPlayerLogin(EntityPlayer player) {
-		PacketHelper.sendPacketToClient((Player) player, PacketVerification.RECIEVER_INSTANCE);
+		PacketHelper.sendPacketToClient((Player) player, PacketVerification.INSTANCE);
+		
 		ResearchHelper.handlePlayerLogin(player);
+		
+		SpellHelper.handlePlayerLogin(player);
 	}
 
 	@Override

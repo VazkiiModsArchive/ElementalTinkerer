@@ -16,6 +16,7 @@ import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.reference.ConfigurationNodes;
 import vazkii.tinkerer.reference.ItemIDs;
 import vazkii.tinkerer.reference.ItemNames;
+import vazkii.tinkerer.reference.PotionReference;
 import vazkii.tinkerer.reference.ResearchReference;
 
 /**
@@ -29,8 +30,9 @@ public final class ConfigurationHandler {
 
 	private static Configuration config;
 
-	private static ConfigCategory categoryGraphics = new ConfigCategory(ConfigurationNodes.CATEGORY_GRAPHICS);
-
+	private static ConfigCategory categoryGraphics = new ConfigCategory(ConfigurationNodes.CATEGORY_GRAPHICS),
+								  categoryPotions = new ConfigCategory(ConfigurationNodes.CATEGORY_POTION_IDS);
+	
 	/** Config nodes **/
 	public static boolean elementiumGemAnimate = ConfigurationNodes.DEFAULT_ELEMENTIUM_GEM_ANIMATE,
 						  elementiumGemSpectrum = ConfigurationNodes.DEFAULT_ELEMENTIUM_GEM_SPECTRUM,
@@ -72,6 +74,10 @@ public final class ConfigurationHandler {
 		ItemIDs.wand = config.getItem(ItemNames.WAND_NAME, ItemIDs.DEFAULT_WAND).getInt(ItemIDs.DEFAULT_WAND);
 		ItemIDs.elementiumIngot = config.getItem(ItemNames.ELEMENTIUM_INGOT_NAME, ItemIDs.DEFAULT_ELEMENTIUM_INGOT).getInt(ItemIDs.DEFAULT_ELEMENTIUM_INGOT);
 		ItemIDs.elementiumDust = config.getItem(ItemNames.ELEMENTIUM_DUST_NAME, ItemIDs.DEFAULT_ELEMENTIUM_DUST).getInt(ItemIDs.DEFAULT_ELEMENTIUM_DUST);
+		ItemIDs.elementiumDetector = config.getItem(ItemNames.ELEMENTIUM_DETECTOR_NAME, ItemIDs.DEFAULT_ELEMENTIUM_DETECTOR).getInt(ItemIDs.DEFAULT_ELEMENTIUM_DETECTOR);
+		
+		// Load Potion IDs
+		PotionReference.idFrozen = config.get(ConfigurationNodes.CATEGORY_POTION_IDS, PotionReference.NAME_FROZEN, PotionReference.ID_DEFAULT_FROZEN).getInt(PotionReference.ID_DEFAULT_FROZEN);
 
 		// Load Graphics Nodes
 		elementiumGemAnimate = config.get(ConfigurationNodes.CATEGORY_GRAPHICS, ConfigurationNodes.NODE_ELEMENTIUM_GEM_ANIMATED, elementiumGemAnimate).getBoolean(elementiumGemAnimate);
@@ -88,6 +94,4 @@ public final class ConfigurationHandler {
 		// Save the config if anything went wrong and happened to need changing
 		config.save();
 	}
-
-
 }

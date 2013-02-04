@@ -186,7 +186,80 @@ public final class ResearchLibrary {
 				  ResearchType.ITEM)
 				  .setNoBook()
 				  .addToCategory(pure));
-
+		
+		// Thunderbolt Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_THUNDERBOLT,
+					ResearchReference.LABEL_THUNDERBOLT,
+					ResearchReference.DISPLAY_NAME_THUNDERBOLT,
+					ResourcesReference.MAGIC_INDEX_THUNDERBOLT,
+					ResearchType.SPELL)
+					.addToCategory(air));
+		
+		// Frostbolt Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_FROSTBOLT,
+					ResearchReference.LABEL_FROSTBOLT,
+					ResearchReference.DISPLAY_NAME_FROSTBOLT,
+					ResourcesReference.MAGIC_INDEX_FROSTBOLT,
+					ResearchType.SPELL)
+					.addToCategory(water));
+		
+		// Boulder Toss Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_BOULDER_TOSS,
+					ResearchReference.LABEL_BOULDER_TOSS,
+					ResearchReference.DISPLAY_NAME_BOULDER_TOSS,
+					ResourcesReference.MAGIC_INDEX_BOULDER_TOSS,
+					ResearchType.SPELL)
+					.addToCategory(earth));
+		
+		// Fireball Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_FIREBALL,
+					ResearchReference.LABEL_FIREBALL,
+					ResearchReference.DISPLAY_NAME_FIREBALL,
+					ResourcesReference.MAGIC_INDEX_FIREBALL,
+					ResearchType.SPELL)
+					.addToCategory(fire));
+		
+		// Aerial Push Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_AEREAL_PUSH,
+					ResearchReference.LABEL_AEREAL_PUSH,
+					ResearchReference.DISPLAY_NAME_AEREAL_PUSH,
+					ResourcesReference.MAGIC_INDEX_AEREAL_PUSH,
+					ResearchType.SPELL)
+					.addToCategory(air));
+		
+		// Frostshock Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_FROSTSHOCK,
+					ResearchReference.LABEL_FROSTSHOCK,
+					ResearchReference.DISPLAY_NAME_FROSTSHOCK,
+					ResourcesReference.MAGIC_INDEX_FROSTSHOCK,
+					ResearchType.SPELL)
+					.addToCategory(water));
+		
+		// Implosion Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_IMPLOSION,
+					ResearchReference.LABEL_IMPLOSION,
+					ResearchReference.DISPLAY_NAME_IMPLOSION,
+					ResourcesReference.MAGIC_INDEX_IMPLOSION,
+					ResearchType.SPELL)
+					.addToCategory(earth));
+		
+		// Flame Ring Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_FLAME_RING,
+					ResearchReference.LABEL_FLAME_RING,
+					ResearchReference.DISPLAY_NAME_FLAME_RING,
+					ResourcesReference.MAGIC_INDEX_FLAME_RING,
+					ResearchType.SPELL)
+					.addToCategory(fire));
+		
+		// Elementium Detector Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ELEMENTIUM_DETECTOR,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_ELEMENTIUM_DETECTOR,
+				  ResearchReference.DISPLAY_NAME_ELEMENTIUM_DETECTOR,
+				  ResourcesReference.RESEARCH_INDEX_ELEMENTIUM_DETECTOR,
+				  ResearchType.ITEM)
+				  .setDefaultEnabled()
+				  .addToCategory(general));
 	}
 
 	public static void initTinkeringRecipes() {

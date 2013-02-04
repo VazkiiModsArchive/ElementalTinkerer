@@ -29,6 +29,8 @@ import vazkii.tinkerer.research.PlayerResearch;
 import vazkii.tinkerer.research.ResearchLibrary;
 import vazkii.tinkerer.research.ResearchNode;
 import cpw.mods.fml.common.network.Player;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * ResearchHelper
@@ -47,7 +49,8 @@ public final class ResearchHelper {
 	public static Map<String, PlayerResearch> researchForPlayers = new HashMap();
 
 	/** Used only in the client, where the research for the client is stored,
-	 * the data here is recieved from packets **/
+	 * the data here is received from packets **/
+	@SideOnly(Side.CLIENT)
 	public static PlayerResearch clientResearch;
 
 	public static void readResearchDescriptions() {
@@ -58,6 +61,7 @@ public final class ResearchHelper {
 			String line = null;
 			String currentResearch = "";
 			while ((line = bufferedReader.readLine()) != null) {
+				line = line.trim(); // Handle possible leading whitespace
 				if(line.startsWith("#")) {
 					descriptions.put(currentResearch, lineList.toArray(new String[lineList.size()]));
 					currentResearch = "";
@@ -185,7 +189,6 @@ public final class ResearchHelper {
 				research.completeResearch(i, false, null);
 			}
 		}
-
   	}
 
 	/** Loads all the research data, looking at the various research data folders **/

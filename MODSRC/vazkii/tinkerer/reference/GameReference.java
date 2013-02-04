@@ -23,6 +23,9 @@ public final class GameReference {
 	 * with an elementium block per block of glowstone around, if
 	 * that block happens to be a redstone lamp **/
 	public static final int ELEMENTIUM_DUST_PER_LAMP = 2;
+	
+	/** The chance of getting elementium dust from mob drops **/
+	public static final double ELEMENTIUM_DUST_MOB_DROP_CHANCE = 0.075;
 
 	/** How much power does the explosion from a reaction with an
 	 * elementium block do per block of glowstone **/

@@ -6,8 +6,12 @@
 // Created @ 10 Jan 2013
 package vazkii.tinkerer.client.helper;
 
+import java.awt.Color;
+import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -15,12 +19,21 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.StringUtils;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.helper.MathHelper;
 import vazkii.tinkerer.helper.MiscHelper;
+import vazkii.tinkerer.helper.ObjectPair;
 import vazkii.tinkerer.helper.ResearchHelper;
+import vazkii.tinkerer.helper.SpellHelper;
+import vazkii.tinkerer.magic.PlayerSpellData;
+import vazkii.tinkerer.magic.Spell;
+import vazkii.tinkerer.magic.SpellLibrary;
+import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.GuiReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.research.ResearchNode;
@@ -29,26 +42,85 @@ import vazkii.tinkerer.research.ResearchNode;
  * RenderHelper
  *
  * Helper for Renders. To render things on screen that are rendered
- * various wells
+ * various times.
  *
  * @author Vazkii
  */
 public final class RenderHelper {
 
+	/** Renders a 16x16 icon at the given positions from the 
+	 * given spritesheet **/
+	public static void renderIcon(String spritesheet, double x, double y, double z, int xSpritesheet, int ySpritesheet) {
+		Minecraft mc = MiscHelper.getMc();
+    	RenderEngine engine = mc.renderEngine;
+		int textureID = engine.getTexture(spritesheet);
+		engine.bindTexture(textureID);
+		drawTexturedModalRect(x, y, z, xSpritesheet, ySpritesheet, 16, 16);
+	}
+	
 	/** Renders a research icon at the given positions, if checkStatus is true,
 	 * checks the research's status, and renders the default icon if it's not
 	 * researched **/
 	public static void renderResearchIcon(ResearchNode node, boolean checkStatus, double x, double y, double z) {
-		Minecraft mc = MiscHelper.getMc();
-    	RenderEngine engine = mc.renderEngine;
-    	int textureID = engine.getTexture(!checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spritesheet : ResourcesReference.RESEARCH_SPRITESHEET);
-    	engine.bindTexture(textureID);
+		if(node == null)
+    		return;
+    	
+		String texture = !checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spritesheet : ResourcesReference.RESEARCH_SPRITESHEET;
     	int index = !checkStatus || ResearchHelper.clientResearch.isResearchDone(node.index) ? ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spriteIndex : ResourcesReference.RESEARCH_INDEX_ELLIPSES : ResourcesReference.RESEARCH_INDEX_QUESTIONMARK;
-    	int xSpritesheetStart = index % 16 * 16;
-    	int ySpritesheetStart = index / 16 * 16;
-    	drawTexturedModalRect(x, y, z, xSpritesheetStart, ySpritesheetStart, 16, 16);
+    	int xSpritesheet = index % 16 * 16;
+    	int ySpritesheet = index / 16 * 16;
+    	renderIcon(texture, x, y, z, xSpritesheet, ySpritesheet);
+	}
+	
+	public static void renderResearchIconWithBackground(ResearchNode node, boolean checkStatus, double x, double y, double z, int background) {
+		int xCoord = ResourcesReference.RESEARCH_BACKGROUND_X_COORD + background * 16;
+		int yCoord = ResourcesReference.RESEARCH_BACKGROUND_Y_COORD;
+		renderIcon(ResourcesReference.RESEARCH_SPRITESHEET, x, y, z, xCoord, yCoord);
+		renderResearchIcon(node, checkStatus, x, y, z);
 	}
 
+	public static void renderSpellIcon(Spell spell, double x, double y, double z) {
+		if(spell == null)
+			return;
+					
+    	int index = spell.spriteIndex;
+    	int xSpritesheet = index % 16 * 16;
+    	int ySpritesheet = index / 16 * 16;
+    	renderIcon(ResourcesReference.MAGIC_SPRITESHEET, x, y, z, xSpritesheet, ySpritesheet);
+	}
+	
+	public static void renderSpellFrame(double x, double y, double z) {
+		GL11.glPushMatrix();
+		Minecraft mc = MiscHelper.getMc();
+		RenderEngine render = mc.renderEngine;
+		int texture = render.getTexture(ResourcesReference.MAGIC_SPRITESHEET);
+		render.bindTexture(texture);
+		GL11.glScalef(0.5F, 0.5F, 0.5F);
+		drawTexturedModalRect((x-1)*2, (y-1)*2, z*2, 0, ResourcesReference.MAGIC_SPRITESHEET_Y_OFFSET_FRAME, 36, 36);
+		GL11.glPopMatrix();
+	}
+	
+	public static void renderCooldown(double x, double y, double z, int cooldown) {
+		if(cooldown > 0) {
+			String time = FormattingCode.RED + "" + FormattingCode.BOLD + StringUtils.ticksToElapsedTime(cooldown);
+			GL11.glPushMatrix();
+			GL11.glScalef(0.5F, 0.5F, 0.5F);
+			FontRenderer fr = MiscHelper.getMc().fontRenderer;
+			int timeStrWidth = fr.getStringWidth(time);
+			fr.drawStringWithShadow(time, (int) ((x + 6) * 2 - timeStrWidth), (int) ((y + 4) * 2), 0xFFFFFF);
+			GL11.glColor3f(1F, 1F, 1F);
+			GL11.glPopMatrix();
+		}
+	}
+	
+	public static void renderSpellIconWithBackgroundAndFrame(Spell spell, double x, double y, double z) {
+		int xCoord = ResourcesReference.SPELL_BACKGROUND_X_COORD;
+		int yCoord = ResourcesReference.SPELL_BACKGROUND_Y_COORD;
+		renderSpellFrame(x, y, z);
+		renderIcon(ResourcesReference.MAGIC_SPRITESHEET, x, y, z, xCoord, yCoord);
+		renderSpellIcon(spell, x, y, z);
+	}
+	
 	public static void renderTooltip(int x, int y, String... tooltipData) {
 		renderTooltip(x, y, GuiReference.TOOLTIP_DEFAULT_COLOR, GuiReference.TOOLTIP_DEFAULT_COLOR_BG, tooltipData);
 	}
@@ -104,7 +176,7 @@ public final class RenderHelper {
         }
 	}
 
-	/** Renders a block in the inventory **/
+	/** Renders a block in the inventory, must be translated previosuly **/
 	public static void renderInventoryBlock(Block block, int metadata, RenderBlocks renderer) {
 		Tessellator var4 = Tessellator.instance;
 
@@ -151,10 +223,170 @@ public final class RenderHelper {
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 	}
+	
+	/** Renders a star, similar to the dragon death animation, must be
+	 * translated previously **/
+	public static void renderStar(int color, float xScale, float yScale, float zScale) {
+		Tessellator tessellator = Tessellator.instance;
+		net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
+
+		int ticks = (int) (ClientTickHandler.elapsedClientTicks % 200);
+		if (ticks >= 100)
+			ticks = 200 - ticks - 1;
+
+		float f1 = ticks / 200F;
+		float f2 = 0.0F;
+		if (f1 > 0.7F)
+			f2 = (f1 - 0.7F) / 0.2F;
+		Random random = new Random(432L);
+
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GL11.glShadeModel(GL11.GL_SMOOTH);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(770, 1);
+		GL11.glDisable(GL11.GL_ALPHA_TEST);
+		GL11.glEnable(GL11.GL_CULL_FACE);
+		GL11.glDepthMask(false);
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0.0F, -1F, -2F);
+		GL11.glScalef(xScale, yScale, zScale);
+		for (int i = 0; i < (f1 + f1 * f1) / 2F * 90F + 30F; i++) {
+			GL11.glRotatef(random.nextFloat() * 360F, 1.0F, 0.0F, 0.0F);
+			GL11.glRotatef(random.nextFloat() * 360F, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(random.nextFloat() * 360F, 0.0F, 0.0F, 1.0F);
+			GL11.glRotatef(random.nextFloat() * 360F, 1.0F, 0.0F, 0.0F);
+			GL11.glRotatef(random.nextFloat() * 360F, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(random.nextFloat() * 360F + f1 * 90F, 0.0F, 0.0F, 1.0F);
+			tessellator.startDrawing(6);
+			float f3 = random.nextFloat() * 20F + 5F + f2 * 10F;
+			float f4 = random.nextFloat() * 2.0F + 1.0F + f2 * 2.0F;
+			tessellator.setColorRGBA_I(color, (int) (255F * (1.0F - f2)));
+			tessellator.addVertex(0.0D, 0.0D, 0.0D);
+			tessellator.setColorRGBA_F(0.0F, 0.0F, 0.0F, 0);
+			tessellator.addVertex(-0.86599999999999999D * f4, f3, -0.5F * f4);
+			tessellator.addVertex(0.86599999999999999D * f4, f3, -0.5F * f4);
+			tessellator.addVertex(0.0D, f3, 1.0F * f4);
+			tessellator.addVertex(-0.86599999999999999D * f4, f3, -0.5F * f4);
+			tessellator.draw();
+		}
+
+		GL11.glDepthMask(true);
+		GL11.glDisable(GL11.GL_CULL_FACE);
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glShadeModel(GL11.GL_FLAT);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GL11.glPopMatrix();
+	}
+	
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star, PlayerSpellData spellData) {
+		if(SpellHelper.clientSpells == null || spells.length == 0)
+			return new ArrayList(); // No spells, return empty 
+		
+		int color = Color.getHSBColor((float) Math.cos((double) ClientTickHandler.elapsedClientTicks / ResourcesReference.SPECTRUM_DIVISOR_INFUSION), 0.6F, 1F).getRGB();
+		Point origin = new Point(xCenter, yCenter);
+		GL11.glPushMatrix();
+		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		int degPerPoint = (int) Math.round(360D / (double) spells.length);
+		int currentDeg = -90;
+		Point[] points = new Point[spells.length];
+		for(int i = 0; i < spells.length; i++) {
+			Point point = MathHelper.getPointInCircle(origin, currentDeg, radius);
+			points[i] = point;
+			currentDeg += degPerPoint;
+		}
+		startDrawingLines();
+		drawCircumference(origin, z, color, radius);
+		for(int i = 0; i < points.length; i++)
+			for(int j = 0; j < points.length; j++)
+				if(j == i)
+					continue;
+				else drawSimpleLine(points[i], points[j], z, color);
+		endDrawingLines();
+
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		for(int i = 0; i < spells.length; i++) {
+			int x = points[i].x;
+			int y = points[i].y;
+			short spellIndex = spells[i];
+			Spell spell = SpellLibrary.allSpells.get(spellIndex);
+			if(i == SpellHelper.clientSpells.getSpellSelected() && star) {
+				GL11.glPushMatrix();
+				GL11.glTranslatef(x, y, z);
+				renderStar(color, 1.7F, 1.7F, 1.7F);
+				GL11.glPopMatrix();
+			}
+			renderSpellIconWithBackgroundAndFrame(spell, x - 8, y - 8, z);
+			if(spellData != null && spellData.spellCooldowns.containsKey(spellIndex)) {
+				int cooldown = spellData.spellCooldowns.get(spellIndex);
+				renderCooldown(x, y, z, cooldown);
+			}
+		}
+		
+		GL11.glPopMatrix();
+		
+		List<ObjectPair<Point, Short>> pairs = new ArrayList();
+		for(int i = 0; i < Math.min(points.length, spells.length); i++) {
+			ObjectPair<Point, Short> pair = new ObjectPair(points[i], spells[i]);
+			pairs.add(pair);
+		}
+		return pairs;
+	}
+	
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius) {
+		return drawSpellCircle(spells, xCenter, yCenter, z, radius, true);
+	}
+	
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, PlayerSpellData spellData) {
+		return drawSpellCircle(spells, xCenter, yCenter, z, radius, true, spellData);
+	}
+	
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star) {
+		return drawSpellCircle(spells, xCenter, yCenter, z, radius, star, null);
+	}
+	
+	/** Sets the GL values to draw lines **/
+	public static void startDrawingLines() {
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glLineWidth(3F);
+	}
+	
+	/** Draws a circumference **/
+	public static void drawCircumference(Point origin, int z, int color, int radius) {
+		GL11.glBegin(GL11.GL_LINE_STRIP);
+		Color colorRGB = new Color(color);
+		GL11.glColor4ub((byte) colorRGB.getRed(), (byte) colorRGB.getGreen(), (byte) colorRGB.getBlue(), (byte) (0.2 * 255));
+		for(int i = 0; i < 360; i++) {
+			Point point = MathHelper.getPointInCircle(origin, i, radius);
+			GL11.glVertex2i(point.x, point.y);
+		}
+		GL11.glEnd();
+	}
+	
+	/** Draws a line in the plane from point A to point B **/
+	public static void drawSimpleLine(Point pointA, Point pointB, int z, int color) {
+		GL11.glBegin(GL11.GL_LINES);
+		Color colorRGB = new Color(color);
+		GL11.glColor4ub((byte) colorRGB.getRed(), (byte) colorRGB.getGreen(), (byte) colorRGB.getBlue(), (byte) (0.2 * 255));
+		GL11.glVertex2i(pointA.x, pointA.y);
+		GL11.glVertex2i(pointB.x, pointB.y);
+		GL11.glEnd();
+	}
+	
+	/** Reverts the GL values for drawing lines **/
+	public static void endDrawingLines() {
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+	}
 
 	// Copy from Gui.drawTexturedModalRect.
-    public static void drawTexturedModalRect(double par1, double par2, double z, int par3, int par4, int par5, int par6)
-    {
+    public static void drawTexturedModalRect(double par1, double par2, double z, int par3, int par4, int par5, int par6) {
         float var7 = 0.00390625F;
         float var8 = 0.00390625F;
         Tessellator var9 = Tessellator.instance;

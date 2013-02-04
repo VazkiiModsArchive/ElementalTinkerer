@@ -23,6 +23,9 @@ public final class ResourcesReference {
 
 	/** Root location for entity texture resources **/
 	public static final String ROOT_ENTITY = ROOT + "entity/";
+	
+	/** Root Location for the lightning resources **/
+	public static final String ROOT_LIGHTNING = ROOT + "lightning/";
 
 	/** Root location for gui texture resources **/
 	public static final String ROOT_GUI = ROOT + "gui/";
@@ -41,6 +44,12 @@ public final class ResourcesReference {
 
 	/** The Spritesheet containing research sprites **/
 	public static final String RESEARCH_SPRITESHEET = ROOT + "research.png";
+	
+	/** The Spritesheet containing the spell sprites **/
+	public static final String MAGIC_SPRITESHEET = ROOT + "magic.png";
+	
+	/** The Spritehseet containing the potion effect sprites **/
+	public static final String POTIONS_SPRITESHEET = ROOT_GUI + "potionEffects.png";
 
 	/** The location of the Texture File for the Elemental Desk Model **/
 	public static final String MODEL_TEX_ELEMENTAL_DESK = ROOT_MODEL + "elementalDesk.png";
@@ -50,9 +59,14 @@ public final class ResourcesReference {
 
 	/** The location of book textures **/
 	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";
+	
+	/** Textures for the Lightning **/
+	public static final String LIGHTNING_INNER_TEXTURE = ROOT_LIGHTNING + "inner.png",
+							   LIGHTNING_OUTER_TEXTURE = ROOT_LIGHTNING + "outer.png";
 
 	/** Integers for the Blocks Spritesheet indexes **/
-	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_NON_AIMATED = 5,
+	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_START = 0,
+							BLOCK_INDEX_ELEMENTIUM_ORE_NON_COLORED = 5,
 							BLOCK_INDEX_ELEMENTIUM_GEM = 16,
 							BLOCK_INDEX_ATTUNER_GLASS = 17,
 							BLOCK_INDEX_ATTUNER_TOP = 18,
@@ -61,10 +75,6 @@ public final class ResourcesReference {
 	/** Integers for the Blocks Spritesheet (64x) indexes **/
 	public static final int BLOCK_64_INDEX_ELEMENTALIST_TINKERING_ALTAR = 0;
 
-	/** Integers for the Blocks Spritesheet Animations **/
-	public static final int BLOCK_ANIM_ELEMENTIUM_ORE_START = 0,
-							BLOCK_ANIM_ELEMENTIUM_ORE_END = 15;
-
 	/** Integers for the Items Spritesheet indexes **/
 	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0,
 							ITEM_INDEX_ELEMENTALIST_LEXICON = 4,
@@ -72,7 +82,9 @@ public final class ResourcesReference {
 							ITEM_INDEX_CATALYST_START = 16,
 							ITEM_INDEX_ELEMENTAL_BARK = 32,
 							ITEM_INDEX_WAND_REGULAR = 33,
-							ITEM_INDEX_WAND_COLORIZE = 34;
+							ITEM_INDEX_WAND_COLORIZE = 34,
+							ITEM_INDEX_ELEMENTIUM_DETECTOR_REGULAR = 49,
+							ITEM_INDEX_ELEMENTIUM_DETECTOR_COLORIZE = 50;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
@@ -91,11 +103,29 @@ public final class ResourcesReference {
 							RESEARCH_INDEX_WAND_START = 7,
 							RESEARCH_INDEX_ELEMENTAL_TINKERING = 11,
 							RESEARCH_INDEX_CATALYST_CAPSULE = 12,
-							RESEARCH_INDEX_ATTUNER = 13;
+							RESEARCH_INDEX_ATTUNER = 13,
+							RESEARCH_INDEX_ELEMENTIUM_DETECTOR = 14;
+	
+	/** Integers for the Magic Spritesheet indexes **/
+	public static final int MAGIC_INDEX_BACKGROUND = 255,
+							MAGIC_SPRITESHEET_Y_OFFSET_FRAME = 220,
+							MAGIC_INDEX_THUNDERBOLT = 0,
+							MAGIC_INDEX_FROSTBOLT = 1,
+							MAGIC_INDEX_BOULDER_TOSS = 2,
+							MAGIC_INDEX_FIREBALL = 3,
+							MAGIC_INDEX_AEREAL_PUSH = 16,
+							MAGIC_INDEX_FROSTSHOCK = 17,
+							MAGIC_INDEX_IMPLOSION = 18,
+							MAGIC_INDEX_FLAME_RING = 19;
+	
+	/** Integers for the Potion Effect Spritesheet indexes **/
+	public static final int POTION_INDEX_FROZEN = 0;
 
 	/** Integers for Animation tick speeds **/
 	public static final int ANIM_SPEED_ELEMENTIUM_GEM = 2,
-							ANIM_SPEED_ELEMENTIUM_INGOT = 2;
+							ANIM_SPEED_ELEMENTIUM_INGOT = 2,
+							ANIM_SPEED_ELEMENTIUM_DETECTOR = 1,
+							ANIM_MAX_ELEMENTIUM_DETECTOR = 45;
 
 	/** The file that contains the Elementium Guardian Mob Texture **/
 	public static final String MOB_ELEMENTAL_GUARDIAN_TEXTURE = ROOT_ENTITY + "oreGuardian.png";
@@ -105,8 +135,13 @@ public final class ResourcesReference {
 							   GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE = ROOT_GUI + "researchBook.png",
 							   GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE = ROOT_GUI + "recipeBook.png",
 							   GUI_RESEARCH_GAME_TEXTURE = ROOT_GUI + "researchGame.png",
-							   GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE = ROOT_GUI + "infusion.png";
+							   GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE = ROOT_GUI + "infusion.png",
+							   GUI_ATTUNER_TEXTURE = ROOT_GUI + "attuner.png";
 
+	/** The spell backgrounc coordinate on the spell spritesheet **/
+	public static final int SPELL_BACKGROUND_X_COORD = 240,
+							SPELL_BACKGROUND_Y_COORD = 240;
+	
 	/** The reserach background coordinates on the research spritesheet **/
 	public static final int RESEARCH_BACKGROUND_X_COORD = 160,
 							RESEARCH_BACKGROUND_Y_COORD = 240;

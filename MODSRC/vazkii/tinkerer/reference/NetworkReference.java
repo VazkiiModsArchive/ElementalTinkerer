@@ -25,5 +25,8 @@ public class NetworkReference {
 							   SUBCHANNEL_RESEARCH = "research",
 							   SUBCHANNEL_RESEARCH_COMPLETE = "researchComplete",
 							   SUBCHANNEL_ELEMENTAL_TINKERING_ALTAR_SYNC = "altarSync",
-							   SUBCHANNEL_ELEMENTAL_TINKERING_START_RECIPE = "altarStartRecipe";
+							   SUBCHANNEL_ELEMENTAL_TINKERING_START_RECIPE = "altarStartRecipe",
+							   SUBCHANNEL_LIGHTNING = "lightning",
+							   SUBCHANNEL_SPELLS =  "spells",
+							   SUBCHANNEL_CLIENT_SPELLS = "clientSpells";
 }

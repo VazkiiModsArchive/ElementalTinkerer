@@ -32,7 +32,7 @@ import vazkii.tinkerer.reference.ResourcesReference;
 public class BlockElementiumOre extends BlockET {
 
 	public BlockElementiumOre(int par1) {
-		super(par1, ResourcesReference.BLOCK_ANIM_ELEMENTIUM_ORE_START, Material.rock);
+		super(par1, ResourcesReference.BLOCK_INDEX_ELEMENTIUM_ORE_START, Material.rock);
 	}
 
 	@Override

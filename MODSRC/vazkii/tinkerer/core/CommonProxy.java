@@ -9,17 +9,22 @@ package vazkii.tinkerer.core;
 import java.awt.Color;
 
 import net.minecraft.world.World;
+import vazkii.tinkerer.handler.TickHandler;
 import vazkii.tinkerer.helper.PacketHelper;
+import vazkii.tinkerer.network.packet.PacketClientSpells;
 import vazkii.tinkerer.network.packet.PacketCompleteResearch;
 import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
 import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarStartRecipe;
 import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarSync;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.BlockNames;
+import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * CommonProxy
@@ -28,6 +33,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * The client and server proxies extend this class to
  * add functionality only available on the specific side.
  *
+ * @see ClientProxy
  * @author Vazkii
  */
 public class CommonProxy {
@@ -38,6 +44,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityElementalDesk.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTAL_DESK_NAME);
 		GameRegistry.registerTileEntity(TileEntityCatalystCapsule.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.CATALYST_CAPSULE_NAME);
 		GameRegistry.registerTileEntity(TileEntityElementalTinkeringAltar.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
+		GameRegistry.registerTileEntity(TileEntityAttuner.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ATTUNER_NAME);
 	}
 
 	/** Registers the mod's packets. Some packets use different
@@ -47,6 +54,18 @@ public class CommonProxy {
 		PacketHelper.packetHandlers.add(PacketElementalistTinkeringAltarSync.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketElementalistTinkeringAltarStartRecipe.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketCompleteResearch.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketClientSpells.RECIEVER_INSTANCE);
+	}
+	
+	/** Registers the tick handler **/
+	public void registerTickHandler() {
+		TickRegistry.registerTickHandler(TickHandler.INSTANCE, Side.SERVER);
+	}
+	
+	/** Registers any handlers exclusive to the client side,
+	 * obviously NO-OP in server side. **/
+	public void registerClientHandlers() {
+		// NO-OP
 	}
 
 	/** Used by the client to map entity classes to their adequate
@@ -72,11 +91,32 @@ public class CommonProxy {
 	public void readResearchDescriptions() {
 		// NO-OP
 	}
+	
+	/** Initializes the client spells, this is called when
+	 * a spell packet is recieved, NO-OP in server side,
+	 * because similar packets are sent for both sides **/
+	public void initClientSpells() {
+		// NO-OP
+	}
+	
+	/** Sets the on-screen tooltip (simlar to the one that shows up
+	 * when you change items, but higher up and with a different 
+	 * render method), NO-OP in server side. **/
+	public void setItemOnScreenTooltip(String tooltip) {
+		// NO-OP
+	}
 
 	/** Used by the client to spawn a colored portal particle at
 	 * the location passed in, with the color and motion passed
 	 * in. NO-OP in server side. **/
 	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
+		// NO-OP
+	}
+
+	/** Used by the client to spawn a steam particle at
+	 * the location passed in, with the motion passed
+	 * in. NO-OP in server side. **/
+	public void spawnSteamParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		// NO-OP
 	}
 }

@@ -30,5 +30,5 @@ public final class BlockNames {
 							   ELEMENTIUM_GEM_BLOCK_DISPLAY_NAME = "Block of Elementium",
 							   ELEMENTALIST_TINKERING_ALTAR_DISPLAY_NAME = "Elementalist's Tinkering Altar",
 							   CATALYST_CAPSULE_DISPLAY_NAME = "Catalyst Capsule",
-							   ATTUNER_DISPLAY_NAME = "Attuner (NYI)"; //VAZ_TODO Remove NYI Flag
+							   ATTUNER_DISPLAY_NAME = "Attuner";
 }

@@ -14,20 +14,22 @@ package vazkii.tinkerer.simpleanim;
  *
  * @author Vazkii
  */
-public class TickBasedIntegerCycle {
+public class TickBasedIntegerCycle implements IIntegerCycle {
 
 	/** Starting index for the cycle **/
-	private final int startIndex;
+	final int startIndex;
+	
 	/** Cycle ends here, start over when it reaches this **/
-	private final int finalIndex;
+	final int finalIndex;
+	
 	/** Ticks to wait before the next cycle entry **/
-	private final int ticks;
+	final int ticks;
 
 	/** Ticks elapsed since the last iteration **/
-	private int elapsedTicks;
+	int elapsedTicks;
 
 	/** At what integer is the cycle **/
-	private int currentIndex;
+	int currentIndex;
 
 	public TickBasedIntegerCycle(int startIndex, int finalIndex, int ticks) {
 		this.startIndex = currentIndex = startIndex; //Sync the current index with the initial
@@ -45,6 +47,10 @@ public class TickBasedIntegerCycle {
 
 	/** Iterates to the next cycle entry, or the first entry if that's the case **/
 	void iterate() {
+		iterate_do();
+	}
+	
+	void iterate_do() {
 		if(currentIndex >= finalIndex)
 			currentIndex = startIndex;
 		else currentIndex++;
@@ -52,7 +58,7 @@ public class TickBasedIntegerCycle {
 		elapsedTicks = 0;
 	}
 
-	public int getCurrentIndex() {
+	public int getCurrentValue() {
 		return currentIndex;
 	}
 }

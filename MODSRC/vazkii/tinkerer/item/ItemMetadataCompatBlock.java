@@ -17,7 +17,7 @@ import vazkii.tinkerer.reference.MiscReference;
  * ItemMetadataCompatBlock
  *
  * Metadata Compatible ItemBlock. The ItemBlock type always
- * places down metadata 1. This one places a block with the
+ * places down metadata 0. This one places a block with the
  * metadata present in the ItemStack.
  *
  * @author Vazkii
@@ -41,7 +41,7 @@ public class ItemMetadataCompatBlock extends ItemBlock {
 
        if (world.getBlockId(x, y, z) == blockID2){
            Block.blocksList[blockID2].onBlockPlacedBy(world, x, y, z, player);
-           Block.blocksList[blockID2].func_85105_g(world, x, y, z, metadata);
+           Block.blocksList[blockID2].onPostBlockPlaced(world, x, y, z, metadata);
        }
 
        return true;

@@ -29,8 +29,7 @@ public class EntityFXColoredPortal extends EntityPortalFX {
 	public EntityFXColoredPortal(Color color, World par1World, double par2, double par4, double par6, double par8, double par10, double par12) {
 		super(par1World, par2, par4, par6, par8, par10, par12);
 		particleRed = color.getRed() / 255F; // Particle colors are 0F-1F, RGB colors are 0-255
-		particleGreen =color.getGreen() / 255F;
+		particleGreen = color.getGreen() / 255F;
 		particleBlue =  color.getBlue() / 255F;
 	}
-
 }

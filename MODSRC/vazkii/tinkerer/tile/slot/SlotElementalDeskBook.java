@@ -26,7 +26,7 @@ public class SlotElementalDeskBook extends Slot {
 
 	@Override
     public boolean isItemValid(ItemStack par1ItemStack) {
-        return par1ItemStack.itemID == Item.book.shiftedIndex;
+        return par1ItemStack.itemID == Item.book.itemID;
     }
 
 }

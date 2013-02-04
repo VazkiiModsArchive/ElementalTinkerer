@@ -39,7 +39,7 @@ public class ItemElementiumIngot extends ItemET {
 	@Override
 	public int getIconFromDamage(int par1) {
 		return !ConfigurationHandler.elementiumIngotAnimate ? super.getIconFromDamage(par1) :
-			   SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_INGOT_ANIM_INDEX].getCurrentIndex();
+			   SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_INGOT_ANIM_INDEX].getCurrentValue();
 	}
 
 }

@@ -28,7 +28,7 @@ import cpw.mods.fml.common.network.Player;
  */
 public class PacketVerification extends ETPacket {
 
-	public static final PacketVerification RECIEVER_INSTANCE = new PacketVerification();
+	public static final PacketVerification INSTANCE = new PacketVerification();
 
 	@Override
 	public ByteArrayOutputStream asOutputStream() throws IOException {

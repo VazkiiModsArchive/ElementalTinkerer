@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.reference.EntityReference;
+import vazkii.tinkerer.reference.PotionReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 
 /**

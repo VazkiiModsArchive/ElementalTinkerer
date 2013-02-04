@@ -15,8 +15,9 @@ package vazkii.tinkerer.research;
  */
 public enum ResearchType {
 
+	KNOWLEDGE("Knowledge"),
 	ITEM("Item"),
-	SKILL("Skill"),
+	SPELL("Spell"),
 	PASSIVE("Passive");
 
 	private ResearchType(String displayName) {

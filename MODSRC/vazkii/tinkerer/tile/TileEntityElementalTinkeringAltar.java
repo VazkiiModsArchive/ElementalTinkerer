@@ -15,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
+import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarSync;
 import vazkii.tinkerer.reference.BlockIDs;
@@ -189,6 +190,20 @@ public class TileEntityElementalTinkeringAltar extends TileEntity implements IIn
                         setInventorySlotContents(i, null);
                     }
 				}
+			}
+		}
+		
+		if(getIsCreating()) {
+			double smoke = worldObj.rand.nextFloat() * 2.0f - 1.0f;
+			if(smoke > 0.5f) {
+				if(hasCatalystCapsuleOnSide(0))
+					ElementalTinkerer.proxy.spawnSteamParticle(worldObj, xCoord + 1.55, yCoord + 0.2, zCoord + 0.5, 0, 0, 0);
+				if(hasCatalystCapsuleOnSide(1))
+					ElementalTinkerer.proxy.spawnSteamParticle(worldObj, xCoord - 0.55, yCoord + 0.2, zCoord + 0.5, 0, 0, 0);
+				if(hasCatalystCapsuleOnSide(2))
+					ElementalTinkerer.proxy.spawnSteamParticle(worldObj, xCoord + 0.5, yCoord + 0.2, zCoord + 1.55, 0, 0, 0);
+				if(hasCatalystCapsuleOnSide(3))
+					ElementalTinkerer.proxy.spawnSteamParticle(worldObj, xCoord + 0.5, yCoord + 0.2, zCoord - 0.55, 0, 0, 0);
 			}
 		}
 	}

@@ -20,8 +20,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.handler.ConfigurationHandler;
+import vazkii.tinkerer.helper.LightningHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.item.ElementalTinkererItems;
+import vazkii.tinkerer.lightning.Vector3;
+import vazkii.tinkerer.reference.EffectReference;
 import vazkii.tinkerer.reference.GameReference;
 import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
@@ -75,13 +78,19 @@ public class BlockElementiumGem extends BlockET {
         			ItemStack stack = new ItemStack(ElementalTinkererItems.elementiumDust, GameReference.ELEMENTIUM_DUST_PER_BLOCK * glowstoneFound + GameReference.ELEMENTIUM_DUST_PER_LAMP * lampsFound);
         			EntityItem item = new EntityItem(par1World, par2, par3, par4, stack);
         			item.delayBeforeCanPickup = 10;
+        			int power = (int) (glowstoneFound * GameReference.EXPLOSION_MULTIPLIER_GLOWSTONE + lampsFound + GameReference.EXPLOSION_MULTIPLIER_LAMP);
+        			par1World.createExplosion(null, par2, par3, par4, power, true);
         			par1World.spawnEntityInWorld(item);
-
-        			par1World.createExplosion(null, par2, par3, par4, glowstoneFound * GameReference.EXPLOSION_MULTIPLIER_GLOWSTONE + lampsFound + GameReference.EXPLOSION_MULTIPLIER_LAMP, true);
 
         			List<EntityPlayer> playerList = par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2-8, par3-8, par4-8, par2+8, par3+8, par4+8));
         			for(EntityPlayer player : playerList)
         				ResearchHelper.formulateResearchNode(ResearchReference.ID_ELEMENTIUM_INGOT, player, ResearchReference.CATEGORY_NAME_PURE);
+        		
+        			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2, par3 + power, par4), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);
+        			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2 + power, par3 + power / 4, par4), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);
+        			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2 - power, par3 + power / 4, par4), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);
+        			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2, par3 + power / 4, par4 + power), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);
+        			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2, par3 + power / 4, par4 - power), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);
         		}
         }
     }

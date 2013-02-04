@@ -94,7 +94,7 @@ public class GuiElementalDesk extends GuiContainer {
 
         // Render the Book Model, if present
         ItemStack shouldBeABook = deskTile.getStackInSlot(4);
-        if(shouldBeABook != null && shouldBeABook.itemID == Item.book.shiftedIndex) {
+        if(shouldBeABook != null && shouldBeABook.itemID == Item.book.itemID) {
         	 GL11.glPushMatrix();
              GL11.glMatrixMode(GL11.GL_PROJECTION);
              GL11.glPushMatrix();

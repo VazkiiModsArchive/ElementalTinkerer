@@ -102,7 +102,8 @@ public class GuiResearchGame extends GuiScreen {
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
-		verify();
+		if(verify())
+			return;
 
 		fontRenderer.drawStringWithShadow("Moves: " + moves, xStart, yStart - 12, 0xFFFFFF);
 		fontRenderer.drawStringWithShadow("\u2718", xStart + 146, yStart, 0xFFFFFF);
@@ -274,15 +275,16 @@ public class GuiResearchGame extends GuiScreen {
 		return i - 1;
 	}
 
-	public void verify() {
+	public boolean verify() {
 		for(int i=0; i < squares.length; i++)
 			if(squares[i] != i+1 && !(i == 15 && squares[i] == 0))
-				return;
+				return false;
 
 		PacketCompleteResearch packet = new PacketCompleteResearch(node);
 		PacketHelper.sendPacketToServer(packet);
 		ResearchHelper.clientResearch.completeResearch(node.index, false, null);
 		MiscHelper.getMc().displayGuiScreen(new GuiElementalistLexiconIndex());
+		return true;
 	}
 
 	public void randomlyAsignSquares() {

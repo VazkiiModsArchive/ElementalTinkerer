@@ -168,17 +168,17 @@ elementiumDust:
 Research has found that, when
 exposed to Glowstone and
 Redstone power, Elementium 
-Gem Blocks can cause violent
+Gem Blocks can cause VIOLENT
 reactions with the the 
 glowstone blocks in a 3x3 
 area, turning them into 
 elementium dust, which can
 be used to create advanced
 elemental materials. It is
-highly advised to do the
-reaction in a contained
-environment to prevent
-extreme damage.
+also been found that it's
+possible to loot some of
+this dust from killing
+hostile entities.
 #----------------------------------------------------
 elementiumIngot:
 An Ingot of gold mixed with
@@ -198,6 +198,13 @@ wand can cast any spell
 but has benefits when
 casting spells from the
 Water tree.
+
+A spell can be casted by
+right clicking with it
+equipped, to switch spells
+sneak right click. This
+only applies when spells
+are equipped.
 #----------------------------------------------------
 wand1:
 A wand of Elemental Magic
@@ -207,6 +214,13 @@ wand can cast any spell
 but has benefits when
 casting spells from the
 Air tree.
+
+A spell can be casted by
+right clicking with it
+equipped, to switch spells
+sneak right click. This
+only applies when spells
+are equipped.
 #----------------------------------------------------
 wand2:
 A wand of Elemental Magic
@@ -216,6 +230,13 @@ wand can cast any spell
 but has benefits when
 casting spells from the
 Earth tree.
+
+A spell can be casted by
+right clicking with it
+equipped, to switch spells
+sneak right click. This
+only applies when spells
+are equipped.
 #----------------------------------------------------
 wand3:
 A wand of Elemental Magic
@@ -225,6 +246,13 @@ wand can cast any spell
 but has benefits when
 casting spells from the
 Fire tree.
+
+A spell can be casted by
+right clicking with it
+equipped, to switch spells
+sneak right click. This
+only applies when spells
+are equipped.
 #----------------------------------------------------
 elementalTinkering:
 The Ability to tinker with
@@ -264,4 +292,84 @@ the magics are bound,
 they can be casted, or,
 if the magic happens to
 be passive, benefited from.
+#----------------------------------------------------
+thunderbolt:
+Spell Type: Active
+Cooldown: 2s
+
+Shoots a Bolt of Lightning
+that hits whatever is in
+front of you.
+#----------------------------------------------------
+frostbolt:
+Spell Type: Active
+Cooldown 8s
+
+Shoots a Bolt of Ice in front 
+of you, freezing whatever it 
+hits.
+#----------------------------------------------------
+boulderToss:
+Spell Type: Active
+Cooldown 6s
+
+Shoots a Boulder in front of
+you, causing Area of Effect
+damage where it hits.
+#----------------------------------------------------
+fireball:
+Spell Type: Active
+Cooldown: 3s
+
+Shoots a Fireball in front
+of you, setting on fire
+whatever it hits.
+#----------------------------------------------------
+aerealPush:
+Spell Type: Charged
+Charge Time: 1.2s
+Cooldown: 5s
+
+Pushes all nearby entities
+away from you.
+#----------------------------------------------------
+frostshock:
+Spell Type: Charged
+Charge Time: 1.4s
+Cooldown: 2.5s
+
+Shocks all nearby entities
+with a shock of frozen
+energy, freezing whatever
+is around.
+#----------------------------------------------------
+implosion:
+Spell Type: Charged
+Charge Time: 2.3s
+Cooldown: 12s
+
+Releases energy, causing
+an explosion, damaging
+entities and terrain
+nearby. Does not hurt the
+caster.
+#----------------------------------------------------
+flameRing:
+Spell Type: Charged
+Charge Time: 1.6
+Cooldown: 20s
+
+Summons a Ring of Fire
+around the user, which
+burns whatever enters
+it.
+#----------------------------------------------------
+elementiumDetector:
+Finding Elementium Veins is
+not that easy, that is for
+sure, this rod will shine
+if it detects Elementium
+Ore clusters above or
+below the user to indicate
+that it is present.
 #----------------------------------------------------

@@ -111,9 +111,7 @@ public final class ElementalTinkererBlocks {
 	public static void initBlockRecipes() {
 		// Elemental Desk Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalDesk),
-				"GEG",
-				"BBB",
-				"P P",
+				"GEG", "BBB", "P P",
 				'G', Item.ingotGold,
 				'E', ElementalTinkererItems.elementiumGem,
 				'B', ElementalTinkererItems.elementalBark,
@@ -122,17 +120,12 @@ public final class ElementalTinkererBlocks {
 
 		// Elementium Block Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumGemBlock),
-				"GGG",
-				"GGG",
-				"GGG",
+				"GGG", "GGG", "GGG",
 				'G', ElementalTinkererItems.elementiumGem);
-		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTIUM_GEM).bindLatestCraftingRecipe();
 
 		// Elementalist Tinkering Altar Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalistTinkeringAltar),
-				"GIG",
-				"GCG",
-				"GIG",
+				"GIG", "GCG", "GIG",
 				'C', Block.workbench,
 				'G', ElementalTinkererItems.elementiumGem,
 				'I', Block.blockSteel);
@@ -140,9 +133,7 @@ public final class ElementalTinkererBlocks {
 
 		// Catalyst Capsule Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(catalystCapsule),
-				" I ",
-				"IPI",
-				" I ",
+				" I ", "IPI", " I ",
 				'I', ElementalTinkererItems.elementiumIngot,
 				'P', Block.thinGlass);
 		ResearchLibrary.allNodes.get(ResearchReference.ID_CATALYST_CAPSULE).bindLatestCraftingRecipe();

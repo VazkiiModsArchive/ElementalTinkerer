@@ -37,10 +37,12 @@ public final class WorldGenerationHandler implements IWorldGenerator {
 
 	/** Generate Elementium Ore in the world, passing in the world instance and chunk coords **/
 	public void tryGenerateElementium(Random worldRand, World world, int chunkX, int chunkZ) {
-		if(worldRand.nextInt(100) < WorldGenRates.ELEMENTIUM_ORE_RARITY) {
+		int rand = worldRand.nextInt(100);
+		if(rand < WorldGenRates.ELEMENTIUM_ORE_RARITY) {
 			int posX = chunkX + worldRand.nextInt(MiscReference.CHUNK_LENGHT);
 			int posY = MathHelper.getRandomIntegerInRange(worldRand, WorldGenRates.ELEMENTIUM_ORE_HEIGHT_MIN, WorldGenRates.ELEMENTIUM_ORE_HEIGHT_MAX);
 			int posZ = chunkZ + worldRand.nextInt(MiscReference.CHUNK_LENGHT);
+			
 			WorldGenElementiumOre.INSTANCE.generate(world, worldRand, posX, posY, posZ);
 		}
 	}

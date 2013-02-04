@@ -35,7 +35,8 @@ public final class ElementalTinkererItems {
 					   elementalBark,
 					   wand,
 					   elementiumIngot,
-					   elementiumDust;
+					   elementiumDust,
+					   elementiumDetector;
 
 	public static void init() {
 		// Construct the items
@@ -47,13 +48,15 @@ public final class ElementalTinkererItems {
 		wand = new ItemWand(ItemIDs.wand).setItemName(ItemNames.WAND_NAME);
 		elementiumIngot = new ItemElementiumIngot(ItemIDs.elementiumIngot).setItemName(ItemNames.ELEMENTIUM_INGOT_NAME);
 		elementiumDust = new ItemET(ItemIDs.elementiumDust).setItemName(ItemNames.ELEMENTIUM_DUST_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ELEMENTIUM_DUST);
-
+		elementiumDetector = new ItemElementiumDetector(ItemIDs.elementiumDetector).setItemName(ItemNames.ELEMENTIUM_DETECTOR_NAME);
+		
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
 		LanguageRegistry.addName(elementalistLexicon, ItemNames.ELEMENTALIST_LEXICON_DISPLAY_NAME);
 		LanguageRegistry.addName(elementalBark, ItemNames.ELEMENTAL_BARK_ITEM_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumIngot, ItemNames.ELEMENTIUM_INGOT_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumDust, ItemNames.ELEMENTIUM_DUST_DISPLAY_NAME);
+		LanguageRegistry.addName(elementiumDetector, ItemNames.ELEMENTIUM_DETECTOR_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumGem), ResearchReference.ID_ELEMENTIUM_GEM);
@@ -66,6 +69,7 @@ public final class ElementalTinkererItems {
 			ResearchHelper.setIconicItem(new ItemStack(wand, 1, i), (short) (ResearchReference.ID_WAND_START + i));
 		ResearchHelper.setIconicItem(new ItemStack(elementiumIngot), ResearchReference.ID_ELEMENTIUM_INGOT);
 		ResearchHelper.setIconicItem(new ItemStack(elementiumDust), ResearchReference.ID_ELEMENTIUM_DUST);
+		ResearchHelper.setIconicItem(new ItemStack(elementiumDetector), ResearchReference.ID_ELEMENTIUM_DETECTOR);
 	}
 
 	public static void initItemRecipes() {
@@ -79,6 +83,10 @@ public final class ElementalTinkererItems {
 		// Elementium Gem Recipe
 		CraftingManager.getInstance().addShapelessRecipe(new ItemStack(elementiumGem, 9),
 				ElementalTinkererBlocks.elementiumGemBlock);
+		
+		CraftingManager.getInstance().addShapelessRecipe(new ItemStack(elementiumGem),
+				elementiumDust, elementiumDust, Item.diamond);
+		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTIUM_GEM).bindLatestCraftingRecipe();
 
 		// Elemental Bark Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalBark),
@@ -100,6 +108,12 @@ public final class ElementalTinkererItems {
 					new ItemStack(elementalBook, 1, i), elementiumDust);
 			ResearchLibrary.allNodes.get((short) (ResearchReference.ID_CATALYST_START + i)).bindLatestCraftingRecipe();
 		}
+		
+		// Elementium Detector Recipe
+		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumDetector),
+				" SG", " SS", "S  ",
+				'S', Item.stick,
+				'G', elementiumGem);
+		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTIUM_DETECTOR).bindLatestCraftingRecipe();
 	}
-
 }
