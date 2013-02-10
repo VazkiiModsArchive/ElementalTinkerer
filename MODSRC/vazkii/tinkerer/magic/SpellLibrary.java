@@ -9,27 +9,32 @@ package vazkii.tinkerer.magic;
 import java.util.Map;
 import java.util.TreeMap;
 
-import vazkii.tinkerer.helper.Element;
+import net.minecraftforge.common.MinecraftForge;
+import vazkii.tinkerer.magic.passive.PassiveBurningCloud;
+import vazkii.tinkerer.magic.passive.PassiveExtendedBreath;
+import vazkii.tinkerer.magic.passive.PassiveNatureAura;
+import vazkii.tinkerer.magic.passive.PassiveRainAccumulation;
+import vazkii.tinkerer.magic.passive.PassiveUndershirt;
+import vazkii.tinkerer.magic.passive.handler.PlayerDamageHandler;
+import vazkii.tinkerer.magic.spell.SpellAerialPush;
 import vazkii.tinkerer.magic.spell.SpellBoulderToss;
 import vazkii.tinkerer.magic.spell.SpellFireball;
+import vazkii.tinkerer.magic.spell.SpellFlameRing;
 import vazkii.tinkerer.magic.spell.SpellFrostbolt;
-import vazkii.tinkerer.magic.spell.SpellImpl;
+import vazkii.tinkerer.magic.spell.SpellFrostshock;
+import vazkii.tinkerer.magic.spell.SpellImplosion;
 import vazkii.tinkerer.magic.spell.SpellThunderbolt;
-import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
-import vazkii.tinkerer.reference.SpellReference;
-
 /**
  * SpellLibrary
- * 
+ *
  * Class containing all the spells.
- * 
+ *
  * @author Vazkii
  */
 public final class SpellLibrary {
-	
+
 	public static Map<Short, Spell> allSpells = new TreeMap();
-	
+
 	public static Map<Short, PassiveSpell> allPassives = new TreeMap();
 
 	public static void initSpells() {
@@ -37,45 +42,26 @@ public final class SpellLibrary {
 		registerSpell(new SpellFrostbolt());
 		registerSpell(new SpellBoulderToss());
 		registerSpell(new SpellFireball());
-		
-		// Aerial Push Spell
-		registerSpell(new SpellImpl(SpellReference.ID_AEREAL_PUSH, 
-					SpellReference.LABEL_AEREAL_PUSH,
-					SpellReference.DISPLAY_NAME_AEREAL_PUSH, 
-					ResourcesReference.MAGIC_INDEX_AEREAL_PUSH, 
-					SpellType.ACTIVE,
-					Element.AIR.ordinal())
-					.bindNode(ResearchReference.ID_AEREAL_PUSH));
-		
-		// Frostshock Spell
-		registerSpell(new SpellImpl(SpellReference.ID_FROSTSHOCK, 
-					SpellReference.LABEL_FROSTSHOCK,
-					SpellReference.DISPLAY_NAME_FROSTSHOCK, 
-					ResourcesReference.MAGIC_INDEX_FROSTSHOCK, 
-					SpellType.ACTIVE,
-					Element.WATER.ordinal())
-					.bindNode(ResearchReference.ID_FROSTSHOCK));
-		
-		// Implosion Spell
-		registerSpell(new SpellImpl(SpellReference.ID_IMPLOSION, 
-					SpellReference.LABEL_IMPLOSION,
-					SpellReference.DISPLAY_NAME_IMPLOSION, 
-					ResourcesReference.MAGIC_INDEX_IMPLOSION, 
-					SpellType.ACTIVE,
-					Element.EARTH.ordinal())
-					.bindNode(ResearchReference.ID_IMPLOSION));
-		
-		// Flame Ring Spell
-		registerSpell(new SpellImpl(SpellReference.ID_FLAME_RING, 
-					SpellReference.LABEL_FLAME_RING,
-					SpellReference.DISPLAY_NAME_FLAME_RING, 
-					ResourcesReference.MAGIC_INDEX_FLAME_RING, 
-					SpellType.ACTIVE,
-					Element.FIRE.ordinal())
-					.bindNode(ResearchReference.ID_FLAME_RING));
+		registerSpell(new SpellAerialPush());
+		registerSpell(new SpellFrostshock());
+		registerSpell(new SpellImplosion());
+		registerSpell(new SpellFlameRing());
+
+		registerPassive(new PassiveExtendedBreath());
+		registerPassive(new PassiveRainAccumulation());
+		registerPassive(new PassiveNatureAura());
+		registerPassive(new PassiveBurningCloud());
+		registerPassive(new PassiveUndershirt());
+
+		MinecraftForge.EVENT_BUS.register(PlayerDamageHandler.INSTANCE);
 	}
-	
+
 	public static void registerSpell(Spell spell) {
-		allSpells.put(spell.index, spell);
+		if(!(spell instanceof PassiveSpell))
+			allSpells.put(spell.index, spell);
+	}
+
+	public static void registerPassive(PassiveSpell spell) {
+		allPassives.put(spell.index, spell);
 	}
 }

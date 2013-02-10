@@ -6,7 +6,6 @@
 // Created @ 24 Dec 2012
 package vazkii.tinkerer.entity;
 
-import net.minecraft.entity.EntityList;
 import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.reference.EntityReference;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -28,37 +27,47 @@ public final class ElementalTinkererEntities {
 											  EntityRegistry.findGlobalUniqueEntityId(),
 											  EntityReference.SPAWN_EGG_BG_COLOR_ELEMENTIUM_GUARDIAN,
 											  EntityReference.SPAWN_EGG_FG_COLOR_ELEMENTIUM_GUARDIAN);
-		
-		EntityRegistry.registerGlobalEntityID(EntityFireball.class, 
+
+		EntityRegistry.registerGlobalEntityID(EntityFireball.class,
 											  EntityReference.NAME_FIREBALL,
 											  EntityRegistry.findGlobalUniqueEntityId());
-		
-		EntityRegistry.registerGlobalEntityID(EntityFrostBolt.class, 
+
+		EntityRegistry.registerGlobalEntityID(EntityFrostBolt.class,
 				  							  EntityReference.NAME_FROSTBOLT,
 				  							  EntityRegistry.findGlobalUniqueEntityId());
-		
-		EntityRegistry.registerGlobalEntityID(EntityBoulder.class, 
-											  EntityReference.NAME_BOULDER, 
+
+		EntityRegistry.registerGlobalEntityID(EntityBoulder.class,
+											  EntityReference.NAME_BOULDER,
 											  EntityRegistry.findGlobalUniqueEntityId());
-		
+
+		EntityRegistry.registerGlobalEntityID(EntityFlameRing.class,
+				  							  EntityReference.NAME_FLAME_RING,
+				  							  EntityRegistry.findGlobalUniqueEntityId());
+
 		// Register the Entities as mod entities
 		EntityRegistry.registerModEntity(EntityFireball.class,
-										 EntityReference.NAME_FIREBALL, 
+										 EntityReference.NAME_FIREBALL,
 										 EntityReference.LOCAL_ID_FIREBALL,
-										 ElementalTinkerer.instance, 
+										 ElementalTinkerer.instance,
 										 64, 10, true);
-		
+
 		EntityRegistry.registerModEntity(EntityFrostBolt.class,
-										 EntityReference.NAME_FROSTBOLT, 
+										 EntityReference.NAME_FROSTBOLT,
 										 EntityReference.LOCAL_ID_FROSTBOLT,
-										 ElementalTinkerer.instance, 
+										 ElementalTinkerer.instance,
 										 64, 10, true);
-		
+
 		EntityRegistry.registerModEntity(EntityBoulder.class,
-										 EntityReference.NAME_BOULDER, 
+										 EntityReference.NAME_BOULDER,
 										 EntityReference.LOCAL_ID_BOULDER,
-										 ElementalTinkerer.instance, 
+										 ElementalTinkerer.instance,
 										 64, 10, true);
+
+		EntityRegistry.registerModEntity(EntityFlameRing.class,
+										 EntityReference.NAME_FLAME_RING,
+										 EntityReference.LOCAL_ID_FLAME_RING,
+										 ElementalTinkerer.instance,
+										 32, 40, false);
 
 		// Register the entity's names, mostly used for the Spawn Eggs
 		LanguageRegistry.instance().addStringLocalization("entity." + EntityReference.NAME_ELEMENTIUM_GUARDIAN + ".name",

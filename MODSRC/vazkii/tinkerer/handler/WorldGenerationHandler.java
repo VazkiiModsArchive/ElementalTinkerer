@@ -42,7 +42,7 @@ public final class WorldGenerationHandler implements IWorldGenerator {
 			int posX = chunkX + worldRand.nextInt(MiscReference.CHUNK_LENGHT);
 			int posY = MathHelper.getRandomIntegerInRange(worldRand, WorldGenRates.ELEMENTIUM_ORE_HEIGHT_MIN, WorldGenRates.ELEMENTIUM_ORE_HEIGHT_MAX);
 			int posZ = chunkZ + worldRand.nextInt(MiscReference.CHUNK_LENGHT);
-			
+
 			WorldGenElementiumOre.INSTANCE.generate(world, worldRand, posX, posY, posZ);
 		}
 	}

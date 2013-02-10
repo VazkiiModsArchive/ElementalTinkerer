@@ -13,7 +13,7 @@ package vazkii.tinkerer.reference;
  *
  * @author Vazkii
  */
-public class NetworkReference {
+public final class NetworkReference {
 
 	/** The mod's channel for the network **/
 	public static final String CHANNEL_NAME = "ElementTinkerer";
@@ -28,5 +28,7 @@ public class NetworkReference {
 							   SUBCHANNEL_ELEMENTAL_TINKERING_START_RECIPE = "altarStartRecipe",
 							   SUBCHANNEL_LIGHTNING = "lightning",
 							   SUBCHANNEL_SPELLS =  "spells",
-							   SUBCHANNEL_CLIENT_SPELLS = "clientSpells";
+							   SUBCHANNEL_CLIENT_SPELLS = "clientSpells",
+							   SUBCHANNEL_KEYBIND = "keybind",
+							   SUBCHANNEL_WAND_START_USE = "wandStartUsing";
 }

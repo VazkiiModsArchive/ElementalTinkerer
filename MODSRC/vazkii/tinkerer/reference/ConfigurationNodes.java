@@ -17,7 +17,7 @@ public final class ConfigurationNodes {
 
 	/** The graphics category for the config **/
 	public static final String CATEGORY_GRAPHICS = "graphics";
-	
+
 	/** The potion id category for the config **/
 	public static final String CATEGORY_POTION_IDS = "potions";
 
@@ -26,7 +26,10 @@ public final class ConfigurationNodes {
 							   NODE_ELEMENTIUM_GEM_ANIMATED = ItemNames.ELEMENTIUM_GEM_NAME + ".animate",
 							   NODE_ELEMENTIUM_ORE_COLORED = BlockNames.ELEMENTIUM_ORE_NAME + ".variousColors",
 							   NODE_WAND_FLICKER = ItemNames.WAND_NAME + ".flicker",
-							   NODE_ELEMENTIUM_INGOT_ANIMATED = ItemNames.ELEMENTIUM_INGOT_NAME + ".animate";
+							   NODE_ELEMENTIUM_INGOT_ANIMATED = ItemNames.ELEMENTIUM_INGOT_NAME + ".animate",
+							   NODE_VIGNETTE_LOW_HEALTH = "vignette.lowHealth",
+							   NODE_VIGNETTE_FROZEN = "vignette.frozen",
+							   NODE_VIGNETTE_POISON = "vignette.poison";
 
 	/** Config nodes for the general catergory **/
 	public static final String NODE_RESEARCH_SHARE = "research.share",

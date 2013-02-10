@@ -7,7 +7,7 @@
 package vazkii.tinkerer.client.hud;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.gui.ScaledResolution;
 import vazkii.tinkerer.client.helper.RenderHelper;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.SpellHelper;
@@ -24,9 +24,9 @@ import vazkii.tinkerer.reference.EffectReference;
 public class HudElementSpellCircle implements IHudElement {
 
 	public static final HudElementSpellCircle INSTANCE = new HudElementSpellCircle();
-	
+
 	private HudElementSpellCircle() { }
-	
+
 	@Override
 	public boolean shouldRender() {
 		return MiscHelper.doesClientPlayerHaveWand();
@@ -35,9 +35,9 @@ public class HudElementSpellCircle implements IHudElement {
 	@Override
 	public void render(float partialTicks) {
 		Minecraft mc = MiscHelper.getMc();
-		EntityPlayer clientPlayer = mc.thePlayer;
-		
-		RenderHelper.drawSpellCircle(SpellHelper.clientSpells.getSpells(), mc.displayWidth / 4, mc.displayHeight / 4, 0, EffectReference.SPELL_CIRCLE_RADIUS, SpellHelper.clientSpells);
+		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+
+		RenderHelper.drawSpellCircle(SpellHelper.clientSpells.getSpells(), res.getScaledWidth() / 2, res.getScaledHeight() / 2, 0, EffectReference.SPELL_CIRCLE_RADIUS, SpellHelper.clientSpells, false);
 	}
 
 	@Override

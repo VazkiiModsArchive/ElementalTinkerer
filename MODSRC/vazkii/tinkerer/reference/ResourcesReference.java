@@ -23,7 +23,7 @@ public final class ResourcesReference {
 
 	/** Root location for entity texture resources **/
 	public static final String ROOT_ENTITY = ROOT + "entity/";
-	
+
 	/** Root Location for the lightning resources **/
 	public static final String ROOT_LIGHTNING = ROOT + "lightning/";
 
@@ -44,10 +44,10 @@ public final class ResourcesReference {
 
 	/** The Spritesheet containing research sprites **/
 	public static final String RESEARCH_SPRITESHEET = ROOT + "research.png";
-	
+
 	/** The Spritesheet containing the spell sprites **/
 	public static final String MAGIC_SPRITESHEET = ROOT + "magic.png";
-	
+
 	/** The Spritehseet containing the potion effect sprites **/
 	public static final String POTIONS_SPRITESHEET = ROOT_GUI + "potionEffects.png";
 
@@ -59,7 +59,7 @@ public final class ResourcesReference {
 
 	/** The location of book textures **/
 	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";
-	
+
 	/** Textures for the Lightning **/
 	public static final String LIGHTNING_INNER_TEXTURE = ROOT_LIGHTNING + "inner.png",
 							   LIGHTNING_OUTER_TEXTURE = ROOT_LIGHTNING + "outer.png";
@@ -84,7 +84,8 @@ public final class ResourcesReference {
 							ITEM_INDEX_WAND_REGULAR = 33,
 							ITEM_INDEX_WAND_COLORIZE = 34,
 							ITEM_INDEX_ELEMENTIUM_DETECTOR_REGULAR = 49,
-							ITEM_INDEX_ELEMENTIUM_DETECTOR_COLORIZE = 50;
+							ITEM_INDEX_ELEMENTIUM_DETECTOR_COLORIZE = 50,
+							ITEM_INDEX_ODD_CLAW = 64;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
@@ -105,7 +106,7 @@ public final class ResourcesReference {
 							RESEARCH_INDEX_CATALYST_CAPSULE = 12,
 							RESEARCH_INDEX_ATTUNER = 13,
 							RESEARCH_INDEX_ELEMENTIUM_DETECTOR = 14;
-	
+
 	/** Integers for the Magic Spritesheet indexes **/
 	public static final int MAGIC_INDEX_BACKGROUND = 255,
 							MAGIC_SPRITESHEET_Y_OFFSET_FRAME = 220,
@@ -116,8 +117,13 @@ public final class ResourcesReference {
 							MAGIC_INDEX_AEREAL_PUSH = 16,
 							MAGIC_INDEX_FROSTSHOCK = 17,
 							MAGIC_INDEX_IMPLOSION = 18,
-							MAGIC_INDEX_FLAME_RING = 19;
-	
+							MAGIC_INDEX_FLAME_RING = 19,
+							MAGIC_INDEX_EXTENDED_BREATH = 4,
+							MAGIC_INDEX_RAIN_ACCUMULATION = 5,
+							MAGIC_INDEX_NATURE_AURA = 6,
+							MAGIC_INDEX_BURNING_CLOUD = 7,
+							MAGIC_INDEX_UNDERSHIRT = 9;
+
 	/** Integers for the Potion Effect Spritesheet indexes **/
 	public static final int POTION_INDEX_FROZEN = 0;
 
@@ -141,7 +147,7 @@ public final class ResourcesReference {
 	/** The spell backgrounc coordinate on the spell spritesheet **/
 	public static final int SPELL_BACKGROUND_X_COORD = 240,
 							SPELL_BACKGROUND_Y_COORD = 240;
-	
+
 	/** The reserach background coordinates on the research spritesheet **/
 	public static final int RESEARCH_BACKGROUND_X_COORD = 160,
 							RESEARCH_BACKGROUND_Y_COORD = 240;

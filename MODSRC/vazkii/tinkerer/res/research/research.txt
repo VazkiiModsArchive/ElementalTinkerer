@@ -294,75 +294,63 @@ if the magic happens to
 be passive, benefited from.
 #----------------------------------------------------
 thunderbolt:
-Spell Type: Active
-Cooldown: 2s
-
 Shoots a Bolt of Lightning
 that hits whatever is in
 front of you.
+
+Cooldown: 2s
 #----------------------------------------------------
 frostbolt:
-Spell Type: Active
-Cooldown 8s
-
 Shoots a Bolt of Ice in front 
 of you, freezing whatever it 
 hits.
+
+Cooldown 8s
 #----------------------------------------------------
 boulderToss:
-Spell Type: Active
-Cooldown 6s
-
 Shoots a Boulder in front of
 you, causing Area of Effect
 damage where it hits.
+
+Cooldown 6s
 #----------------------------------------------------
 fireball:
-Spell Type: Active
-Cooldown: 3s
-
 Shoots a Fireball in front
 of you, setting on fire
 whatever it hits.
+
+Cooldown: 3s
 #----------------------------------------------------
 aerealPush:
-Spell Type: Charged
-Charge Time: 1.2s
-Cooldown: 5s
-
 Pushes all nearby entities
 away from you.
+
+Cooldown: 9.5s
 #----------------------------------------------------
 frostshock:
-Spell Type: Charged
-Charge Time: 1.4s
-Cooldown: 2.5s
-
 Shocks all nearby entities
 with a shock of frozen
 energy, freezing whatever
 is around.
+
+Cooldown: 14s
 #----------------------------------------------------
 implosion:
-Spell Type: Charged
-Charge Time: 2.3s
-Cooldown: 12s
-
 Releases energy, causing
 an explosion, damaging
 entities and terrain
 nearby. Does not hurt the
 caster.
+
+Cooldown: 2m
 #----------------------------------------------------
 flameRing:
-Spell Type: Charged
-Charge Time: 1.6
-Cooldown: 20s
-
 Summons a Ring of Fire
 around the user, which
 burns whatever enters
 it.
+
+Cooldown: 1m 30s
 #----------------------------------------------------
 elementiumDetector:
 Finding Elementium Veins is
@@ -372,4 +360,52 @@ if it detects Elementium
 Ore clusters above or
 below the user to indicate
 that it is present.
+#----------------------------------------------------
+oddClaw:
+After examining the dexterity
+of an ocelot, a theory for a 
+claw that would conjure 
+arrows from a swing of the 
+hand was created. This,
+however, requires energy to 
+do and takes some time to 
+recharge. It's also possible
+for arrows shot by this to be
+enchanted with special effects.
+It's also decent at Melee,
+pairing with an Iron Sword.
+#----------------------------------------------------
+extendedBreath:
+While this passive is equipped,
+the ability of who has it
+equipped to hold their breath
+substantially increases.
+#----------------------------------------------------
+rainAccumulation:
+While this passive is equipped
+and the user is holding an
+empty bucket during rain, that
+bucket will fill up into a full
+water bucket. This only works
+when the bucket isn't in a
+stack.
+#----------------------------------------------------
+natureAura:
+While this passive is equipped
+and the block below the user
+is a block of dirt, that block
+will turn into a block of grass.
+#----------------------------------------------------
+burningCloud:
+Upon taking damage, the user
+who has this passive equipped
+will set on fire the attacker.
+#----------------------------------------------------
+undershirt:
+If the user who has this
+passive equipped has
+over one and a half hearts
+of life and would recieve a
+killing blow, they instead
+stay at half a heart.
 #----------------------------------------------------

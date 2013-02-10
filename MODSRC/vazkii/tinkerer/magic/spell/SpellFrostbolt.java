@@ -7,7 +7,6 @@
 package vazkii.tinkerer.magic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
-import vazkii.tinkerer.entity.EntityFireball;
 import vazkii.tinkerer.entity.EntityFrostBolt;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.SpellType;
@@ -23,24 +22,24 @@ import vazkii.tinkerer.reference.SpellReference;
  * @author Vazkii
  */
 public class SpellFrostbolt extends SpellImpl {
-	
+
 	public SpellFrostbolt() {
-		super(SpellReference.ID_FROSTBOLT, 
-				SpellReference.LABEL_FROSTBOLT, 
-				SpellReference.DISPLAY_NAME_FROSTBOLT, 
-				ResourcesReference.MAGIC_INDEX_FROSTBOLT, 
-				SpellType.ACTIVE, 
+		super(SpellReference.ID_FROSTBOLT,
+				SpellReference.LABEL_FROSTBOLT,
+				SpellReference.DISPLAY_NAME_FROSTBOLT,
+				ResourcesReference.MAGIC_INDEX_FROSTBOLT,
+				SpellType.ACTIVE,
 				Element.WATER.ordinal());
 		bindNode(ResearchReference.ID_FROSTBOLT);
 	}
-	
+
 	@Override
 	public boolean cast(EntityPlayer player, boolean bonus) {
         player.worldObj.spawnEntityInWorld(new EntityFrostBolt(player.worldObj, player, bonus));
 
         return true;
 	}
-	
+
 	@Override
 	public int getCooldown(EntityPlayer player) {
 		return SpellReference.COOLDOWN_FROSTBOLT;

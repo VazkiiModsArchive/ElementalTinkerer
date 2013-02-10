@@ -7,7 +7,6 @@
 package vazkii.tinkerer.magic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
 import vazkii.tinkerer.entity.EntityFireball;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.SpellType;
@@ -25,22 +24,22 @@ import vazkii.tinkerer.reference.SpellReference;
 public class SpellFireball extends SpellImpl {
 
 	public SpellFireball() {
-		super(SpellReference.ID_FIREBALL, 
-				SpellReference.LABEL_FIREBALL, 
-				SpellReference.DISPLAY_NAME_FIREBALL, 
-				ResourcesReference.MAGIC_INDEX_FIREBALL, 
-				SpellType.ACTIVE, 
+		super(SpellReference.ID_FIREBALL,
+				SpellReference.LABEL_FIREBALL,
+				SpellReference.DISPLAY_NAME_FIREBALL,
+				ResourcesReference.MAGIC_INDEX_FIREBALL,
+				SpellType.ACTIVE,
 				Element.FIRE.ordinal());
 		bindNode(ResearchReference.ID_FIREBALL);
 	}
-	
+
 	@Override
 	public boolean cast(EntityPlayer player, boolean bonus) {
         player.worldObj.spawnEntityInWorld(new EntityFireball(player.worldObj, player, bonus));
 
         return true;
 	}
-	
+
 	@Override
 	public int getCooldown(EntityPlayer player) {
 		return SpellReference.COOLDOWN_FIREBALL;

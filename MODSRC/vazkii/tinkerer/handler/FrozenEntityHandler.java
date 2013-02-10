@@ -10,7 +10,6 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import vazkii.tinkerer.reference.PotionReference;
@@ -26,15 +25,15 @@ import vazkii.tinkerer.reference.PotionReference;
 public final class FrozenEntityHandler {
 
 	public static final FrozenEntityHandler INSTANCE = new FrozenEntityHandler();
-	
+
 	private FrozenEntityHandler() { }
-	
+
 	@ForgeSubscribe(priority = EventPriority.HIGHEST)
 	public void onEntityUpdate(LivingUpdateEvent event) {
 		if(isEntityFrozen(event.entityLiving)) {
 			if(event.entityLiving instanceof EntityPlayer && ((EntityPlayer)event.entityLiving).capabilities.isCreativeMode)
 				return; // Ignore creative mode
-			
+
 			event.entityLiving.landMovementFactor = 0F;
 			event.entityLiving.jumpMovementFactor = 0F;
 			event.entityLiving.setJumping(false);
@@ -47,15 +46,15 @@ public final class FrozenEntityHandler {
 			// in the same place.
 		}
 	}
-	
+
 	@ForgeSubscribe
 	public void onEntityDamage(LivingHurtEvent event) {
 		if(isEntityFrozen(event.entityLiving))
 			event.entityLiving.removePotionEffect(PotionReference.idFrozen);
 	}
-	
+
 	public static boolean isEntityFrozen(EntityLiving entity) {
 		return entity.isPotionActive(PotionReference.idFrozen);
 	}
-	
+
 }

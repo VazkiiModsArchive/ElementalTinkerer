@@ -32,12 +32,12 @@ import vazkii.tinkerer.reference.ResourcesReference;
 public class HudElementSpellTooltip implements IHudElement {
 
 	public static HudElementSpellTooltip INSTANCE = new HudElementSpellTooltip();
-	
+
 	private HudElementSpellTooltip() { }
-	
+
 	private String currentTooltip;
 	private int tooltipDisplayTicks;
-	
+
 	@Override
 	public boolean shouldRender() {
 		return MiscHelper.doesClientPlayerHaveWand();
@@ -51,11 +51,11 @@ public class HudElementSpellTooltip implements IHudElement {
              int var6 = var5.getScaledWidth();
              int var7 = var5.getScaledHeight();
              FontRenderer var8 = mc.fontRenderer;
-             
+
              int tooltipStartX = (var6 - var8.getStringWidth(currentTooltip)) / 2;
              int tooltipStartY = var7 / 2 + EffectReference.SPELL_CIRCLE_RADIUS + 15;
 
-             int opacity = (int)((float)tooltipDisplayTicks * 256.0F / 10.0F);
+             int opacity = (int)(tooltipDisplayTicks * 256.0F / 10.0F);
 
              if (opacity > 160)
                  opacity = 160;
@@ -71,7 +71,7 @@ public class HudElementSpellTooltip implements IHudElement {
              }
          }
 	}
-	
+
 	public void setTooltip(String tooltip) {
 		if(!tooltip.equals(currentTooltip)) {
 			currentTooltip = tooltip;

@@ -8,6 +8,9 @@ package vazkii.tinkerer.helper;
 
 import java.awt.Point;
 
+import net.minecraft.entity.Entity;
+import vazkii.tinkerer.lightning.Vector3;
+
 /**
  * MathHelper
  *
@@ -18,10 +21,10 @@ import java.awt.Point;
 public final class MathHelper {
 
 	/** Does a cross multiplication, where it returns d, where in (d = bc / a) **/
-	public static double crossMuliply(int a, int b, int c) {
+	public static double crossMuliply(double a, double b, double c) {
 		return b * c / a;
 	}
-	
+
 	/** Gets a point in a circle, given the degree, radius of the cricle
 	 * and the circle origin. **/
 	public static Point getPointInCircle(Point origin, int deg, int radius) {
@@ -30,7 +33,7 @@ public final class MathHelper {
 		int y = origin.y + (int) Math.round(radius * Math.sin(radian));
 		return new Point(x, y);
 	}
-	
+
 	/** Converts a degree to a radian. If the degree passed in is
 	 * over 360 it keeps subtracting by 360. If it's under 0, it
 	 * keeps adding 360.**/
@@ -39,7 +42,23 @@ public final class MathHelper {
 			deg += 360;
 		while(deg > 360)
 			deg -= 360;
-		
+
 		return (float) (deg * (Math.PI / 180F));
+	}
+
+	public static void moveEntityTowardsPos(Entity entity, double x, double y, double z, float speed) {
+		Vector3 originalPosVector = new Vector3(x, y, z);
+		Vector3 entityVector = Vector3.fromEntityCenter(entity);
+		Vector3 finalVector = originalPosVector.subtract(entityVector).normalize().multiply(speed);
+		entity.motionX = finalVector.x;
+		entity.motionY = finalVector.y;
+		entity.motionZ = finalVector.z;
+	}
+
+	public static void moveEntityAwayFromPos(Entity entity, double x, double y, double z, float speed) {
+		moveEntityTowardsPos(entity, x, y, z, speed);
+		entity.motionX = -entity.motionX;
+		entity.motionY = -entity.motionY;
+		entity.motionZ = -entity.motionZ;
 	}
 }

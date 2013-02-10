@@ -11,6 +11,7 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import vazkii.tinkerer.reference.ResearchReference;
 
 
 /**
@@ -124,7 +125,11 @@ public class ResearchNode implements Comparable<ResearchNode> {
 	}
 
 	public boolean isAvailable(PlayerResearch research) {
-		return !research.isResearchDone(index) && (requirement == -1 || research.isResearchCompleted(requirement));
+		boolean tinkeringAvailable = true;
+		if(isBoundRecipeAltarRecipe()) // Check for recipes that require the tinkering altar
+			tinkeringAvailable = ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTAL_TINKERING).isAvailable(research);
+
+		return tinkeringAvailable && !research.isResearchDone(index) && (requirement == -1 || research.isResearchCompleted(requirement));
 	}
 
 	public IRecipe getBoundRecipe() {

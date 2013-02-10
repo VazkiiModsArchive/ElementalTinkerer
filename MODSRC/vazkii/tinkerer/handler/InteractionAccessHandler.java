@@ -21,17 +21,17 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
  * @author Vazkii
  */
 public class InteractionAccessHandler {
-	
+
 	public static final InteractionAccessHandler INSTANCE = new InteractionAccessHandler();
-	
+
 	private InteractionAccessHandler() { }
-	
+
 	private static EntityPlayer lastInteractingPlayer;
-	
+
 	public static EntityPlayer getLastInteractingPlayer() {
 		return lastInteractingPlayer;
 	}
-	
+
 	@ForgeSubscribe
 	public void onInteract(PlayerInteractEvent event) {
 		lastInteractingPlayer = event.entityPlayer;

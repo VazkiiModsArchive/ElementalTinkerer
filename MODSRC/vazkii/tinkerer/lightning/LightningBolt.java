@@ -24,10 +24,10 @@ import net.minecraft.world.World;
 
 /**
  * LightningBolt
- * 
+ *
  * WirelessBolt class, part of Wireless Redstone Chicken Bones Edition.
  * Available at: http://www.minecraftforum.net/topic/909223-
- * 
+ *
  * @author ChickenBones
  */
 public class LightningBolt {

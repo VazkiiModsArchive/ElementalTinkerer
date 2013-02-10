@@ -6,9 +6,7 @@
 // Created @ 27 Jan 2013
 package vazkii.tinkerer.network.packet;
 
-import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
-import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.helper.PacketHelper;
@@ -17,7 +15,6 @@ import vazkii.tinkerer.helper.SpellHelper;
 import vazkii.tinkerer.magic.PlayerSpellData;
 import vazkii.tinkerer.reference.NetworkReference;
 import vazkii.tinkerer.research.PlayerResearch;
-import vazkii.tinkerer.tile.container.ContainerElementalistTinkeringAltar;
 import cpw.mods.fml.common.network.Player;
 
 /**
@@ -35,37 +32,37 @@ public class PacketClientSpells extends PacketSpells {
 
 	/** Constructor with no params required for the reciever end **/
 	private PacketClientSpells() { }
-	
+
 	public PacketClientSpells(PlayerSpellData data) {
 		super(data);
 	}
-	
+
 	@Override
 	void writeSpells(Player player, DataInputStream inputStream) {
 		if(!(player instanceof EntityPlayer))
 			return;
-		
+
 		EntityPlayer entityPlayer = (EntityPlayer)player;
 		String username = entityPlayer.username;
 		PlayerResearch data = ResearchHelper.getResearchDataForPlayer(username);
-		
+
 		for(short s : spellsArray) {
-			if(!SpellHelper.isSpellAvailable(s, data)) 
+			if(!SpellHelper.isSpellAvailable(s, data))
 				return;
 		}
-				
+
 		for(short s : passivesArray) {
 			if(!SpellHelper.isPassiveAvailable(s, data))
 				return;
 		}
-				
+
 		PlayerSpellData spellData = SpellHelper.getSpellDataForPlayer(username);
 		writeSpells(player, spellData, inputStream);
-		
+
 		PacketSpells spellsPacket = new PacketSpells(spellData);
 		PacketHelper.sendPacketToClient(player, spellsPacket);
 	}
-	
+
 	@Override
 	void writeSpells(Player player, PlayerSpellData data, DataInputStream inputStream) {
 		data.updateSpells(spellsArray);

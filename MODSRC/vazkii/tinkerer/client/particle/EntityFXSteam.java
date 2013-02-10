@@ -6,8 +6,8 @@
  * this stuff is worth it, you can buy me a beer in return, Pchan3
  * ----------------------------------------------------------------------------
  * https://dl.dropbox.com/u/23495823/Airship/Files.7z
- * 
- * 
+ *
+ *
  * This Code is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
@@ -15,16 +15,16 @@
 // Created @ ?
 package vazkii.tinkerer.client.particle;
 
-import vazkii.tinkerer.helper.MiscHelper;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
+import vazkii.tinkerer.helper.MiscHelper;
 
 /**
  * EntityFXSteam
  *
- * Steam looking particles, very subtle. Original EntitySteamFX class 
- * from Pchan3's airship mod, thread available here (discontinued): 
+ * Steam looking particles, very subtle. Original EntitySteamFX class
+ * from Pchan3's airship mod, thread available here (discontinued):
  * http://www.minecraftforum.net/topic/164940-open-source-abandoned-pchan3s-mods/
  *
  * @author Pchan3, Vazkii (code refractor)
@@ -32,12 +32,12 @@ import net.minecraft.world.World;
 public class EntityFXSteam extends EntityFX {
 
     float originalParticleScale;
-	
+
     public static void spawn(World world, double x, double y, double z, double xMotion, double yMotion, double zMotion) {
     	EntityFXSteam entity = new EntityFXSteam(world, x, y, z, xMotion, yMotion, zMotion);
 		MiscHelper.getMc().effectRenderer.addEffect(entity);
     }
-    
+
     public EntityFXSteam(World world, double d, double d1, double d2, double d3, double d4, double d5) {
         this(world, d, d1, d2, d3, d4, d5, 1.0F);
     }
@@ -63,10 +63,10 @@ public class EntityFXSteam extends EntityFX {
 
     @Override
     public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5) {
-        float f6 = (((float)particleAge + f) / (float)particleMaxAge) * 32F;
+        float f6 = (particleAge + f) / particleMaxAge * 32F;
         if(f6 < 0.0F)
             f6 = 0.0F;
-        
+
         if(f6 > 1.0F)
             f6 = 1.0F;
         particleScale = originalParticleScale * f6;

@@ -9,9 +9,8 @@ package vazkii.tinkerer;
 import java.util.logging.Logger;
 
 import net.minecraftforge.common.MinecraftForge;
-
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
-import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.command.CommandResearch;
 import vazkii.tinkerer.compat.Thaumcraft3Compat;
 import vazkii.tinkerer.core.CommonProxy;
 import vazkii.tinkerer.entity.ElementalTinkererEntities;
@@ -21,13 +20,12 @@ import vazkii.tinkerer.handler.ElementiumDustDropsHandler;
 import vazkii.tinkerer.handler.FrozenEntityHandler;
 import vazkii.tinkerer.handler.GuiHandler;
 import vazkii.tinkerer.handler.InteractionAccessHandler;
-import vazkii.tinkerer.handler.PlayerSpellUpdateHandler;
 import vazkii.tinkerer.handler.PlayerTrackingHandler;
 import vazkii.tinkerer.handler.WorldGenerationHandler;
 import vazkii.tinkerer.item.ElementalTinkererItems;
-import vazkii.tinkerer.magic.ElementalTinkererPotions;
 import vazkii.tinkerer.magic.SpellLibrary;
 import vazkii.tinkerer.network.PacketHandler;
+import vazkii.tinkerer.potion.ElementalTinkererPotions;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.NetworkReference;
 import vazkii.tinkerer.research.ResearchLibrary;
@@ -36,15 +34,15 @@ import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
+import cpw.mods.fml.common.Mod.ServerStarting;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 /**
  * ElementalTinkerer
@@ -87,7 +85,7 @@ public class ElementalTinkerer {
 
 		// Proxy: Read the research descriptions
 		proxy.readResearchDescriptions();
-		
+
 		// Init the Spell Data
 		SpellLibrary.initSpells();
 	}
@@ -96,7 +94,7 @@ public class ElementalTinkerer {
 	public void onInit(FMLInitializationEvent event) {
 		// Proxy: Register the tick handler
 		proxy.registerTickHandler();
-		
+
 		// Register the Gui Handler
 		NetworkRegistry.instance().registerGuiHandler(instance, GuiHandler.INSTANCE);
 
@@ -105,16 +103,19 @@ public class ElementalTinkerer {
 
 		// Register the Crafting Handler
 		GameRegistry.registerCraftingHandler(CraftingHandler.INSTANCE);
-		
+
 		// Register, in the Event Bus, the Interaction Access Handler
 		MinecraftForge.EVENT_BUS.register(InteractionAccessHandler.INSTANCE);
-		
+
 		// Register, in the Event Bus, the Frozen Entity Handler
 		MinecraftForge.EVENT_BUS.register(FrozenEntityHandler.INSTANCE);
-		
+
 		// Register, in the Event Bus, the Elementium Dust Drop Handler
 		MinecraftForge.EVENT_BUS.register(ElementiumDustDropsHandler.INSTANCE);
-		
+
+		// Init the mod's Potion Effects
+		ElementalTinkererPotions.initPotions();
+
 		// Proxy: Register the Client Handlers
 		proxy.registerClientHandlers();
 
@@ -138,9 +139,6 @@ public class ElementalTinkerer {
 
 		// Init the Tinkering Altar Recipes
 		ResearchLibrary.initTinkeringRecipes();
-		
-		// Init the mod's Potion Effects
-		ElementalTinkererPotions.initPotions();
 
 		// Proxy: Register the mod's Tile Entities
 		proxy.registerTileEntities();
@@ -159,5 +157,10 @@ public class ElementalTinkerer {
 	public void onPostInit(FMLPostInitializationEvent event) {
 		// Register the Thaumcraft 3 compatibility stuff
 		Thaumcraft3Compat.init();
+	}
+
+	@ServerStarting
+	public void onServerStarting(FMLServerStartingEvent event) {
+		event.registerServerCommand(CommandResearch.INSTANCE);
 	}
 }

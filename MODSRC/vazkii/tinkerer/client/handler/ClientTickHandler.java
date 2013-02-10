@@ -9,11 +9,10 @@ package vazkii.tinkerer.client.handler;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 import vazkii.tinkerer.client.hud.HudElementSpellCircle;
 import vazkii.tinkerer.client.hud.HudElementSpellTooltip;
+import vazkii.tinkerer.client.hud.HudElementVignette;
 import vazkii.tinkerer.client.hud.IHudElement;
 import vazkii.tinkerer.handler.PlayerSpellUpdateHandler;
 import vazkii.tinkerer.helper.MiscHelper;
@@ -48,15 +47,16 @@ public class ClientTickHandler implements ITickHandler {
 
 	/** The Current partial ticks, passed in every render tick **/
 	public static float currentPartialTicks;
-	
+
 	private Collection<IHudElement> hudElements;
-	
-	private ClientTickHandler() { 
+
+	private ClientTickHandler() {
 		hudElements = new LinkedList();
 		addHudElement(HudElementSpellCircle.INSTANCE);
 		addHudElement(HudElementSpellTooltip.INSTANCE);
+		addHudElement(HudElementVignette.INSTANCE);
 	}
-	
+
 	public void addHudElement(IHudElement element) {
 		if(!hudElements.contains(element))
 			hudElements.add(element);
@@ -89,15 +89,15 @@ public class ClientTickHandler implements ITickHandler {
 
 		// Update the Lightning
 		LightningBolt.update();
-		
+
 		checkWorld();
-		
+
 		// Send a tick to update the client cooldowns
 		PlayerSpellUpdateHandler.clientUpdate();
-		
+
 		for(IHudElement element : hudElements)
 			element.clientTick(); // Notify all the hud elements of the client tick
-		
+
 		++elapsedClientTicks;
 	}
 
@@ -120,7 +120,7 @@ public class ClientTickHandler implements ITickHandler {
 		for(IHudElement element : hudElements)
 			if(element.shouldRender())
 				element.render(partialTicks);
-		
+
 		++elapsedRenderTicks;
 	}
 }

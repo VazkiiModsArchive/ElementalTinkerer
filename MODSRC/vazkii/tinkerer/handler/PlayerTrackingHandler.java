@@ -29,9 +29,9 @@ public class PlayerTrackingHandler implements IPlayerTracker {
 	@Override
 	public void onPlayerLogin(EntityPlayer player) {
 		PacketHelper.sendPacketToClient((Player) player, PacketVerification.INSTANCE);
-		
+
 		ResearchHelper.handlePlayerLogin(player);
-		
+
 		SpellHelper.handlePlayerLogin(player);
 	}
 

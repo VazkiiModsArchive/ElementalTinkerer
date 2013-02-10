@@ -25,6 +25,7 @@ import vazkii.tinkerer.magic.IWand;
 import vazkii.tinkerer.magic.PlayerSpellData;
 import vazkii.tinkerer.magic.Spell;
 import vazkii.tinkerer.magic.SpellLibrary;
+import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.network.packet.PacketSpells;
 import vazkii.tinkerer.reference.ItemNames;
 import vazkii.tinkerer.reference.ResourcesReference;
@@ -65,9 +66,19 @@ public class ItemWand extends ItemET implements IWand {
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.rare;
 	}
-	
+
 	@Override
 	public boolean requiresMultipleRenderPasses() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldRotateAroundWhenRendering() {
+		return true;
+	}
+
+	@Override
+	public boolean isFull3D() {
 		return true;
 	}
 
@@ -85,92 +96,93 @@ public class ItemWand extends ItemET implements IWand {
 		float bright = (float) Math.cos((double) ClientTickHandler.elapsedClientTicks / (double) ResourcesReference.BRIGHTNESS_DIVISOR_WAND);
 		return Color.HSBtoRGB(element.getHue() / 360F, 1F, ConfigurationHandler.wandFlicker ? Math.max(0.2F, (bright + 1F) / 2F) : 0.9F);
 	}
-	
+
 	@Override
-	public boolean isFull3D() {
-		return true;
+	public void handleKeystroke(EntityPlayer player, ItemStack stack) {
+		if(player.isUsingItem())
+			return;
+
+		PlayerSpellData spellData = SpellHelper.getSpellDataForPlayer(player.username);
+
+		byte select = (byte) (spellData.getSpellSelected() + 1);
+		spellData.select(select >= spellData.getSpells().length ? 0 : select);
+
+		SpellHelper.updateSpells(player.worldObj, spellData);
+		PacketSpells packet = new PacketSpells(spellData);
+		PacketHelper.sendPacketToClient((Player)player, packet);
 	}
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		if(par2World.isRemote)
 			return par1ItemStack;
-		
+
 		PlayerSpellData spellData = SpellHelper.getSpellDataForPlayer(par3EntityPlayer.username);
-		
-		if(par3EntityPlayer.isSneaking()) {
-			byte select = (byte) (spellData.getSpellSelected() + 1);
-			spellData.select(select >= spellData.getSpells().length ? 0 : select);
-			SpellHelper.updateSpells(par2World, spellData);
-			PacketSpells packet = new PacketSpells(spellData);
-			PacketHelper.sendPacketToClient((Player)par3EntityPlayer, packet);
-		} else {
-			if(spellData.getSpells().length > 0) {
-				byte spellSelected = spellData.getSpellSelected();
-				short spellIndex = spellData.getSpells()[spellSelected];
-				if(spellData.canCastSpell(spellIndex)) {
-					Spell spell = SpellLibrary.allSpells.get(spellIndex);
-					boolean casted = spell.cast(par3EntityPlayer, par1ItemStack.getItemDamage() == spell.element);
-					if(casted) {
-						spellData.mapCooldown(spell, par3EntityPlayer);
-						PacketSpells packet = new PacketSpells(spellData);
-						PacketHelper.sendPacketToClient((Player)par3EntityPlayer, packet);
-					}
+
+		if(spellData.getSpells().length > 0) {
+			byte spellSelected = spellData.getSpellSelected();
+			short spellIndex = spellData.getSpells()[spellSelected];
+			Spell spell = SpellLibrary.allSpells.get(spellIndex);
+
+			if(spellData.canCastSpell(spellIndex)) {
+				boolean casted = spell.cast(par3EntityPlayer, par1ItemStack.getItemDamage() == spell.element);
+				if(casted) {
+					spellData.mapCooldown(spell, par3EntityPlayer);
+					PacketSpells packet = new PacketSpells(spellData);
+					PacketHelper.sendPacketToClient((Player)par3EntityPlayer, packet);
 				}
 			}
 		}
-		
+
 		return par1ItemStack;
 	}
-	
+
 	@Override
 	public boolean onItemUseFirst(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		if(par3World.isRemote)
 			return false;
-		
+
 		PlayerSpellData spellData = SpellHelper.getSpellDataForPlayer(par2EntityPlayer.username);
-		
-		if(!par2EntityPlayer.isSneaking()) {
-			if(spellData.getSpells().length > 0) {
-				byte spellSelected = spellData.getSpellSelected();
-				short spellIndex = spellData.getSpells()[spellSelected];
-				if(spellData.canCastSpell(spellIndex)) {
-					Spell spell = SpellLibrary.allSpells.get(spellIndex);
-					boolean casted = spell.castOnBlock(par2EntityPlayer, par1ItemStack.getItemDamage() == spell.element, par4, par5, par6);
-					if(casted) {
-						spellData.mapCooldown(spell, par2EntityPlayer);
-						PacketSpells packet = new PacketSpells(spellData);
-						PacketHelper.sendPacketToClient((Player)par2EntityPlayer, packet);
-					}
-					return casted;
+
+		if(spellData.getSpells().length > 0) {
+			byte spellSelected = spellData.getSpellSelected();
+			short spellIndex = spellData.getSpells()[spellSelected];
+			Spell spell = SpellLibrary.allSpells.get(spellIndex);
+
+			if(spellData.canCastSpell(spellIndex)) {
+				boolean casted = spell.castOnBlock(par2EntityPlayer, par1ItemStack.getItemDamage() == spell.element, par4, par5, par6);
+				if(casted) {
+					spellData.mapCooldown(spell, par2EntityPlayer);
+					PacketSpells packet = new PacketSpells(spellData);
+					PacketHelper.sendPacketToClient((Player)par2EntityPlayer, packet);
 				}
+				return casted;
 			}
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean itemInteractionForEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving) {
 		if(par2EntityLiving.worldObj.isRemote)
 			return false;
-		
+
 		EntityPlayer interactingPlayer = InteractionAccessHandler.getLastInteractingPlayer();
 		PlayerSpellData spellData = SpellHelper.getSpellDataForPlayer(interactingPlayer.username);
-		
-		if(!interactingPlayer.isSneaking()) {
-			if(spellData.getSpells().length > 0) {
-				byte spellSelected = spellData.getSpellSelected();
-				short spellIndex = spellData.getSpells()[spellSelected];
-				if(spellData.canCastSpell(spellIndex)) {
-					Spell spell = SpellLibrary.allSpells.get(spellIndex);
-					boolean casted = spell.castOnEntity(interactingPlayer, par1ItemStack.getItemDamage() == spell.element, par2EntityLiving);
-					if(casted) {
-						spellData.mapCooldown(spell, interactingPlayer);
-						PacketSpells packet = new PacketSpells(spellData);
-						PacketHelper.sendPacketToClient((Player)interactingPlayer, packet);
-					}
-					return casted;
+
+		if(spellData.getSpells().length > 0) {
+			byte spellSelected = spellData.getSpellSelected();
+			short spellIndex = spellData.getSpells()[spellSelected];
+			Spell spell = SpellLibrary.allSpells.get(spellIndex);
+
+			if(spell.getSpellType() == SpellType.ACTIVE && spellData.canCastSpell(spellIndex)) {
+				boolean casted = spell.castOnEntity(interactingPlayer, par1ItemStack.getItemDamage() == spell.element, par2EntityLiving);
+				if(casted) {
+					spellData.mapCooldown(spell, interactingPlayer);
+					PacketSpells packet = new PacketSpells(spellData);
+					PacketHelper.sendPacketToClient((Player)interactingPlayer, packet);
 				}
+				return casted;
 			}
 		}
 		return false;

@@ -6,6 +6,9 @@
 // Created @ 3 Feb 2013
 package vazkii.tinkerer.magic;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
 /**
  * IWand
  *
@@ -14,5 +17,9 @@ package vazkii.tinkerer.magic;
  * @author Vazkii
  */
 public interface IWand {
+
+	/** Handles a keystroke from the spell change keybind, this is
+	 * called SERVER side, clients only send out a packet **/
+	public void handleKeystroke(EntityPlayer player, ItemStack stack);
 
 }

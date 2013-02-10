@@ -16,7 +16,7 @@ package vazkii.tinkerer.simpleanim;
 public interface IIntegerCycle {
 
 	public int getCurrentValue();
-	
+
 	public void updateTick();
-	
+
 }

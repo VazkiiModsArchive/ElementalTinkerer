@@ -11,10 +11,10 @@ import java.util.Locale;
 
 /**
  * Quat
- * 
+ *
  * Quat class, part of CodeChickenCore. Available at:
  * http://www.minecraftforum.net/topic/909223-
- * 
+ *
  * @author ChickenBones
  */
 public class Quat {

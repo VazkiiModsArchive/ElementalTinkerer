@@ -36,7 +36,8 @@ public final class ElementalTinkererItems {
 					   wand,
 					   elementiumIngot,
 					   elementiumDust,
-					   elementiumDetector;
+					   elementiumDetector,
+					   oddClaw;
 
 	public static void init() {
 		// Construct the items
@@ -49,7 +50,8 @@ public final class ElementalTinkererItems {
 		elementiumIngot = new ItemElementiumIngot(ItemIDs.elementiumIngot).setItemName(ItemNames.ELEMENTIUM_INGOT_NAME);
 		elementiumDust = new ItemET(ItemIDs.elementiumDust).setItemName(ItemNames.ELEMENTIUM_DUST_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ELEMENTIUM_DUST);
 		elementiumDetector = new ItemElementiumDetector(ItemIDs.elementiumDetector).setItemName(ItemNames.ELEMENTIUM_DETECTOR_NAME);
-		
+		oddClaw = new ItemOddClaw(ItemIDs.oddClaw).setItemName(ItemNames.ODD_CLAW_NAME);
+
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
 		LanguageRegistry.addName(elementalistLexicon, ItemNames.ELEMENTALIST_LEXICON_DISPLAY_NAME);
@@ -57,6 +59,7 @@ public final class ElementalTinkererItems {
 		LanguageRegistry.addName(elementiumIngot, ItemNames.ELEMENTIUM_INGOT_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumDust, ItemNames.ELEMENTIUM_DUST_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumDetector, ItemNames.ELEMENTIUM_DETECTOR_DISPLAY_NAME);
+		LanguageRegistry.addName(oddClaw, ItemNames.ODD_CLAW_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumGem), ResearchReference.ID_ELEMENTIUM_GEM);
@@ -83,7 +86,7 @@ public final class ElementalTinkererItems {
 		// Elementium Gem Recipe
 		CraftingManager.getInstance().addShapelessRecipe(new ItemStack(elementiumGem, 9),
 				ElementalTinkererBlocks.elementiumGemBlock);
-		
+
 		CraftingManager.getInstance().addShapelessRecipe(new ItemStack(elementiumGem),
 				elementiumDust, elementiumDust, Item.diamond);
 		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTIUM_GEM).bindLatestCraftingRecipe();
@@ -108,7 +111,7 @@ public final class ElementalTinkererItems {
 					new ItemStack(elementalBook, 1, i), elementiumDust);
 			ResearchLibrary.allNodes.get((short) (ResearchReference.ID_CATALYST_START + i)).bindLatestCraftingRecipe();
 		}
-		
+
 		// Elementium Detector Recipe
 		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumDetector),
 				" SG", " SS", "S  ",

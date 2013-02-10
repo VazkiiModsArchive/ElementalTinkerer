@@ -19,9 +19,9 @@ import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * TileEntityRenderAttuner
- * 
+ *
  * The Tile Entity Render for the Attuner Block.
- * 
+ *
  * @author Vazkii
  */
 public class TileEntityRenderAttuner extends TileEntitySpecialRenderer {

@@ -24,7 +24,8 @@ public final class ItemIDs {
 							DEFAULT_WAND = 21105,
 							DEFAULT_ELEMENTIUM_INGOT = 21106,
 							DEFAULT_ELEMENTIUM_DUST = 21107,
-							DEFAULT_ELEMENTIUM_DETECTOR = 21108;
+							DEFAULT_ELEMENTIUM_DETECTOR = 21108,
+							DEFAULT_ODD_CLAW = 21109;
 
 	/** Set via the config **/
 	public static int elementiumGem,
@@ -35,5 +36,6 @@ public final class ItemIDs {
 					  wand,
 					  elementiumIngot,
 					  elementiumDust,
-					  elementiumDetector;
+					  elementiumDetector,
+					  oddClaw;
 }

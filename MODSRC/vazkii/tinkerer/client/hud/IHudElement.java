@@ -23,10 +23,10 @@ public abstract interface IHudElement {
 
 	/** Should this be rendered? **/
 	public boolean shouldRender();
-	
+
 	/** Renders the element **/
 	public void render(float partialTicks);
-	
+
 	/** Pass in a client tick update, this
 	 * is passed in every tick, regardless of
 	 * shouldRender() **/

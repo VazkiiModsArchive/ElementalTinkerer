@@ -43,9 +43,7 @@ public class ElementalTinkeringInventoryCrafting extends InventoryCrafting imple
 	public void updateShapedInventory(TileEntityElementalTinkeringAltar altar) {
 		for(int i = 0; i < shaped.getSizeInventory(); i++) {
 			ItemStack stack = altar.getStackInSlot(i + shapeless.getSizeInventory());
-			shaped.setInventorySlotContents(-(i - 24), stack);
-			// Correct to the slots are
-			// ready to be checked for recipes
+			shaped.setInventorySlotContents(i, stack);
 		}
 	}
 

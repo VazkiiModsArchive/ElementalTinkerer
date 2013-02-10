@@ -85,7 +85,7 @@ public class BlockElementiumGem extends BlockET {
         			List<EntityPlayer> playerList = par1World.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(par2-8, par3-8, par4-8, par2+8, par3+8, par4+8));
         			for(EntityPlayer player : playerList)
         				ResearchHelper.formulateResearchNode(ResearchReference.ID_ELEMENTIUM_INGOT, player, ResearchReference.CATEGORY_NAME_PURE);
-        		
+
         			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2, par3 + power, par4), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);
         			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2 + power, par3 + power / 4, par4), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);
         			LightningHelper.spawnAndSyncLightningBolt(par1World, new Vector3(par2, par3, par4), new Vector3(par2 - power, par3 + power / 4, par4), EffectReference.LIGHTNING_BOLT_SPEED_REACTION, par5Random.nextLong(), EffectReference.LIGHTNING_COLOR_REACTION_OUTER, EffectReference.LIGHTNING_COLOR_REACTION_INNER);

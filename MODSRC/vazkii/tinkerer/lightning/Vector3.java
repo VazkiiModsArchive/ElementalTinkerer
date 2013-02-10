@@ -16,10 +16,10 @@ import net.minecraft.util.Vec3;
 
 /**
  * Vector3
- * 
+ *
  * Vector3 class, part of CodeChickenCore. Available at:
  * http://www.minecraftforum.net/topic/909223-
- * 
+ *
  * @author ChickenBones
  */
 public class Vector3 {

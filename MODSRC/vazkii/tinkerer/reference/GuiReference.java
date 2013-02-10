@@ -15,7 +15,7 @@ import java.awt.Color;
  *
  * @author Vazkii
  */
-public class GuiReference {
+public final class GuiReference {
 
 	/** The default color for tooltips (the one used in vanilla minecraft) **/
 	public static final int TOOLTIP_DEFAULT_COLOR = 1347420415,
@@ -32,5 +32,4 @@ public class GuiReference {
 	/** The amount of lines in the elementalist's lexicon index
 	 * pages **/
 	public static final int LINES_IN_ELEMENTALIST_LEXICON = 12;
-
 }

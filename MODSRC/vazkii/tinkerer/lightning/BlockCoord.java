@@ -11,10 +11,10 @@ import net.minecraft.world.ChunkPosition;
 
 /**
  * BlockCoord
- * 
+ *
  * BlockCoord class, part of CodeChickenCore. Available at:
  * http://www.minecraftforum.net/topic/909223-
- * 
+ *
  * @author ChickenBones
  */
 public class BlockCoord extends ChunkPosition implements Comparable<BlockCoord> {

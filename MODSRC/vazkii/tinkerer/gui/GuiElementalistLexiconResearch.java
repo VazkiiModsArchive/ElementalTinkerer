@@ -114,9 +114,11 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 
         boolean isResearched = ResearchHelper.clientResearch.isResearchDone(node.index);
         boolean isCompleted = ResearchHelper.clientResearch.isResearchCompleted(node.index);
-        String display = isResearched ? node.displayName : FormattingCode.ITALICS + "Unknown Chapter";
+		String chapter = "Chapter " + node.index + ": ";
+        String display = chapter + (isResearched ? node.displayName : FormattingCode.ITALICS + "Unknown Chapter");
         fontRenderer.drawStringWithShadow(display, xStart + 73 - fontRenderer.getStringWidth(display) / 2, yStart - 11, 0xFFFFFF);
-		String[] description = ResearchHelper.getDesciptionForResearch(node);
+
+        String[] description = ResearchHelper.getDesciptionForResearch(node);
 
 		int i = 0;
 		fontRenderer.setUnicodeFlag(true);

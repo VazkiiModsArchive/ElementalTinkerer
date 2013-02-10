@@ -48,7 +48,7 @@ import vazkii.tinkerer.research.ResearchNode;
  */
 public final class RenderHelper {
 
-	/** Renders a 16x16 icon at the given positions from the 
+	/** Renders a 16x16 icon at the given positions from the
 	 * given spritesheet **/
 	public static void renderIcon(String spritesheet, double x, double y, double z, int xSpritesheet, int ySpritesheet) {
 		Minecraft mc = MiscHelper.getMc();
@@ -57,21 +57,21 @@ public final class RenderHelper {
 		engine.bindTexture(textureID);
 		drawTexturedModalRect(x, y, z, xSpritesheet, ySpritesheet, 16, 16);
 	}
-	
+
 	/** Renders a research icon at the given positions, if checkStatus is true,
 	 * checks the research's status, and renders the default icon if it's not
 	 * researched **/
 	public static void renderResearchIcon(ResearchNode node, boolean checkStatus, double x, double y, double z) {
 		if(node == null)
     		return;
-    	
+
 		String texture = !checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spritesheet : ResourcesReference.RESEARCH_SPRITESHEET;
     	int index = !checkStatus || ResearchHelper.clientResearch.isResearchDone(node.index) ? ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spriteIndex : ResourcesReference.RESEARCH_INDEX_ELLIPSES : ResourcesReference.RESEARCH_INDEX_QUESTIONMARK;
     	int xSpritesheet = index % 16 * 16;
     	int ySpritesheet = index / 16 * 16;
     	renderIcon(texture, x, y, z, xSpritesheet, ySpritesheet);
 	}
-	
+
 	public static void renderResearchIconWithBackground(ResearchNode node, boolean checkStatus, double x, double y, double z, int background) {
 		int xCoord = ResourcesReference.RESEARCH_BACKGROUND_X_COORD + background * 16;
 		int yCoord = ResourcesReference.RESEARCH_BACKGROUND_Y_COORD;
@@ -82,13 +82,13 @@ public final class RenderHelper {
 	public static void renderSpellIcon(Spell spell, double x, double y, double z) {
 		if(spell == null)
 			return;
-					
+
     	int index = spell.spriteIndex;
     	int xSpritesheet = index % 16 * 16;
     	int ySpritesheet = index / 16 * 16;
     	renderIcon(ResourcesReference.MAGIC_SPRITESHEET, x, y, z, xSpritesheet, ySpritesheet);
 	}
-	
+
 	public static void renderSpellFrame(double x, double y, double z) {
 		GL11.glPushMatrix();
 		Minecraft mc = MiscHelper.getMc();
@@ -99,7 +99,7 @@ public final class RenderHelper {
 		drawTexturedModalRect((x-1)*2, (y-1)*2, z*2, 0, ResourcesReference.MAGIC_SPRITESHEET_Y_OFFSET_FRAME, 36, 36);
 		GL11.glPopMatrix();
 	}
-	
+
 	public static void renderCooldown(double x, double y, double z, int cooldown) {
 		if(cooldown > 0) {
 			String time = FormattingCode.RED + "" + FormattingCode.BOLD + StringUtils.ticksToElapsedTime(cooldown);
@@ -112,7 +112,7 @@ public final class RenderHelper {
 			GL11.glPopMatrix();
 		}
 	}
-	
+
 	public static void renderSpellIconWithBackgroundAndFrame(Spell spell, double x, double y, double z) {
 		int xCoord = ResourcesReference.SPELL_BACKGROUND_X_COORD;
 		int yCoord = ResourcesReference.SPELL_BACKGROUND_Y_COORD;
@@ -120,7 +120,7 @@ public final class RenderHelper {
 		renderIcon(ResourcesReference.MAGIC_SPRITESHEET, x, y, z, xCoord, yCoord);
 		renderSpellIcon(spell, x, y, z);
 	}
-	
+
 	public static void renderTooltip(int x, int y, String... tooltipData) {
 		renderTooltip(x, y, GuiReference.TOOLTIP_DEFAULT_COLOR, GuiReference.TOOLTIP_DEFAULT_COLOR_BG, tooltipData);
 	}
@@ -223,7 +223,7 @@ public final class RenderHelper {
 
 		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 	}
-	
+
 	/** Renders a star, similar to the dragon death animation, must be
 	 * translated previously **/
 	public static void renderStar(int color, float xScale, float yScale, float zScale) {
@@ -279,16 +279,16 @@ public final class RenderHelper {
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glPopMatrix();
 	}
-	
-	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star, PlayerSpellData spellData) {
+
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star, PlayerSpellData spellData, boolean passives) {
 		if(SpellHelper.clientSpells == null || spells.length == 0)
-			return new ArrayList(); // No spells, return empty 
-		
+			return new ArrayList(); // No spells, return empty
+
 		int color = Color.getHSBColor((float) Math.cos((double) ClientTickHandler.elapsedClientTicks / ResourcesReference.SPECTRUM_DIVISOR_INFUSION), 0.6F, 1F).getRGB();
 		Point origin = new Point(xCenter, yCenter);
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
-		int degPerPoint = (int) Math.round(360D / (double) spells.length);
+		int degPerPoint = (int) Math.round(360D / spells.length);
 		int currentDeg = -90;
 		Point[] points = new Point[spells.length];
 		for(int i = 0; i < spells.length; i++) {
@@ -312,7 +312,7 @@ public final class RenderHelper {
 			int x = points[i].x;
 			int y = points[i].y;
 			short spellIndex = spells[i];
-			Spell spell = SpellLibrary.allSpells.get(spellIndex);
+			Spell spell = passives ? SpellLibrary.allPassives.get(spellIndex) : SpellLibrary.allSpells.get(spellIndex);
 			if(i == SpellHelper.clientSpells.getSpellSelected() && star) {
 				GL11.glPushMatrix();
 				GL11.glTranslatef(x, y, z);
@@ -325,9 +325,9 @@ public final class RenderHelper {
 				renderCooldown(x, y, z, cooldown);
 			}
 		}
-		
+
 		GL11.glPopMatrix();
-		
+
 		List<ObjectPair<Point, Short>> pairs = new ArrayList();
 		for(int i = 0; i < Math.min(points.length, spells.length); i++) {
 			ObjectPair<Point, Short> pair = new ObjectPair(points[i], spells[i]);
@@ -335,19 +335,19 @@ public final class RenderHelper {
 		}
 		return pairs;
 	}
-	
-	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius) {
-		return drawSpellCircle(spells, xCenter, yCenter, z, radius, true);
+
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean passives) {
+		return drawSpellCircle(spells, xCenter, yCenter, z, radius, true, passives);
 	}
-	
-	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, PlayerSpellData spellData) {
-		return drawSpellCircle(spells, xCenter, yCenter, z, radius, true, spellData);
+
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, PlayerSpellData spellData, boolean passives) {
+		return drawSpellCircle(spells, xCenter, yCenter, z, radius, true, spellData, passives);
 	}
-	
-	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star) {
-		return drawSpellCircle(spells, xCenter, yCenter, z, radius, star, null);
+
+	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star, boolean passives) {
+		return drawSpellCircle(spells, xCenter, yCenter, z, radius, star, null, passives);
 	}
-	
+
 	/** Sets the GL values to draw lines **/
 	public static void startDrawingLines() {
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
@@ -355,7 +355,7 @@ public final class RenderHelper {
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glLineWidth(3F);
 	}
-	
+
 	/** Draws a circumference **/
 	public static void drawCircumference(Point origin, int z, int color, int radius) {
 		GL11.glBegin(GL11.GL_LINE_STRIP);
@@ -367,7 +367,7 @@ public final class RenderHelper {
 		}
 		GL11.glEnd();
 	}
-	
+
 	/** Draws a line in the plane from point A to point B **/
 	public static void drawSimpleLine(Point pointA, Point pointB, int z, int color) {
 		GL11.glBegin(GL11.GL_LINES);
@@ -377,7 +377,7 @@ public final class RenderHelper {
 		GL11.glVertex2i(pointB.x, pointB.y);
 		GL11.glEnd();
 	}
-	
+
 	/** Reverts the GL values for drawing lines **/
 	public static void endDrawingLines() {
 		GL11.glDisable(GL11.GL_BLEND);

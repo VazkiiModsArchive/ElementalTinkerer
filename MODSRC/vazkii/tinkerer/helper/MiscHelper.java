@@ -6,21 +6,13 @@
 // Created @ 24 Dec 2012
 package vazkii.tinkerer.helper;
 
-import java.awt.Point;
-
-import vazkii.tinkerer.item.ItemWand;
-import vazkii.tinkerer.lightning.Vector3;
-import vazkii.tinkerer.magic.IWand;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
+import vazkii.tinkerer.magic.IWand;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -42,7 +34,7 @@ public final class MiscHelper {
 	public static EntityClientPlayerMP getClientPlayer() {
 		return getMc().thePlayer;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static WorldClient getClientWorld() {
 		return getMc().theWorld;
@@ -51,7 +43,7 @@ public final class MiscHelper {
 	public static MinecraftServer getServer() {
 		return MinecraftServer.getServer();
 	}
-	
+
 	public static boolean isServerPVP() {
 		return getServer().isPVPEnabled();
 	}
@@ -66,16 +58,20 @@ public final class MiscHelper {
 				|| stack1.getItemDamage() == -1
 				|| stack2.getItemDamage() == -1);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static boolean doesClientPlayerHaveWand() {
 		Minecraft mc = getMc();
 		EntityPlayer clientPlayer = getClientPlayer();
-		return !(clientPlayer == null ||
-				clientPlayer.inventory.getCurrentItem() == null || 
-				clientPlayer.inventory.getCurrentItem().getItem() == null ||
-				!(clientPlayer.inventory.getCurrentItem().getItem() instanceof IWand) || 
+		return !(!doesPlayerHaveWand(clientPlayer) ||
 				mc.currentScreen != null ||
 				SpellHelper.clientSpells == null);
+	}
+
+	public static boolean doesPlayerHaveWand(EntityPlayer player) {
+		return !(player == null ||
+				player.inventory.getCurrentItem() == null ||
+				player.inventory.getCurrentItem().getItem() == null ||
+				!(player.inventory.getCurrentItem().getItem() instanceof IWand));
 	}
 }

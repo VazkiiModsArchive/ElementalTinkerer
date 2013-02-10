@@ -32,16 +32,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * SpellHelper
- * 
+ *
  * Helper class to help managing spells.
- * 
+ *
  * @author Vazkii
  */
 public class SpellHelper {
 
 	/** The map that maps the player spell data instances to each player **/
 	public static Map<String, PlayerSpellData> spellsForPlayers = new HashMap();
-	
+
 	/** Used only in the client, where the spells for the client are stored,
 	 * the data here is received from packets **/
 	@SideOnly(Side.CLIENT)
@@ -56,9 +56,18 @@ public class SpellHelper {
 		spellsForPlayers.put(player, data);
 		return getSpellDataForPlayer(player);
 	}
-	
+
+	/** Checks if a player has the passive passed in **/
+	public static boolean doesPlayerHavePassive(String player, short passive) {
+		PlayerSpellData spellData = getSpellDataForPlayer(player);
+		for(short s : spellData.getPassives())
+			if(s == passive)
+				return true;
+		return false;
+	}
+
 	private static boolean hasReadSpells = false;
-	
+
 	public static void handlePlayerLogin(EntityPlayer player) {
 		// Is the player a new player, if so, init their data
 		boolean isPlayerNew = !spellsForPlayers.containsKey(player);
@@ -68,12 +77,12 @@ public class SpellHelper {
 			loadAllSpellData(player.worldObj);
 			hasReadSpells = true;
 		}
-		
+
 		if(isPlayerNew)
 			updateSpellsForPlayer(player);
 		syncSpellData(player);
 	}
-	
+
 	/** Updates the spell for this player, saves it to NBT. **/
 	public static void updateSpellsForPlayer(EntityPlayer player) {
 		updateSpells(player.worldObj, getSpellDataForPlayer(player.username));
@@ -91,7 +100,7 @@ public class SpellHelper {
 	public static void updateSpells(World world, PlayerSpellData spells) {
 		if(spells.isClientSided())
 			return; //Avoid writing anything in the client
-		
+
 		NBTTagCompound cmp = IOHelper.getPlayerWorldCache(world, spells.playerLinkedTo);
 		writeSpellsToNBT(world, cmp, spells);
 	}
@@ -104,7 +113,7 @@ public class SpellHelper {
 				value = spells.getSpells()[i];
 			spellCmp.setShort("spell" + i, value);
 		}
-		
+
 		for(int i = 0; i < 4; i++) {
 			short value = -1;
 			if(i < spells.getPassives().length)
@@ -112,7 +121,7 @@ public class SpellHelper {
 			spellCmp.setShort("passive" + i, value);
 		}
 		spellCmp.setByte("selected", spells.getSpellSelected());
-		
+
 		NBTTagCompound cooldownCmp = new NBTTagCompound(); // Always create a new compound for the cooldowns
 		if(!spells.spellCooldowns.isEmpty()) {
 			for(short s : spells.spellCooldowns.keySet()) {
@@ -121,7 +130,7 @@ public class SpellHelper {
 			}
 		}
 		spellCmp.setCompoundTag(SpellReference.COMPOUND_COOLDOWN_TAG_NAME, cooldownCmp);
-		
+
 		cmp.setCompoundTag(SpellReference.COMPOUND_TAG_NAME, spellCmp);
 		IOHelper.updatePlayerNBTTagCompound(world, spells.playerLinkedTo, cmp);
 	}
@@ -135,28 +144,28 @@ public class SpellHelper {
 				if(s != -1)
 					spellsList.add(s);
 			}
-			
+
 			ArrayList<Short> passives = new ArrayList();
 			for(int i = 0; i < 4; i++) {
 				short s = subCmp.getShort("passive" + i);
 				if(s != -1)
 					passives.add(s);
 			}
-			
+
 			short[] spellsArray = new short[spellsList.size()];
 			for(int i = 0; i < spellsList.size(); i++)
 				spellsArray[i] = spellsList.get(i);
-			
+
 			short[] passivesArray = new short[passives.size()];
 			for(int i = 0; i < passives.size(); i++)
 				passivesArray[i] = passives.get(i);
-			
+
 			byte selected = subCmp.getByte("selected");
-			
+
 			spells.updateSpells(spellsArray);
 			spells.updatePassives(passivesArray);
 			spells.select(selected);
-			
+
 			if(subCmp.hasKey(SpellReference.COMPOUND_COOLDOWN_TAG_NAME)) {
 				NBTTagCompound cooldownCmp = subCmp.getCompoundTag(SpellReference.COMPOUND_COOLDOWN_TAG_NAME);
 				Collection<NBTBase> tagCollection = cooldownCmp.getTags();
@@ -172,7 +181,7 @@ public class SpellHelper {
 			}
 		}
   	}
-	
+
 	/** Loads all the spell data, looking at the various spell data folders **/
 	public static void loadAllSpellData(World world) {
 		File cacheFolder = new File(IOHelper.getWorldDirectory(world), ResourcesReference.WORLD_CACHE_FOLDER);
@@ -189,7 +198,7 @@ public class SpellHelper {
 				}
 			}
 	}
-	
+
 	/** Gets the available spells from the player research data passed in **/
 	public static List<Short> getAvailableSpells(PlayerResearch research) {
 		List<Short> spells = new ArrayList();
@@ -200,7 +209,7 @@ public class SpellHelper {
 		}
 		return spells;
 	}
-	
+
 	/** Gets the available passives from the player research data passed in **/
 	public static List<Short> getAvailablePassives(PlayerResearch research) {
 		List<Short> passives = new ArrayList();
@@ -211,12 +220,12 @@ public class SpellHelper {
 		}
 		return passives;
 	}
-	
+
 	public static boolean isSpellAvailable(short s, PlayerResearch research) {
 		Spell spell = SpellLibrary.allSpells.get(s);
 		return spell != null && spell.isAvailable(research);
 	}
-	
+
 	public static boolean isPassiveAvailable(short s, PlayerResearch research) {
 		PassiveSpell passive = SpellLibrary.allPassives.get(s);
 		return passive != null && passive.isAvailable(research);

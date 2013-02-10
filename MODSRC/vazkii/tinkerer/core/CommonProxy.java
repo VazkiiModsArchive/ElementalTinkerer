@@ -16,6 +16,7 @@ import vazkii.tinkerer.network.packet.PacketCompleteResearch;
 import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
 import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarStartRecipe;
 import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarSync;
+import vazkii.tinkerer.network.packet.PacketKeybind;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.tile.TileEntityAttuner;
@@ -55,13 +56,14 @@ public class CommonProxy {
 		PacketHelper.packetHandlers.add(PacketElementalistTinkeringAltarStartRecipe.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketCompleteResearch.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketClientSpells.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketKeybind.INSTANCE);
 	}
-	
+
 	/** Registers the tick handler **/
 	public void registerTickHandler() {
 		TickRegistry.registerTickHandler(TickHandler.INSTANCE, Side.SERVER);
 	}
-	
+
 	/** Registers any handlers exclusive to the client side,
 	 * obviously NO-OP in server side. **/
 	public void registerClientHandlers() {
@@ -91,19 +93,24 @@ public class CommonProxy {
 	public void readResearchDescriptions() {
 		// NO-OP
 	}
-	
+
 	/** Initializes the client spells, this is called when
 	 * a spell packet is recieved, NO-OP in server side,
 	 * because similar packets are sent for both sides **/
 	public void initClientSpells() {
 		// NO-OP
 	}
-	
+
 	/** Sets the on-screen tooltip (simlar to the one that shows up
-	 * when you change items, but higher up and with a different 
+	 * when you change items, but higher up and with a different
 	 * render method), NO-OP in server side. **/
 	public void setItemOnScreenTooltip(String tooltip) {
 		// NO-OP
+	}
+
+	/** Gets how many game ticks have elapsed. This calls different fields per tick handler **/
+	public long getGameTicksElapsed() {
+		return TickHandler.elapsedTicks;
 	}
 
 	/** Used by the client to spawn a colored portal particle at

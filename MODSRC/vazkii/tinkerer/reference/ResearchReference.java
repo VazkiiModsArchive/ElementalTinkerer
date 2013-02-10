@@ -46,7 +46,14 @@ public final class ResearchReference {
 							  ID_FROSTSHOCK = 36,
 							  ID_IMPLOSION = 37,
 							  ID_FLAME_RING = 38,
-							  ID_ELEMENTIUM_DETECTOR = 39;
+							  ID_ELEMENTIUM_DETECTOR = 39,
+							  ID_ODD_CLAW = 40,
+							  ID_EXTENDED_BREATH = 41,
+							  ID_RAIN_ACCUMULATION = 42,
+							  ID_NATURE_AURA = 43,
+							  ID_BURNING_CLOUD = 44,
+							  ID_UNDERSHIRT = 45;
+
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
@@ -70,7 +77,13 @@ public final class ResearchReference {
 							   LABEL_FROSTSHOCK = SpellReference.LABEL_FROSTSHOCK,
 							   LABEL_IMPLOSION = SpellReference.LABEL_IMPLOSION,
 							   LABEL_FLAME_RING = SpellReference.LABEL_FLAME_RING,
-							   LABEL_ELEMENTIUM_DETECTOR = ItemNames.ELEMENTIUM_DETECTOR_NAME;
+							   LABEL_ELEMENTIUM_DETECTOR = ItemNames.ELEMENTIUM_DETECTOR_NAME,
+							   LABEL_ODD_CLAW = ItemNames.ODD_CLAW_NAME,
+							   LABEL_EXTENDED_BREATH = SpellReference.LABEL_EXTENDED_BREATH,
+							   LABEL_RAIN_ACCUMULATION = SpellReference.LABEL_RAIN_ACCUMULATION,
+							   LABEL_NATURE_AURA = SpellReference.LABEL_NATURE_AURA,
+							   LABEL_BURNING_CLOUD = SpellReference.LABEL_BURNING_CLOUD,
+							   LABEL_UNDERSHIRT = SpellReference.LABEL_UNDERSHIRT;
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,
@@ -92,7 +105,13 @@ public final class ResearchReference {
 							   DISPLAY_NAME_FROSTSHOCK = SpellReference.DISPLAY_NAME_FROSTSHOCK,
 							   DISPLAY_NAME_IMPLOSION = SpellReference.DISPLAY_NAME_IMPLOSION,
 							   DISPLAY_NAME_FLAME_RING = SpellReference.DISPLAY_NAME_FLAME_RING,
-							   DISPLAY_NAME_ELEMENTIUM_DETECTOR = ItemNames.ELEMENTIUM_DETECTOR_DISPLAY_NAME;
+							   DISPLAY_NAME_ELEMENTIUM_DETECTOR = ItemNames.ELEMENTIUM_DETECTOR_DISPLAY_NAME,
+							   DISPLAY_NAME_ODD_CLAW = ItemNames.ODD_CLAW_DISPLAY_NAME,
+							   DISPLAY_NAME_EXTENDED_BREATH = SpellReference.DISPLAY_NAME_EXTENDED_BREATH,
+							   DISPLAY_NAME_RAIN_ACCUMULATION = SpellReference.DISPLAY_NAME_RAIN_ACCUMULATION,
+							   DISPLAY_NAME_NATURE_AURA = SpellReference.DISPLAY_NAME_NATURE_AURA,
+							   DISPLAY_NAME_BURNING_CLOUD = SpellReference.DISPLAY_NAME_BURNING_CLOUD,
+							   DISPLAY_NAME_UNDERSHIRT = SpellReference.DISPLAY_NAME_UNDERSHIRT;
 
 	/** The Compound Tag name of the Research Data **/
 	public static final String COMPOUND_TAG_NAME = "researchData";

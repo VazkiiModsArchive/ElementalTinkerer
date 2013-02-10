@@ -26,9 +26,9 @@ public final class SimpleAnimations {
 			new TickBasedIntegerCycle(ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_INGOT_START,
 					ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_INGOT_END,
 					ResourcesReference.ANIM_SPEED_ELEMENTIUM_INGOT), // Elementium Ingot Animation
-					
-			new ElementiumDetectorCycle(0, 
-					ResourcesReference.ANIM_MAX_ELEMENTIUM_DETECTOR, 
+
+			new ElementiumDetectorCycle(0,
+					ResourcesReference.ANIM_MAX_ELEMENTIUM_DETECTOR,
 					ResourcesReference.ANIM_SPEED_ELEMENTIUM_DETECTOR) // Elementium Detector Animation
 	};
 

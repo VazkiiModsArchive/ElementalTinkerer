@@ -192,7 +192,7 @@ public class TileEntityElementalTinkeringAltar extends TileEntity implements IIn
 				}
 			}
 		}
-		
+
 		if(getIsCreating()) {
 			double smoke = worldObj.rand.nextFloat() * 2.0f - 1.0f;
 			if(smoke > 0.5f) {

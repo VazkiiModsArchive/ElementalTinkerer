@@ -36,10 +36,10 @@ public class WorldGenElementiumOre extends WorldGenMinable {
 	@Override
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5) {
 		if(par2Random == null)
-			par2Random = new Random(); // Dirty fix for Mystcraft 
-		
+			par2Random = new Random(); // Dirty fix for Mystcraft
+
 		ElementalTinkerer.logger.log(Level.INFO, "Generating Elementium Vein @ " + par3 + " " + par4 + " " + par5);
-		
+
         float var6 = par2Random.nextFloat() * (float)Math.PI;
         int numberOfBlocks = WorldGenRates.ELEMENTIUM_ORE_MAX_VEIN_SIZE;
         double var7 = par3 + 8 + MathHelper.sin(var6) * numberOfBlocks / 8.0F;

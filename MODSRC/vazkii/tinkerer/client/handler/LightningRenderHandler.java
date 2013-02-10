@@ -23,10 +23,10 @@ import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * LightningRenderHandler
- * 
+ *
  * RenderWirelessBolt class, part of CodeChickenCore. Available at:
  * http://www.minecraftforum.net/topic/909223-
- * 
+ *
  * @author ChickenBones
  */
 public class LightningRenderHandler {

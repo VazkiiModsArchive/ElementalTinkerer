@@ -10,9 +10,6 @@ import java.awt.Color;
 
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
-import vazkii.tinkerer.client.handler.ClientTickHandler;
-import vazkii.tinkerer.handler.ConfigurationHandler;
-import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
 
@@ -30,14 +27,24 @@ public class ItemElementiumDetector extends ItemET {
 	public ItemElementiumDetector(int par1) {
 		super(par1);
 	}
-	
+
 	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}
-	
+
 	@Override
 	public boolean requiresMultipleRenderPasses() {
+		return true;
+	}
+
+	@Override
+	public boolean shouldRotateAroundWhenRendering() {
+		return true;
+	}
+
+	@Override
+	public boolean isFull3D() {
 		return true;
 	}
 
@@ -45,21 +52,15 @@ public class ItemElementiumDetector extends ItemET {
 	public int getIconFromDamageForRenderPass(int par1, int par2) {
 		return par2 == 0 ? ResourcesReference.ITEM_INDEX_ELEMENTIUM_DETECTOR_REGULAR : ResourcesReference.ITEM_INDEX_ELEMENTIUM_DETECTOR_COLORIZE;
 	}
-	
-	static final float hue = (280F / 360F);
+
+	static final float hue = 280F / 360F; // Purple tone
 
 	@Override
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2) {
 		if(par2 == 0)
 			return super.getColorFromItemStack(par1ItemStack, par2);
 
-		float saturation = ((float) SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_DETECTOR_ANIM_INDEX].getCurrentValue()) / ((float) ResourcesReference.ANIM_MAX_ELEMENTIUM_DETECTOR);
+		float saturation = (float) SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_DETECTOR_ANIM_INDEX].getCurrentValue() / (float) ResourcesReference.ANIM_MAX_ELEMENTIUM_DETECTOR;
 		return Color.HSBtoRGB(hue, saturation, 0.9F);
 	}
-	
-	@Override
-	public boolean isFull3D() {
-		return true;
-	}
-
 }

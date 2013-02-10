@@ -17,10 +17,10 @@ public class ObjectPair<T1, T2> {
 
 	public T1 object1;
 	public T2 object2;
-	
+
 	public ObjectPair(T1 t1, T2 t2) {
 		object1 = t1;
 		object2 = t2;
 	}
-	
+
 }

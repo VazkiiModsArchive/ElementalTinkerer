@@ -13,10 +13,10 @@ import vazkii.tinkerer.network.packet.PacketLightning;
 
 /**
  * LightningHelper
- * 
+ *
  * Helper class for Lightning. This class exists to simplify creating lightning
  * bolts.
- * 
+ *
  * @author Vazkii
  */
 public final class LightningHelper {

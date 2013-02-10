@@ -8,7 +8,6 @@ package vazkii.tinkerer.magic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.entity.EntityBoulder;
-import vazkii.tinkerer.entity.EntityFireball;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.ResearchReference;
@@ -26,10 +25,10 @@ public class SpellBoulderToss extends SpellImpl {
 
 	public SpellBoulderToss() {
 		super(SpellReference.ID_BOULDER_TOSS,
-				SpellReference.LABEL_BOULDER_TOSS, 
-				SpellReference.DISPLAY_NAME_BOULDER_TOSS, 
-				ResourcesReference.MAGIC_INDEX_BOULDER_TOSS, 
-				SpellType.ACTIVE, 
+				SpellReference.LABEL_BOULDER_TOSS,
+				SpellReference.DISPLAY_NAME_BOULDER_TOSS,
+				ResourcesReference.MAGIC_INDEX_BOULDER_TOSS,
+				SpellType.ACTIVE,
 				Element.EARTH.ordinal());
 		bindNode(ResearchReference.ID_BOULDER_TOSS);
 	}
@@ -40,7 +39,7 @@ public class SpellBoulderToss extends SpellImpl {
 
         return true;
 	}
-	
+
 	@Override
 	public int getCooldown(EntityPlayer player) {
 		return SpellReference.COOLDOWN_BOULDER_TOSS;

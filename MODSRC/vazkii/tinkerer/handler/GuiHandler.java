@@ -13,7 +13,6 @@ import vazkii.tinkerer.gui.GuiElementalDesk;
 import vazkii.tinkerer.gui.GuiElementalistLexiconIndex;
 import vazkii.tinkerer.gui.GuiElementalistTinkeringAltar;
 import vazkii.tinkerer.reference.GuiIDs;
-import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 import vazkii.tinkerer.tile.container.ContainerElementalDesk;
@@ -58,7 +57,7 @@ public class GuiHandler implements IGuiHandler {
 
 		case GuiIDs.ID_ELEMENTALIST_TINKERING_ALTAR :
 			return new GuiElementalistTinkeringAltar((TileEntityElementalTinkeringAltar) world.getBlockTileEntity(x, y, z), player);
-		
+
 		case GuiIDs.ID_ATTUNER :
 			return new GuiAttuner();
 		}

@@ -10,22 +10,21 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 
-import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.helper.SpellHelper;
-
 import net.minecraft.entity.player.EntityPlayer;
+import vazkii.tinkerer.ElementalTinkerer;
+import vazkii.tinkerer.helper.MiscHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * PlayerSpellData
- * 
+ *
  * The Spell Data of a player
- * 
+ *
  * @author Vazkii
  */
 public class PlayerSpellData {
-	
+
 	private short[] passives = new short[0];
 	private short[] spells = new short[0];
 	private byte selectedSpell = 0;
@@ -33,29 +32,29 @@ public class PlayerSpellData {
 	public String playerLinkedTo;
 
 	public Map<Short, Integer> spellCooldowns;
-	
+
 	/** Flag if the spell data is a client side instance, if so
 	 * it won't send cooldowns as a packet, obviously. A server
 	 * side instance will not accept cooldown data in packets at
 	 * all either. **/
 	private boolean clientSided = false;
-	
+
 	public PlayerSpellData(String player) {
 		playerLinkedTo = player;
 		spellCooldowns = new TreeMap();
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public void flagClientSided() {
 		clientSided = true;
 	}
-	
+
 	public boolean isClientSided() {
 		return clientSided;
 	}
 
 	public byte getSpellSelected() {
-		return (byte) Math.max(0, Math.min((spells.length - 1) , selectedSpell));
+		return (byte) Math.max(0, Math.min(spells.length - 1 , selectedSpell));
 	}
 
 	public void selectFirstSpell() {
@@ -69,7 +68,7 @@ public class PlayerSpellData {
 	}
 
 	public void select(byte select) {
-		if (select >= spells.length)  
+		if (select >= spells.length)
 			selectFirstSpell(); // Generally passed in when going forward  past the end
 
 		if (select < 0)
@@ -77,12 +76,12 @@ public class PlayerSpellData {
 
 		forceSelect(spells.length == 0 ? -1 : select);
 	}
-	
+
 	public void forceSelect(byte select) {
 		selectedSpell = select;
 		updateTooltip();
 	}
-	
+
 	public void updateTooltip() {
 		if(selectedSpell >= 0 && spells.length > selectedSpell && SpellLibrary.allSpells.containsKey(spells[selectedSpell])) {
 			Spell spell = SpellLibrary.allSpells.get(spells[selectedSpell]);
@@ -90,20 +89,28 @@ public class PlayerSpellData {
 			ElementalTinkerer.proxy.setItemOnScreenTooltip(displayName);
 		}
 	}
-	
+
 	public void tick() {
 		tickPassives();
 		tickCooldowns();
 	}
-	
+
 	public void tickPassives() {
-		//VAZ_TODO Implement
+		EntityPlayer playerAsEntity = getPlayerAsEntity();
+		if(playerAsEntity == null)
+			return;
+
+		for(Short s : passives) {
+			Spell spell = SpellLibrary.allPassives.get(s);
+			if(spell != null && spell.getSpellType() == SpellType.PASSIVE)
+				spell.cast(playerAsEntity, false);
+		}
 	}
-	
+
 	public void tickCooldowns() {
 		if(spellCooldowns.isEmpty())
 			return;
-		
+
 		Map<Short, Integer> newCooldowns = new TreeMap(spellCooldowns);
 		// Map is copied to avoid any possible ConcurrentModificationException
 		for(Short s : newCooldowns.keySet()) {
@@ -111,7 +118,7 @@ public class PlayerSpellData {
 			if(i <= 0) {
 				spellCooldowns.remove(s);
 				continue;
-			} 
+			}
 			spellCooldowns.put(s, i - 1);
 		}
 	}
@@ -119,58 +126,71 @@ public class PlayerSpellData {
 	public boolean canCastSpell(short spell) {
 		return !spellCooldowns.containsKey(spell);
 	}
-	
+
 	public void mapCooldown(Spell spell, EntityPlayer player) {
 		int cooldown = spell.getCooldown(player);
 		mapCooldown(spell.index, cooldown);
 	}
-	
+
 	public void mapCooldown(short s, int cool) {
-		if(cool > 0) 
+		if(cool > 0)
 			spellCooldowns.put(s, cool);
 		else spellCooldowns.remove(s);
 	}
-	
+
 	public short[] getSpells() {
 		return spells;
 	}
-	
+
 	public short[] getPassives() {
 		return passives;
 	}
-	
+
 	public void updateSpells(short[] spells) {
 		if(spells.length <= 5)
 			this.spells = spells;
 	}
-	
+
 	public void updatePassives(short[] passives) {
 		if(passives.length <= 4)
 			this.passives = passives;
 	}
-	
+
 	public void addSpell(short spell) {
 		boolean has = false;
 		for(short s : spells)
 			if(s == spell)
 				has = true;
-		
+
 		if(has || spells.length == 5)
 			return;
 		short[] spells = Arrays.copyOf(this.spells, this.spells.length + 1);
 		spells[spells.length - 1] = spell;
 		updateSpells(spells);
 	}
-	
+
+	public void addPassive(short passive) {
+		boolean has = false;
+		for(short s : passives)
+			if(s == passive)
+				has = true;
+
+		if(has || passives.length == 5)
+			return;
+		short[] passives = Arrays.copyOf(this.passives, this.passives.length + 1);
+		passives[passives.length - 1] = passive;
+		updatePassives(passives);
+	}
+
 	public void removeSpell(short spell) {
 		boolean has = false;
 		for(short s : spells)
 			if(s == spell)
 				has = true;
-				
+
 		if(!has)
 			return;
-		
+
 		short[] spells = new short[this.spells.length-1];
 		boolean offset = false;
 		for(int i = 0; i < this.spells.length; i++)
@@ -178,5 +198,27 @@ public class PlayerSpellData {
 				spells[offset ? i - 1 : i] = this.spells[i];
 			else offset = true;
 		updateSpells(spells);
+	}
+
+	public void removePassive(short passive) {
+		boolean has = false;
+		for(short s : passives)
+			if(s == passive)
+				has = true;
+
+		if(!has)
+			return;
+
+		short[] passives = new short[this.passives.length-1];
+		boolean offset = false;
+		for(int i = 0; i < this.passives.length; i++)
+			if(this.passives[i] != passive)
+				passives[offset ? i - 1 : i] = this.passives[i];
+			else offset = true;
+		updatePassives(passives);
+	}
+
+	public EntityPlayer getPlayerAsEntity() {
+		return MiscHelper.getServer().getConfigurationManager().getPlayerForUsername(playerLinkedTo);
 	}
 }

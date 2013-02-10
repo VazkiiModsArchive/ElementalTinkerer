@@ -8,11 +8,11 @@ package vazkii.tinkerer.magic;
 
 /**
  * SpellType
- * 
+ *
  * Enum of the Various Types of spells.
- * 
+ *
  * @author Vazkii
  */
 public enum SpellType {
-	ACTIVE, CHARGE, CHANNEL;
+	ACTIVE, CHARGE, CHANNEL, PASSIVE;
 }

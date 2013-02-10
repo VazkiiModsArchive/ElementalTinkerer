@@ -6,9 +6,9 @@
 // Created @ 27 Jan 2013
 package vazkii.tinkerer.handler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.management.ServerConfigurationManager;
-import net.minecraftforge.event.ForgeSubscribe;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.SpellHelper;
 import vazkii.tinkerer.magic.PlayerSpellData;
@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Vazkii
  */
 public class PlayerSpellUpdateHandler {
-	
+
 	public static void serverUpdate() {
 		ServerConfigurationManager manager = MiscHelper.getServer().getConfigurationManager();
 		for(PlayerSpellData spellData : SpellHelper.spellsForPlayers.values()) {
@@ -33,16 +33,17 @@ public class PlayerSpellUpdateHandler {
 				serverUpdate(spellData, player);
 		}
 	}
-	
+
 	public static void serverUpdate(PlayerSpellData spellData, EntityPlayer player) {
 		spellData.tick();
 		SpellHelper.updateSpells(player.worldObj, spellData);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public static void clientUpdate() {
-		if(SpellHelper.clientSpells != null)
-			SpellHelper.clientSpells.tickCooldowns(); 
+		Minecraft mc = MiscHelper.getMc();
+		if(SpellHelper.clientSpells != null && (!mc.isSingleplayer() || mc.currentScreen == null || !mc.currentScreen.doesGuiPauseGame()))
+			SpellHelper.clientSpells.tick();
 		// Tick only the cooldowns,
 		// passives happen in the server side
 	}

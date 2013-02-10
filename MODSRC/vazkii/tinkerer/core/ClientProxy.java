@@ -14,8 +14,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.client.handler.KeybindHandler;
 import vazkii.tinkerer.client.handler.LightningRenderHandler;
 import vazkii.tinkerer.client.hud.HudElementSpellTooltip;
+import vazkii.tinkerer.client.hud.HudElementVignette;
 import vazkii.tinkerer.client.particle.EntityFXColoredPortal;
 import vazkii.tinkerer.client.particle.EntityFXSteam;
 import vazkii.tinkerer.client.render.RenderBoulder;
@@ -44,6 +46,7 @@ import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -75,27 +78,35 @@ public class ClientProxy extends CommonProxy {
 		PacketHelper.packetHandlers.add(PacketLightning.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketSpells.RECIEVER_INSTANCE);
 	}
-	
+
 	@Override
 	public void registerTickHandler() {
 		super.registerTickHandler();
 		TickRegistry.registerTickHandler(ClientTickHandler.INSTANCE, Side.CLIENT);
 	}
-	
+
 	@Override
 	public void registerClientHandlers() {
+		// Register the Keybind Handler
+		KeybindHandler.INSTANCE = KeybindHandler.createInstance();
+		KeyBindingRegistry.registerKeyBinding(KeybindHandler.INSTANCE);
+
+		// Register, in the Event Bus, the Lightning Render Handler
 		MinecraftForge.EVENT_BUS.register(LightningRenderHandler.INSTANCE);
+
+		// Register the vignettes, not static as it requires a potion effect initialized in the mod
+		HudElementVignette.registerViginettes();
 	}
 
 	@Override
 	public void mapEntityRenderers() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityElementiumGuardian.class,
 														 new RenderElementiumGuardian());
-		RenderingRegistry.registerEntityRenderingHandler(EntityFireball.class, 
+		RenderingRegistry.registerEntityRenderingHandler(EntityFireball.class,
 														 new RenderProjectile(new ItemStack(Item.fireballCharge), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFrostBolt.class, 
+		RenderingRegistry.registerEntityRenderingHandler(EntityFrostBolt.class,
 														 new RenderProjectile(new ItemStack(Item.snowball), 0.5F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBoulder.class, 
+		RenderingRegistry.registerEntityRenderingHandler(EntityBoulder.class,
 														 new RenderBoulder());
 	}
 
@@ -119,7 +130,7 @@ public class ClientProxy extends CommonProxy {
 	public void readResearchDescriptions() {
 		ResearchHelper.readResearchDescriptions();
 	}
-	
+
 	@Override
 	public void initClientSpells() {
 		if(SpellHelper.clientSpells == null) {
@@ -127,17 +138,22 @@ public class ClientProxy extends CommonProxy {
 			SpellHelper.clientSpells.flagClientSided();
 		}
 	}
-	
+
 	@Override
 	public void setItemOnScreenTooltip(String tooltip) {
 		HudElementSpellTooltip.INSTANCE.setTooltip(tooltip);
 	}
 
 	@Override
+	public long getGameTicksElapsed() {
+		return ClientTickHandler.elapsedClientTicks;
+	}
+
+	@Override
 	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		EntityFXColoredPortal.spawn(color, world, x, y, z, motionX, motionY, motionZ);
 	}
-	
+
 	@Override
 	public void spawnSteamParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		EntityFXSteam.spawn(world, x, y, z, motionX, motionY, motionZ);

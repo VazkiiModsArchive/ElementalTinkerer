@@ -38,9 +38,9 @@ public class ContainerElementalistTinkeringAltar extends Container {
 		addSlotToContainer(new SlotElementalTinkeringAltarCatalyst(altar, 2, 14, 42 + shift));
 		addSlotToContainer(new SlotElementalTinkeringAltarCatalyst(altar, 3, 146, 42 + shift));
 
-		for(int x = 0; x < 5; ++x)
-			for(int y = 0; y < 5; ++y)
-				addSlotToContainer(new SlotElementalTinkeringAltar(altar, 4 + y + x * 5, 44 + x * 18, -12 + y * 18 + shift));
+		for(int y = 0; y < 5; ++y)
+			for(int x = 0; x < 5; ++x)
+				addSlotToContainer(new SlotElementalTinkeringAltar(altar, 4 + x + y * 5, 44 + x * 18, -12 + y * 18 + shift));
 
 		addSlotToContainer(new SlotElementalTinkeringAltarOutput(altar, 29, 138, 91 + shift));
 

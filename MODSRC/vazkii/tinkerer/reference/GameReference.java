@@ -23,7 +23,7 @@ public final class GameReference {
 	 * with an elementium block per block of glowstone around, if
 	 * that block happens to be a redstone lamp **/
 	public static final int ELEMENTIUM_DUST_PER_LAMP = 2;
-	
+
 	/** The chance of getting elementium dust from mob drops **/
 	public static final double ELEMENTIUM_DUST_MOB_DROP_CHANCE = 0.075;
 
@@ -36,4 +36,12 @@ public final class GameReference {
 	 * block happens to be a redstone lamp **/
 	public static final float EXPLOSION_MULTIPLIER_LAMP = 0.0625F;
 
+	/** The time it takes for the Odd Claw to recharge **/
+	public static final int ODD_CLAW_RECHARGE_TIME = 50;
+
+	/** The chance of creating a fire arrow with the Odd Claw **/
+	public static final float ODD_CLAW_FIRE_ARROW_CHANCE = 0.2F;
+
+	/** The chance of creating a knockback arrow with the Odd Claw **/
+	public static final float ODD_CLAW_KB_ARROW_CHANCE = 0.3F;
 }

@@ -7,14 +7,10 @@
 package vazkii.tinkerer.client.render;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
-
-import vazkii.tinkerer.client.helper.RenderHelper;
-import vazkii.tinkerer.helper.MiscHelper;
 
 /**
  * RenderBoulder

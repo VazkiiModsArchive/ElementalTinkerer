@@ -17,13 +17,13 @@ public final class PotionReference {
 
 	/** Default potion IDs. **/
 	public static final int ID_DEFAULT_FROZEN = 21;
-	
+
 	/** Potion IDs. **/
 	public static int idFrozen;
-	
+
 	/** Potion Names **/
 	public static final String NAME_FROZEN = "frozen";
-	
+
 	/** Display Names **/
 	public static final String DISPLAY_NAME_FROZEN = "Frozen";
 }

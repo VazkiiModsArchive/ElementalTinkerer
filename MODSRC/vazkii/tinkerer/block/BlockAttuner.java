@@ -6,22 +6,14 @@
 // Created @ 20 Jan 2013
 package vazkii.tinkerer.block;
 
-import java.awt.Color;
-import java.util.Random;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.client.handler.ClientTickHandler;
-import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.GuiIDs;
-import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
-import vazkii.tinkerer.research.PlayerResearch;
 import vazkii.tinkerer.tile.TileEntityAttuner;
-import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 
 /**
  * BlockAttuner
@@ -51,12 +43,12 @@ public class BlockAttuner extends BlockETContainer {
     public boolean renderAsNormalBlock() {
         return false;
     }
-	
+
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
 		return new TileEntityAttuner();
 	}
-	
+
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
         player.openGui(ElementalTinkerer.instance, GuiIDs.ID_ATTUNER, world, x, y, z);

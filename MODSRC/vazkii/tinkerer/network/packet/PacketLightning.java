@@ -23,12 +23,13 @@ import cpw.mods.fml.common.network.Player;
 
 /**
  * PacketLightning
- * 
+ *
  * Packet for Lightning Bolts.
- * 
+ *
  * @author Vazkii
  */
 public class PacketLightning extends ETPacket {
+
 	public static final PacketLightning RECIEVER_INSTANCE = new PacketLightning();
 
 	LightningBolt bolt;

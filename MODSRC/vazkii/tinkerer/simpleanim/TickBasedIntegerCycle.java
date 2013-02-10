@@ -18,10 +18,10 @@ public class TickBasedIntegerCycle implements IIntegerCycle {
 
 	/** Starting index for the cycle **/
 	final int startIndex;
-	
+
 	/** Cycle ends here, start over when it reaches this **/
 	final int finalIndex;
-	
+
 	/** Ticks to wait before the next cycle entry **/
 	final int ticks;
 
@@ -39,6 +39,7 @@ public class TickBasedIntegerCycle implements IIntegerCycle {
 	}
 
 	/** Called on every client tick **/
+	@Override
 	public void updateTick() {
 		++elapsedTicks;
 		if(elapsedTicks >= ticks)
@@ -49,7 +50,7 @@ public class TickBasedIntegerCycle implements IIntegerCycle {
 	void iterate() {
 		iterate_do();
 	}
-	
+
 	void iterate_do() {
 		if(currentIndex >= finalIndex)
 			currentIndex = startIndex;
@@ -58,6 +59,7 @@ public class TickBasedIntegerCycle implements IIntegerCycle {
 		elapsedTicks = 0;
 	}
 
+	@Override
 	public int getCurrentValue() {
 		return currentIndex;
 	}

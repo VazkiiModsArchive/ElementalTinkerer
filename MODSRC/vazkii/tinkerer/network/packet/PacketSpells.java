@@ -17,7 +17,6 @@ import java.util.List;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.SpellHelper;
 import vazkii.tinkerer.magic.PlayerSpellData;
 import vazkii.tinkerer.reference.NetworkReference;
@@ -31,31 +30,31 @@ import cpw.mods.fml.common.network.Player;
  * @author Vazkii
  */
 public class PacketSpells extends ETPacket {
-	
+
 	public static final PacketSpells RECIEVER_INSTANCE = new PacketSpells();
 
 	PlayerSpellData data;
-	
+
 	short[] spellsArray,
 			passivesArray;
 	byte selectedSpell;
 
 	/** Constructor with no params required for the reciever end **/
 	PacketSpells() { }
-	
+
 	public PacketSpells(PlayerSpellData data) {
 		this.data = data;
 	}
-	
+
 	void writeSpells(Player player, DataInputStream inputStream) throws IOException {
 		writeSpells(player, SpellHelper.clientSpells, inputStream);
 	}
-	
+
 	void writeSpells(Player player, PlayerSpellData data, DataInputStream inputStream) throws IOException {
 		data.updateSpells(spellsArray);
 		data.updatePassives(passivesArray);
 		data.forceSelect(selectedSpell);
-		
+
 		if(data.isClientSided()) {
 			int size = inputStream.readInt();
 			for(int i = 0; i < size; i++) {
@@ -78,7 +77,7 @@ public class PacketSpells extends ETPacket {
 		data.writeByte(this.data.getPassives().length);
 		for(short s : this.data.getPassives())
 			data.writeShort(s);
-				
+
 		if(!this.data.isClientSided()) {
 			data.writeInt(this.data.spellCooldowns.size());
 			for(short s : this.data.spellCooldowns.keySet()) {
@@ -97,28 +96,28 @@ public class PacketSpells extends ETPacket {
 			skipSubchannel(inputStream);
 
 			ElementalTinkerer.proxy.initClientSpells();
-			
+
 			selectedSpell = inputStream.readByte();
-			
+
 			List<Short> spells = new ArrayList();
 			List<Short> passives = new ArrayList();
-			
+
 			byte spellSize =  inputStream.readByte();
 			for(int i = 0; spellSize > 0 && i < spellSize; i++)
 					spells.add(inputStream.readShort());
-			
+
 			byte passiveSize =  inputStream.readByte();
 			for(int i = 0; passiveSize > 0 && i < passiveSize; i++)
 					passives.add(inputStream.readShort());
-			
+
 			spellsArray = new short[spells.size()];
 			for(int i = 0; i < spells.size(); i++)
 				spellsArray[i] = spells.get(i);
-			
+
 			passivesArray = new short[passives.size()];
 			for(int i = 0; i < passives.size(); i++)
 				passivesArray[i] = passives.get(i);
-			
+
 			writeSpells(player, inputStream);
 			return true;
 		}

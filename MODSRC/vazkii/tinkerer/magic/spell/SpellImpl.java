@@ -8,7 +8,6 @@ package vazkii.tinkerer.magic.spell;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.Spell;
 import vazkii.tinkerer.magic.SpellType;
 
@@ -22,7 +21,7 @@ import vazkii.tinkerer.magic.SpellType;
 public class SpellImpl extends Spell {
 
 	SpellType spellType;
-	
+
 	public SpellImpl(short index, String label, String displayName, int spriteIndex, SpellType type, int element) {
 		super(index, label, displayName, spriteIndex, element);
 		spellType = type;
@@ -37,7 +36,7 @@ public class SpellImpl extends Spell {
 	public boolean cast(EntityPlayer player, boolean bonus) {
 		return false;
 	}
-	
+
 	@Override
 	public boolean castOnEntity(EntityPlayer player, boolean bonus, EntityLiving entity) {
 		return false;
@@ -47,7 +46,7 @@ public class SpellImpl extends Spell {
 	public boolean castOnBlock(EntityPlayer player, boolean bonus, int x, int y, int z) {
 		return false;
 	}
-	
+
 	@Override
 	public int getCooldown(EntityPlayer player) {
 		return 0;

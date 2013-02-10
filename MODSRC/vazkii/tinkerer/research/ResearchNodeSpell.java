@@ -22,7 +22,7 @@ public class ResearchNodeSpell extends ResearchNode {
 	public ResearchNodeSpell(short index, String label, String displayName, int spriteIndex, ResearchType type) {
 		super(index, ResourcesReference.MAGIC_SPRITESHEET, label, displayName, spriteIndex, type);
 	}
-	
+
 	@Override
 	public boolean isAvailable(PlayerResearch research) {
 		short requirement = this.requirement;

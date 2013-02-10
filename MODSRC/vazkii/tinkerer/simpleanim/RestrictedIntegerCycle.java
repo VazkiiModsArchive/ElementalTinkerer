@@ -15,7 +15,7 @@ package vazkii.tinkerer.simpleanim;
  * @author Vazkii
  */
 public class RestrictedIntegerCycle extends TickBasedIntegerCycle {
-	
+
 	public RestrictedIntegerCycle(int startIndex, int finalIndex, int ticks) {
 		super(startIndex, finalIndex, ticks);
 	}
@@ -24,14 +24,15 @@ public class RestrictedIntegerCycle extends TickBasedIntegerCycle {
 	public int getCurrentValue() {
 		return currentIndex;
 	}
-	
+
+	@Override
 	void iterate() {
 		if(currentIndex == startIndex && !canRestartCycle())
 			return;
-	
+
 		super.iterate();
 	}
-	
+
 	/** Overridable method that returns if a new cycle can be started **/
 	boolean canRestartCycle() {
 		return true;
