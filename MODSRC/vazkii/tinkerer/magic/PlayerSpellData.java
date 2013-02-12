@@ -12,7 +12,6 @@ import java.util.TreeMap;
 
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.helper.MiscHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -219,6 +218,6 @@ public class PlayerSpellData {
 	}
 
 	public EntityPlayer getPlayerAsEntity() {
-		return MiscHelper.getServer().getConfigurationManager().getPlayerForUsername(playerLinkedTo);
+		return ElementalTinkerer.proxy.getPlayerAsEntity(playerLinkedTo);
 	}
 }

@@ -18,6 +18,8 @@ import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.reference.NetworkReference;
 import cpw.mods.fml.common.network.Player;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * PacketVerification
@@ -36,6 +38,7 @@ public class PacketVerification extends ETPacket {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean readPayload(Packet250CustomPayload packet, INetworkManager manager, Player player, String subchannel) {
 		if(subchannel.equals(getSubchannel())) {
 			PacketHelper.currentServerVerified = true;

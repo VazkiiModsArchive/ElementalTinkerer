@@ -20,6 +20,8 @@ import vazkii.tinkerer.lightning.LightningBolt;
 import vazkii.tinkerer.lightning.Vector3;
 import vazkii.tinkerer.reference.NetworkReference;
 import cpw.mods.fml.common.network.Player;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * PacketLightning
@@ -61,6 +63,7 @@ public class PacketLightning extends ETPacket {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean readPayload(Packet250CustomPayload packet, INetworkManager manager, Player player, String subchannel) throws IOException {
 		if (subchannel.equals(getSubchannel())) {
 			ByteArrayInputStream stream = new ByteArrayInputStream(packet.data);

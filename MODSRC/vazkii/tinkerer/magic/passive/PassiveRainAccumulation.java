@@ -39,7 +39,7 @@ public class PassiveRainAccumulation extends PassiveImpl {
 	public void cast(EntityPlayer player) {
 		World world = player.worldObj;
 		WorldInfo info = world.getWorldInfo();
-		if(player.ticksExisted % 80 == 0 && info.isRaining() && world.canBlockSeeTheSky((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ))) {
+		if(!world.isRemote && player.ticksExisted % 80 == 0 && info.isRaining() && world.canBlockSeeTheSky((int) Math.round(player.posX), (int) Math.round(player.posY), (int) Math.round(player.posZ))) {
 			InventoryPlayer inv = player.inventory;
 			int active = inv.currentItem;
 			ItemStack stack = inv.mainInventory[active];

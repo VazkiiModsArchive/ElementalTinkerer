@@ -8,8 +8,10 @@ package vazkii.tinkerer.core;
 
 import java.awt.Color;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import vazkii.tinkerer.handler.TickHandler;
+import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.network.packet.PacketClientSpells;
 import vazkii.tinkerer.network.packet.PacketCompleteResearch;
@@ -111,6 +113,12 @@ public class CommonProxy {
 	/** Gets how many game ticks have elapsed. This calls different fields per tick handler **/
 	public long getGameTicksElapsed() {
 		return TickHandler.elapsedTicks;
+	}
+
+	/** Gets a player entity from the name passed in, this has different implementations for both
+	 * client and server side of course. **/
+	public EntityPlayer getPlayerAsEntity(String player) {
+		return MiscHelper.getServer().getConfigurationManager().getPlayerForUsername(player);
 	}
 
 	/** Used by the client to spawn a colored portal particle at

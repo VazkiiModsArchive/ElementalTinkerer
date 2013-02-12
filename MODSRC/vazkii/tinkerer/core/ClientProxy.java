@@ -8,6 +8,7 @@ package vazkii.tinkerer.core;
 
 import java.awt.Color;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -147,6 +148,11 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public long getGameTicksElapsed() {
 		return ClientTickHandler.elapsedClientTicks;
+	}
+
+	@Override
+	public EntityPlayer getPlayerAsEntity(String player) {
+		return MiscHelper.getClientWorld().getPlayerEntityByName(player);
 	}
 
 	@Override
