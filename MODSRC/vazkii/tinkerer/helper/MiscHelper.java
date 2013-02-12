@@ -12,6 +12,7 @@ import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.magic.IWand;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -45,7 +46,7 @@ public final class MiscHelper {
 	}
 
 	public static boolean isServerPVP() {
-		return getServer().isPVPEnabled();
+		return ElementalTinkerer.proxy.isServerPVP();
 	}
 
 	/** Compares two item stacks and checks if their ID
