@@ -15,7 +15,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.reference.EntityReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 
@@ -57,7 +56,7 @@ public class EntityElementiumGuardian extends EntitySilverfish {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 
-		Color rgbColor = new Color(Color.HSBtoRGB((float) Math.cos((double) ClientTickHandler.elapsedClientTicks / ResourcesReference.SPECTRUM_DIVISOR_ELEMENTIUM_GUARDIAN), 0.9F, 0.7F));
+		Color rgbColor = new Color(Color.HSBtoRGB((float) Math.cos((double) ElementalTinkerer.proxy.getGameTicksElapsed() / ResourcesReference.SPECTRUM_DIVISOR_ELEMENTIUM_GUARDIAN), 0.9F, 0.7F));
 		for(int i = 0; i < EntityReference.ELEMENTIUM_GUARDIAN_PARTICLE_COUNT; i++)
 			ElementalTinkerer.proxy.spawnColoredPortalParticle(rgbColor, worldObj, posX + (rand.nextDouble() - 0.5D) * width, posY + rand.nextDouble() * height - 0.25D, posZ + (rand.nextDouble() - 0.5D) * width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D);
 	}

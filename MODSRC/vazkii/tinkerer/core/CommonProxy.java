@@ -120,6 +120,12 @@ public class CommonProxy {
 	public EntityPlayer getPlayerAsEntity(String player) {
 		return MiscHelper.getServer().getConfigurationManager().getPlayerForUsername(player);
 	}
+	
+	/** Checks if the current server is PVP, always false on client, as
+	 * damage calculations happen on the server side. **/
+	public boolean isServerPVP() {
+		return MiscHelper.getServer().isPVPEnabled();
+	}
 
 	/** Used by the client to spawn a colored portal particle at
 	 * the location passed in, with the color and motion passed

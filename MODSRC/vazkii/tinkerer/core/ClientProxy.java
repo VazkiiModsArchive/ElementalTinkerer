@@ -154,6 +154,11 @@ public class ClientProxy extends CommonProxy {
 	public EntityPlayer getPlayerAsEntity(String player) {
 		return MiscHelper.getClientWorld().getPlayerEntityByName(player);
 	}
+	
+	@Override
+	public boolean isServerPVP() {
+		return false;
+	}
 
 	@Override
 	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
