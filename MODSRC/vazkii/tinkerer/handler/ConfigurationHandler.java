@@ -67,6 +67,8 @@ public final class ConfigurationHandler {
 		BlockIDs.elementalistTinkeringAltar = config.getBlock(BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME, BlockIDs.DEFAULT_ELEMENTALIST_TINKERING_ALTAR).getInt(BlockIDs.DEFAULT_ELEMENTALIST_TINKERING_ALTAR);
 		BlockIDs.catalystCapsule = config.getBlock(BlockNames.CATALYST_CAPSULE_NAME, BlockIDs.DEFAULT_CATALYST_CAPSULE).getInt(BlockIDs.DEFAULT_CATALYST_CAPSULE);
 		BlockIDs.attuner = config.getBlock(BlockNames.ATTUNER_NAME, BlockIDs.DEFAULT_ATTUNER).getInt(BlockIDs.DEFAULT_ATTUNER);
+		BlockIDs.voidGateway = config.getBlock(BlockNames.VOID_GATEWAY_NAME, BlockIDs.DEFAULT_VOID_GATEWAY).getInt(BlockIDs.DEFAULT_VOID_GATEWAY);
+		BlockIDs.voidNetwork = config.getBlock(BlockNames.VOID_NETWORK_NAME, BlockIDs.DEFAULT_VOID_NETWORK).getInt(BlockIDs.DEFAULT_VOID_NETWORK);
 
 		// Load Item IDs
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);
@@ -79,6 +81,9 @@ public final class ConfigurationHandler {
 		ItemIDs.elementiumDust = config.getItem(ItemNames.ELEMENTIUM_DUST_NAME, ItemIDs.DEFAULT_ELEMENTIUM_DUST).getInt(ItemIDs.DEFAULT_ELEMENTIUM_DUST);
 		ItemIDs.elementiumDetector = config.getItem(ItemNames.ELEMENTIUM_DETECTOR_NAME, ItemIDs.DEFAULT_ELEMENTIUM_DETECTOR).getInt(ItemIDs.DEFAULT_ELEMENTIUM_DETECTOR);
 		ItemIDs.oddClaw = config.getItem(ItemNames.ODD_CLAW_NAME, ItemIDs.DEFAULT_ODD_CLAW).getInt(ItemIDs.DEFAULT_ODD_CLAW);
+		ItemIDs.locationGem = config.getItem(ItemNames.LOCATION_GEM_NAME, ItemIDs.DEFAULT_LOCATION_GEM).getInt(ItemIDs.DEFAULT_LOCATION_GEM);
+		ItemIDs.gem = config.getItem(ItemNames.GEM_NAME, ItemIDs.DEFAULT_GEM).getInt(ItemIDs.DEFAULT_GEM);
+		ItemIDs.enderParticle = config.getItem(ItemNames.ENDER_PARTICLE_NAME, ItemIDs.DEFAULT_ENDER_PARTICLE).getInt(ItemIDs.DEFAULT_ENDER_PARTICLE);
 
 		// Load Potion IDs
 		PotionReference.idFrozen = config.get(ConfigurationNodes.CATEGORY_POTION_IDS, PotionReference.NAME_FROZEN, PotionReference.ID_DEFAULT_FROZEN).getInt(PotionReference.ID_DEFAULT_FROZEN);

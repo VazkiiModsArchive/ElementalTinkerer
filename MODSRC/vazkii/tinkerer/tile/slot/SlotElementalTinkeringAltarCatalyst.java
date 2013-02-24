@@ -7,7 +7,7 @@
 package vazkii.tinkerer.tile.slot;
 
 import net.minecraft.item.ItemStack;
-import vazkii.tinkerer.item.ItemCatalyst;
+import vazkii.tinkerer.item.ICatalyst;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 
 /**
@@ -29,7 +29,8 @@ public class SlotElementalTinkeringAltarCatalyst extends SlotElementalTinkeringA
 	public boolean isItemValid(ItemStack par1ItemStack) {
 		return super.isItemValid(par1ItemStack)
 			   && par1ItemStack.getItem() != null
-			   && par1ItemStack.getItem() instanceof ItemCatalyst
+			   && par1ItemStack.getItem() instanceof ICatalyst
+			   && ((ICatalyst)par1ItemStack.getItem()).canFit(altar, par1ItemStack)
 			   && altar.hasCatalystCapsuleOnSide(slotNumber);
 	}
 

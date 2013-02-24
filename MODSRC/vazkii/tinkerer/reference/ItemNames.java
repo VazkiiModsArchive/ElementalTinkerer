@@ -25,21 +25,50 @@ public final class ItemNames {
 							   ELEMENTIUM_INGOT_NAME = "elementiumIngot",
 							   ELEMENTIUM_DUST_NAME = "elementiumDust",
 							   ELEMENTIUM_DETECTOR_NAME = "elementiumDetector",
-							   ODD_CLAW_NAME = "oddClaw";
+							   ODD_CLAW_NAME = "oddClaw",
+							   LOCATION_GEM_NAME = "locationGem",
+							   GEM_NAME = "gem",
+							   ENDER_PARTICLE_NAME = "enderParticle";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
 							   ELEMENT_BOOK_NAME_PREFIX = "Book of ",
 							   ELEMENTALIST_LEXICON_DISPLAY_NAME = "Elementalist's Lexicon",
 							   CATALYST_BARE_DISPLAY_NAME = "Catalyst",
-							   CATALYST_ITEM_DISPLAY_NAME = "%s%s " + CATALYST_BARE_DISPLAY_NAME,
+							   CATALYST_ITEM_DISPLAY_NAME = "%s %s " + CATALYST_BARE_DISPLAY_NAME,
 							   ELEMENTAL_BARK_ITEM_DISPLAY_NAME = "Elemental Bark",
 							   WAND_NAME_PREFIX = "Wand of ",
 							   ELEMENTIUM_INGOT_DISPLAY_NAME = "Elementium Ingot",
 							   ELEMENTIUM_DUST_DISPLAY_NAME = "Elementium Dust",
 							   ELEMENTIUM_DETECTOR_DISPLAY_NAME = "Elementium Detector",
-							   ODD_CLAW_DISPLAY_NAME = "Odd Claw";
+							   ODD_CLAW_DISPLAY_NAME = "Odd Claw",
+							   LOCATION_GEM_DISPLAY_NAME = "Gem of Locating",
+							   ENDER_PARTICLE_DISPLAY_NAME = "Ender Particle";
+
+	/** Gem Names **/
+	public static final String[] GEM_NAMES = {
+		"Agate",
+		"Amethyst",
+		"Chrysoberyl",
+		"Diamond",
+		"Diopside",
+		"Emerald",
+		"Garnet",
+		"Jade",
+		"Larimar",
+		"Onyx",
+		"Peridot",
+		"Ruby",
+		"Quartz",
+		"Sapphire",
+		"Tanzanite",
+		"Tiger's Eye"
+	};
 
 	/** The levels for the names of the catalyst item **/
-	public static final String[] CATALYST_LEVELS = {"Lesser ", "Elemental ", "Greater ", "Ender " };
+	public static final String[] CATALYST_LEVELS = {
+		"Lesser",
+		"Elemental",
+		"Greater",
+		"Ender" };
 }

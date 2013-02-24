@@ -7,7 +7,6 @@
  * ----------------------------------------------------------------------------
  * https://dl.dropbox.com/u/23495823/Airship/Files.7z
  *
- *
  * This Code is Open Source and distributed under a
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
@@ -71,10 +70,5 @@ public class EntityFXSteam extends EntityFX {
             f6 = 1.0F;
         particleScale = originalParticleScale * f6;
         super.renderParticle(tessellator, f, f1, f2, f3, f4, f5);
-    }
-
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
     }
 }

@@ -55,8 +55,6 @@ public class BlockElementiumOre extends BlockET {
 		}
 
 		dropXpOnBlockBreak(par1World, par2, par3, par4, par1World.rand.nextBoolean() ? 1 : 0);
-
-		super.onBlockDestroyedByPlayer(par1World, par2, par3, par4, par5);
 	}
 
 	@Override

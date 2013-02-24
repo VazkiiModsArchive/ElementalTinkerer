@@ -15,6 +15,8 @@ import java.io.IOException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraftforge.common.MinecraftForge;
+import vazkii.tinkerer.core.event.ResearchCompleteEvent;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.NetworkReference;
@@ -61,8 +63,10 @@ public class PacketCompleteResearch extends ETPacket {
 			skipSubchannel(inputStream);
 			short id = inputStream.readShort();
 			PlayerResearch research = ResearchHelper.getResearchDataForPlayer(((EntityPlayer)player).username);
-			if(research.isResearchDone(id))
+			if(research.isResearchDone(id)) {
 				research.completeResearch(id, false, ((EntityPlayer)player).worldObj);
+				MinecraftForge.EVENT_BUS.post(new ResearchCompleteEvent(ResearchHelper.clientResearch, id));
+			}
 			PacketResearchData dataPacket = new PacketResearchData(research);
 			PacketHelper.sendPacketToClient(player, dataPacket);
 			ResearchHelper.updateResearch(((EntityPlayer)player).worldObj, research);

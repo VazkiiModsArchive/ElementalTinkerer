@@ -35,7 +35,8 @@ public final class ElementalTinkererBlocks {
 						elementiumGemBlock,
 						elementalistTinkeringAltar,
 						catalystCapsule,
-						attuner;
+						attuner,
+						voidGateway;
 
 	public static void init() {
 		// Construct the blocks
@@ -84,6 +85,13 @@ public final class ElementalTinkererBlocks {
 						.setStepSound(Block.soundMetalFootstep)
 						.setBlockName(BlockNames.ATTUNER_NAME);
 
+		voidGateway = new BlockVoidGateway(BlockIDs.voidGateway)
+						.setHardness(8F)
+						.setResistance(2000F)
+						.setLightValue(0.2F)
+						.setStepSound(Block.soundMetalFootstep)
+						.setBlockName(BlockNames.VOID_GATEWAY_NAME);
+
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
 		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
@@ -92,6 +100,7 @@ public final class ElementalTinkererBlocks {
 		GameRegistry.registerBlock(elementalistTinkeringAltar, BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
 		GameRegistry.registerBlock(catalystCapsule, BlockNames.CATALYST_CAPSULE_NAME);
 		GameRegistry.registerBlock(attuner, BlockNames.ATTUNER_NAME);
+		GameRegistry.registerBlock(voidGateway, BlockNames.VOID_GATEWAY_NAME);
 
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
@@ -101,11 +110,13 @@ public final class ElementalTinkererBlocks {
 		LanguageRegistry.addName(elementalistTinkeringAltar, BlockNames.ELEMENTALIST_TINKERING_ALTAR_DISPLAY_NAME);
 		LanguageRegistry.addName(catalystCapsule, BlockNames.CATALYST_CAPSULE_DISPLAY_NAME);
 		LanguageRegistry.addName(attuner, BlockNames.ATTUNER_DISPLAY_NAME);
+		LanguageRegistry.addName(voidGateway, BlockNames.VOID_GATEWAY_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumOre, 1, -1), ResearchReference.ID_ELEMENTIUM_ORE);
 		ResearchHelper.setIconicItem(new ItemStack(elementalDesk), ResearchReference.ID_ELEMENTAL_DESK);
 		ResearchHelper.setIconicItem(new ItemStack(catalystCapsule), ResearchReference.ID_CATALYST_CAPSULE);
+		ResearchHelper.setIconicItem(new ItemStack(voidGateway), ResearchReference.ID_VOID_GATEWAY);
 	}
 
 	public static void initBlockRecipes() {
@@ -130,12 +141,5 @@ public final class ElementalTinkererBlocks {
 				'G', ElementalTinkererItems.elementiumGem,
 				'I', Block.blockSteel);
 		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTAL_TINKERING).bindLatestCraftingRecipe();
-
-		// Catalyst Capsule Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(catalystCapsule),
-				" I ", "IPI", " I ",
-				'I', ElementalTinkererItems.elementiumIngot,
-				'P', Block.thinGlass);
-		ResearchLibrary.allNodes.get(ResearchReference.ID_CATALYST_CAPSULE).bindLatestCraftingRecipe();
 	}
 }

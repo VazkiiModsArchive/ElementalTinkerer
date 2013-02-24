@@ -54,7 +54,6 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
 	}
 
 	public void renderElementalDeskAt(TileEntityElementalDesk desk, double x, double y, double z, float ticks) {
-
 		if(entity == null)
 			entity = new EntityItem(desk.worldObj, desk.xCoord, desk.yCoord, desk.zCoord, new ItemStack(ElementalTinkererItems.elementiumGem));
 		else entity.age = (int) ClientTickHandler.elapsedClientTicks;

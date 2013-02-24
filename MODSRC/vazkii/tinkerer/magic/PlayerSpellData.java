@@ -89,20 +89,16 @@ public class PlayerSpellData {
 		}
 	}
 
-	public void tick() {
-		tickPassives();
+	public void tick(EntityPlayer player) {
+		tickPassives(player);
 		tickCooldowns();
 	}
 
-	public void tickPassives() {
-		EntityPlayer playerAsEntity = getPlayerAsEntity();
-		if(playerAsEntity == null)
-			return;
-
+	public void tickPassives(EntityPlayer player) {
 		for(Short s : passives) {
 			Spell spell = SpellLibrary.allPassives.get(s);
 			if(spell != null && spell.getSpellType() == SpellType.PASSIVE)
-				spell.cast(playerAsEntity, false);
+				spell.cast(player, false);
 		}
 	}
 
@@ -215,9 +211,5 @@ public class PlayerSpellData {
 				passives[offset ? i - 1 : i] = this.passives[i];
 			else offset = true;
 		updatePassives(passives);
-	}
-
-	public EntityPlayer getPlayerAsEntity() {
-		return ElementalTinkerer.proxy.getPlayerAsEntity(playerLinkedTo);
 	}
 }

@@ -8,7 +8,8 @@ package vazkii.tinkerer.handler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.server.management.ServerConfigurationManager;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.SpellHelper;
 import vazkii.tinkerer.magic.PlayerSpellData;
@@ -25,17 +26,23 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class PlayerSpellUpdateHandler {
 
-	public static void serverUpdate() {
-		ServerConfigurationManager manager = MiscHelper.getServer().getConfigurationManager();
-		for(PlayerSpellData spellData : SpellHelper.spellsForPlayers.values()) {
-			EntityPlayer player = manager.getPlayerForUsername(spellData.playerLinkedTo);
-			if(player != null)
+	public static final PlayerSpellUpdateHandler INSTANCE = new PlayerSpellUpdateHandler();
+
+	private PlayerSpellUpdateHandler() { }
+
+	@ForgeSubscribe
+	public void onPlayerUpdate(LivingUpdateEvent event) {
+		if(event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			if(!player.worldObj.isRemote) {
+				PlayerSpellData spellData = SpellHelper.getSpellDataForPlayer(player.username);
 				serverUpdate(spellData, player);
+			}
 		}
 	}
 
 	public static void serverUpdate(PlayerSpellData spellData, EntityPlayer player) {
-		spellData.tick();
+		spellData.tick(player);
 		SpellHelper.updateSpells(player.worldObj, spellData);
 	}
 
@@ -43,7 +50,7 @@ public class PlayerSpellUpdateHandler {
 	public static void clientUpdate() {
 		Minecraft mc = MiscHelper.getMc();
 		if(SpellHelper.clientSpells != null && (!mc.isSingleplayer() || mc.currentScreen == null || !mc.currentScreen.doesGuiPauseGame()))
-			SpellHelper.clientSpells.tick();
+			SpellHelper.clientSpells.tick(mc.thePlayer);
 		// Tick only the cooldowns,
 		// passives happen in the server side
 	}

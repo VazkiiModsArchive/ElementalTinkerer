@@ -22,27 +22,9 @@ import vazkii.tinkerer.reference.WorldGenRates;
  */
 public class ElementiumDetectorCycle extends RestrictedIntegerCycle {
 
-	int iterateBy = 1;
-
 	public ElementiumDetectorCycle(int startIndex, int finalIndex, int ticks) {
 		super(startIndex, finalIndex, ticks);
-	}
-
-	@Override
-	void iterate_do() {
-		if(currentIndex >= finalIndex) {
-			currentIndex--;
-			iterateBy = -1;
-		}
-
-		else if(currentIndex <= startIndex) {
-			currentIndex++;
-			iterateBy = 1;
-		}
-
-		else currentIndex += iterateBy;
-
-		elapsedTicks = 0;
+		flagUpDown();
 	}
 
 	@Override

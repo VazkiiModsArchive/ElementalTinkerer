@@ -11,6 +11,7 @@ import java.util.Random;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
+import vazkii.tinkerer.helper.ElementiumOreGenerationHelper;
 import vazkii.tinkerer.reference.MiscReference;
 import vazkii.tinkerer.reference.WorldGenRates;
 import vazkii.tinkerer.world.WorldGenElementiumOre;
@@ -37,13 +38,13 @@ public final class WorldGenerationHandler implements IWorldGenerator {
 
 	/** Generate Elementium Ore in the world, passing in the world instance and chunk coords **/
 	public void tryGenerateElementium(Random worldRand, World world, int chunkX, int chunkZ) {
-		int rand = worldRand.nextInt(100);
-		if(rand < WorldGenRates.ELEMENTIUM_ORE_RARITY) {
+		if(!ElementiumOreGenerationHelper.checkAround(chunkX, chunkZ)) {
 			int posX = chunkX + worldRand.nextInt(MiscReference.CHUNK_LENGHT);
 			int posY = MathHelper.getRandomIntegerInRange(worldRand, WorldGenRates.ELEMENTIUM_ORE_HEIGHT_MIN, WorldGenRates.ELEMENTIUM_ORE_HEIGHT_MAX);
 			int posZ = chunkZ + worldRand.nextInt(MiscReference.CHUNK_LENGHT);
 
 			WorldGenElementiumOre.INSTANCE.generate(world, worldRand, posX, posY, posZ);
+			ElementiumOreGenerationHelper.setVeinAtWrite(chunkX, chunkZ, null);
 		}
 	}
 }

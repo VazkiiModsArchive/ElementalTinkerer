@@ -29,14 +29,21 @@ public final class SpellReference {
 							  ID_AEREAL_PUSH = 4,
 							  ID_FROSTSHOCK = 5,
 							  ID_IMPLOSION = 6,
-							  ID_FLAME_RING = 7;
+							  ID_FLAME_RING = 7,
+							  ID_GUILLOTINE = 8,
+							  ID_SHATTERING_RECALL = 9;
 
 	/** Passive IDs **/
 	public static final short PID_EXTENDED_BREATH = 0,
 							  PID_RAIN_ACCUMULATION = 1,
 							  PID_NATURE_AURA = 2,
 							  PID_BURNING_CLOUD = 3,
-							  PID_UNDERSHIRT = 4;
+							  PID_UNDERSHIRT = 4,
+							  PID_INATE_SPEED = 5,
+							  PID_FREEZING_WALK = 6,
+							  PID_IRONSKIN = 7,
+							  PID_BLOOD_BOIL = 8,
+							  PID_ENDER_ABSORPTION = 9;
 
 	/** Spell Labels **/
 	public static final String LABEL_THUNDERBOLT = "thunderbolt",
@@ -51,7 +58,14 @@ public final class SpellReference {
 							   LABEL_RAIN_ACCUMULATION = "rainAccumulation",
 							   LABEL_NATURE_AURA = "natureAura",
 							   LABEL_BURNING_CLOUD = "burningCloud",
-							   LABEL_UNDERSHIRT = "undershirt";
+							   LABEL_UNDERSHIRT = "undershirt",
+							   LABEL_INATE_SPEED = "inateSpeed",
+							   LABEL_FREEZING_WALK = "freezingWalk",
+							   LABEL_IRONSKIN = "ironskin",
+							   LABEL_BLOOD_BOIL = "bloodBoil",
+							   LABEL_ENDER_ABSORPTION = "enderAbsorption",
+							   LABEL_GUILLOTINE = "guillotine",
+							   LABEL_SHATTERING_RECALL = "shatteringRecall";
 
 	/** Spell Display Names **/
 	public static final String DISPLAY_NAME_THUNDERBOLT = "Thunderbolt",
@@ -66,7 +80,14 @@ public final class SpellReference {
 							   DISPLAY_NAME_RAIN_ACCUMULATION = "Rain Accumulation",
 							   DISPLAY_NAME_NATURE_AURA = "Nature Aura",
 							   DISPLAY_NAME_BURNING_CLOUD = "Burning Cloud",
-							   DISPLAY_NAME_UNDERSHIRT = "Undershirt";
+							   DISPLAY_NAME_UNDERSHIRT = "Undershirt",
+							   DISPLAY_NAME_INATE_SPEED = "Inate Speed",
+							   DISPLAY_NAME_FREEZING_WALK = "Freezing Walk",
+							   DISPLAY_NAME_IRONSKIN = "Ironskin",
+							   DISPLAY_NAME_BLOOD_BOIL = "Blood Boil",
+							   DISPLAY_NAME_ENDER_ABSORPTION = "Ender Absorption",
+							   DISPLAY_NAME_GUILLOTINE = "Guillotine",
+							   DISPLAY_NAME_SHATTERING_RECALL = "Shattering Recall";
 
 	/** Spell Cooldowns **/
 	public static final int COOLDOWN_FIREBALL = 60,
@@ -76,7 +97,9 @@ public final class SpellReference {
 							COOLDOWN_AEREAL_PUSH = 190,
 							COOLDOWN_FROSTSHOCK = 280,
 							COOLDOWN_IMPLOSION = 2400,
-							COOLDOWN_FLAME_RING = 1800;
+							COOLDOWN_FLAME_RING = 1800,
+							COOLDOWN_GUILLOUTINE = 3600,
+							COOLDOWN_SHATTERING_RECALL = 6000;
 
 	/** Chargable Spells max times **/
 	public static final int MAX_TIME_AEREAL_PUSH = 30;

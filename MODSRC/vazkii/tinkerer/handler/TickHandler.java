@@ -29,12 +29,12 @@ public class TickHandler implements ITickHandler {
 	private TickHandler() { }
 
 	@Override
-	public void tickStart(EnumSet<TickType> type, Object... tickData) {}
+	public void tickStart(EnumSet<TickType> type, Object... tickData) {
+		// NO-OP
+	}
 
 	@Override
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
-		PlayerSpellUpdateHandler.serverUpdate();
-
 		++elapsedTicks;
 	}
 

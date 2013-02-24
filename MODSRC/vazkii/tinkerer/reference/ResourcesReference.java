@@ -70,6 +70,7 @@ public final class ResourcesReference {
 							BLOCK_INDEX_ELEMENTIUM_GEM = 16,
 							BLOCK_INDEX_ATTUNER_GLASS = 17,
 							BLOCK_INDEX_ATTUNER_TOP = 18,
+							BLOCK_INDEX_VOID_BLOCKS = 32,
 							BLOCK_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Blocks Spritesheet (64x) indexes **/
@@ -85,7 +86,14 @@ public final class ResourcesReference {
 							ITEM_INDEX_WAND_COLORIZE = 34,
 							ITEM_INDEX_ELEMENTIUM_DETECTOR_REGULAR = 49,
 							ITEM_INDEX_ELEMENTIUM_DETECTOR_COLORIZE = 50,
-							ITEM_INDEX_ODD_CLAW = 64;
+							ITEM_INDEX_ODD_CLAW = 64,
+							ITEM_INDEX_LOCATION_GEM = 46,
+							ITEM_INDEX_GEM_START = 192,
+							ITEM_INDEX_TRANSPARENT = 255;
+
+	/** Integers for the Item Spritesheet Animations **/
+	public static final int ITEM_ANIM_ENDER_PARTICLE_START = 57,
+							ITEM_ANIM_ENDER_PARTICLE_END = 63;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
@@ -105,7 +113,8 @@ public final class ResourcesReference {
 							RESEARCH_INDEX_ELEMENTAL_TINKERING = 11,
 							RESEARCH_INDEX_CATALYST_CAPSULE = 12,
 							RESEARCH_INDEX_ATTUNER = 13,
-							RESEARCH_INDEX_ELEMENTIUM_DETECTOR = 14;
+							RESEARCH_INDEX_ELEMENTIUM_DETECTOR = 14,
+							RESEARCH_INDEX_VOID_GATEWAY = 15;
 
 	/** Integers for the Magic Spritesheet indexes **/
 	public static final int MAGIC_INDEX_BACKGROUND = 255,
@@ -122,7 +131,14 @@ public final class ResourcesReference {
 							MAGIC_INDEX_RAIN_ACCUMULATION = 5,
 							MAGIC_INDEX_NATURE_AURA = 6,
 							MAGIC_INDEX_BURNING_CLOUD = 7,
-							MAGIC_INDEX_UNDERSHIRT = 9;
+							MAGIC_INDEX_UNDERSHIRT = 9,
+							MAGIC_INDEX_INATE_SPEED = 20,
+							MAGIC_INDEX_FREEZING_WALK = 21,
+							MAGIC_INDEX_IRONSKIN = 22,
+							MAGIC_INDEX_BLOOD_BOIL = 23,
+							MAGIC_INDEX_ENDER_ABSORPTION = 8,
+							MAGIC_INDEX_GUILLOTINE = 10,
+							MAGIC_INDEX_SHATTERING_RECALL = 11;
 
 	/** Integers for the Potion Effect Spritesheet indexes **/
 	public static final int POTION_INDEX_FROZEN = 0;
@@ -131,6 +147,7 @@ public final class ResourcesReference {
 	public static final int ANIM_SPEED_ELEMENTIUM_GEM = 2,
 							ANIM_SPEED_ELEMENTIUM_INGOT = 2,
 							ANIM_SPEED_ELEMENTIUM_DETECTOR = 1,
+							ANIM_SPEED_ENDER_PARTICLE = 3,
 							ANIM_MAX_ELEMENTIUM_DETECTOR = 45;
 
 	/** The file that contains the Elementium Guardian Mob Texture **/

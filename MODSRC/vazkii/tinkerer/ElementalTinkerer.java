@@ -8,20 +8,25 @@ package vazkii.tinkerer;
 
 import java.util.logging.Logger;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
+import vazkii.tinkerer.block.voidStorage.VoidMap;
 import vazkii.tinkerer.command.CommandResearch;
 import vazkii.tinkerer.compat.Thaumcraft3Compat;
 import vazkii.tinkerer.core.CommonProxy;
 import vazkii.tinkerer.entity.ElementalTinkererEntities;
 import vazkii.tinkerer.handler.ConfigurationHandler;
-import vazkii.tinkerer.handler.CraftingHandler;
 import vazkii.tinkerer.handler.ElementiumDustDropsHandler;
 import vazkii.tinkerer.handler.FrozenEntityHandler;
 import vazkii.tinkerer.handler.GuiHandler;
 import vazkii.tinkerer.handler.InteractionAccessHandler;
+import vazkii.tinkerer.handler.PlayerSpellUpdateHandler;
 import vazkii.tinkerer.handler.PlayerTrackingHandler;
 import vazkii.tinkerer.handler.WorldGenerationHandler;
+import vazkii.tinkerer.helper.ElementiumOreGenerationHelper;
+import vazkii.tinkerer.helper.IOHelper;
+import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.magic.SpellLibrary;
 import vazkii.tinkerer.network.PacketHandler;
@@ -29,17 +34,22 @@ import vazkii.tinkerer.potion.ElementalTinkererPotions;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.NetworkReference;
 import vazkii.tinkerer.research.ResearchLibrary;
+import vazkii.tinkerer.research.trigger.CraftingRecipesTrigger;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
+import cpw.mods.fml.common.Mod.ServerStarted;
 import cpw.mods.fml.common.Mod.ServerStarting;
+import cpw.mods.fml.common.Mod.ServerStopped;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -102,13 +112,16 @@ public class ElementalTinkerer {
 		GameRegistry.registerPlayerTracker(PlayerTrackingHandler.INSTANCE);
 
 		// Register the Crafting Handler
-		GameRegistry.registerCraftingHandler(CraftingHandler.INSTANCE);
+		GameRegistry.registerCraftingHandler(CraftingRecipesTrigger.INSTANCE);
 
 		// Register, in the Event Bus, the Interaction Access Handler
 		MinecraftForge.EVENT_BUS.register(InteractionAccessHandler.INSTANCE);
 
 		// Register, in the Event Bus, the Frozen Entity Handler
 		MinecraftForge.EVENT_BUS.register(FrozenEntityHandler.INSTANCE);
+
+		// Register, in the Event Bus, the Player Spell Update Handler
+		MinecraftForge.EVENT_BUS.register(PlayerSpellUpdateHandler.INSTANCE);
 
 		// Register, in the Event Bus, the Elementium Dust Drop Handler
 		MinecraftForge.EVENT_BUS.register(ElementiumDustDropsHandler.INSTANCE);
@@ -162,5 +175,21 @@ public class ElementalTinkerer {
 	@ServerStarting
 	public void onServerStarting(FMLServerStartingEvent event) {
 		event.registerServerCommand(CommandResearch.INSTANCE);
+	}
+
+	@ServerStarted
+	public void onServerStarted(FMLServerStartedEvent event) {
+		VoidMap.theMap = new VoidMap();
+		NBTTagCompound worldCmp = IOHelper.getWorldCache(MiscHelper.getServer().worldServers[0]);
+		if(worldCmp.hasKey("voidStorage"))
+			VoidMap.theMap.readFromNBT(worldCmp.getCompoundTag("voidStorage"));
+		ElementiumOreGenerationHelper.readFromNBT();
+	}
+
+
+	@ServerStopped
+	public void onServerStopped(FMLServerStoppedEvent event) {
+		VoidMap.theMap = null;
+		ElementiumOreGenerationHelper.veins.clear();
 	}
 }

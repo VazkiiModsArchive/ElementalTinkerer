@@ -8,7 +8,6 @@ package vazkii.tinkerer.core;
 
 import java.awt.Color;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import vazkii.tinkerer.handler.TickHandler;
 import vazkii.tinkerer.helper.MiscHelper;
@@ -25,6 +24,7 @@ import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
+import vazkii.tinkerer.tile.TileEntityVoidGateway;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -48,6 +48,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityCatalystCapsule.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.CATALYST_CAPSULE_NAME);
 		GameRegistry.registerTileEntity(TileEntityElementalTinkeringAltar.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
 		GameRegistry.registerTileEntity(TileEntityAttuner.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ATTUNER_NAME);
+		GameRegistry.registerTileEntity(TileEntityVoidGateway.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.VOID_GATEWAY_NAME);
 	}
 
 	/** Registers the mod's packets. Some packets use different
@@ -115,12 +116,6 @@ public class CommonProxy {
 		return TickHandler.elapsedTicks;
 	}
 
-	/** Gets a player entity from the name passed in, this has different implementations for both
-	 * client and server side of course. **/
-	public EntityPlayer getPlayerAsEntity(String player) {
-		return MiscHelper.getServer().getConfigurationManager().getPlayerForUsername(player);
-	}
-	
 	/** Checks if the current server is PVP, always false on client, as
 	 * damage calculations happen on the server side. **/
 	public boolean isServerPVP() {

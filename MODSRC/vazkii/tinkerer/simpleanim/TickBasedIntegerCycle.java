@@ -31,11 +31,22 @@ public class TickBasedIntegerCycle implements IIntegerCycle {
 	/** At what integer is the cycle **/
 	int currentIndex;
 
+	/** If this cycle goes up and down, how is it going now? **/
+	int upDown = 1;
+
+	/** Does thic cycle go up and down? **/
+	boolean upDownFlag = false;
+
 	public TickBasedIntegerCycle(int startIndex, int finalIndex, int ticks) {
 		this.startIndex = currentIndex = startIndex; //Sync the current index with the initial
 		this.finalIndex = finalIndex;
 		this.ticks = ticks;
 		elapsedTicks = 0;
+	}
+
+	public TickBasedIntegerCycle flagUpDown() {
+		upDownFlag = true;
+		return this;
 	}
 
 	/** Called on every client tick **/
@@ -52,9 +63,30 @@ public class TickBasedIntegerCycle implements IIntegerCycle {
 	}
 
 	void iterate_do() {
+		if(upDownFlag) {
+			upDown();
+			return;
+		}
+
 		if(currentIndex >= finalIndex)
 			currentIndex = startIndex;
 		else currentIndex++;
+
+		elapsedTicks = 0;
+	}
+
+	void upDown() {
+		if(currentIndex >= finalIndex) {
+			currentIndex--;
+			upDown = -1;
+		}
+
+		else if(currentIndex <= startIndex) {
+			currentIndex++;
+			upDown = 1;
+		}
+
+		else currentIndex += upDown;
 
 		elapsedTicks = 0;
 	}

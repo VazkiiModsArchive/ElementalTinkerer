@@ -49,15 +49,20 @@ public final class MiscHelper {
 		return ElementalTinkerer.proxy.isServerPVP();
 	}
 
-	/** Compares two item stacks and checks if their ID
-	 * and Metadata are equal. **/
+	/** Compares two item stacks and checks if their ID,
+	 * Metadata and Tag Compound (if exists) are equal. **/
 	public static boolean areStacksEqualIgnoreSize(ItemStack stack1, ItemStack stack2) {
 		return stack1 != null
 				&& stack2 != null
 				&& stack1.itemID == stack2.itemID
 				&& (stack1.getItemDamage() == stack2.getItemDamage()
 				|| stack1.getItemDamage() == -1
-				|| stack2.getItemDamage() == -1);
+				|| stack2.getItemDamage() == -1)
+				&& (stack1.stackTagCompound == null
+				&& stack2.stackTagCompound == null
+				|| (stack1.stackTagCompound == null
+				? stack2.stackTagCompound.equals(stack1.stackTagCompound)
+				: stack1.stackTagCompound.equals(stack2.stackTagCompound)));
 	}
 
 	@SideOnly(Side.CLIENT)

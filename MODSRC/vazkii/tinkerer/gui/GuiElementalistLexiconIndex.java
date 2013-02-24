@@ -37,7 +37,7 @@ import vazkii.tinkerer.research.ResearchNode;
  */
 public class GuiElementalistLexiconIndex extends GuiScreen {
 
-	public static int currentPage = 0; //VAZ_TODO Implement
+	public static int currentPage = 0;
 	public static byte currentSection = 0;
 
 	ResearchNode[] currentShowingNodes;
@@ -57,16 +57,16 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 		List<ResearchNode> workingNodes = new ArrayList();
 		int foundNodesInCurrentCategory = 0;
         for(Short s : ResearchLibrary.allNodes.keySet()) {
-        	if(workingNodes.size() >= 12)
+        	if(workingNodes.size() >= GuiReference.LINES_IN_ELEMENTALIST_LEXICON * (currentPage + 1))
         		break;
 
         	ResearchNode node = ResearchLibrary.allNodes.get(s);
         	ResearchCategory category = ResearchLibrary.categories.get(currentSection);
         	if(category.hasNode(node)) {
+        		foundNodesInCurrentCategory++;
         		// Check if this page happens to have this research node
-        		if(foundNodesInCurrentCategory >= currentPage * GuiReference.LINES_IN_ELEMENTALIST_LEXICON) {
+        		if(foundNodesInCurrentCategory > currentPage * GuiReference.LINES_IN_ELEMENTALIST_LEXICON)
         			workingNodes.add(node);
-        		}
         	}
         }
 
@@ -76,8 +76,13 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 	public void updateButtons() {
 		controlList.clear();
 		addBookmarkButtons();
+
+		controlList.add(new GuiInvisibleButton(6, xStart + 18, yStart + 158, 15, 12));
+		controlList.add(new GuiInvisibleButton(7, xStart + 115, yStart + 158, 15, 12));
+
 		updateResearchNodes();
 		addResearchButtons();
+
 	}
 
 	public void addBookmarkButtons() {
@@ -91,7 +96,7 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 
 	public void addResearchButtons() {
 		for(int i = 0; i < currentShowingNodes.length; i++)
-			controlList.add(new GuiInvisibleButton(6 + i, xStart + 4, yStart + 16 + i * 12, 120, 9));
+			controlList.add(new GuiInvisibleButton(8 + i, xStart + 4, yStart + 16 + i * 12, 120, 9));
 	}
 
 	@Override
@@ -100,9 +105,22 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 
 		if(par1GuiButton.id <= 5) {
 			currentSection = (byte) par1GuiButton.id;
+			currentPage = 0;
 			updateButtons();
+		} else if(par1GuiButton.id == 6) {
+			if(currentPage != 0) {
+				currentPage--;
+				updateButtons();
+			}
+		} else if(par1GuiButton.id == 7) {
+        	ResearchCategory category = ResearchLibrary.categories.get(currentSection);
+			int nodesSize = category.getNodes().size();
+			if(nodesSize > (currentPage + 1) * 12) {
+				currentPage += 1;
+				updateButtons();
+			}
 		} else {
-			ResearchNode node = currentShowingNodes[par1GuiButton.id - 6];
+			ResearchNode node = currentShowingNodes[par1GuiButton.id - 8];
 			GuiElementalistLexiconResearch researchGui = new GuiElementalistLexiconResearch(node, currentSection);
 			MiscHelper.getMc().displayGuiScreen(researchGui);
 		}
@@ -117,7 +135,17 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         int shiftX = xStart + 137;
         int shiftY = yStart + 15;
         int bookmarkDifference = 14;
+
+    	ResearchCategory category = ResearchLibrary.categories.get(currentSection);
+		int nodesSize = category.getNodes().size();
+		boolean prev = currentPage != 0;
+		boolean next = nodesSize > (currentPage + 1) * 12;
+
         drawTexturedModalRect(xStart, yStart, 0, 0, 186, 180);
+
+        if (prev) fontRenderer.drawString("<", xStart + 20, yStart + 161, 0);
+		if (next) fontRenderer.drawString(">", xStart + 117, yStart + 161, 0);
+
         fontRenderer.setUnicodeFlag(true); // Start the fancy font rendering
         fontRenderer.drawStringWithShadow((currentSection == 0 ? FormattingCode.UNDERLINE : "") + ResearchReference.CATEGORY_NAME_GENERAL, shiftX, shiftY, 0xFFFFFF);
         shiftY += bookmarkDifference;
@@ -130,7 +158,7 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         }
         int i1 = 0;
         for(ResearchNode node : currentShowingNodes) {
-        	boolean isHover = ((GuiInvisibleButton) controlList.get(i1 + 6)).isHovered();
+        	boolean isHover = ((GuiInvisibleButton) controlList.get(i1 + 8)).isHovered();
         	fontRenderer.drawString((isHover ? "> " : "") + (ResearchHelper.clientResearch.isResearchDone(node.index) ? node.displayName : FormattingCode.ITALICS + "Unknown Chapter"), xStart + 24, yStart + 16 + i1 * 12, 0);
         	RenderEngine engine = MiscHelper.getMc().renderEngine;
         	int textureID = engine.getTexture(node.spritesheet);
@@ -148,6 +176,12 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         	++i1;
         }
         fontRenderer.setUnicodeFlag(false); // End the fancy font rendering
+
+		if(((GuiInvisibleButton) controlList.get(6)).isHovered() && prev)
+			RenderHelper.renderTooltip(par1, par2, "Prev. Page");
+		if(((GuiInvisibleButton) controlList.get(7)).isHovered() && next)
+			RenderHelper.renderTooltip(par1, par2, "Next Page");
+
         GL11.glDisable(GL11.GL_BLEND);
 		super.drawScreen(par1, par2, par3);
 	}

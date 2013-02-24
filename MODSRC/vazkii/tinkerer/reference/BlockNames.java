@@ -22,7 +22,9 @@ public final class BlockNames {
 							   ELEMENTIUM_GEM_BLOCK_NAME = "elementiumBlock",
 							   ELEMENTALIST_TINKERING_ALTAR_NAME = "elementalistAltar",
 							   CATALYST_CAPSULE_NAME = "catalystCapsule",
-							   ATTUNER_NAME = "attuner";
+							   ATTUNER_NAME = "attuner",
+							   VOID_GATEWAY_NAME = "voidGateway",
+							   VOID_NETWORK_NAME = "voidNetwork";
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
 							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)",
@@ -30,5 +32,7 @@ public final class BlockNames {
 							   ELEMENTIUM_GEM_BLOCK_DISPLAY_NAME = "Block of Elementium",
 							   ELEMENTALIST_TINKERING_ALTAR_DISPLAY_NAME = "Elementalist's Tinkering Altar",
 							   CATALYST_CAPSULE_DISPLAY_NAME = "Catalyst Capsule",
-							   ATTUNER_DISPLAY_NAME = "Attuner";
+							   ATTUNER_DISPLAY_NAME = "Attuner",
+							   VOID_GATEWAY_DISPLAY_NAME = "Void Gateway",
+							   VOID_NETWORK_DISPLAY_NAME = "Void Network";
 }

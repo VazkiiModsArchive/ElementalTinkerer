@@ -29,13 +29,19 @@ public final class SimpleAnimations {
 
 			new ElementiumDetectorCycle(0,
 					ResourcesReference.ANIM_MAX_ELEMENTIUM_DETECTOR,
-					ResourcesReference.ANIM_SPEED_ELEMENTIUM_DETECTOR) // Elementium Detector Animation
+					ResourcesReference.ANIM_SPEED_ELEMENTIUM_DETECTOR), // Elementium Detector Animation
+
+			new TickBasedIntegerCycle(ResourcesReference.ITEM_ANIM_ENDER_PARTICLE_START,
+					ResourcesReference.ITEM_ANIM_ENDER_PARTICLE_END,
+					ResourcesReference.ANIM_SPEED_ENDER_PARTICLE)
+					.flagUpDown()
 	};
 
 	/** Integers for the array indexes for the various animations **/
 	public static final int ELEMENTIUM_GEM_ANIM_INDEX = 0,
 							ELEMENTIUM_INGOT_ANIM_INDEX = 1,
-							ELEMENTIUM_DETECTOR_ANIM_INDEX = 2;
+							ELEMENTIUM_DETECTOR_ANIM_INDEX = 2,
+							ENDER_PARTICLE_ANIM_INDEX = 3;
 
 	public static void updateTick() {
 		for(IIntegerCycle a : ANIMATIONS)

@@ -8,7 +8,6 @@ package vazkii.tinkerer.core;
 
 import java.awt.Color;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -27,6 +26,7 @@ import vazkii.tinkerer.client.render.RenderProjectile;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderAttuner;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderCatalystCapsule;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderElementalDesk;
+import vazkii.tinkerer.client.tilerender.TileEntityRenderVoidGateway;
 import vazkii.tinkerer.entity.EntityBoulder;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
 import vazkii.tinkerer.entity.EntityFireball;
@@ -40,12 +40,14 @@ import vazkii.tinkerer.network.packet.PacketLightning;
 import vazkii.tinkerer.network.packet.PacketResearchData;
 import vazkii.tinkerer.network.packet.PacketSpells;
 import vazkii.tinkerer.network.packet.PacketVerification;
+import vazkii.tinkerer.network.packet.PacketVoidStorage;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.RenderIDs;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
+import vazkii.tinkerer.tile.TileEntityVoidGateway;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -69,6 +71,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityElementalDesk.class, TileEntityRenderElementalDesk.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCatalystCapsule.class, TileEntityRenderCatalystCapsule.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAttuner.class, TileEntityRenderAttuner.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVoidGateway.class, TileEntityRenderVoidGateway.INSTANCE);
 	}
 
 	@Override
@@ -78,6 +81,7 @@ public class ClientProxy extends CommonProxy {
 		PacketHelper.packetHandlers.add(PacketResearchData.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketLightning.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketSpells.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketVoidStorage.RECIEVER_INSTANCE);
 	}
 
 	@Override
@@ -150,11 +154,6 @@ public class ClientProxy extends CommonProxy {
 		return ClientTickHandler.elapsedClientTicks;
 	}
 
-	@Override
-	public EntityPlayer getPlayerAsEntity(String player) {
-		return MiscHelper.getClientWorld().getPlayerEntityByName(player);
-	}
-	
 	@Override
 	public boolean isServerPVP() {
 		return false;

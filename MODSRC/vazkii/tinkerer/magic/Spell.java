@@ -35,7 +35,8 @@ public abstract class Spell {
 	}
 
 	public Spell bindNode(short node) {
-		boundNode = node;
+		if(boundNode == -1)
+			boundNode = node;
 		return this;
 	}
 

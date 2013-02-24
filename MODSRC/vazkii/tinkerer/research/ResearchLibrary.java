@@ -21,6 +21,8 @@ import vazkii.tinkerer.item.ItemCatalyst;
 import vazkii.tinkerer.item.ItemWand;
 import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
+import vazkii.tinkerer.research.trigger.EnderAbsorptionTrigger;
+import vazkii.tinkerer.research.trigger.GuillotineTrigger;
 import vazkii.tinkerer.research.trigger.OddClawTrigger;
 
 /**
@@ -105,13 +107,20 @@ public final class ResearchLibrary {
 
 		// Catalyst Research Nodes
 		for(short i = 0; i < 16; i++) {
-			ResearchNode node = new ResearchNode((short) (ResearchReference.ID_CATALYST_START + i),
-					  ResourcesReference.ITEMS_SPRITESHEET,
-					  String.format(ResearchReference.LABEL_CATALSYT, i),
-					  ItemCatalyst.nameFromMeta(i),
-					  ResourcesReference.ITEM_INDEX_CATALYST_START + i,
-					  ResearchType.ITEM)
-					  .addToCategory(categories.get((byte) (ItemCatalyst.getElement(i) + 2)));
+			ResearchNode node = ItemCatalyst.getLevel(i) == 3 ?
+				new ResearchNodeEnderCatalyst((short) (ResearchReference.ID_CATALYST_START + i),
+						String.format(ResearchReference.LABEL_CATALSYT, i),
+						ItemCatalyst.nameFromMeta(i),
+						ResourcesReference.ITEM_INDEX_CATALYST_START + i,
+					    ResearchType.ITEM)
+						.addToCategory(categories.get((byte) (ItemCatalyst.getElement(i) + 2))) :
+				new ResearchNode((short) (ResearchReference.ID_CATALYST_START + i),
+						  ResourcesReference.ITEMS_SPRITESHEET,
+						  String.format(ResearchReference.LABEL_CATALSYT, i),
+						  ItemCatalyst.nameFromMeta(i),
+						  ResourcesReference.ITEM_INDEX_CATALYST_START + i,
+						  ResearchType.ITEM)
+						  .addToCategory(categories.get((byte) (ItemCatalyst.getElement(i) + 2)));
 			if(i <= 3)
 				node.setDefaultEnabled();
 			else node.setRequirement((short) (node.index - 4));
@@ -167,7 +176,8 @@ public final class ResearchLibrary {
 				  ResourcesReference.RESEARCH_INDEX_ELEMENTAL_TINKERING,
 				  ResearchType.ITEM)
 				  .setDefaultEnabled()
-				  .addToCategory(pure));
+				  .addToCategory(pure)
+				  .setNoBook());
 
 		// Catalyst Capsule Research Node
 		registerNode(new ResearchNode(ResearchReference.ID_CATALYST_CAPSULE,
@@ -306,8 +316,6 @@ public final class ResearchLibrary {
 				ResearchType.PASSIVE)
 				.addToCategory(fire));
 
-		//VAZ_TODO Crisis Research Node
-
 		// Undershirt Research Node
 		registerNode(new ResearchNodeSpell(ResearchReference.ID_UNDERSHIRT,
 				ResearchReference.LABEL_UNDERSHIRT,
@@ -315,9 +323,98 @@ public final class ResearchLibrary {
 				ResourcesReference.MAGIC_INDEX_UNDERSHIRT,
 				ResearchType.PASSIVE)
 				.addToCategory(pure));
+
+		// Inate Speed Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_INATE_SPEED,
+				ResearchReference.LABEL_INATE_SPEED,
+				ResearchReference.DISPLAY_NAME_INATE_SPEED,
+				ResourcesReference.MAGIC_INDEX_INATE_SPEED,
+				ResearchType.PASSIVE)
+				.addToCategory(air));
+
+		// Freezing Walk Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_FREEZING_WALK,
+				ResearchReference.LABEL_FREEZING_WALK,
+				ResearchReference.DISPLAY_NAME_FREEZING_WALK,
+				ResourcesReference.MAGIC_INDEX_FREEZING_WALK,
+				ResearchType.PASSIVE)
+				.addToCategory(water));
+
+		// Ironskin Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_IRONSKIN,
+				ResearchReference.LABEL_IRONSKIN,
+				ResearchReference.DISPLAY_NAME_IRONSKIN,
+				ResourcesReference.MAGIC_INDEX_IRONSKIN,
+				ResearchType.PASSIVE)
+				.addToCategory(earth));
+
+		// Blood Boil Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_BLOOD_BOIL,
+				ResearchReference.LABEL_BLOOD_BOIL,
+				ResearchReference.DISPLAY_NAME_BLOOD_BOIL,
+				ResourcesReference.MAGIC_INDEX_BLOOD_BOIL,
+				ResearchType.PASSIVE)
+				.addToCategory(fire));
+
+		// Location Gem Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_LOCATION_GEM,
+				ResourcesReference.ITEMS_SPRITESHEET,
+				ResearchReference.LABEL_LOCATION_GEM,
+				ResearchReference.DISPLAY_NAME_LOCATION_GEM,
+				ResourcesReference.ITEM_INDEX_LOCATION_GEM,
+				ResearchType.ITEM)
+				.addToCategory(pure)
+				.setDefaultEnabled());
+
+		// Ender Absorption Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_ENDER_ABSORPTION,
+				ResearchReference.LABEL_ENDER_ABSORPTION,
+				ResearchReference.DISPLAY_NAME_ENDER_ABSORPTION,
+				ResourcesReference.MAGIC_INDEX_ENDER_ABSORPTION,
+				ResearchType.PASSIVE)
+				.addToCategory(pure));
+		MinecraftForge.EVENT_BUS.register(EnderAbsorptionTrigger.INSTANCE);
+
+		// Guillotine Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_GUILLOTINE,
+				ResearchReference.LABEL_GUILLOTINE,
+				ResearchReference.DISPLAY_NAME_GUILLOTINE,
+				ResourcesReference.MAGIC_INDEX_GUILLOTINE,
+				ResearchType.SPELL)
+				.addToCategory(pure));
+		MinecraftForge.EVENT_BUS.register(GuillotineTrigger.INSTANCE);
+
+		// Void Gateway Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_VOID_GATEWAY,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_VOID_GATEWAY,
+				  ResearchReference.DISPLAY_NAME_VOID_GATEWAY,
+				  ResourcesReference.RESEARCH_INDEX_VOID_GATEWAY,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+
+		// Shattering Recall Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_SHATTERING_RECALL,
+				ResearchReference.LABEL_SHATTERING_RECALL,
+				ResearchReference.DISPLAY_NAME_SHATTERING_RECALL,
+				ResourcesReference.MAGIC_INDEX_SHATTERING_RECALL,
+				ResearchType.SPELL)
+				.addToCategory(pure));
 	}
 
 	public static void initTinkeringRecipes() {
+		// Catalyst Capsule Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.catalystCapsule),
+					"IPI",
+					"P P",
+					"P P",
+					"P P",
+					"IPI",
+					'I', ElementalTinkererItems.elementiumIngot,
+					'P', Block.thinGlass);
+		ResearchLibrary.allNodes.get(ResearchReference.ID_CATALYST_CAPSULE).bindLatestTinkeringRecipe();
+
 		// Catalyst Recipes
 		for(int i = 0; i < 8; i++) {
 			TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.catalyst, 1, 4 + i),
@@ -325,6 +422,18 @@ public final class ResearchLibrary {
 					"CC",
 					'C', new ItemStack(ElementalTinkererItems.catalyst, 1, i));
 			allNodes.get((short) (ResearchReference.ID_CATALYST_START + 4 + i)).bindLatestTinkeringRecipe();
+		}
+
+		// Ender Catalyst Recipes
+		for(int i = 0; i < 4; i++) {
+			TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.catalyst, 1, 12 + i),
+					new ItemStack(ElementalTinkererItems.enderParticle, 1),
+					new ItemStack(ElementalTinkererItems.enderParticle, 1),
+					new ItemStack(ElementalTinkererItems.enderParticle, 1),
+					new ItemStack(ElementalTinkererItems.enderParticle, 1),
+					"C",
+					'C', new ItemStack(ElementalTinkererItems.catalyst, 1, 8 + i));
+			allNodes.get((short) (ResearchReference.ID_CATALYST_START + 12 + i)).bindLatestTinkeringRecipe();
 		}
 
 		// Wand Recipes
@@ -373,6 +482,31 @@ public final class ResearchLibrary {
 			'B', Item.bow,
 			'G', Block.glowStone);
 			allNodes.get(ResearchReference.ID_ODD_CLAW).bindLatestTinkeringRecipe();
+
+		// Location Gem Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.locationGem),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 1),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 1),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 2),
+			"G",
+			'G', ElementalTinkererItems.elementiumGem);
+			allNodes.get(ResearchReference.ID_LOCATION_GEM).bindLatestTinkeringRecipe();
+
+		// Void Gateway Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.voidGateway),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 5),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 6),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 10),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 13),
+			"IPPPI",
+			"P G P",
+			"PG GP",
+			"P G P",
+			"IPPPI",
+			'G', ElementalTinkererItems.locationGem,
+			'I', ElementalTinkererItems.elementiumIngot,
+			'P', Block.thinGlass);
+			allNodes.get(ResearchReference.ID_VOID_GATEWAY).bindLatestTinkeringRecipe();
 	}
 
 	public static void registerNode(ResearchNode node) {

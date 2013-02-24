@@ -13,6 +13,8 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import vazkii.tinkerer.core.event.ResearchCompleteEvent;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.Commands;
@@ -62,8 +64,10 @@ public class CommandResearch extends CommandBase {
 			if(doAll) {
 				for(Short s : ResearchLibrary.allNodes.keySet()) {
 					researchData.research(s, false, world);
-					if(complete)
+					if(complete) {
 						researchData.completeResearch(s, false, world);
+						MinecraftForge.EVENT_BUS.post(new ResearchCompleteEvent(researchData, s));
+					}
 				}
 				ResearchHelper.updateResearch(world, researchData);
  			} else {
@@ -71,8 +75,10 @@ public class CommandResearch extends CommandBase {
 				// If it's not a valid integer it would have broken the method already
 				if(ResearchLibrary.allNodes.containsKey((short)i)) {
 					researchData.research((short) i, !complete, world);
-					if(complete)
+					if(complete) {
 						researchData.completeResearch((short) i, true, world);
+						MinecraftForge.EVENT_BUS.post(new ResearchCompleteEvent(researchData, (short) i));
+					}
 				}
 			}
 			ResearchHelper.syncResearchData(playerEntity);

@@ -202,7 +202,7 @@ Water tree.
 A spell can be casted by
 right clicking with it
 equipped, to switch spells
-sneak right click. This
+press C (by default). This
 only applies when spells
 are equipped.
 #----------------------------------------------------
@@ -218,7 +218,7 @@ Air tree.
 A spell can be casted by
 right clicking with it
 equipped, to switch spells
-sneak right click. This
+press C (by default). This
 only applies when spells
 are equipped.
 #----------------------------------------------------
@@ -234,7 +234,7 @@ Earth tree.
 A spell can be casted by
 right clicking with it
 equipped, to switch spells
-sneak right click. This
+press C (by default). This
 only applies when spells
 are equipped.
 #----------------------------------------------------
@@ -250,7 +250,7 @@ Fire tree.
 A spell can be casted by
 right clicking with it
 equipped, to switch spells
-sneak right click. This
+press C (by default). This
 only applies when spells
 are equipped.
 #----------------------------------------------------
@@ -408,4 +408,106 @@ over one and a half hearts
 of life and would recieve a
 killing blow, they instead
 stay at half a heart.
+
+This will not protect the
+player from unblockable
+damage.
+#----------------------------------------------------
+inateSpeed:
+While this passive is equipped,
+the user who has this passive
+equipped gets a slight speed
+boost. Said speed boost does
+stack with sprinting and/or
+speed potions.
+#----------------------------------------------------
+freezingWalk:
+While this passive is equipped
+and the block below the user
+can be frozen, it will be.
+Some examples of this are
+water into ice or lava into
+obsidian.
+#----------------------------------------------------
+ironSkin:
+While this passive is equipped,
+any damage done to the user
+that has this passive equipped
+is decreased by half a heart.
+This will negate the damage
+magnification effect of the
+Blood Boil passive.
+
+This does not apply to fire
+damage.
+#----------------------------------------------------
+bloodBoil:
+While this passive is equipped,
+any damage done to the user
+that has this passive equipped
+is magnified by half a heart
+and the user gets a strenght
+boost equivalent to the
+amount of damage taken (after
+the calculation). This (the
+damage magnification) will
+get negated by ironskin.
+#----------------------------------------------------
+locationGem:
+When a block is right clicked
+with this in hand, this gem
+keeps the location of the
+block clicked. This will
+cease to work between two
+different dimensions.
+#----------------------------------------------------
+enderAbsorption:
+Killing an enderman in the
+end whilst this is active
+will allow for a chance
+of getting an Ender Particle,
+which can be used as a
+material to craft Ender
+Catalysts.
+#----------------------------------------------------
+guillotine:
+Using this spell on a Zombie,
+Skeleton, Player, Wither
+Skeleton or Creeper with only 
+1 HP remaining will kill it 
+and drop it's respective 
+head.
+
+Cooldown: 3m
+#----------------------------------------------------
+voidGateway:
+This block can only be placed
+near the void (Y < 9).
+These blocks absorb items via
+right click. They can hold an
+infinite amount of equal items.
+These items are stored in the
+void, so the block can be
+removed and placed in the same
+spot without losing the items.
+The items can be removed via
+left click. Sneak-Right
+clicking with nothing at hand
+will try to empty the user's
+inventory of similar items.
+#----------------------------------------------------
+shatteringRecall:
+This spell can only be casted
+in the presence of an Attuned
+Gem of Location (one with it's
+location set) in the user's
+hotbar. That gem will be
+destroyed, and the user will
+be recalled to the place where
+it was attuned. The energy 
+released when the gem is 
+shattered will deal slight 
+damage to the user.
+
+Cooldown: 5m
 #----------------------------------------------------

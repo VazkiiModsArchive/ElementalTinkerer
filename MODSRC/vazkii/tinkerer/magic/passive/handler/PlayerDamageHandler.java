@@ -8,6 +8,8 @@ package vazkii.tinkerer.magic.passive.handler;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -36,8 +38,15 @@ public class PlayerDamageHandler {
 			return;
 		EntityPlayer player = (EntityPlayer)event.entityLiving;
 
+		if(SpellHelper.doesPlayerHavePassive(player.username, SpellReference.PID_BLOOD_BOIL))
+			handleBloodBoil(event);
+
 		if(SpellHelper.doesPlayerHavePassive(player.username, SpellReference.PID_BURNING_CLOUD))
 			handleBurningCloud(event);
+
+		if(SpellHelper.doesPlayerHavePassive(player.username, SpellReference.PID_IRONSKIN))
+			handleIronskin(event);
+
 		if(SpellHelper.doesPlayerHavePassive(player.username, SpellReference.PID_UNDERSHIRT))
 			handleUndershirt(event);
 	}
@@ -56,9 +65,21 @@ public class PlayerDamageHandler {
 
 	public void handleUndershirt(LivingHurtEvent event) {
 		int health = event.entityLiving.getHealth();
-		if(health > 3 && event.ammount >= health) {
+		if(health > 3 && event.ammount >= health && event.source.isUnblockable()) {
 			event.ammount = health - 1;
 			PacketHelper.sendMessageToPlayer((EntityPlayer)event.entityLiving, "Your undershirt has protected you from death.");
+		}
+	}
+
+	public void handleIronskin(LivingHurtEvent event) {
+		if(event.ammount > 0 && !event.source.isFireDamage())
+			event.ammount--;
+	}
+
+	public void handleBloodBoil(LivingHurtEvent event) {
+		if(event.ammount >= 1) {
+			event.ammount += 1;
+			event.entityLiving.addPotionEffect(new PotionEffect(Potion.damageBoost.id, event.ammount * 15, 0));
 		}
 	}
 }

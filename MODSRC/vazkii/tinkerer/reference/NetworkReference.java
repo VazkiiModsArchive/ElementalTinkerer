@@ -30,5 +30,5 @@ public final class NetworkReference {
 							   SUBCHANNEL_SPELLS =  "spells",
 							   SUBCHANNEL_CLIENT_SPELLS = "clientSpells",
 							   SUBCHANNEL_KEYBIND = "keybind",
-							   SUBCHANNEL_WAND_START_USE = "wandStartUsing";
+							   SUBCHANNEL_VOID_STORAGE = "voidStorage";
 }

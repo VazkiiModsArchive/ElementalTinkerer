@@ -38,7 +38,7 @@ public final class FrozenEntityHandler {
 			event.entityLiving.jumpMovementFactor = 0F;
 			event.entityLiving.setJumping(false);
 			event.entityLiving.motionY = 0;
-		} else {
+		} else if(event.entityLiving.landMovementFactor == 0F && event.entityLiving.jumpMovementFactor == 0F){
 			event.entityLiving.landMovementFactor = 0.1F;
 			event.entityLiving.jumpMovementFactor = 0.02F;
 			// This gets calibrated after, but for some entities (e.g. slimes)

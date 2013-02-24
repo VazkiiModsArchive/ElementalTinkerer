@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import vazkii.tinkerer.client.hud.HudElementSpellCircle;
 import vazkii.tinkerer.client.hud.HudElementSpellTooltip;
 import vazkii.tinkerer.client.hud.HudElementVignette;
+import vazkii.tinkerer.client.hud.HudElementVoidGateway;
 import vazkii.tinkerer.client.hud.IHudElement;
 import vazkii.tinkerer.handler.PlayerSpellUpdateHandler;
 import vazkii.tinkerer.helper.MiscHelper;
@@ -55,6 +56,7 @@ public class ClientTickHandler implements ITickHandler {
 		addHudElement(HudElementSpellCircle.INSTANCE);
 		addHudElement(HudElementSpellTooltip.INSTANCE);
 		addHudElement(HudElementVignette.INSTANCE);
+		addHudElement(HudElementVoidGateway.INSTANCE);
 	}
 
 	public void addHudElement(IHudElement element) {
@@ -110,6 +112,7 @@ public class ClientTickHandler implements ITickHandler {
 			ResearchHelper.researchForPlayers.clear();
 			ResearchHelper.hasReadResearch = false;
 			SpellHelper.clientSpells = null;
+			SpellHelper.spellsForPlayers.clear();
 		}
 	}
 

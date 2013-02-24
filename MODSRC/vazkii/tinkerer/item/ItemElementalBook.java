@@ -59,13 +59,15 @@ public class ItemElementalBook extends ItemET {
 	/** Finds a research valid for researching. If it can't find any, it
 	 * returns -1. **/
 	public short findReadyResearch(EntityPlayer player, int element) {
-		element += 2;
+		element += 2; // Shift by the general and pure branches
 		ResearchCategory category = ResearchLibrary.categories.get((byte) element);
 		List<ResearchNode> availableNodes = new ArrayList();
 		PlayerResearch research = ResearchHelper.getResearchDataForPlayer(player.username);
-		for(ResearchNode node : category.getNodes())
-			if(node.isAvailable(research) && !node.isNoBook())
+		for(ResearchNode node : category.getNodes()) {
+			if(!node.isNoBook() && node.isAvailable(research))
 				availableNodes.add(node);
+		}
+
 
 		if(availableNodes.isEmpty())
 			return -1;

@@ -7,13 +7,11 @@
 package vazkii.tinkerer.world;
 
 import java.util.Random;
-import java.util.logging.Level;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.WorldGenRates;
 
@@ -37,8 +35,6 @@ public class WorldGenElementiumOre extends WorldGenMinable {
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5) {
 		if(par2Random == null)
 			par2Random = new Random(); // Dirty fix for Mystcraft
-
-		ElementalTinkerer.logger.log(Level.INFO, "Generating Elementium Vein @ " + par3 + " " + par4 + " " + par5);
 
         float var6 = par2Random.nextFloat() * (float)Math.PI;
         int numberOfBlocks = WorldGenRates.ELEMENTIUM_ORE_MAX_VEIN_SIZE;

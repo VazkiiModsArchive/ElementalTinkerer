@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ItemNames;
 import vazkii.tinkerer.reference.ResourcesReference;
+import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 
 /**
  * ItemCatalyst
@@ -22,7 +23,7 @@ import vazkii.tinkerer.reference.ResourcesReference;
  *
  * @author Vazkii
  */
-public class ItemCatalyst extends ItemET {
+public class ItemCatalyst extends ItemET implements ICatalyst {
 
 	public ItemCatalyst(int par1) {
 		super(par1);
@@ -37,11 +38,12 @@ public class ItemCatalyst extends ItemET {
 
 	@Override
 	public String getItemDisplayName(ItemStack par1ItemStack) {
-		return nameFromMeta(par1ItemStack.getItemDamage());
+		return par1ItemStack == null ? "" : nameFromMeta(par1ItemStack.getItemDamage());
 	}
 
 	public static String nameFromMeta(int meta) {
-		return String.format(ItemNames.CATALYST_ITEM_DISPLAY_NAME, ItemNames.CATALYST_LEVELS[getLevel(meta)], Element.getName(getElement(meta)));
+		int lvl = getLevel(meta);
+		return String.format(ItemNames.CATALYST_ITEM_DISPLAY_NAME, lvl >= ItemNames.CATALYST_LEVELS.length ? "Impossible" : ItemNames.CATALYST_LEVELS[lvl], Element.getName(getElement(meta)));
 	}
 
 	public static int getElement(int meta) {
@@ -57,5 +59,10 @@ public class ItemCatalyst extends ItemET {
 		super.getSubItems(par1, par2CreativeTabs, par3List);
 		for(int i = 1; i < 16; i++)
 			par3List.add(new ItemStack(par1, 1, i));
+	}
+
+	@Override
+	public boolean canFit(TileEntityElementalTinkeringAltar altar, ItemStack stack) {
+		return true;
 	}
 }

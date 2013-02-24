@@ -52,8 +52,16 @@ public final class ResearchReference {
 							  ID_RAIN_ACCUMULATION = 42,
 							  ID_NATURE_AURA = 43,
 							  ID_BURNING_CLOUD = 44,
-							  ID_UNDERSHIRT = 45;
-
+							  ID_UNDERSHIRT = 45,
+							  ID_INATE_SPEED = 46,
+							  ID_FREEZING_WALK = 47,
+							  ID_IRONSKIN = 48,
+							  ID_BLOOD_BOIL = 49,
+							  ID_LOCATION_GEM = 50,
+							  ID_ENDER_ABSORPTION = 51,
+							  ID_GUILLOTINE = 52,
+							  ID_VOID_GATEWAY = 53,
+							  ID_SHATTERING_RECALL = 54;
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
@@ -83,7 +91,16 @@ public final class ResearchReference {
 							   LABEL_RAIN_ACCUMULATION = SpellReference.LABEL_RAIN_ACCUMULATION,
 							   LABEL_NATURE_AURA = SpellReference.LABEL_NATURE_AURA,
 							   LABEL_BURNING_CLOUD = SpellReference.LABEL_BURNING_CLOUD,
-							   LABEL_UNDERSHIRT = SpellReference.LABEL_UNDERSHIRT;
+							   LABEL_UNDERSHIRT = SpellReference.LABEL_UNDERSHIRT,
+							   LABEL_INATE_SPEED = SpellReference.LABEL_INATE_SPEED,
+							   LABEL_FREEZING_WALK = SpellReference.LABEL_FREEZING_WALK,
+							   LABEL_IRONSKIN = SpellReference.LABEL_IRONSKIN,
+							   LABEL_BLOOD_BOIL = SpellReference.LABEL_BLOOD_BOIL,
+							   LABEL_LOCATION_GEM = ItemNames.LOCATION_GEM_NAME,
+							   LABEL_ENDER_ABSORPTION = SpellReference.LABEL_ENDER_ABSORPTION,
+							   LABEL_GUILLOTINE = SpellReference.LABEL_GUILLOTINE,
+							   LABEL_VOID_GATEWAY = BlockNames.VOID_GATEWAY_NAME,
+							   LABEL_SHATTERING_RECALL = SpellReference.LABEL_SHATTERING_RECALL;
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,
@@ -111,7 +128,16 @@ public final class ResearchReference {
 							   DISPLAY_NAME_RAIN_ACCUMULATION = SpellReference.DISPLAY_NAME_RAIN_ACCUMULATION,
 							   DISPLAY_NAME_NATURE_AURA = SpellReference.DISPLAY_NAME_NATURE_AURA,
 							   DISPLAY_NAME_BURNING_CLOUD = SpellReference.DISPLAY_NAME_BURNING_CLOUD,
-							   DISPLAY_NAME_UNDERSHIRT = SpellReference.DISPLAY_NAME_UNDERSHIRT;
+							   DISPLAY_NAME_UNDERSHIRT = SpellReference.DISPLAY_NAME_UNDERSHIRT,
+							   DISPLAY_NAME_INATE_SPEED = SpellReference.DISPLAY_NAME_INATE_SPEED,
+							   DISPLAY_NAME_FREEZING_WALK = SpellReference.DISPLAY_NAME_FREEZING_WALK,
+							   DISPLAY_NAME_IRONSKIN = SpellReference.DISPLAY_NAME_IRONSKIN,
+							   DISPLAY_NAME_BLOOD_BOIL = SpellReference.DISPLAY_NAME_BLOOD_BOIL,
+							   DISPLAY_NAME_LOCATION_GEM = ItemNames.LOCATION_GEM_DISPLAY_NAME,
+							   DISPLAY_NAME_ENDER_ABSORPTION = SpellReference.DISPLAY_NAME_ENDER_ABSORPTION,
+							   DISPLAY_NAME_GUILLOTINE = SpellReference.DISPLAY_NAME_GUILLOTINE,
+							   DISPLAY_NAME_VOID_GATEWAY = BlockNames.VOID_GATEWAY_DISPLAY_NAME,
+							   DISPLAY_NAME_SHATTERING_RECALL = SpellReference.DISPLAY_NAME_SHATTERING_RECALL;
 
 	/** The Compound Tag name of the Research Data **/
 	public static final String COMPOUND_TAG_NAME = "researchData";

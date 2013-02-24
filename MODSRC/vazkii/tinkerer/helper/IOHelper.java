@@ -98,12 +98,12 @@ public class IOHelper {
 	}
 
 	public static NBTTagCompound getWorldCache(World world) {
-		File worldCacheFile = createOrGetFile(new File(getWorldDirectory(world), ResourcesReference.CACHE_FILE_NAME));
+		File worldCacheFile = createOrGetFile(new File(new File(getWorldDirectory(world), ResourcesReference.WORLD_CACHE_FOLDER), ResourcesReference.CACHE_FILE_NAME));
 		return getTagCompoundInFile(createOrGetNBTFile(worldCacheFile));
 	}
 
 	public static void updateWorldNBTTagCompound(World world, NBTTagCompound cmp) {
-		File worldCacheFile = createOrGetFile(new File(getWorldDirectory(world), ResourcesReference.CACHE_FILE_NAME));
+		File worldCacheFile = createOrGetFile(new File(new File(getWorldDirectory(world), ResourcesReference.WORLD_CACHE_FOLDER), ResourcesReference.CACHE_FILE_NAME));
 		injectNBTToFile(cmp, worldCacheFile);
 	}
 

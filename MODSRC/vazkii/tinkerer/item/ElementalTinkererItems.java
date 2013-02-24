@@ -37,7 +37,10 @@ public final class ElementalTinkererItems {
 					   elementiumIngot,
 					   elementiumDust,
 					   elementiumDetector,
-					   oddClaw;
+					   oddClaw,
+					   locationGem,
+					   gem,
+					   enderParticle;
 
 	public static void init() {
 		// Construct the items
@@ -51,6 +54,9 @@ public final class ElementalTinkererItems {
 		elementiumDust = new ItemET(ItemIDs.elementiumDust).setItemName(ItemNames.ELEMENTIUM_DUST_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ELEMENTIUM_DUST);
 		elementiumDetector = new ItemElementiumDetector(ItemIDs.elementiumDetector).setItemName(ItemNames.ELEMENTIUM_DETECTOR_NAME);
 		oddClaw = new ItemOddClaw(ItemIDs.oddClaw).setItemName(ItemNames.ODD_CLAW_NAME);
+		locationGem = new ItemLocationGem(ItemIDs.locationGem).setItemName(ItemNames.LOCATION_GEM_NAME);
+		gem = new ItemGem(ItemIDs.gem).setItemName(ItemNames.GEM_NAME);
+		enderParticle = new ItemEnderParticle(ItemIDs.enderParticle).setItemName(ItemNames.ENDER_PARTICLE_NAME);
 
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
@@ -60,6 +66,8 @@ public final class ElementalTinkererItems {
 		LanguageRegistry.addName(elementiumDust, ItemNames.ELEMENTIUM_DUST_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumDetector, ItemNames.ELEMENTIUM_DETECTOR_DISPLAY_NAME);
 		LanguageRegistry.addName(oddClaw, ItemNames.ODD_CLAW_DISPLAY_NAME);
+		LanguageRegistry.addName(locationGem, ItemNames.LOCATION_GEM_DISPLAY_NAME);
+		LanguageRegistry.addName(enderParticle, ItemNames.ENDER_PARTICLE_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumGem), ResearchReference.ID_ELEMENTIUM_GEM);
@@ -73,6 +81,8 @@ public final class ElementalTinkererItems {
 		ResearchHelper.setIconicItem(new ItemStack(elementiumIngot), ResearchReference.ID_ELEMENTIUM_INGOT);
 		ResearchHelper.setIconicItem(new ItemStack(elementiumDust), ResearchReference.ID_ELEMENTIUM_DUST);
 		ResearchHelper.setIconicItem(new ItemStack(elementiumDetector), ResearchReference.ID_ELEMENTIUM_DETECTOR);
+		ResearchHelper.setIconicItem(new ItemStack(locationGem), ResearchReference.ID_LOCATION_GEM);
+		ResearchHelper.setIconicItem(new ItemStack(enderParticle), ResearchReference.ID_ENDER_ABSORPTION);
 	}
 
 	public static void initItemRecipes() {
