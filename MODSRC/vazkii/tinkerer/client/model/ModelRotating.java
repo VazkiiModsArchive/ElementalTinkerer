@@ -71,24 +71,32 @@ public class ModelRotating extends ModelBase {
   public void renderSpinningCubes(int cubes) {
 	  final float modifier = 6F;
 	  final float rotationModifier = 0.25F;
+	  final float radiusBase = 0.4F;
+	  final float radiusMod = 0.1F;
 
 	  long ticks = ClientTickHandler.elapsedClientTicks;
 	  float offsetPerCube = 360 / cubes;
 	  GL11.glPushMatrix();
 	  GL11.glTranslatef(-0.025F, 0.85F, -0.025F);
-	  GL11.glDisable(GL11.GL_LIGHTING);
 	  for(int i = 0; i < cubes; i++) {
 		  float offset = offsetPerCube * i;
 		  float deg = (int) (ticks / rotationModifier % 360F + offset);
 		  float rad = MathHelper.degreeToRadian(deg);
-		  float radiusX = (float) (0.4 + 0.1 * Math.sin(ticks / modifier));
-		  float radiusZ = (float) (0.4 + 0.1 * Math.cos(ticks / modifier));
+		  float radiusX = (float) (radiusBase + radiusMod * Math.sin(ticks / modifier));
+		  float radiusZ = (float) (radiusBase + radiusMod * Math.cos(ticks / modifier));
 		  float x =  (float) (radiusX * Math.cos(rad));
 		  float z = (float) (radiusZ * Math.sin(rad));
 		  float y = (float) Math.cos((ticks + (100 + i)) / 5F) / 10F;
+
+		  GL11.glPushMatrix();
 		  GL11.glTranslatef(x, y, z);
+		  float xRotate = (float) Math.sin(ticks * rotationModifier) / 2F;
+		  float zRotate = (float) Math.cos(ticks * rotationModifier) / 2F;
+
+		  GL11.glRotatef(deg, xRotate, 1F, zRotate);
 		  SpinningCube.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
-		  GL11.glTranslatef(-x, -y, -z);
+
+		  GL11.glPopMatrix();
 	  }
 	  GL11.glPopMatrix();
   }

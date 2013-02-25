@@ -38,7 +38,7 @@ public class TileEntityRenderScavenger extends TileEntitySpecialRenderer impleme
         GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
         GL11.glRotatef(180F, 0.5F, 0F, 0.5F);
         ModelRotating.INSTANCE.render();
-        ModelRotating.INSTANCE.renderSpinningCubes(15);
+        ModelRotating.INSTANCE.renderSpinningCubes(14);
         GL11.glPopMatrix();
 	}
 
