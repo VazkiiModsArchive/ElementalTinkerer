@@ -26,6 +26,7 @@ import vazkii.tinkerer.client.render.RenderProjectile;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderAttuner;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderCatalystCapsule;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderElementalDesk;
+import vazkii.tinkerer.client.tilerender.TileEntityRenderScavenger;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderVoidGateway;
 import vazkii.tinkerer.entity.EntityBoulder;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
@@ -47,6 +48,7 @@ import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
+import vazkii.tinkerer.tile.TileEntityScavenger;
 import vazkii.tinkerer.tile.TileEntityVoidGateway;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
@@ -72,6 +74,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCatalystCapsule.class, TileEntityRenderCatalystCapsule.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAttuner.class, TileEntityRenderAttuner.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVoidGateway.class, TileEntityRenderVoidGateway.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityScavenger.class, TileEntityRenderScavenger.INSTANCE);
 	}
 
 	@Override
@@ -119,9 +122,11 @@ public class ClientProxy extends CommonProxy {
 	public void registerBlockRenders() {
 		RenderIDs.elementalDesk = RenderingRegistry.getNextAvailableRenderId();
 		RenderIDs.catalystContainer = RenderingRegistry.getNextAvailableRenderId();
+		RenderIDs.scavenger = RenderingRegistry.getNextAvailableRenderId();
 
 		MinecraftForgeClient.registerItemRenderer(BlockIDs.elementalDesk, TileEntityRenderElementalDesk.INSTANCE);
 		MinecraftForgeClient.registerItemRenderer(BlockIDs.catalystCapsule, TileEntityRenderCatalystCapsule.INSTANCE);
+		MinecraftForgeClient.registerItemRenderer(BlockIDs.scavenger, TileEntityRenderScavenger.INSTANCE);
 	}
 
 	@Override

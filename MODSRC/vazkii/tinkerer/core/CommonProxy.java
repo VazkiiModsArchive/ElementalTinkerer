@@ -24,6 +24,7 @@ import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
+import vazkii.tinkerer.tile.TileEntityScavenger;
 import vazkii.tinkerer.tile.TileEntityVoidGateway;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -49,6 +50,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityElementalTinkeringAltar.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
 		GameRegistry.registerTileEntity(TileEntityAttuner.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ATTUNER_NAME);
 		GameRegistry.registerTileEntity(TileEntityVoidGateway.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.VOID_GATEWAY_NAME);
+		GameRegistry.registerTileEntity(TileEntityScavenger.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.SCAVENGER_NAME);
 	}
 
 	/** Registers the mod's packets. Some packets use different

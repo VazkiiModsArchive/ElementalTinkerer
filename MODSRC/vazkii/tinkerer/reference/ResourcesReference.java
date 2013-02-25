@@ -57,6 +57,9 @@ public final class ResourcesReference {
 	/** The Location of the Texture File for the Catalyst Capsule Model **/
 	public static final String MODEL_TEX_CATALYST_CAPSULE = ROOT_MODEL + "catalystCapsule.png";
 
+	/** The Location of the Texture File for the Scavenger Model **/
+	public static final String MODEL_TEX_SCAVENGER = ROOT_MODEL + "scavenger.png";
+
 	/** The location of book textures **/
 	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";
 

@@ -24,7 +24,9 @@ public final class BlockIDs {
 							DEFAULT_CATALYST_CAPSULE = 2115,
 							DEFAULT_ATTUNER = 2116,
 							DEFAULT_VOID_GATEWAY = 2117,
-							DEFAULT_VOID_NETWORK = 2118;
+							DEFAULT_VOID_NETWORK = 2118,
+							// RESERVED = 2119,
+							DEFAULT_SCAVENGER = 2120;
 
 	/** Set via the config **/
 	public static int elementiumOre,
@@ -35,5 +37,7 @@ public final class BlockIDs {
 					  catalystCapsule,
 					  attuner,
 					  voidGateway,
-					  voidNetwork;
+					  voidNetwork,
+					  // RESERVED
+					  scavenger;
 }

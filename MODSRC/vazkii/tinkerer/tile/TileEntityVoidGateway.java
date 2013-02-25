@@ -16,7 +16,7 @@ import vazkii.tinkerer.network.packet.PacketVoidStorage;
 /**
  * TileEntityVoidGateway
  *
- * The Void Gateway Tile Entity. It is only used
+ * The Void Gateway Tile Entity. It is only used for packets.
  *
  * @author Vazkii
  */

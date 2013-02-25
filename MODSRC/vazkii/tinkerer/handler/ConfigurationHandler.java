@@ -69,6 +69,7 @@ public final class ConfigurationHandler {
 		BlockIDs.attuner = config.getBlock(BlockNames.ATTUNER_NAME, BlockIDs.DEFAULT_ATTUNER).getInt(BlockIDs.DEFAULT_ATTUNER);
 		BlockIDs.voidGateway = config.getBlock(BlockNames.VOID_GATEWAY_NAME, BlockIDs.DEFAULT_VOID_GATEWAY).getInt(BlockIDs.DEFAULT_VOID_GATEWAY);
 		BlockIDs.voidNetwork = config.getBlock(BlockNames.VOID_NETWORK_NAME, BlockIDs.DEFAULT_VOID_NETWORK).getInt(BlockIDs.DEFAULT_VOID_NETWORK);
+		BlockIDs.scavenger = config.getBlock(BlockNames.SCAVENGER_NAME, BlockIDs.DEFAULT_SCAVENGER).getInt(BlockIDs.DEFAULT_SCAVENGER);
 
 		// Load Item IDs
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);

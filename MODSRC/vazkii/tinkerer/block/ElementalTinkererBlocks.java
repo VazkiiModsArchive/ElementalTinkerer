@@ -36,7 +36,9 @@ public final class ElementalTinkererBlocks {
 						elementalistTinkeringAltar,
 						catalystCapsule,
 						attuner,
-						voidGateway;
+						voidGateway,
+						// RESERVED
+						scavenger;
 
 	public static void init() {
 		// Construct the blocks
@@ -92,6 +94,12 @@ public final class ElementalTinkererBlocks {
 						.setStepSound(Block.soundMetalFootstep)
 						.setBlockName(BlockNames.VOID_GATEWAY_NAME);
 
+		scavenger = new BlockScavenger(BlockIDs.scavenger)
+						.setHardness(1.3F)
+						.setResistance(6F)
+						.setStepSound(Block.soundStoneFootstep)
+						.setBlockName(BlockNames.SCAVENGER_NAME);
+
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
 		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
@@ -101,6 +109,7 @@ public final class ElementalTinkererBlocks {
 		GameRegistry.registerBlock(catalystCapsule, BlockNames.CATALYST_CAPSULE_NAME);
 		GameRegistry.registerBlock(attuner, BlockNames.ATTUNER_NAME);
 		GameRegistry.registerBlock(voidGateway, BlockNames.VOID_GATEWAY_NAME);
+		GameRegistry.registerBlock(scavenger, BlockScavenger.ItemScavenger.class, BlockNames.SCAVENGER_NAME);
 
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
@@ -111,6 +120,7 @@ public final class ElementalTinkererBlocks {
 		LanguageRegistry.addName(catalystCapsule, BlockNames.CATALYST_CAPSULE_DISPLAY_NAME);
 		LanguageRegistry.addName(attuner, BlockNames.ATTUNER_DISPLAY_NAME);
 		LanguageRegistry.addName(voidGateway, BlockNames.VOID_GATEWAY_DISPLAY_NAME);
+		LanguageRegistry.addName(scavenger, BlockNames.SCAVENGER_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumOre, 1, -1), ResearchReference.ID_ELEMENTIUM_ORE);

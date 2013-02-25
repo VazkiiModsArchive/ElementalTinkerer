@@ -89,10 +89,11 @@ public class HudElementVoidGateway implements IHudElement {
 		itemRender.renderItemAndEffectIntoGUI(font, mc.renderEngine, currentRendering.stack, x, y);
 		if(!block)
 			RenderHelper.disableStandardItemLighting();
+		GL11.glPushMatrix();
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		font.drawStringWithShadow(str1, (x + 17) * 2, (y + 4) * 2, 0xFFFFFF);
 		font.drawStringWithShadow(str2, (x + 17) * 2, (y + 10) * 2, 0xFFFFFF);
-		GL11.glScalef(1F, 1F, 1F);
+		GL11.glPopMatrix();
 	}
 
 	@Override

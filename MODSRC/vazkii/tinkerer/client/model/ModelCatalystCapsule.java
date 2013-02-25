@@ -27,7 +27,7 @@ public class ModelCatalystCapsule extends ModelBase {
     			  BottomVertTube,
     			  BottomHorizTube;
 
-    public ModelCatalystCapsule() {
+    private ModelCatalystCapsule() {
     	textureWidth = 64;
     	textureHeight = 32;
 

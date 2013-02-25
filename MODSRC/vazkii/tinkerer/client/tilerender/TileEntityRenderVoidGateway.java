@@ -63,10 +63,10 @@ public class TileEntityRenderVoidGateway extends TileEntitySpecialRenderer {
     			GL11.glRotatef((float) ClientTickHandler.elapsedClientTicks % 360L / 20.0F * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
     			GL11.glTranslatef(-0.5F, 0F, -MiscReference.MODEL_DEFAULT_RENDER_SCALE);
             	int index = stack.getIconIndex();
-                float var7 = ((index % 16 * 16) + 0.0F) / 256.0F;
-                float var8 = ((index % 16 * 16) + 15.99F) / 256.0F;
-                float var9 = ((index / 16 * 16) + 0.0F) / 256.0F;
-                float var10 = ((index / 16 * 16) + 15.99F) / 256.0F;
+                float var7 = (index % 16 * 16 + 0.0F) / 256.0F;
+                float var8 = (index % 16 * 16 + 15.99F) / 256.0F;
+                float var9 = (index / 16 * 16 + 0.0F) / 256.0F;
+                float var10 = (index / 16 * 16 + 15.99F) / 256.0F;
                 ItemRenderer.renderItemIn2D(var5, var8, var9, var7, var10, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
             }
 
