@@ -65,7 +65,7 @@ public class PacketCompleteResearch extends ETPacket {
 			PlayerResearch research = ResearchHelper.getResearchDataForPlayer(((EntityPlayer)player).username);
 			if(research.isResearchDone(id)) {
 				research.completeResearch(id, false, ((EntityPlayer)player).worldObj);
-				MinecraftForge.EVENT_BUS.post(new ResearchCompleteEvent(ResearchHelper.clientResearch, id));
+				MinecraftForge.EVENT_BUS.post(new ResearchCompleteEvent(research, id));
 			}
 			PacketResearchData dataPacket = new PacketResearchData(research);
 			PacketHelper.sendPacketToClient(player, dataPacket);

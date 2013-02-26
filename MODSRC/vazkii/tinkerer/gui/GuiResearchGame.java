@@ -70,6 +70,8 @@ public class GuiResearchGame extends GuiScreen {
 		super.initGui();
 		xStart = (width - 144) / 2;
 		yStart = (height - 144) / 2;
+		xStart -= xStart % 8; // Dirty fix for the icon renders
+		yStart -= yStart % 8;
 		controlList.clear();
 		controlList.add(new GuiInvisibleButton(0, xStart + 146, yStart, 12, 12));
 		controlList.add(new GuiInvisibleButton(1, xStart + 146, yStart + 14, 12, 12));
@@ -195,17 +197,15 @@ public class GuiResearchGame extends GuiScreen {
 
         GL11.glPushMatrix();
         GL11.glScalef(8F, 8F, 8F);
-        GL11.glTranslatef(-0.35F, 0F, 0F);
         mc.renderEngine.bindTexture(texture);
-        drawTexturedModalRect(xPos / 8 + 1, yPos / 8, backgroundX + xSquare * 4, backgroundY + ySquare * 4, 4, 4);
+        drawTexturedModalRect(xPos / 8, yPos / 8, backgroundX + xSquare * 4, backgroundY + ySquare * 4, 4, 4);
         mc.renderEngine.bindTexture(texture1);
-        drawTexturedModalRect(xPos / 8 + 1, yPos / 8, itemX + xSquare * 4, itemY + ySquare * 4, 4, 4);
+        drawTexturedModalRect(xPos / 8, yPos / 8, itemX + xSquare * 4, itemY + ySquare * 4, 4, 4);
         GL11.glPopMatrix();
 
         GL11.glPushMatrix();
         GL11.glScalef(0.5F, 0.5F, 0.5F);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
-        GL11.glTranslatef(0.35F, 0F, 0F);
         fontRenderer.drawStringWithShadow("" + (square + 1), xPos * 2, yPos * 2, 0xFFFFFF);
         GL11.glPopMatrix();
 	}
