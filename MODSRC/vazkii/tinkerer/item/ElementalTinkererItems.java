@@ -40,7 +40,8 @@ public final class ElementalTinkererItems {
 					   oddClaw,
 					   locationGem,
 					   gem,
-					   enderParticle;
+					   enderParticle,
+					   gaseousGlowstone;
 
 	public static void init() {
 		// Construct the items
@@ -57,6 +58,7 @@ public final class ElementalTinkererItems {
 		locationGem = new ItemLocationGem(ItemIDs.locationGem).setItemName(ItemNames.LOCATION_GEM_NAME);
 		gem = new ItemGem(ItemIDs.gem).setItemName(ItemNames.GEM_NAME);
 		enderParticle = new ItemEnderParticle(ItemIDs.enderParticle).setItemName(ItemNames.ENDER_PARTICLE_NAME);
+		gaseousGlowstone = new ItemGlowstoneAir(ItemIDs.gaseousGlowstone).setItemName(ItemNames.GASEOUS_GLOWSTONE_NAME);
 
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
@@ -68,6 +70,7 @@ public final class ElementalTinkererItems {
 		LanguageRegistry.addName(oddClaw, ItemNames.ODD_CLAW_DISPLAY_NAME);
 		LanguageRegistry.addName(locationGem, ItemNames.LOCATION_GEM_DISPLAY_NAME);
 		LanguageRegistry.addName(enderParticle, ItemNames.ENDER_PARTICLE_DISPLAY_NAME);
+		LanguageRegistry.addName(gaseousGlowstone, ItemNames.GASEOUS_GLOWSTONE_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumGem), ResearchReference.ID_ELEMENTIUM_GEM);

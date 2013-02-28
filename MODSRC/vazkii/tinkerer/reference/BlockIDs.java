@@ -26,7 +26,8 @@ public final class BlockIDs {
 							DEFAULT_VOID_GATEWAY = 2117,
 							DEFAULT_VOID_NETWORK = 2118,
 							// RESERVED = 2119,
-							DEFAULT_SCAVENGER = 2120;
+							DEFAULT_SCAVENGER = 2120,
+							DEFAULT_GLOWSTONE_AIR = 2121;
 
 	/** Set via the config **/
 	public static int elementiumOre,
@@ -39,5 +40,6 @@ public final class BlockIDs {
 					  voidGateway,
 					  voidNetwork,
 					  // RESERVED
-					  scavenger;
+					  scavenger,
+					  glowstoneAir;
 }

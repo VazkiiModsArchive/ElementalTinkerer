@@ -28,7 +28,8 @@ public final class ItemNames {
 							   ODD_CLAW_NAME = "oddClaw",
 							   LOCATION_GEM_NAME = "locationGem",
 							   GEM_NAME = "gem",
-							   ENDER_PARTICLE_NAME = "enderParticle";
+							   ENDER_PARTICLE_NAME = "enderParticle",
+							   GASEOUS_GLOWSTONE_NAME = "gaseousGlowstone";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
@@ -43,7 +44,8 @@ public final class ItemNames {
 							   ELEMENTIUM_DETECTOR_DISPLAY_NAME = "Elementium Detector",
 							   ODD_CLAW_DISPLAY_NAME = "Odd Claw",
 							   LOCATION_GEM_DISPLAY_NAME = "Gem of Locating",
-							   ENDER_PARTICLE_DISPLAY_NAME = "Ender Particle";
+							   ENDER_PARTICLE_DISPLAY_NAME = "Ender Particle",
+							   GASEOUS_GLOWSTONE_DISPLAY_NAME = "Gaseous Glowstone";
 
 	/** Gem Names **/
 	public static final String[] GEM_NAMES = {

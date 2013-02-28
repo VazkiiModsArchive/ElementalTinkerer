@@ -86,7 +86,7 @@ public class ModelRotating extends ModelBase {
 		  float radiusZ = (float) (radiusBase + radiusMod * Math.cos(ticks / modifier));
 		  float x =  (float) (radiusX * Math.cos(rad));
 		  float z = (float) (radiusZ * Math.sin(rad));
-		  float y = (float) Math.cos((ticks + (50 * i)) / 5F) / 10F;
+		  float y = (float) Math.cos((ticks + 50 * i) / 5F) / 10F;
 
 		  GL11.glPushMatrix();
 		  GL11.glTranslatef(x, y, z);

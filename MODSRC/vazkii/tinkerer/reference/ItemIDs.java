@@ -28,7 +28,8 @@ public final class ItemIDs {
 							DEFAULT_ODD_CLAW = 21109,
 							DEFAULT_LOCATION_GEM = 21110,
 							DEFAULT_GEM = 21111,
-							DEFAULT_ENDER_PARTICLE = 21112;
+							DEFAULT_ENDER_PARTICLE = 21112,
+							DEFAULT_GASEOUS_GLOWSTONE = 21113;
 
 	/** Set via the config **/
 	public static int elementiumGem,
@@ -43,5 +44,6 @@ public final class ItemIDs {
 					  oddClaw,
 					  locationGem,
 					  gem,
-					  enderParticle;
+					  enderParticle,
+					  gaseousGlowstone;
 }

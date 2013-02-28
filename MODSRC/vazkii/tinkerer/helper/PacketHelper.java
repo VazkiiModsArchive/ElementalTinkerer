@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.network.packet.Packet3Chat;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import vazkii.tinkerer.network.packet.ETPacket;
@@ -135,9 +136,12 @@ public final class PacketHelper {
 	/** Sends a chat message to a player. **/
 	public static void sendMessageToPlayer(EntityPlayer player, String msg) {
 		Packet3Chat chatPacket = new Packet3Chat(msg);
-		EntityPlayerMP mpPlayer = MiscHelper.getServer().getConfigurationManager().getPlayerForUsername(player.username);
+		MinecraftServer server = MiscHelper.getServer();
+		if(server != null) { // Dedicated server
+			EntityPlayerMP mpPlayer = server.getConfigurationManager().getPlayerForUsername(player.username);
 
-		if (player != null)
-			mpPlayer.playerNetServerHandler.sendPacketToPlayer(chatPacket);
+			if (player != null)
+				mpPlayer.playerNetServerHandler.sendPacketToPlayer(chatPacket);
+		}
 	}
 }

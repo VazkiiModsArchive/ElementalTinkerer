@@ -137,4 +137,11 @@ public class CommonProxy {
 	public void spawnSteamParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		// NO-OP
 	}
+
+	/** Used by the client to spawn a glowstone air particle at
+	 * the location passed in, with the motion passed
+	 * in. NO-OP in server side. **/
+	public void spawnGlowstoneAirParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
+		// NO-OP
+	}
 }

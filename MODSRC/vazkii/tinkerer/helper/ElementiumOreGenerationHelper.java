@@ -53,6 +53,9 @@ public class ElementiumOreGenerationHelper {
 
 	public static void writeToNBT(World world) {
 		NBTTagCompound worldCmp = IOHelper.getWorldCache(world);
+		if(worldCmp == null)
+			return;
+
 		NBTTagCompound subCmp = new NBTTagCompound();
 		for(int x : veins.keySet()) {
 			NBTTagCompound xCmp = new NBTTagCompound();

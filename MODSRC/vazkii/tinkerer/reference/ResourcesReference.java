@@ -92,6 +92,7 @@ public final class ResourcesReference {
 							ITEM_INDEX_ODD_CLAW = 64,
 							ITEM_INDEX_LOCATION_GEM = 46,
 							ITEM_INDEX_GEM_START = 192,
+							ITEM_INDEX_GASEOUS_GLOWSTONE = 48,
 							ITEM_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Item Spritesheet Animations **/

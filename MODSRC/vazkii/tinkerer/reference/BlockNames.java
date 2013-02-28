@@ -25,7 +25,8 @@ public final class BlockNames {
 							   ATTUNER_NAME = "attuner",
 							   VOID_GATEWAY_NAME = "voidGateway",
 							   VOID_NETWORK_NAME = "voidNetwork",
-							   SCAVENGER_NAME = "scavenger";
+							   SCAVENGER_NAME = "scavenger",
+							   GLOWSTONE_AIR_NAME = "glowstoneAir";
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
 							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)",

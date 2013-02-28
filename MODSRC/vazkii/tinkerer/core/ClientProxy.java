@@ -19,6 +19,7 @@ import vazkii.tinkerer.client.handler.LightningRenderHandler;
 import vazkii.tinkerer.client.hud.HudElementSpellTooltip;
 import vazkii.tinkerer.client.hud.HudElementVignette;
 import vazkii.tinkerer.client.particle.EntityFXColoredPortal;
+import vazkii.tinkerer.client.particle.EntityFXGaseousGlowstone;
 import vazkii.tinkerer.client.particle.EntityFXSteam;
 import vazkii.tinkerer.client.render.RenderBoulder;
 import vazkii.tinkerer.client.render.RenderElementiumGuardian;
@@ -172,5 +173,10 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void spawnSteamParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
 		EntityFXSteam.spawn(world, x, y, z, motionX, motionY, motionZ);
+	}
+
+	@Override
+	public void spawnGlowstoneAirParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
+		EntityFXGaseousGlowstone.spawn(world, x, y, z, motionX, motionY, motionZ);
 	}
 }

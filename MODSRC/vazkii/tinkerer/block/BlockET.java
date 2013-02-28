@@ -22,11 +22,17 @@ public class BlockET extends Block {
 
 	public BlockET(int par1, int par2, Material par3Material) {
 		super(par1, par2, par3Material);
-		setCreativeTab(CreativeTabET.INSTANCE);
+		if(registerInCreative())
+			setCreativeTab(CreativeTabET.INSTANCE);
 	}
 
 	@Override
 	public String getTextureFile() {
 		return ResourcesReference.BLOCKS_SPRITESHEET;
+	}
+
+	/** Does the block register in the creative inv? **/
+	boolean registerInCreative() {
+		return true;
 	}
 }
