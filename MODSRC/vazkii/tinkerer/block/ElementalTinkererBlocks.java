@@ -37,9 +37,12 @@ public final class ElementalTinkererBlocks {
 						catalystCapsule,
 						attuner,
 						voidGateway,
-						// RESERVED
+						voidNetwork,
+						glowstoneAir,
+						waveInputter,
+						dislocator,
 						scavenger,
-						glowstoneAir;
+						incinerator;
 
 	public static void init() {
 		// Construct the blocks
@@ -95,14 +98,39 @@ public final class ElementalTinkererBlocks {
 						.setStepSound(Block.soundMetalFootstep)
 						.setBlockName(BlockNames.VOID_GATEWAY_NAME);
 
+		voidNetwork = new BlockVoidNetwork(BlockIDs.voidNetwork)
+						.setHardness(8F)
+						.setResistance(2000F)
+						.setLightValue(0.2F)
+						.setStepSound(Block.soundMetalFootstep)
+						.setBlockName(BlockNames.VOID_NETWORK_NAME);
+
+		glowstoneAir = new BlockGlowstoneAir(BlockIDs.glowstoneAir)
+						.setBlockName(BlockNames.GLOWSTONE_AIR_NAME);
+
+		waveInputter = new BlockWaveInputter(BlockIDs.waveInputter)
+						.setHardness(1.3F)
+						.setResistance(6F)
+						.setStepSound(Block.soundStoneFootstep)
+						.setBlockName(BlockNames.WAVE_INPUTTER_NAME);
+
+		dislocator = new BlockDislocator(BlockIDs.dislocator)
+						.setHardness(1.3F)
+						.setResistance(6F)
+						.setStepSound(Block.soundStoneFootstep)
+						.setBlockName(BlockNames.DISLOCATOR_NAME);
+
 		scavenger = new BlockScavenger(BlockIDs.scavenger)
 						.setHardness(1.3F)
 						.setResistance(6F)
 						.setStepSound(Block.soundStoneFootstep)
 						.setBlockName(BlockNames.SCAVENGER_NAME);
 
-		glowstoneAir = new BlockGlowstoneAir(BlockIDs.glowstoneAir)
-						.setBlockName(BlockNames.GLOWSTONE_AIR_NAME);
+		incinerator = new BlockIncinerator(BlockIDs.incinerator)
+						.setHardness(1.3F)
+						.setResistance(6F)
+						.setStepSound(Block.soundStoneFootstep)
+						.setBlockName(BlockNames.INCINERATOR_NAME);
 
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
@@ -113,8 +141,12 @@ public final class ElementalTinkererBlocks {
 		GameRegistry.registerBlock(catalystCapsule, BlockNames.CATALYST_CAPSULE_NAME);
 		GameRegistry.registerBlock(attuner, BlockNames.ATTUNER_NAME);
 		GameRegistry.registerBlock(voidGateway, BlockNames.VOID_GATEWAY_NAME);
-		GameRegistry.registerBlock(scavenger, BlockScavenger.ItemScavenger.class, BlockNames.SCAVENGER_NAME);
+		GameRegistry.registerBlock(voidNetwork, BlockNames.VOID_NETWORK_NAME);
 		GameRegistry.registerBlock(glowstoneAir, BlockNames.GLOWSTONE_AIR_NAME);
+		GameRegistry.registerBlock(waveInputter, BlockNames.WAVE_INPUTTER_NAME);
+		GameRegistry.registerBlock(dislocator, BlockNames.DISLOCATOR_NAME);
+		GameRegistry.registerBlock(scavenger, BlockNames.SCAVENGER_NAME);
+		GameRegistry.registerBlock(incinerator, BlockNames.INCINERATOR_NAME);
 
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
@@ -125,8 +157,12 @@ public final class ElementalTinkererBlocks {
 		LanguageRegistry.addName(catalystCapsule, BlockNames.CATALYST_CAPSULE_DISPLAY_NAME);
 		LanguageRegistry.addName(attuner, BlockNames.ATTUNER_DISPLAY_NAME);
 		LanguageRegistry.addName(voidGateway, BlockNames.VOID_GATEWAY_DISPLAY_NAME);
-		LanguageRegistry.addName(scavenger, BlockNames.SCAVENGER_DISPLAY_NAME);
+		LanguageRegistry.addName(voidNetwork, BlockNames.VOID_NETWORK_DISPLAY_NAME);
 		LanguageRegistry.addName(glowstoneAir, BlockNames.GLOWSTONE_AIR_NAME);
+		LanguageRegistry.addName(waveInputter, BlockNames.WAVE_INPUTTER_DISPLAY_NAME);
+		LanguageRegistry.addName(dislocator, BlockNames.DISLOCATOR_DISPLAY_NAME);
+		LanguageRegistry.addName(scavenger, BlockNames.SCAVENGER_DISPLAY_NAME);
+		LanguageRegistry.addName(incinerator, BlockNames.INCINERATOR_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumOre, 1, -1), ResearchReference.ID_ELEMENTIUM_ORE);

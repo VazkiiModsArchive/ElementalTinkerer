@@ -6,8 +6,6 @@
 // Created @ 18 Jan 2013
 package vazkii.tinkerer.item;
 
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemStack;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
@@ -29,11 +27,6 @@ public class ItemElementiumIngot extends ItemET {
 	@Override
 	public boolean useDoubleResolution() {
 		return true;
-	}
-
-	@Override
-	public EnumRarity getRarity(ItemStack par1ItemStack) {
-		return EnumRarity.uncommon;
 	}
 
 	@Override

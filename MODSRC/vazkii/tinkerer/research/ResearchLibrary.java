@@ -22,8 +22,12 @@ import vazkii.tinkerer.item.ItemWand;
 import vazkii.tinkerer.reference.ResearchReference;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.research.trigger.EnderAbsorptionTrigger;
+import vazkii.tinkerer.research.trigger.ExperienceItemsTrigger;
+import vazkii.tinkerer.research.trigger.GaseousGlowstoneTrigger;
 import vazkii.tinkerer.research.trigger.GuillotineTrigger;
+import vazkii.tinkerer.research.trigger.LocationCoresTrigger;
 import vazkii.tinkerer.research.trigger.OddClawTrigger;
+import vazkii.tinkerer.research.trigger.OrichalcumTrigger;
 
 /**
  * ResearchLibrary
@@ -154,6 +158,7 @@ public final class ResearchLibrary {
 				  ResearchReference.DISPLAY_NAME_ELEMENTIUM_INGOT,
 				  ResourcesReference.RESERACH_INDEX_ELEMENTIUM_INGOT,
 				  ResearchType.ITEM)
+				  .setDefaultEnabled()
 				  .addToCategory(pure));
 
 		// Wand Research Nodes
@@ -401,6 +406,150 @@ public final class ResearchLibrary {
 				ResourcesReference.MAGIC_INDEX_SHATTERING_RECALL,
 				ResearchType.SPELL)
 				.addToCategory(pure));
+
+		// Void Network Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_VOID_NETWORK,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_VOID_NETWORK,
+				  ResearchReference.DISPLAY_NAME_VOID_NETWORK,
+				  ResourcesReference.RESEARCH_INDEX_VOID_NETWORK,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+
+		// Wave Inputter Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_WAVE_INPUTTER,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_WAVE_INPUTTER,
+				  ResearchReference.DISPLAY_NAME_WAVE_INPUTTER,
+				  ResourcesReference.RESEARCH_INDEX_WAVE_INPUTTER,
+				  ResearchType.ITEM)
+		  		  .setRequirement(ResearchReference.ID_ADV_CORE_LOCATION)
+				  .addToCategory(water));
+
+		// Dislocator Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_DISLOCATOR,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_DISLOCATOR,
+				  ResearchReference.DISPLAY_NAME_DISLOCATOR,
+				  ResourcesReference.RESEARCH_INDEX_DISLOCATOR,
+				  ResearchType.ITEM)
+		  		  .setRequirement(ResearchReference.ID_ADV_CORE_LOCATION)
+				  .addToCategory(air));
+
+		// Scavenger Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_SCAVENGER,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_SCAVENGER,
+				  ResearchReference.DISPLAY_NAME_SCAVENGER,
+				  ResourcesReference.RESEARCH_INDEX_SCAVENGER,
+				  ResearchType.ITEM)
+				  .setRequirement(ResearchReference.ID_BASIC_CORE_LOCATION)
+				  .addToCategory(earth));
+
+		// Incinerator Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_INCINERATOR,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_INCINERATOR,
+				  ResearchReference.DISPLAY_NAME_INCINERATOR,
+				  ResourcesReference.RESEARCH_INDEX_INCINERATOR,
+				  ResearchType.ITEM)
+				  .setRequirement((short) (ResearchReference.ID_CATALYST_START + 6))
+				  .addToCategory(fire));
+
+		// Gaseous Glowstone Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_GASEOUS_GLOWSTONE,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_GASEOUS_GLOWSTONE,
+				  ResearchReference.DISPLAY_NAME_GASEOUS_GLOWSTONE,
+				  ResourcesReference.ITEM_INDEX_GASEOUS_GLOWSTONE,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+		MinecraftForge.EVENT_BUS.register(GaseousGlowstoneTrigger.INSTANCE);
+
+		// Orichalcum Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ORICHALCUM,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_ORICHALCUM,
+				  ResearchReference.DISPLAY_NAME_ORICHALCUM,
+				  ResourcesReference.ITEM_INDEX_ORICHALCUM,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+		MinecraftForge.EVENT_BUS.register(OrichalcumTrigger.INSTANCE);
+
+		// Basic Core of Location Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_BASIC_CORE_LOCATION,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_BASIC_CORE_LOCATION,
+				  ResearchReference.DISPLAY_NAME_BASIC_CORE_LOCATION,
+				  ResourcesReference.ITEM_INDEX_LOCATING_CORE_BASE,
+				  ResearchType.ITEM)
+				  .setDefaultEnabled()
+				  .addToCategory(pure));
+
+		// Adv Core of Location Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ADV_CORE_LOCATION,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_ADV_CORE_LOCATION,
+				  ResearchReference.DISPLAY_NAME_ADV_CORE_LOCATION,
+				  ResourcesReference.ITEM_INDEX_LOCATING_CORE_BASE + 1,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+
+		// Ultimate Core of Location Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_ULTIMATE_CORE_LOCATION,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_ULTIMATE_CORE_LOCATION,
+				  ResearchReference.DISPLAY_NAME_ULTIMATE_CORE_LOCATION,
+				  ResourcesReference.ITEM_INDEX_LOCATING_CORE_BASE,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+		MinecraftForge.EVENT_BUS.register(LocationCoresTrigger.INSTANCE);
+
+		// Unbound Book Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_UNBOUND_BOOK,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_UNBOUND_BOOK,
+				  ResearchReference.DISPLAY_NAME_UNBOUND_BOOK,
+				  ResourcesReference.ITEM_INDEX_UNBOUND_BOOK,
+				  ResearchType.ITEM)
+				  .setDefaultEnabled()
+				  .addToCategory(general));
+
+		// Spellbinding Cloth Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_SPELLBIND_CLOTH,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_SPELLBIND_CLOTH,
+				  ResearchReference.DISPLAY_NAME_SPELLBIND_CLOTH,
+				  ResourcesReference.RESEARCH_INDEX_SPELLBIND_CLOTH,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+
+		// Withhold Talisman Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_WITHHOLD_TALISMAN,
+				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_WITHHOLD_TALISMAN,
+				  ResearchReference.DISPLAY_NAME_WITHHOLD_TALISMAN,
+				  ResourcesReference.ITEM_INDEX_MYSTICAL_TALISMAN,
+				  ResearchType.ITEM)
+				  .setNoBook()
+				  .addToCategory(pure));
+		MinecraftForge.EVENT_BUS.register(ExperienceItemsTrigger.INSTANCE);
+
+		// New Food Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_NEW_FOOD,
+				  ResourcesReference.RESEARCH_SPRITESHEET,
+				  ResearchReference.LABEL_NEW_FOOD,
+				  ResearchReference.DISPLAY_NAME_NEW_FOOD,
+				  ResourcesReference.RESEARCH_INDEX_NEW_FOOD,
+				  ResearchType.KNOWLEDGE)
+				  .setDefaultEnabled()
+				  .addToCategory(general));
 	}
 
 	public static void initTinkeringRecipes() {
@@ -492,21 +641,151 @@ public final class ResearchLibrary {
 			'G', ElementalTinkererItems.elementiumGem);
 			allNodes.get(ResearchReference.ID_LOCATION_GEM).bindLatestTinkeringRecipe();
 
-		// Void Gateway Recipe
-		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.voidGateway),
+		// Void Network Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.voidNetwork),
+			" OGO ",
+			"O   O",
+			"I C I",
+			"O   O",
+			" OEO ",
+			'O', Block.obsidian,
+			'G', ElementalTinkererBlocks.voidGateway,
+			'I', ElementalTinkererItems.elementiumIngot,
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 2),
+			'E', Block.enderChest);
+			allNodes.get(ResearchReference.ID_VOID_NETWORK).bindLatestTinkeringRecipe();
+
+		// Wave Inputter Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.waveInputter),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 0),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 0),
+			"  I  ",
+			"  I  ",
+			"  I  ",
+			" SSS ",
+			"SSCSS",
+			'I', Item.ingotIron,
+			'S', Block.stone,
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1));
+			allNodes.get(ResearchReference.ID_WAVE_INPUTTER).bindLatestTinkeringRecipe();
+
+		// Dislocator Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.dislocator),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 1),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 1),
+			"  I  ",
+			"  I  ",
+			"  I  ",
+			" SSS ",
+			"SSCSS",
+			'I', Item.ingotIron,
+			'S', Block.stone,
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1));
+			allNodes.get(ResearchReference.ID_DISLOCATOR).bindLatestTinkeringRecipe();
+
+		// Scavenger Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.scavenger),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 2),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 2),
+			"  I  ",
+			"  I  ",
+			"  I  ",
+			" SSS ",
+			"SSCSS",
+			'I', Item.ingotIron,
+			'S', Block.stone,
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 0));
+			allNodes.get(ResearchReference.ID_SCAVENGER).bindLatestTinkeringRecipe();
+
+		// Incinerator Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererBlocks.incinerator),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 3),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 3),
+			"  I  ",
+			"  I  ",
+			"  I  ",
+			" SSS ",
+			"SSBSS",
+			'I', Item.ingotIron,
+			'S', Block.stone,
+			'B', Item.bucketLava);
+			allNodes.get(ResearchReference.ID_INCINERATOR).bindLatestTinkeringRecipe();
+
+		// Gaseous Glowstone Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.gaseousGlowstone),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 7),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 7),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 1),
+			" G ",
+			"GBS",
+			" G ",
+			'G', Block.glowStone,
+			'B', Item.glassBottle);
+			allNodes.get(ResearchReference.ID_GASEOUS_GLOWSTONE).bindLatestTinkeringRecipe();
+
+		// Orichalcum Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.orichalcum),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 12),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 13),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 14),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 15),
+			"IDI",
+			'I', ElementalTinkererItems.elementiumIngot,
+			'D', Item.diamond);
+			allNodes.get(ResearchReference.ID_ORICHALCUM).bindLatestTinkeringRecipe();
+
+		// Spellbinding Cloth Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.spellbindCloth),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 3),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 4),
 			new ItemStack(ElementalTinkererItems.catalyst, 1, 5),
 			new ItemStack(ElementalTinkererItems.catalyst, 1, 6),
+			"CB",
+			'C', new ItemStack(Block.cloth, 1, -1),
+			'B', ElementalTinkererItems.unboundBook);
+			allNodes.get(ResearchReference.ID_SPELLBIND_CLOTH).bindLatestTinkeringRecipe();
+
+		// Talisman of Withhold Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.mysticalTalisman),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 8),
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 9),
 			new ItemStack(ElementalTinkererItems.catalyst, 1, 10),
-			new ItemStack(ElementalTinkererItems.catalyst, 1, 13),
-			"IPPPI",
-			"P G P",
-			"PG GP",
-			"P G P",
-			"IPPPI",
-			'G', ElementalTinkererItems.locationGem,
+			new ItemStack(ElementalTinkererItems.catalyst, 1, 11),
+			"  SS ",
+			" S  S",
+			"S   S",
+			"S  S ",
+			"ESS  ",
+			'E', Block.blockEmerald,
+			'S', Item.silk);
+			allNodes.get(ResearchReference.ID_WITHHOLD_TALISMAN).bindLatestTinkeringRecipe();
+
+		// Basic Core of Location Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.locatingCore, 1, 0),
+			" G ",
+			"GIG",
+			" G ",
+			'I', Item.ingotIron,
+			'G', ElementalTinkererItems.locationGem);
+			allNodes.get(ResearchReference.ID_BASIC_CORE_LOCATION).bindLatestTinkeringRecipe();
+
+		// Advanced Core of Location Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.locatingCore, 1, 1),
+			" G ",
+			"GIG",
+			" G ",
 			'I', ElementalTinkererItems.elementiumIngot,
-			'P', Block.thinGlass);
-			allNodes.get(ResearchReference.ID_VOID_GATEWAY).bindLatestTinkeringRecipe();
+			'G', ElementalTinkererItems.locationGem);
+			allNodes.get(ResearchReference.ID_ADV_CORE_LOCATION).bindLatestTinkeringRecipe();
+
+		// Ultimate Core of Location Recipe
+		TinkeringAltarRecipe.registerRecipe(new ItemStack(ElementalTinkererItems.locatingCore, 1, 2),
+			" G ",
+			"GIG",
+			" G ",
+			'I', ElementalTinkererItems.orichalcum,
+			'G', ElementalTinkererItems.locationGem);
+			allNodes.get(ResearchReference.ID_ULTIMATE_CORE_LOCATION).bindLatestTinkeringRecipe();
 	}
 
 	public static void registerNode(ResearchNode node) {

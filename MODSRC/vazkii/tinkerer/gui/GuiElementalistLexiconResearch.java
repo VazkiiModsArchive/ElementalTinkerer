@@ -11,12 +11,14 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraftforge.client.ForgeHooksClient;
 
 import org.lwjgl.opengl.GL11;
 
@@ -250,7 +252,8 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		if(block)
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 		RenderEngine renderEngine = MiscHelper.getMc().renderEngine;
-		render.renderItemIntoGUI(fontRenderer, renderEngine, stack, xPos, yPos);
+		if(!ForgeHooksClient.renderInventoryItem(new RenderBlocks(), renderEngine, stack, render.field_77024_a, zLevel, xPos, yPos))
+			render.renderItemIntoGUI(fontRenderer, renderEngine, stack, xPos, yPos);
 		render.renderItemOverlayIntoGUI(fontRenderer, renderEngine, stack, xPos, yPos);
 		if(block)
 			net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();

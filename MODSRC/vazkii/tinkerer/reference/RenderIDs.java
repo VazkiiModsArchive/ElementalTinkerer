@@ -17,5 +17,5 @@ public final class RenderIDs {
 
 	public static int elementalDesk,
 					  catalystContainer,
-					  scavenger;
+					  rotatingBlocks;
 }

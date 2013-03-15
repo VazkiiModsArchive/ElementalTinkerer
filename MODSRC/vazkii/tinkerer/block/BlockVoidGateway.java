@@ -33,7 +33,7 @@ import vazkii.tinkerer.tile.TileEntityVoidGateway;
 public class BlockVoidGateway extends BlockETContainer {
 
 	public BlockVoidGateway(int par1) {
-		super(par1, ResourcesReference.BLOCK_INDEX_VOID_BLOCKS, Material.iron);
+		super(par1, ResourcesReference.BLOCK_INDEX_VOID_GATEWAY, Material.iron);
 	}
 
 	@Override

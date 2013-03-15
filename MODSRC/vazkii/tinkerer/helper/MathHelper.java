@@ -46,6 +46,16 @@ public final class MathHelper {
 		return (float) (deg * (Math.PI / 180F));
 	}
 
+	/** Gets the distance between two points in the same plane **/
+	public static double pointDistancePlane(double x1, double y1, double x2, double y2) {
+		return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+	}
+
+	/** Gets the distance between two points in space **/
+	public static double pointDistanceSpace(double x1, double y1, double z1, double x2, double y2, double z2) {
+		return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2) + Math.pow(z1 - z2, 2));
+	}
+
 	public static void moveEntityTowardsPos(Entity entity, double x, double y, double z, float speed) {
 		Vector3 originalPosVector = new Vector3(x, y, z);
 		Vector3 entityVector = Vector3.fromEntityCenter(entity);

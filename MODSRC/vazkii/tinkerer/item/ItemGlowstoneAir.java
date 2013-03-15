@@ -33,6 +33,11 @@ public class ItemGlowstoneAir extends ItemET {
 		int z = (int) par3EntityPlayer.posZ;
 		boolean air = par2World.isAirBlock(x, y, z);
 
+        if (!par3EntityPlayer.capabilities.isCreativeMode)
+        	par1ItemStack.stackSize--;
+
+        par2World.playSoundAtEntity(par3EntityPlayer, "random.pop", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+
 		if(air) {
 			if(!par2World.isRemote)
 				par2World.setBlockAndMetadata(x, y, z, BlockIDs.glowstoneAir, 5);

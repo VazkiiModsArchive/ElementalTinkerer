@@ -23,7 +23,9 @@ import org.lwjgl.opengl.GL12;
 import org.lwjgl.util.glu.GLU;
 
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.reference.FormattingCode;
+import vazkii.tinkerer.reference.ItemIDs;
 import vazkii.tinkerer.reference.ItemNames;
 import vazkii.tinkerer.reference.MiscReference;
 import vazkii.tinkerer.reference.ResourcesReference;
@@ -75,9 +77,48 @@ public class GuiElementalDesk extends GuiContainer {
         // Draw the Progress bar
         drawTexturedModalRect(xStart + 48, yStart + 46, 176, 0, (int) Math.round(deskTile.getProgress() / (TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME / 80D)), 12);
 
+        // Render the Book Model, if present
+        ItemStack shouldBeABook = deskTile.getStackInSlot(4);
+        if(shouldBeABook != null && (shouldBeABook.itemID == Item.book.itemID || shouldBeABook.itemID == ElementalTinkererItems.unboundBook.itemID)) {
+        	 GL11.glPushMatrix();
+             GL11.glMatrixMode(GL11.GL_PROJECTION);
+             GL11.glPushMatrix();
+             GL11.glLoadIdentity();
+             ScaledResolution var7 = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+             GL11.glViewport((var7.getScaledWidth() - 320) / 2 * var7.getScaleFactor(), (var7.getScaledHeight() - 240) / 2 * var7.getScaleFactor(), 320 * var7.getScaleFactor(), 240 * var7.getScaleFactor());
+             GL11.glTranslatef(0F, 0.25F, 0F);
+             GLU.gluPerspective(90F, 1.3333334F, 9F, 80F);
+             GL11.glMatrixMode(GL11.GL_MODELVIEW);
+             GL11.glLoadIdentity();
+             RenderHelper.enableStandardItemLighting();
+             float cos = (float)(Math.cos(ClientTickHandler.elapsedClientTicks / 3D) / 10D);
+             GL11.glTranslatef(0.4F, 3.65F + (deskTile.getIsAdvancing() ? cos : -0.1F), -16F);
+             GL11.glScalef(1F, 1F, 1F);
+             float var9 = 5.0F;
+             GL11.glScalef(var9, var9, var9);
+             GL11.glRotatef(180F, -0.29F, 0F, 1F);
+             float var10 = 0.6F;
+             GL11.glTranslatef((1F - var10) * 0.2F, (1F - var10) * 0.1F, (1F - var10) * 0.25F);
+             GL11.glRotatef(-(1F - var10) * 90F - 90F, 0F, 1F, 0F);
+             GL11.glRotatef(180F, 1F, 0F, 0F);
+             mc.renderEngine.bindTexture(mc.renderEngine.getTexture(shouldBeABook.itemID == ItemIDs.unboundBook ? ResourcesReference.ROOT_BOOK_TEXTURES + "Unbound.png" : "/item/book.png"));
+             GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+             bookModel.render(null, 0F, 0F, 0F, (float)deskTile.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+             RenderHelper.disableStandardItemLighting();
+             GL11.glMatrixMode(GL11.GL_PROJECTION);
+             GL11.glViewport(0, 0, mc.displayWidth, mc.displayHeight);
+             GL11.glPopMatrix();
+             GL11.glMatrixMode(GL11.GL_MODELVIEW);
+             GL11.glPopMatrix();
+             RenderHelper.disableStandardItemLighting();
+             GL11.glColor4f(1F, 1F, 1F, 1F);
+        }
+
         // Draw the charge bars
         int color = Color.getHSBColor((float) Math.cos((double) ClientTickHandler.elapsedClientTicks / ResourcesReference.SPECTRUM_DIVISOR_ELEMENTIUM_GEM), 1F, 1F).getRGB();
         Tessellator tess = Tessellator.instance;
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         for(int[] i : CHARGE_METER_COORDINATES) {
         	int index = i[0];
         	int x = i[1];
@@ -91,44 +132,7 @@ public class GuiElementalDesk extends GuiContainer {
         	tess.addVertex(xStart + x + 2, yStart + startY, zLevel);
         	tess.draw();
         }
-
-        // Render the Book Model, if present
-        ItemStack shouldBeABook = deskTile.getStackInSlot(4);
-        if(shouldBeABook != null && shouldBeABook.itemID == Item.book.itemID) {
-        	 GL11.glPushMatrix();
-             GL11.glMatrixMode(GL11.GL_PROJECTION);
-             GL11.glPushMatrix();
-             GL11.glLoadIdentity();
-             ScaledResolution var7 = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
-             GL11.glViewport((var7.getScaledWidth() - 320) / 2 * var7.getScaleFactor(), (var7.getScaledHeight() - 240) / 2 * var7.getScaleFactor(), 320 * var7.getScaleFactor(), 240 * var7.getScaleFactor());
-             GL11.glTranslatef(0F, 0.25F, 0F);
-             GLU.gluPerspective(90F, 1.3333334F, 9F, 80F);
-             GL11.glMatrixMode(GL11.GL_MODELVIEW);
-             GL11.glLoadIdentity();
-             RenderHelper.enableStandardItemLighting();
-             float cos = (float)(Math.cos(ClientTickHandler.elapsedClientTicks / 3) / 10);
-             GL11.glTranslatef(0.4F, 3.65F + (deskTile.getIsAdvancing() ? cos : -0.1F), -16F);
-             GL11.glScalef(1F, 1F, 1F);
-             float var9 = 5.0F;
-             GL11.glScalef(var9, var9, var9);
-             GL11.glRotatef(180F, -0.29F, 0F, 1F);
-             float var10 = 0.6F;
-             GL11.glTranslatef((1F - var10) * 0.2F, (1F - var10) * 0.1F, (1F - var10) * 0.25F);
-             GL11.glRotatef(-(1F - var10) * 90F - 90F, 0F, 1F, 0F);
-             GL11.glRotatef(180F, 1F, 0F, 0F);
-             mc.renderEngine.bindTexture(mc.renderEngine.getTexture("/item/book.png"));
-             GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-             bookModel.render(null, 0F, 0F, 0F, (float)deskTile.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
-             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-             RenderHelper.disableStandardItemLighting();
-             GL11.glMatrixMode(GL11.GL_PROJECTION);
-             GL11.glViewport(0, 0, mc.displayWidth, mc.displayHeight);
-             GL11.glPopMatrix();
-             GL11.glMatrixMode(GL11.GL_MODELVIEW);
-             GL11.glPopMatrix();
-             RenderHelper.disableStandardItemLighting();
-             GL11.glColor4f(1F, 1F, 1F, 1F);
-        }
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
 	}
 
 	@Override

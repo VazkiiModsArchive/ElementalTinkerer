@@ -11,11 +11,13 @@ import java.util.List;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.ForgeHooksClient;
 
 import org.lwjgl.opengl.GL11;
 
@@ -113,7 +115,8 @@ public class GuiElementalistTinkeringAltar extends GuiContainer {
         	RenderEngine render = MiscHelper.getMc().renderEngine;
         	int xPos = xStart / 2 - 46;
         	int yPos = yStart + 49;
-        	itemRender.renderItemIntoGUI(fontRenderer, render, stack, xPos, yPos);
+        	if(!ForgeHooksClient.renderInventoryItem(new RenderBlocks(), render, stack, itemRender.field_77024_a, zLevel, xPos, yPos))
+        		itemRender.renderItemIntoGUI(fontRenderer, render, stack, xPos, yPos);
         }
 
     	if(((GuiInvisibleButton)controlList.get(0)).isHovered()) {

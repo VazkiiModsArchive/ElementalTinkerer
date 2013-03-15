@@ -15,6 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.model.ModelRotating;
 import vazkii.tinkerer.reference.ResourcesReference;
+import vazkii.tinkerer.tile.TileEntityRotatingCubes;
 
 /**
  * TileEntityRenderScavenger
@@ -24,22 +25,26 @@ import vazkii.tinkerer.reference.ResourcesReference;
  *
  * @author Vazkii
  */
-public class TileEntityRenderScavenger extends TileEntitySpecialRenderer implements IItemRenderer {
+public class TileEntityRenderRotatingCubes extends TileEntitySpecialRenderer implements IItemRenderer {
 
-	public static final TileEntityRenderScavenger INSTANCE = new TileEntityRenderScavenger();
+	public static final TileEntityRenderRotatingCubes INSTANCE = new TileEntityRenderRotatingCubes();
 
-	private TileEntityRenderScavenger() { }
+	private TileEntityRenderRotatingCubes() { }
 
-	@Override
-	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float partialTicks) {
-		bindTextureByName(ResourcesReference.MODEL_TEX_SCAVENGER);
+	public void renderRotatingCubesTileAt(TileEntityRotatingCubes tile, double x, double y, double z, float partialTicks) {
+		bindTextureByName(ResourcesReference.MODEL_TEX_ROTATING_CUBES);
         GL11.glPushMatrix();
         GL11.glColor4f(1F, 1F, 1F, 1F);
         GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
         GL11.glRotatef(180F, 0.5F, 0F, 0.5F);
         ModelRotating.INSTANCE.render();
-        ModelRotating.INSTANCE.renderSpinningCubes(14);
+        ModelRotating.INSTANCE.renderSpinningCubes(tile.getQtd(), tile.getHue() / 360F);
         GL11.glPopMatrix();
+	}
+
+	@Override
+	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float partialTicks) {
+		renderRotatingCubesTileAt((TileEntityRotatingCubes) tile, x, y, z, partialTicks);
 	}
 
 	@Override
@@ -74,7 +79,7 @@ public class TileEntityRenderScavenger extends TileEntitySpecialRenderer impleme
 
         }
 
-		bindTextureByName(ResourcesReference.MODEL_TEX_SCAVENGER);
+		bindTextureByName(ResourcesReference.MODEL_TEX_ROTATING_CUBES);
         GL11.glPushMatrix();
         GL11.glTranslatef(x + 0.5F, y + 1.5F, z + 0.5F);
         GL11.glRotatef(180F, 0.5F, 0F, 0.5F);

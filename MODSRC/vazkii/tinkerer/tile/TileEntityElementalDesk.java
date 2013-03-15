@@ -184,7 +184,7 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 	public void updateEntity() {
 		super.updateEntity();
 
-		boolean isBookIn = inventorySlots[4] != null && inventorySlots[4].itemID == Item.book.itemID;
+		boolean isBookIn = inventorySlots[4] != null && (inventorySlots[4].itemID == Item.book.itemID || inventorySlots[4].itemID == ElementalTinkererItems.unboundBook.itemID);
 
 		// Check if there isn't a book in the book slot, sets progress to 0 if so
 		if(!isBookIn) {

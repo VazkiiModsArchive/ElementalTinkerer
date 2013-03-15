@@ -16,7 +16,7 @@ package vazkii.tinkerer.reference;
 public final class TileEntityReference {
 
 	/** The time required for the elemental desk to enchant a book **/
-	public static final int ELEMENTAL_DESK_ENCHANT_TIME = 320;
+	public static final int ELEMENTAL_DESK_ENCHANT_TIME = 280;
 
 	/** The charge provided by an elementium gem in the elemental desk **/
 	public static final int ELEMENTAL_DESK_GEM_CHARGE = 14;
@@ -31,5 +31,20 @@ public final class TileEntityReference {
 
 	/** The time in the Elementalist Tinkering Altar to create
 	 * an item. **/
-	public static final int ELEMENTALIST_TINKERING_ALTAR_TIME = 100;
+	public static final int ELEMENTALIST_TINKERING_ALTAR_TIME = 60;
+
+	/** The range of the Scavenger item search **/
+	public static final int SCAVENGER_SEARCH_RANGE = 3;
+
+	/** The max distance of Location Gems that a Wave Inputter
+	 * can take **/
+	public static final int LGEM_MAX_DISTANCE_WAVE_INPUTTER = 32;
+
+	/** The max distance of Location Gems that a Scavenger
+	 * can take **/
+	public static final int LGEM_MAX_DISTANCE_SCAVENGER = 16;
+
+	/** The max distance of Location Gems that a Dislocator
+	 * can take **/
+	public static final int LGEM_MAX_DISTANCE_DISLOCATOR = 32;
 }

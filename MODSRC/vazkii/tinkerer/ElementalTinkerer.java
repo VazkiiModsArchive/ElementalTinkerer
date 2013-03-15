@@ -21,6 +21,7 @@ import vazkii.tinkerer.handler.ElementiumDustDropsHandler;
 import vazkii.tinkerer.handler.FrozenEntityHandler;
 import vazkii.tinkerer.handler.GuiHandler;
 import vazkii.tinkerer.handler.InteractionAccessHandler;
+import vazkii.tinkerer.handler.ItemCraftingHandler;
 import vazkii.tinkerer.handler.PlayerSpellUpdateHandler;
 import vazkii.tinkerer.handler.PlayerTrackingHandler;
 import vazkii.tinkerer.handler.WorldGenerationHandler;
@@ -111,8 +112,11 @@ public class ElementalTinkerer {
 		// Register the Player Tracker
 		GameRegistry.registerPlayerTracker(PlayerTrackingHandler.INSTANCE);
 
-		// Register the Crafting Handler
+		// Register the Research Crafting Handler
 		GameRegistry.registerCraftingHandler(CraftingRecipesTrigger.INSTANCE);
+
+		// Register the Item Handler
+		GameRegistry.registerCraftingHandler(ItemCraftingHandler.INSTANCE);
 
 		// Register, in the Event Bus, the Interaction Access Handler
 		MinecraftForge.EVENT_BUS.register(InteractionAccessHandler.INSTANCE);

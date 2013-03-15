@@ -14,7 +14,7 @@ import net.minecraft.inventory.InventoryCrafting;
  * Interface for dual crafting inventories. Any double crafing
  * inventories are just instances of InventoryCrafting to be
  * able to be passed to IRecipe instances. It has actually,
- * two inventories. An implementation of this is thhe Elemental
+ * two inventories. An implementation of this is the Elemental
  * Tinkering Altar, which has a 5x5 inventory (shaped) for the
  * main recipe and a 2x2 inventory (shapeless) for the catalysts.
  *

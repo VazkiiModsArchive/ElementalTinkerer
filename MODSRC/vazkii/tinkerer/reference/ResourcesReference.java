@@ -30,6 +30,9 @@ public final class ResourcesReference {
 	/** Root location for gui texture resources **/
 	public static final String ROOT_GUI = ROOT + "gui/";
 
+	/** Root location for armor texture resources **/
+	public static final String ROOT_ARMOR = ROOT + "armor/";
+
 	/** The Spritesheet containing the in-world block textures **/
 	public static final String BLOCKS_SPRITESHEET = ROOT + "blocks.png";
 
@@ -57,8 +60,8 @@ public final class ResourcesReference {
 	/** The Location of the Texture File for the Catalyst Capsule Model **/
 	public static final String MODEL_TEX_CATALYST_CAPSULE = ROOT_MODEL + "catalystCapsule.png";
 
-	/** The Location of the Texture File for the Scavenger Model **/
-	public static final String MODEL_TEX_SCAVENGER = ROOT_MODEL + "scavenger.png";
+	/** The Location of the Texture File for the Model with the Rotating Cubes **/
+	public static final String MODEL_TEX_ROTATING_CUBES = ROOT_MODEL + "rotatingCubes.png";
 
 	/** The location of book textures **/
 	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";
@@ -73,7 +76,9 @@ public final class ResourcesReference {
 							BLOCK_INDEX_ELEMENTIUM_GEM = 16,
 							BLOCK_INDEX_ATTUNER_GLASS = 17,
 							BLOCK_INDEX_ATTUNER_TOP = 18,
-							BLOCK_INDEX_VOID_BLOCKS = 32,
+							BLOCK_INDEX_VOID_GATEWAY = 32,
+							BLOCK_INDEX_VOID_NETWORK_REG = 33,
+							BLOCK_INDEX_VOID_NETWORK_TOP = 34,
 							BLOCK_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Blocks Spritesheet (64x) indexes **/
@@ -93,6 +98,22 @@ public final class ResourcesReference {
 							ITEM_INDEX_LOCATION_GEM = 46,
 							ITEM_INDEX_GEM_START = 192,
 							ITEM_INDEX_GASEOUS_GLOWSTONE = 48,
+							ITEM_INDEX_ORICHALCUM = 77,
+							ITEM_INDEX_ORICHALCUM_BLADE = 78,
+							ITEM_INDEX_ORICHALCUM_SPADE = 94,
+							ITEM_INDEX_ORICHALCUM_PICK = 110,
+							ITEM_INDEX_ORICHALCUM_HATCHET = 126,
+							ITEM_INDEX_ORICHALCUM_HELMET = 79,
+							ITEM_INDEX_ORICHALCUM_CHESTPLATE = 95,
+							ITEM_INDEX_ORICHALCUM_PLATELEGS = 111,
+							ITEM_INDEX_ORICHALCUM_BOOTS = 127,
+							ITEM_INDEX_LOCATING_CORE_BASE = 43,
+							ITEM_INDEX_UNBOUND_BOOK = 5,
+							ITEM_INDEX_SPELLBIND_CLOTH = 76,
+							ITEM_INDEX_MYSTICAL_TALISMAN = 75,
+							ITEM_INDEX_ATTUNED_TOME = 6,
+							ITEM_INDEX_ROASTED_CARROT = 80,
+							ITEM_INDEX_CARAMEL = 81,
 							ITEM_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Item Spritesheet Animations **/
@@ -118,7 +139,14 @@ public final class ResourcesReference {
 							RESEARCH_INDEX_CATALYST_CAPSULE = 12,
 							RESEARCH_INDEX_ATTUNER = 13,
 							RESEARCH_INDEX_ELEMENTIUM_DETECTOR = 14,
-							RESEARCH_INDEX_VOID_GATEWAY = 15;
+							RESEARCH_INDEX_VOID_GATEWAY = 15,
+							RESEARCH_INDEX_VOID_NETWORK = 16,
+							RESEARCH_INDEX_WAVE_INPUTTER = 17,
+							RESEARCH_INDEX_DISLOCATOR = 18,
+							RESEARCH_INDEX_SCAVENGER = 19,
+							RESEARCH_INDEX_INCINERATOR = 20,
+							RESEARCH_INDEX_NEW_FOOD = 21,
+							RESEARCH_INDEX_SPELLBIND_CLOTH = 22;
 
 	/** Integers for the Magic Spritesheet indexes **/
 	public static final int MAGIC_INDEX_BACKGROUND = 255,
@@ -163,7 +191,16 @@ public final class ResourcesReference {
 							   GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE = ROOT_GUI + "recipeBook.png",
 							   GUI_RESEARCH_GAME_TEXTURE = ROOT_GUI + "researchGame.png",
 							   GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE = ROOT_GUI + "infusion.png",
-							   GUI_ATTUNER_TEXTURE = ROOT_GUI + "attuner.png";
+							   GUI_ATTUNER_TEXTURE = ROOT_GUI + "attuner.png",
+							   GUI_VOID_NETWORK_TEXTURE = ROOT_GUI + "voidNetwork.png",
+							   GUI_WAVE_INPUTTER_TEXTURE = ROOT_GUI + "waveInputter.png",
+							   GUI_DISLOCATOR_TEXTURE = ROOT_GUI + "dislocator.png",
+							   GUI_SCAVENGER_TEXTURE = ROOT_GUI + "scavenger.png",
+							   GUI_INCINERATOR_TEXTURE = ROOT_GUI + "incinerator.png";
+
+	/** The files that contain the textures for armors **/
+	public static final String ARMOR_ORICHALCUM_TEXTURE = ROOT_ARMOR + "orichalcum.png",
+							   ARMOR_ORICHALCUM_LEGS_TEXTURE = ROOT_ARMOR + "orichalcumLegs.png";
 
 	/** The spell backgrounc coordinate on the spell spritesheet **/
 	public static final int SPELL_BACKGROUND_X_COORD = 240,

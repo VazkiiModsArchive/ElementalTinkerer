@@ -93,11 +93,9 @@ public class ElementiumOreGenerationHelper {
 
 	public static boolean checkAround(int xCenter, int zCenter) {
 		for(int x = xCenter - WorldGenRates.ELEMENTIUM_ORE_RANGE_CHECK; x < xCenter + WorldGenRates.ELEMENTIUM_ORE_RANGE_CHECK; x++)
-			for(int z = zCenter - WorldGenRates.ELEMENTIUM_ORE_RANGE_CHECK; z < zCenter + WorldGenRates.ELEMENTIUM_ORE_RANGE_CHECK; z++) {
-				if(isVeinAt(x, z)) {
+			for(int z = zCenter - WorldGenRates.ELEMENTIUM_ORE_RANGE_CHECK; z < zCenter + WorldGenRates.ELEMENTIUM_ORE_RANGE_CHECK; z++)
+				if(isVeinAt(x, z))
 					return true;
-				}
-			}
 		return false;
 	}
 

@@ -29,7 +29,23 @@ public final class ItemNames {
 							   LOCATION_GEM_NAME = "locationGem",
 							   GEM_NAME = "gem",
 							   ENDER_PARTICLE_NAME = "enderParticle",
-							   GASEOUS_GLOWSTONE_NAME = "gaseousGlowstone";
+							   GASEOUS_GLOWSTONE_NAME = "gaseousGlowstone",
+							   ORICHALCUM_NAME = "orichalcum",
+							   ORICHALCUM_BLADE_NAME = "orichalcumBlade",
+							   ORICHALCUM_SPADE_NAME = "orichalcumSpade",
+							   ORICHALCUM_PICK_NAME = "orichalcumPick",
+							   ORICHALCUM_HATCHET_NAME = "orichalcumHatchet",
+							   ORICHALCUM_HELMET_NAME = "orichalcumHelmet",
+							   ORICHALCUM_CHESTPLATE_NAME = "orichalcumChestplate",
+							   ORICHALCUM_PLATELEGS_NAME = "orichalcumPlatelegs",
+							   ORICHALCUM_BOOTS_NAME = "orichalcumBoots",
+							   LOCATING_CORE_NAME = "locatingCore",
+							   UNBOUND_BOOK_NAME = "unboundBook",
+							   SPELLBIND_CLOTH_NAME = "spellbindCloth",
+							   MYSTICAL_TALISMAN_NAME = "mysticalTalisman",
+							   ATTUNED_TOME_NAME = "attunedTome",
+							   ROASTED_CARROT_NAME = "roastedCarrot",
+							   CARAMEL_NAME = "caramel";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
@@ -45,7 +61,23 @@ public final class ItemNames {
 							   ODD_CLAW_DISPLAY_NAME = "Odd Claw",
 							   LOCATION_GEM_DISPLAY_NAME = "Gem of Locating",
 							   ENDER_PARTICLE_DISPLAY_NAME = "Ender Particle",
-							   GASEOUS_GLOWSTONE_DISPLAY_NAME = "Gaseous Glowstone";
+							   GASEOUS_GLOWSTONE_DISPLAY_NAME = "Gaseous Glowstone",
+							   ORICHALCUM_DISPLAY_NAME = "Orichalcum",
+							   ORICHALCUM_BLADE_DISPLAY_NAME = "Orichalcum Blade",
+							   ORICHALCUM_SPADE_DISPLAY_NAME = "Orichalcum Spade",
+							   ORICHALCUM_PICK_DISPLAY_NAME = "Orichalcum Pick",
+							   ORICHALCUM_HATCHET_DISPLAY_NAME = "Orichalcum Hatchet",
+							   ORICHALCUM_HELMET_DISPLAY_NAME = "Orichalcum Helmet",
+							   ORICHALCUM_CHESTPLATE_DISPLAY_NAME = "Orichalcum Platebody",
+							   ORICHALCUM_PLATELEGS_DISPLAY_NAME = "Orichalcum Platelegs",
+							   ORICHALCUM_BOOTS_DISPLAY_NAME = "Orichalcum Boots",
+							   LOCATING_CORE_DISPLAY_NAME = "%s Core of Location",
+							   UNBOUND_BOOK_DISPLAY_NAME = "Unbound Book",
+							   SPELLBIND_CLOTH_DISPLAY_NAME = "Spellbinding Cloth",
+							   MYSTICAL_TALISMAN_DISPLAY_NAME = "Withhold Talisman",
+							   ATTUNED_TOME_DISPLAY_NAME = "Attuned Tome",
+							   ROASTED_CARROT_DISPLAY_NAME = "Roasted Carrot",
+							   CARAMEL_DISPLAY_NAME = "Caramel";
 
 	/** Gem Names **/
 	public static final String[] GEM_NAMES = {
@@ -72,5 +104,13 @@ public final class ItemNames {
 		"Lesser",
 		"Elemental",
 		"Greater",
-		"Ender" };
+		"Ender"
+	};
+
+	/** The levels for the names of the location core item **/
+	public static final String[] LOCATION_CORE_LEVELS = {
+		"Basic",
+		"Advanced",
+		"Ultimate"
+	};
 }

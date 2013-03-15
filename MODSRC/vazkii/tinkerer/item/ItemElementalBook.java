@@ -49,7 +49,7 @@ public class ItemElementalBook extends ItemET {
     			ResearchHelper.formulateResearchNode(s, par3EntityPlayer, Element.getName(par1ItemStack.getItemDamage()));
     			par1ItemStack.stackSize--;
     		} else {
-    			PacketHelper.sendMessageToPlayer(par3EntityPlayer, FormattingCode.RED + "There seems to be nothing this book can teach you.");
+    			PacketHelper.sendMessageToPlayer(par3EntityPlayer, FormattingCode.RED + "There seems to be nothing this book can teach you currently.");
 
     		}
     	}

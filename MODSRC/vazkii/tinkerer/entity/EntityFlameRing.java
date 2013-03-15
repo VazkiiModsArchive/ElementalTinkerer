@@ -83,7 +83,7 @@ public class EntityFlameRing extends Entity {
 			return;
 
 		for(EntityLiving entity : entities) {
-			if(entity == null || entity instanceof EntityPlayer && ((EntityPlayer)entity).username.equals(summoner) || !MiscHelper.isServerPVP() && entity instanceof EntityPlayer)
+			if(entity == null || entity instanceof EntityPlayer && ((EntityPlayer)entity).username.equals(summoner) || !MiscHelper.isServerPVP() && entity instanceof EntityPlayer || MathHelper.pointDistancePlane(posX, entity.posX, posY, entity.posY) <= radius)
 				continue;
 
 			entity.setFire(2);

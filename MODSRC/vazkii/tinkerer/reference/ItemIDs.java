@@ -29,7 +29,23 @@ public final class ItemIDs {
 							DEFAULT_LOCATION_GEM = 21110,
 							DEFAULT_GEM = 21111,
 							DEFAULT_ENDER_PARTICLE = 21112,
-							DEFAULT_GASEOUS_GLOWSTONE = 21113;
+							DEFAULT_GASEOUS_GLOWSTONE = 21113,
+							DEFAULT_ORICHALCUM = 21114,
+							DEFAULT_ORICHALCUM_BLADE = 21115,
+							DEFAULT_ORICHALCUM_SPADE = 21116,
+							DEFAULT_ORICHALCUM_PICK = 21117,
+							DEFAULT_ORICHALCUM_HATCHET = 21118,
+							DEFAULT_ORICHALCUM_HELMET = 21119,
+							DEFAULT_ORICHALCUM_CHESTPLATE = 21120,
+							DEFAULT_ORICHALCUM_PLATELEGS = 21121,
+							DEFAULT_ORICHALCUM_BOOTS = 21122,
+							DEFAULT_LOCATING_CORE = 21124,
+							DEFAULT_UNBOUND_BOOK = 21125,
+							DEFAULT_SPELLBIND_CLOTH = 21126,
+							DEFAULT_MYSTICAL_TALISMAN = 21127,
+							DEFAULT_ATTUNED_TOME = 21128,
+							DEFAULT_ROASTED_CARROT = 21129,
+							DEFAULT_CARAMEL = 21130;
 
 	/** Set via the config **/
 	public static int elementiumGem,
@@ -45,5 +61,21 @@ public final class ItemIDs {
 					  locationGem,
 					  gem,
 					  enderParticle,
-					  gaseousGlowstone;
+					  gaseousGlowstone,
+					  orichalcum,
+					  orichalcumBlade,
+					  orichalcumSpade,
+					  orichalcumPick,
+					  orichalcumHatchet,
+					  orichalcumHelmet,
+					  orichalcumChestplate,
+					  orichalcumPlatelegs,
+					  orichalcumBoots,
+					  locatingCore,
+					  unboundBook,
+					  spellbindCloth,
+					  mysticalTalisman,
+					  attunedTome,
+					  roastedCarrot,
+					  caramel;
 }

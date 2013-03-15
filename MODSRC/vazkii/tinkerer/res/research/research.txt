@@ -429,7 +429,7 @@ Some examples of this are
 water into ice or lava into
 obsidian.
 #----------------------------------------------------
-ironSkin:
+ironskin:
 While this passive is equipped,
 any damage done to the user
 that has this passive equipped
@@ -439,14 +439,14 @@ magnification effect of the
 Blood Boil passive.
 
 This does not apply to fire
-damage.
+or unblockable damage.
 #----------------------------------------------------
 bloodBoil:
 While this passive is equipped,
 any damage done to the user
 that has this passive equipped
 is magnified by half a heart
-and the user gets a strenght
+and the user gets a strength
 boost equivalent to the
 amount of damage taken (after
 the calculation). This (the
@@ -510,4 +510,156 @@ shattered will deal slight
 damage to the user.
 
 Cooldown: 5m
+#----------------------------------------------------
+voidNetwork:
+This block interacts with Void
+Gateway blocks, to add one in,
+one would right click the block
+with a Gem of Location bound to
+one in it's hand. A container
+(like a chest, or a furnace)
+can be attached to this block
+on top of it, and it'll be
+treated as adjacent. This
+block is extremely powerful and
+allows for direct interactions
+between the void and the adj.
+inventory, trough the controls
+available in the block's GUI.
+#----------------------------------------------------
+waveInputter:
+This block makes use of Gems
+of Location bound to blocks
+that have an inventory (eg.
+chest) to "sort" items put into
+it in a simplistic manner in
+which it'll try to mimic a
+shift-click from the player into
+that inventory, and try the next
+inventory in the chain if it
+fails to fit with the item in.
+This is useful when there's a
+large input of items coming
+in, to store only in one chest.
+#----------------------------------------------------
+dislocator:
+This block makes use of Gems
+of Location bound to blocks
+that have an inventory (eg.
+chest) to pull items found
+in the filter slots from one
+of the inventories into the
+other one automatically.
+This can be useful to get
+rid of undesired items in
+one place, and put them
+where they would be required.
+#----------------------------------------------------
+scavenger:
+This block makes use of Gems
+of Location bound to blocks
+that have an inventory (eg.
+chest) to pick up any items
+in the space around it, and
+put those items in the right
+inventory, depending on if
+they match the filter or
+not.
+#----------------------------------------------------
+incinerator:
+Anything that gets put into
+this block, via any sort of
+transport, or manually, by
+player input, gets completely
+destroyed, as if it touched
+lava.
+#----------------------------------------------------
+gaseousGlowstone:
+When glowstone is subject
+to high pressure and heat
+outside of it's natural
+conditions, it seems to turn
+into gas. This gas, when let
+out by a right click will
+spread a bit in the world,
+creating what's effectively
+glowing air that emits light
+almost similar to the light
+a block of glowstone would.
+#----------------------------------------------------
+orichalcum:
+Mysical metal made with the
+raw power of all the elements
+and the end. This metal can
+be used to create some
+extermely powerful items. It
+can also be used to create
+tools and armor, the same way
+one would craft any other of
+these. These tools and armor
+are extremely durable,
+powerful, and very enchantable.
+#----------------------------------------------------
+basicCoreLocation:
+A basic core infused with the
+power of Gems of Location.
+It can't be used for much, due
+to it's simplistic nature.
+#----------------------------------------------------
+advCoreLocation:
+An advanced core infused with
+the power of Gems of Location.
+It can be used for more
+complex things than it's
+basic counterpart.
+#----------------------------------------------------
+ultimateCoreLocation:
+Using the extremely powerful
+abilities of Orichalcum, this
+core harnesses both the power
+of the elements as it does
+the power of Gems of Location.
+It is used for extremely
+powerful interactions.
+#----------------------------------------------------
+unboundBook:
+A book that is not bound in
+leather. This can't be used
+for the regular uses books
+would have, but it can be used
+for research in the Elemental
+Desk.
+#----------------------------------------------------
+spellbindCloth:
+This cloth, when set into a
+crafting grid along with one
+enchanted item, it'll siphon
+the magical energy from that
+item and release it. It takes
+some energy away from itself
+in this process.
+#----------------------------------------------------
+mysticalTalisman:
+While this is active, and 
+in a player's inventory, all
+experience orbs around the
+player will get absorbed into
+it. For the cost of 10 exp
+and a right click, a glass
+bottle in the player's
+inventory will get turned
+into a bottle o' enchanting.
+To turn the item on and off
+one would shift-right click
+it. It shines while it's on.
+#----------------------------------------------------
+newFood:
+An elementalist always needs
+to be health. Foods like
+roasted carrots and caramel
+can be made by cooking, in
+a furnace, a carrot or a
+piece of sugar, respectively.
+Caramel gives a slight speed
+increase after being eaten.
 #----------------------------------------------------

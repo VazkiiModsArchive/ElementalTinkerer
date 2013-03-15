@@ -30,5 +30,7 @@ public final class NetworkReference {
 							   SUBCHANNEL_SPELLS =  "spells",
 							   SUBCHANNEL_CLIENT_SPELLS = "clientSpells",
 							   SUBCHANNEL_KEYBIND = "keybind",
-							   SUBCHANNEL_VOID_STORAGE = "voidStorage";
+							   SUBCHANNEL_VOID_STORAGE = "voidStorage",
+							   SUBCHANNEL_VOID_NETWORK_SYNC = "voidNetworkSync",
+							   SUBCHANNEL_VOID_NETWORK_BUTTON = "voidNetworkButton";
 }

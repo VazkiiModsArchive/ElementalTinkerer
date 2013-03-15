@@ -12,7 +12,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.MovingObjectPosition;
@@ -71,18 +70,6 @@ public class HudElementVoidGateway implements IHudElement {
 		int y = res.getScaledHeight() / 2 - 8;
 		String str1 = currentRendering.stack.getDisplayName();
 		String str2 = currentRendering.qtd + "x" + (currentRendering.stack.getMaxStackSize() != 1 ? " (" + currentRendering.qtd / currentRendering.stack.getMaxStackSize() + " Stacks)" : "");
-		int size = 16 + Math.max(font.getStringWidth(str1), font.getStringWidth(str2)) / 2;
-
-		Tessellator tess = Tessellator.instance;
-		tess.startDrawingQuads();
-		tess.setColorRGBA_F(1F, 1F, 1F, 1F);
-		tess.addVertex(x - 2, 0, y - 2);
-		tess.addVertex(x - 2 , 0, y + size);
-		tess.addVertex(x + 18, 0, y + size);
-		tess.addVertex(x + 18, 0, y - 2);
-		tess.draw();
-
-		new RenderBlocks();
 		boolean block = currentRendering.stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.blocksList[currentRendering.stack.itemID].getRenderType());
 		if(!block)
 			RenderHelper.enableStandardItemLighting();

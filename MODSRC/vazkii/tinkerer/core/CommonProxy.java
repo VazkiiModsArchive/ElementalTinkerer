@@ -18,14 +18,20 @@ import vazkii.tinkerer.network.packet.PacketElementalDeskSync;
 import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarStartRecipe;
 import vazkii.tinkerer.network.packet.PacketElementalistTinkeringAltarSync;
 import vazkii.tinkerer.network.packet.PacketKeybind;
+import vazkii.tinkerer.network.packet.PacketVoidNetworkButton;
+import vazkii.tinkerer.network.packet.PacketVoidNetworkSync;
 import vazkii.tinkerer.reference.AnnotationConstants;
 import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
+import vazkii.tinkerer.tile.TileEntityDislocator;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
+import vazkii.tinkerer.tile.TileEntityIncinerator;
 import vazkii.tinkerer.tile.TileEntityScavenger;
 import vazkii.tinkerer.tile.TileEntityVoidGateway;
+import vazkii.tinkerer.tile.TileEntityVoidNetwork;
+import vazkii.tinkerer.tile.TileEntityWaveInputter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -50,7 +56,11 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityElementalTinkeringAltar.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
 		GameRegistry.registerTileEntity(TileEntityAttuner.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.ATTUNER_NAME);
 		GameRegistry.registerTileEntity(TileEntityVoidGateway.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.VOID_GATEWAY_NAME);
+		GameRegistry.registerTileEntity(TileEntityVoidNetwork.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.VOID_NETWORK_NAME);
+		GameRegistry.registerTileEntity(TileEntityWaveInputter.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.WAVE_INPUTTER_NAME);
+		GameRegistry.registerTileEntity(TileEntityDislocator.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.DISLOCATOR_NAME);
 		GameRegistry.registerTileEntity(TileEntityScavenger.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.SCAVENGER_NAME);
+		GameRegistry.registerTileEntity(TileEntityIncinerator.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.INCINERATOR_NAME);
 	}
 
 	/** Registers the mod's packets. Some packets use different
@@ -62,6 +72,8 @@ public class CommonProxy {
 		PacketHelper.packetHandlers.add(PacketCompleteResearch.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketClientSpells.RECIEVER_INSTANCE);
 		PacketHelper.packetHandlers.add(PacketKeybind.INSTANCE);
+		PacketHelper.packetHandlers.add(PacketVoidNetworkSync.RECIEVER_INSTANCE);
+		PacketHelper.packetHandlers.add(PacketVoidNetworkButton.RECIEVER_INSTANCE);
 	}
 
 	/** Registers the tick handler **/

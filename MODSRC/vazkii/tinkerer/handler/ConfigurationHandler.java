@@ -70,8 +70,11 @@ public final class ConfigurationHandler {
 		BlockIDs.voidGateway = config.getBlock(BlockNames.VOID_GATEWAY_NAME, BlockIDs.DEFAULT_VOID_GATEWAY).getInt(BlockIDs.DEFAULT_VOID_GATEWAY);
 		BlockIDs.voidNetwork = config.getBlock(BlockNames.VOID_NETWORK_NAME, BlockIDs.DEFAULT_VOID_NETWORK).getInt(BlockIDs.DEFAULT_VOID_NETWORK);
 		// RESERVED
-		BlockIDs.scavenger = config.getBlock(BlockNames.SCAVENGER_NAME, BlockIDs.DEFAULT_SCAVENGER).getInt(BlockIDs.DEFAULT_SCAVENGER);
 		BlockIDs.glowstoneAir = config.getBlock(BlockNames.GLOWSTONE_AIR_NAME, BlockIDs.DEFAULT_GLOWSTONE_AIR).getInt(BlockIDs.DEFAULT_GLOWSTONE_AIR);
+		BlockIDs.waveInputter = config.getBlock(BlockNames.WAVE_INPUTTER_NAME, BlockIDs.DEFAULT_WAVE_INPUTTER).getInt(BlockIDs.DEFAULT_WAVE_INPUTTER);
+		BlockIDs.dislocator = config.getBlock(BlockNames.DISLOCATOR_NAME, BlockIDs.DEFAULT_DISLOCATOR).getInt(BlockIDs.DEFAULT_DISLOCATOR);
+		BlockIDs.scavenger = config.getBlock(BlockNames.SCAVENGER_NAME, BlockIDs.DEFAULT_SCAVENGER).getInt(BlockIDs.DEFAULT_SCAVENGER);
+		BlockIDs.incinerator = config.getBlock(BlockNames.INCINERATOR_NAME, BlockIDs.DEFAULT_INCINERATOR).getInt(BlockIDs.DEFAULT_INCINERATOR);
 
 		// Load Item IDs
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);
@@ -88,6 +91,22 @@ public final class ConfigurationHandler {
 		ItemIDs.gem = config.getItem(ItemNames.GEM_NAME, ItemIDs.DEFAULT_GEM).getInt(ItemIDs.DEFAULT_GEM);
 		ItemIDs.enderParticle = config.getItem(ItemNames.ENDER_PARTICLE_NAME, ItemIDs.DEFAULT_ENDER_PARTICLE).getInt(ItemIDs.DEFAULT_ENDER_PARTICLE);
 		ItemIDs.gaseousGlowstone = config.getItem(ItemNames.GASEOUS_GLOWSTONE_NAME, ItemIDs.DEFAULT_GASEOUS_GLOWSTONE).getInt(ItemIDs.DEFAULT_GASEOUS_GLOWSTONE);
+		ItemIDs.orichalcum = config.getItem(ItemNames.ORICHALCUM_NAME, ItemIDs.DEFAULT_ORICHALCUM).getInt(ItemIDs.DEFAULT_ORICHALCUM);
+		ItemIDs.orichalcumBlade = config.getItem(ItemNames.ORICHALCUM_BLADE_NAME, ItemIDs.DEFAULT_ORICHALCUM_BLADE).getInt(ItemIDs.DEFAULT_ORICHALCUM_BLADE);
+		ItemIDs.orichalcumSpade = config.getItem(ItemNames.ORICHALCUM_SPADE_NAME, ItemIDs.DEFAULT_ORICHALCUM_SPADE).getInt(ItemIDs.DEFAULT_ORICHALCUM_SPADE);
+		ItemIDs.orichalcumPick = config.getItem(ItemNames.ORICHALCUM_PICK_NAME, ItemIDs.DEFAULT_ORICHALCUM_PICK).getInt(ItemIDs.DEFAULT_ORICHALCUM_PICK);
+		ItemIDs.orichalcumHatchet = config.getItem(ItemNames.ORICHALCUM_HATCHET_NAME, ItemIDs.DEFAULT_ORICHALCUM_HATCHET).getInt(ItemIDs.DEFAULT_ORICHALCUM_HATCHET);
+		ItemIDs.orichalcumHelmet = config.getItem(ItemNames.ORICHALCUM_HELMET_NAME, ItemIDs.DEFAULT_ORICHALCUM_HELMET).getInt(ItemIDs.DEFAULT_ORICHALCUM_HELMET);
+		ItemIDs.orichalcumChestplate = config.getItem(ItemNames.ORICHALCUM_CHESTPLATE_NAME, ItemIDs.DEFAULT_ORICHALCUM_CHESTPLATE).getInt(ItemIDs.DEFAULT_ORICHALCUM_CHESTPLATE);
+		ItemIDs.orichalcumPlatelegs = config.getItem(ItemNames.ORICHALCUM_PLATELEGS_NAME, ItemIDs.DEFAULT_ORICHALCUM_PLATELEGS).getInt(ItemIDs.DEFAULT_ORICHALCUM_PLATELEGS);
+		ItemIDs.orichalcumBoots = config.getItem(ItemNames.ORICHALCUM_BOOTS_NAME, ItemIDs.DEFAULT_ORICHALCUM_BOOTS).getInt(ItemIDs.DEFAULT_ORICHALCUM_BOOTS);
+		ItemIDs.locatingCore = config.getItem(ItemNames.LOCATING_CORE_NAME, ItemIDs.DEFAULT_LOCATING_CORE).getInt(ItemIDs.DEFAULT_LOCATING_CORE);
+		ItemIDs.unboundBook = config.getItem(ItemNames.UNBOUND_BOOK_NAME, ItemIDs.DEFAULT_UNBOUND_BOOK).getInt(ItemIDs.DEFAULT_UNBOUND_BOOK);
+		ItemIDs.spellbindCloth = config.getItem(ItemNames.SPELLBIND_CLOTH_NAME, ItemIDs.DEFAULT_SPELLBIND_CLOTH).getInt(ItemIDs.DEFAULT_SPELLBIND_CLOTH);
+		ItemIDs.mysticalTalisman = config.getItem(ItemNames.MYSTICAL_TALISMAN_NAME, ItemIDs.DEFAULT_MYSTICAL_TALISMAN).getInt(ItemIDs.DEFAULT_MYSTICAL_TALISMAN);
+		ItemIDs.attunedTome = config.getItem(ItemNames.ATTUNED_TOME_NAME, ItemIDs.DEFAULT_ATTUNED_TOME).getInt(ItemIDs.DEFAULT_ATTUNED_TOME);
+		ItemIDs.roastedCarrot = config.getItem(ItemNames.ROASTED_CARROT_NAME, ItemIDs.DEFAULT_ROASTED_CARROT).getInt(ItemIDs.DEFAULT_ROASTED_CARROT);
+		ItemIDs.caramel = config.getItem(ItemNames.CARAMEL_NAME, ItemIDs.DEFAULT_CARAMEL).getInt(ItemIDs.DEFAULT_CARAMEL);
 
 		// Load Potion IDs
 		PotionReference.idFrozen = config.get(ConfigurationNodes.CATEGORY_POTION_IDS, PotionReference.NAME_FROZEN, PotionReference.ID_DEFAULT_FROZEN).getInt(PotionReference.ID_DEFAULT_FROZEN);

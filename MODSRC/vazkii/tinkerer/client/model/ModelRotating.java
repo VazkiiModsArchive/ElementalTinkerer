@@ -6,6 +6,8 @@
 // Created @ 25 Feb 2012
 package vazkii.tinkerer.client.model;
 
+import java.awt.Color;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
@@ -68,9 +70,10 @@ public class ModelRotating extends ModelBase {
 
   /** Renders the animated cubes around the model, called after
    * the translations for render() **/
-  public void renderSpinningCubes(int cubes) {
+  public void renderSpinningCubes(int cubes, float hue) {
 	  final float modifier = 6F;
 	  final float rotationModifier = 0.25F;
+	  final float saturationModifier = 0.1F;
 	  final float radiusBase = 0.4F;
 	  final float radiusMod = 0.1F;
 
@@ -93,7 +96,11 @@ public class ModelRotating extends ModelBase {
 		  float xRotate = (float) Math.sin(ticks * rotationModifier) / 2F;
 		  float zRotate = (float) Math.cos(ticks * rotationModifier) / 2F;
 
-		  GL11.glRotatef(deg, xRotate, 1F, zRotate);
+		  float sat = (float) Math.max(0.6F, Math.sin(ticks * saturationModifier) / 2F + 0.5F);
+
+		  GL11.glRotatef(deg, xRotate, sat, zRotate);
+		  Color color = Color.getHSBColor(hue, sat, 1F);
+		  GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
 		  SpinningCube.render(MiscReference.MODEL_DEFAULT_RENDER_SCALE);
 
 		  GL11.glPopMatrix();

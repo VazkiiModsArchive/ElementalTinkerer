@@ -7,6 +7,7 @@
 package vazkii.tinkerer.magic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -57,9 +58,11 @@ public class SpellShatteringRecall extends SpellImpl {
 			int x = ItemLocationGem.getX(stack);
 			int y = ItemLocationGem.getY(stack);
 			int z = ItemLocationGem.getZ(stack);
-			player.inventory.decrStackSize(foundAt, 1);
-			player.setPosition(x + 0.5, y + 1.6, z + 0.5);
-			player.attackEntityFrom(DamageSource.magic, 4);
+			if(player instanceof EntityPlayerMP) {
+				player.inventory.decrStackSize(foundAt, 1);
+				((EntityPlayerMP)player).playerNetServerHandler.setPlayerLocation(x, y + 1.6, z, player.rotationYaw, player.rotationPitch);
+				player.attackEntityFrom(DamageSource.magic, 4);
+			}
 			return true;
 		}
 

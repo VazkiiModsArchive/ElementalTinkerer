@@ -25,8 +25,13 @@ public final class BlockNames {
 							   ATTUNER_NAME = "attuner",
 							   VOID_GATEWAY_NAME = "voidGateway",
 							   VOID_NETWORK_NAME = "voidNetwork",
+							   // RESERVED
+							   GLOWSTONE_AIR_NAME = "glowstoneAir",
+							   WAVE_INPUTTER_NAME = "waveInputter",
+							   DISLOCATOR_NAME = "dislocator",
 							   SCAVENGER_NAME = "scavenger",
-							   GLOWSTONE_AIR_NAME = "glowstoneAir";
+							   INCINERATOR_NAME = "incinerator";
+
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
 							   ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME = "Elementium Ore (Spawner)",
@@ -37,5 +42,8 @@ public final class BlockNames {
 							   ATTUNER_DISPLAY_NAME = "Attuner",
 							   VOID_GATEWAY_DISPLAY_NAME = "Void Gateway",
 							   VOID_NETWORK_DISPLAY_NAME = "Void Network",
-							   SCAVENGER_DISPLAY_NAME = "Scavenger";
+							   WAVE_INPUTTER_DISPLAY_NAME = "Wave Inputter",
+							   DISLOCATOR_DISPLAY_NAME = "Dislocator",
+							   SCAVENGER_DISPLAY_NAME = "Scavenger",
+							   INCINERATOR_DISPLAY_NAME = "Incinerator";
 }

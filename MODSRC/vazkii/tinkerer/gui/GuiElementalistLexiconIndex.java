@@ -146,6 +146,21 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         if (prev) fontRenderer.drawString("<", xStart + 20, yStart + 161, 0);
 		if (next) fontRenderer.drawString(">", xStart + 117, yStart + 161, 0);
 
+		int total = ResearchLibrary.allNodes.size();
+		int done = 0;
+		int undone = 0;
+		for(Short s : ResearchHelper.clientResearch.researchesDone.keySet()) {
+			byte value = ResearchHelper.clientResearch.researchesDone.get(s);
+			if(value == (byte) 2)
+				done += 1;
+			else if(value == (byte) 1)
+				undone += 1;
+		}
+
+		drawCenteredString(fontRenderer, FormattingCode.BLUE + "Completed: " + FormattingCode.YELLOW +  done + FormattingCode.BLUE + "/" + FormattingCode.YELLOW + total, width / 2, yStart + 185, 0xFFFFFF);
+		if(undone > 0)
+			drawCenteredString(fontRenderer, FormattingCode.RED + "Uncompleted Researches: " + undone, width / 2, yStart + 196, 0xFFFFFF);
+
         fontRenderer.setUnicodeFlag(true); // Start the fancy font rendering
         fontRenderer.drawStringWithShadow((currentSection == 0 ? FormattingCode.UNDERLINE : "") + ResearchReference.CATEGORY_NAME_GENERAL, shiftX, shiftY, 0xFFFFFF);
         shiftY += bookmarkDifference;

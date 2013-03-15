@@ -9,14 +9,28 @@ package vazkii.tinkerer.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import vazkii.tinkerer.gui.GuiAttuner;
+import vazkii.tinkerer.gui.GuiDislocator;
 import vazkii.tinkerer.gui.GuiElementalDesk;
 import vazkii.tinkerer.gui.GuiElementalistLexiconIndex;
 import vazkii.tinkerer.gui.GuiElementalistTinkeringAltar;
+import vazkii.tinkerer.gui.GuiIncinerator;
+import vazkii.tinkerer.gui.GuiScavenger;
+import vazkii.tinkerer.gui.GuiVoidNetwork;
+import vazkii.tinkerer.gui.GuiWaveInputter;
 import vazkii.tinkerer.reference.GuiIDs;
+import vazkii.tinkerer.tile.TileEntityDislocator;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
+import vazkii.tinkerer.tile.TileEntityIncinerator;
+import vazkii.tinkerer.tile.TileEntityScavenger;
+import vazkii.tinkerer.tile.TileEntityVoidNetwork;
+import vazkii.tinkerer.tile.TileEntityWaveInputter;
+import vazkii.tinkerer.tile.container.ContainerDislocator;
 import vazkii.tinkerer.tile.container.ContainerElementalDesk;
 import vazkii.tinkerer.tile.container.ContainerElementalistTinkeringAltar;
+import vazkii.tinkerer.tile.container.ContainerIncinerator;
+import vazkii.tinkerer.tile.container.ContainerScavenger;
+import vazkii.tinkerer.tile.container.ContainerWaveInputter;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
@@ -41,6 +55,18 @@ public class GuiHandler implements IGuiHandler {
 
 		case GuiIDs.ID_ELEMENTALIST_TINKERING_ALTAR :
 			return new ContainerElementalistTinkeringAltar(player.inventory, (TileEntityElementalTinkeringAltar) world.getBlockTileEntity(x, y, z));
+
+		case GuiIDs.ID_WAVE_INPUTTER :
+			return new ContainerWaveInputter((TileEntityWaveInputter) world.getBlockTileEntity(x, y, z), player.inventory);
+
+		case GuiIDs.ID_DISLOCATOR :
+			return new ContainerDislocator((TileEntityDislocator) world.getBlockTileEntity(x, y, z), player.inventory);
+
+		case GuiIDs.ID_SCAVENGER :
+			return new ContainerScavenger((TileEntityScavenger) world.getBlockTileEntity(x, y, z), player.inventory);
+
+		case GuiIDs.ID_INCINERATOR :
+			return new ContainerIncinerator((TileEntityIncinerator) world.getBlockTileEntity(x, y, z), player.inventory);
 		}
 
 		return null;
@@ -60,6 +86,21 @@ public class GuiHandler implements IGuiHandler {
 
 		case GuiIDs.ID_ATTUNER :
 			return new GuiAttuner();
+
+		case GuiIDs.ID_VOID_NETWORK :
+			return new GuiVoidNetwork((TileEntityVoidNetwork) world.getBlockTileEntity(x, y, z));
+
+		case GuiIDs.ID_WAVE_INPUTTER :
+			return new GuiWaveInputter((TileEntityWaveInputter) world.getBlockTileEntity(x, y, z), player);
+
+		case GuiIDs.ID_DISLOCATOR :
+			return new GuiDislocator((TileEntityDislocator) world.getBlockTileEntity(x, y, z), player);
+
+		case GuiIDs.ID_SCAVENGER :
+			return new GuiScavenger((TileEntityScavenger) world.getBlockTileEntity(x, y, z), player);
+
+		case GuiIDs.ID_INCINERATOR :
+			return new GuiIncinerator((TileEntityIncinerator) world.getBlockTileEntity(x, y, z), player);
 		}
 
 		return null;
