@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.tinkerer.reference.BlockIDs;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemGlowstoneAir
@@ -23,7 +22,6 @@ public class ItemGlowstoneAir extends ItemET {
 
 	public ItemGlowstoneAir(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_INDEX_GASEOUS_GLOWSTONE;
 	}
 
 	@Override
@@ -40,7 +38,7 @@ public class ItemGlowstoneAir extends ItemET {
 
 		if(air) {
 			if(!par2World.isRemote)
-				par2World.setBlockAndMetadata(x, y, z, BlockIDs.glowstoneAir, 5);
+				par2World.setBlockAndMetadataWithNotify(x, y, z, BlockIDs.glowstoneAir, 5, 2);
 			par2World.scheduleBlockUpdate(x, y, z, BlockIDs.glowstoneAir, 10);
 		}
 

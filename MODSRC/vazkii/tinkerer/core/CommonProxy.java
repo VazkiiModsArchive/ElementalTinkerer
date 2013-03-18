@@ -81,6 +81,12 @@ public class CommonProxy {
 		TickRegistry.registerTickHandler(TickHandler.INSTANCE, Side.SERVER);
 	}
 
+	/** Inits the mod's spritesheets for magic and researches,
+	 * NO-OP in sever side **/
+	public void initCustomSpritesheets() {
+		// NO-OP
+	}
+
 	/** Registers any handlers exclusive to the client side,
 	 * obviously NO-OP in server side. **/
 	public void registerClientHandlers() {
@@ -96,12 +102,6 @@ public class CommonProxy {
 	/** Registers various block Renders. NO-OP in server side **/
 	public void registerBlockRenders() {
 		//NO-OP
-	}
-
-	/** Preloads the textures, to avoid render glitches, NO-OP
-	 * in server side **/
-	public void preloadTextures() {
-		// NO-OP
 	}
 
 	/** Reads the research descriptions, used to show the text

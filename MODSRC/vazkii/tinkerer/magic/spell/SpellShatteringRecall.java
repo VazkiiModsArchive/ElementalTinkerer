@@ -16,7 +16,6 @@ import vazkii.tinkerer.item.ItemLocationGem;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -32,7 +31,6 @@ public class SpellShatteringRecall extends SpellImpl {
 		super(SpellReference.ID_SHATTERING_RECALL,
 				SpellReference.LABEL_SHATTERING_RECALL,
 				SpellReference.DISPLAY_NAME_SHATTERING_RECALL,
-				ResourcesReference.MAGIC_INDEX_SHATTERING_RECALL,
 				SpellType.ACTIVE,
 				5); // Pure
 		bindNode(ResearchReference.ID_SHATTERING_RECALL);

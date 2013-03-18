@@ -11,7 +11,6 @@ import vazkii.tinkerer.entity.EntityFireball;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -27,7 +26,6 @@ public class SpellFireball extends SpellImpl {
 		super(SpellReference.ID_FIREBALL,
 				SpellReference.LABEL_FIREBALL,
 				SpellReference.DISPLAY_NAME_FIREBALL,
-				ResourcesReference.MAGIC_INDEX_FIREBALL,
 				SpellType.ACTIVE,
 				Element.FIRE.ordinal());
 		bindNode(ResearchReference.ID_FIREBALL);

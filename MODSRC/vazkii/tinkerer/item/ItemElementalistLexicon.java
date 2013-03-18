@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.reference.GuiIDs;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemElementalistLexicon
@@ -26,7 +25,6 @@ public class ItemElementalistLexicon extends ItemET {
 	public ItemElementalistLexicon(int par1) {
 		super(par1);
 		setMaxStackSize(1);
-		iconIndex = ResourcesReference.ITEM_INDEX_ELEMENTALIST_LEXICON;
 	}
 
 	@Override

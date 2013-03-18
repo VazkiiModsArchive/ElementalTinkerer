@@ -9,7 +9,6 @@ package vazkii.tinkerer.magic.passive;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -25,7 +24,6 @@ public class PassiveExtendedBreath extends PassiveImpl {
 		super(SpellReference.PID_EXTENDED_BREATH,
 				SpellReference.LABEL_EXTENDED_BREATH,
 				SpellReference.DISPLAY_NAME_EXTENDED_BREATH,
-				ResourcesReference.MAGIC_INDEX_EXTENDED_BREATH,
 				Element.AIR.ordinal());
 		bindNode(ResearchReference.ID_EXTENDED_BREATH);
 	}

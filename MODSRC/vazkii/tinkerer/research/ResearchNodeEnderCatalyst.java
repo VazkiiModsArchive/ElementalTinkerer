@@ -6,8 +6,10 @@
 // Created @ 19 Feb 2013
 package vazkii.tinkerer.research;
 
+import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon;
+import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon.Spritesheet;
+import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ResearchNodeEnderCatalyst
@@ -19,8 +21,9 @@ import vazkii.tinkerer.reference.ResourcesReference;
  */
 public class ResearchNodeEnderCatalyst extends ResearchNode {
 
-	public ResearchNodeEnderCatalyst(short index, String label, String displayName, int spriteIndex, ResearchType type) {
-		super(index, ResourcesReference.ITEMS_SPRITESHEET, label, displayName, spriteIndex, type);
+	public ResearchNodeEnderCatalyst(short index, String label, String displayName, ResearchType type) {
+		super(index, label, displayName, type);
+		setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.catalyst, 12 + index - ResearchReference.ID_CATALYST_START));
 	}
 
 	@Override

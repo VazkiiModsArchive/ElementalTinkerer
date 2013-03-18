@@ -6,8 +6,10 @@
 // Created @ 18 Jan 2013
 package vazkii.tinkerer.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.handler.ConfigurationHandler;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
 
 /**
@@ -21,18 +23,20 @@ public class ItemElementiumIngot extends ItemET {
 
 	public ItemElementiumIngot(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_INGOT_START;
+	}
+
+	Icon[] icons = new Icon[8];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 8; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public boolean useDoubleResolution() {
-		return true;
-	}
-
-	@Override
-	public int getIconFromDamage(int par1) {
-		return !ConfigurationHandler.elementiumIngotAnimate ? super.getIconFromDamage(par1) :
-			   SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_INGOT_ANIM_INDEX].getCurrentValue();
+	public Icon getIconFromDamage(int par1) {
+		return !ConfigurationHandler.elementiumIngotAnimate ? icons[0] :
+			   icons[SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_INGOT_ANIM_INDEX].getCurrentValue()];
 	}
 
 }

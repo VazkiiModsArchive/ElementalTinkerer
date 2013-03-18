@@ -22,8 +22,8 @@ public class SpellImpl extends Spell {
 
 	SpellType spellType;
 
-	public SpellImpl(short index, String label, String displayName, int spriteIndex, SpellType type, int element) {
-		super(index, label, displayName, spriteIndex, element);
+	public SpellImpl(short index, String label, String displayName,SpellType type, int element) {
+		super(index, label, displayName, element);
 		spellType = type;
 	}
 

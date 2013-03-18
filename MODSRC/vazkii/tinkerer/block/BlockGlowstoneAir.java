@@ -11,12 +11,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
-import vazkii.tinkerer.reference.ResourcesReference;
+import vazkii.tinkerer.client.helper.IconHelper;
 
 /**
  * BlockGlowstoneAir
@@ -28,10 +29,15 @@ import vazkii.tinkerer.reference.ResourcesReference;
 public class BlockGlowstoneAir extends BlockET {
 
 	public BlockGlowstoneAir(int par1) {
-		super(par1, ResourcesReference.BLOCK_INDEX_TRANSPARENT, Material.air);
+		super(par1, Material.air);
 		setLightValue(0.85F);
 		setBlockBounds(0, 0, 0, 0, 0, 0);
 		setTickRandomly(true);
+	}
+
+	@Override
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = IconHelper.NULL(par1IconRegister);
 	}
 
 	@Override
@@ -54,7 +60,7 @@ public class BlockGlowstoneAir extends BlockET {
 			setAt(par1World, par2, par3, par4 + 1, meta - 1);
 
 			// Just in case...
-			par1World.setBlockMetadata(par2, par3, par4, 0);
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
 
 			ElementalTinkerer.proxy.spawnColoredPortalParticle(new Color(255, 215, 0), par1World, par2, par3, par4, par1World.rand.nextFloat(), par1World.rand.nextFloat(), par1World.rand.nextFloat());
 		}
@@ -63,7 +69,7 @@ public class BlockGlowstoneAir extends BlockET {
 	private void setAt(World world, int x, int y, int z, int meta) {
 		if(world.isAirBlock(x, y, z) && world.getBlockId(x, y, z) != blockID) {
 			if(!world.isRemote)
-				world.setBlockAndMetadata(x, y, z, blockID, meta);
+				world.setBlockAndMetadataWithNotify(x, y, z, blockID, meta, 2);
 			world.scheduleBlockUpdate(x, y, z, blockID, 10);
 		}
 	}

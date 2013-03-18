@@ -7,9 +7,9 @@
 package vazkii.tinkerer.client.handler;
 
 import net.minecraft.client.renderer.ActiveRenderInfo;
+import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
-import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 
@@ -56,14 +56,16 @@ public class LightningRenderHandler {
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-		ForgeHooksClient.bindTexture(ResourcesReference.LIGHTNING_OUTER_TEXTURE, 0);
+		RenderEngine render = MiscHelper.getMc().renderEngine;
+
+		render.func_98187_b(ResourcesReference.LIGHTNING_OUTER_TEXTURE);
 		tessellator.startDrawingQuads();
 		tessellator.setBrightness(0xF000F0);
 		for (LightningBolt bolt : LightningBolt.boltlist)
 			renderBolt(bolt, tessellator, frame, ActiveRenderInfo.rotationX, ActiveRenderInfo.rotationXZ, ActiveRenderInfo.rotationZ, ActiveRenderInfo.rotationXY, 0, false);
 		tessellator.draw();
 
-		ForgeHooksClient.bindTexture(ResourcesReference.LIGHTNING_INNER_TEXTURE, 0);
+		render.func_98187_b(ResourcesReference.LIGHTNING_INNER_TEXTURE);
 		tessellator.startDrawingQuads();
 		tessellator.setBrightness(0xF000F0);
 		for (LightningBolt bolt : LightningBolt.boltlist)

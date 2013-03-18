@@ -12,9 +12,11 @@ import java.util.Random;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.Icon;
 
 import org.lwjgl.opengl.GL11;
 
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.client.helper.RenderHelper;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.PacketHelper;
@@ -34,17 +36,14 @@ import vazkii.tinkerer.research.ResearchNode;
 public class GuiResearchGame extends GuiScreen {
 
 	ResearchNode node;
-	String spritesheet;
+	Icon icon;
 
 	boolean usedHotSwap = false,
 			hotSwapActive = false;
 	int hotSwapX = -1,
 		hotSwapY = -1;
 
-	int backgroundX = 0,
-		backgroundY = ResourcesReference.RESEARCH_BACKGROUND_Y_COORD,
-	    itemX = 0,
-	    itemY = 0;
+	Icon background;
 
     int xStart,
     	yStart;
@@ -58,10 +57,8 @@ public class GuiResearchGame extends GuiScreen {
 
 	public GuiResearchGame(ResearchNode node, int element) {
 		this.node = node;
-		spritesheet = node.spritesheet;
-		itemX = node.spriteIndex % 16 * 16;
-		itemY = node.spriteIndex / 16 * 16;
-		backgroundX = ResourcesReference.RESEARCH_BACKGROUND_X_COORD + element * 16;
+		icon = node.icon;
+		background = IconHelper.researchGameBackgroundIcons[element];
 		randomlyAsignSquares();
 	}
 
@@ -72,10 +69,10 @@ public class GuiResearchGame extends GuiScreen {
 		yStart = (height - 144) / 2;
 		xStart -= xStart % 8; // Dirty fix for the icon renders
 		yStart -= yStart % 8;
-		controlList.clear();
-		controlList.add(new GuiInvisibleButton(0, xStart + 146, yStart, 12, 12));
-		controlList.add(new GuiInvisibleButton(1, xStart + 146, yStart + 14, 12, 12));
-		controlList.add(new GuiInvisibleButton(2, xStart + 146, yStart + 134, 12, 12));
+		buttonList.clear();
+		buttonList.add(new GuiInvisibleButton(0, xStart + 146, yStart, 12, 12));
+		buttonList.add(new GuiInvisibleButton(1, xStart + 146, yStart + 14, 12, 12));
+		buttonList.add(new GuiInvisibleButton(2, xStart + 146, yStart + 134, 12, 12));
 	}
 
 	@Override
@@ -112,22 +109,21 @@ public class GuiResearchGame extends GuiScreen {
 		fontRenderer.drawStringWithShadow("\u27A5", xStart + 146, yStart + 14, 0xFFFFFF);
 		fontRenderer.drawStringWithShadow((usedHotSwap ? FormattingCode.RED : hotSwapActive ? FormattingCode.GOLD : "") + "\u272B", xStart + 146, yStart + 134, 0xFFFFFF);
 
-		if(((GuiInvisibleButton)controlList.get(0)).isHovered())
+		if(((GuiInvisibleButton)buttonList.get(0)).isHovered())
 			RenderHelper.renderTooltip(par1, par2, "Exit");
-		else if(((GuiInvisibleButton)controlList.get(1)).isHovered())
+		else if(((GuiInvisibleButton)buttonList.get(1)).isHovered())
 			RenderHelper.renderTooltip(par1, par2, "Re-shuffle");
-		else if(((GuiInvisibleButton)controlList.get(2)).isHovered())
+		else if(((GuiInvisibleButton)buttonList.get(2)).isHovered())
 			RenderHelper.renderTooltip(par1, par2, "Hot Swap", FormattingCode.GRAY + "Swaps two tiles", FormattingCode.GRAY + "Can only be used once per shuffle.");
-		int texture = mc.renderEngine.getTexture(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(texture);
+        mc.renderEngine.func_98187_b(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, 144, 144);
 
         zLevel += 1;
         for(int i = 0; i < 4; i++)
         	for(int j = 0; j < 4; j++)
         		drawChunk(i, j);
-        mc.renderEngine.bindTexture(texture);
+        mc.renderEngine.func_98187_b(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
 
         zLevel += 1;
         int gridX = par1-xStart-8;
@@ -181,9 +177,6 @@ public class GuiResearchGame extends GuiScreen {
 	}
 
 	public void drawChunk(int x, int y) {
-		int texture = mc.renderEngine.getTexture(ResourcesReference.RESEARCH_SPRITESHEET);
-		int texture1 = mc.renderEngine.getTexture(spritesheet);
-
 		int square = squares[y * 4 + x] - 1;
 
 		if(square == -1)
@@ -197,10 +190,10 @@ public class GuiResearchGame extends GuiScreen {
 
         GL11.glPushMatrix();
         GL11.glScalef(8F, 8F, 8F);
-        mc.renderEngine.bindTexture(texture);
-        drawTexturedModalRect(xPos / 8, yPos / 8, backgroundX + xSquare * 4, backgroundY + ySquare * 4, 4, 4);
-        mc.renderEngine.bindTexture(texture1);
-        drawTexturedModalRect(xPos / 8, yPos / 8, itemX + xSquare * 4, itemY + ySquare * 4, 4, 4);
+        mc.renderEngine.func_98187_b(background.func_94215_i());
+        drawTexturedModalRect(xPos / 8, yPos / 8, (int) background.func_94209_e() + xSquare * 4, (int) background.func_94206_g() + ySquare * 4, 4, 4);
+        mc.renderEngine.func_98187_b(icon.func_94215_i());
+        drawTexturedModalRect(xPos / 8, yPos / 8, (int) icon.func_94209_e() + xSquare * 4, (int) icon.func_94206_g() + ySquare * 4, 4, 4);
         GL11.glPopMatrix();
 
         GL11.glPushMatrix();

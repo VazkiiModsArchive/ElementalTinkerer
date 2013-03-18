@@ -11,13 +11,17 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.handler.ConfigurationHandler;
+import vazkii.tinkerer.reference.BlockNames;
 import vazkii.tinkerer.reference.EffectReference;
 import vazkii.tinkerer.reference.ItemIDs;
 import vazkii.tinkerer.reference.ResourcesReference;
@@ -32,7 +36,17 @@ import vazkii.tinkerer.reference.ResourcesReference;
 public class BlockElementiumOre extends BlockET {
 
 	public BlockElementiumOre(int par1) {
-		super(par1, ResourcesReference.BLOCK_INDEX_ELEMENTIUM_ORE_START, Material.rock);
+		super(par1, Material.rock);
+	}
+
+	Icon[] icons = new Icon[16];
+
+	@Override
+	public void func_94332_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 16; i++)
+			icons[i] = IconHelper.forName(par1IconRegister, BlockNames.ELEMENTIUM_ORE_NAME + i);
+		// Uses the name rather than the forBlock method for Spawner Blocks to also
+		// have an icon!
 	}
 
 	@Override
@@ -58,8 +72,8 @@ public class BlockElementiumOre extends BlockET {
 	}
 
 	@Override
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		return blockIndexInTexture + (!ConfigurationHandler.elementiumOreColored ? 0 : par2);
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return !ConfigurationHandler.elementiumOreColored ? icons[0] : icons[par2];
 	}
 
 	@Override

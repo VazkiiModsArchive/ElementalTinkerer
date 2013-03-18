@@ -124,7 +124,7 @@ public final class ConfigurationHandler {
 		// Load, and comment, if necessary the research share
 		Property researchShareProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_RESEARCH_SHARE, ResearchReference.CONFIG_SHARE_WILDCARD);
 		researchShareProp.comment = ConfigurationNodes.COMMENT_RESEARCH_SHARE;
-		sharedResearch = researchShareProp.value;
+		sharedResearch = researchShareProp.getString();
 
 		// Save the config if anything went wrong and happened to need changing
 		config.save();

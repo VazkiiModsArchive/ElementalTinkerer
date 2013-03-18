@@ -8,11 +8,13 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ItemNames;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 
 /**
@@ -28,12 +30,19 @@ public class ItemCatalyst extends ItemET implements ICatalyst {
 	public ItemCatalyst(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		iconIndex = ResourcesReference.ITEM_INDEX_CATALYST_START;
+	}
+
+	Icon[] icons = new Icon[16];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 16; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public int getIconFromDamage(int par1) {
-		return super.getIconFromDamage(par1) + par1;
+	public Icon getIconFromDamage(int par1) {
+		return icons[par1];
 	}
 
 	@Override

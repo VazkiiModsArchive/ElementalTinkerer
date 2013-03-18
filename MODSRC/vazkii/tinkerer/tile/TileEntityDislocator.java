@@ -28,7 +28,7 @@ import vazkii.tinkerer.reference.TileEntityReference;
  *
  * @author Vazkii
  */
-public class TileEntityDislocator extends TileEntityFilter implements ISidedInventory {
+public class TileEntityDislocator extends TileEntityFilter {
 
 	ItemStack[] inventorySlots = new ItemStack[14];
 
@@ -170,16 +170,6 @@ public class TileEntityDislocator extends TileEntityFilter implements ISidedInve
     }
 
 	@Override
-	public int getStartInventorySide(ForgeDirection side) {
-		return 1;
-	}
-
-	@Override
-	public int getSizeInventorySide(ForgeDirection side) {
-		return 1;
-	}
-
-	@Override
 	public int getFilterStart() {
 		return 2;
 	}
@@ -217,6 +207,16 @@ public class TileEntityDislocator extends TileEntityFilter implements ISidedInve
 	@Override
 	public void closeChest() {
 		// NO-OP
+	}
+
+	@Override
+	public boolean func_94042_c() {
+		return false;
+	}
+
+	@Override
+	public boolean func_94041_b(int i, ItemStack itemstack) {
+		return i == 1;
 	}
 
 }

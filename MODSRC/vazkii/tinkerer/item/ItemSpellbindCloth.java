@@ -11,7 +11,6 @@ import java.awt.Color;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import vazkii.tinkerer.reference.GameReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemSpellbindCloth
@@ -25,7 +24,6 @@ public class ItemSpellbindCloth extends ItemET {
 
 	public ItemSpellbindCloth(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_INDEX_SPELLBIND_CLOTH;
 		setMaxDamage(GameReference.SPELLBIND_CLOTH_USES);
 		setMaxStackSize(1);
 

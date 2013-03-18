@@ -8,9 +8,16 @@ package vazkii.tinkerer.research;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
+import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon;
+import vazkii.tinkerer.helper.MiscHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 /**
@@ -23,8 +30,11 @@ import net.minecraft.item.crafting.IRecipe;
  */
 public class ResearchNode implements Comparable<ResearchNode> {
 
-	public String spritesheet, label, displayName;
-	public int spriteIndex;
+	@SideOnly(Side.CLIENT)
+	public Icon icon;
+	UnboundIcon unboundIcon;
+
+	public String label, displayName;
 	public short index;
 	public ResearchType type;
 
@@ -49,14 +59,39 @@ public class ResearchNode implements Comparable<ResearchNode> {
 	 * used when checking for researches' item recipes. **/
 	private ItemStack iconicItem;
 
-	public ResearchNode(short index, String spritesheet, String label, String displayName, int spriteIndex, ResearchType type) {
-		this.spritesheet = spritesheet;
+	public ResearchNode(short index, String label, String displayName, ResearchType type) {
 		this.label = label;
 		this.displayName = displayName;
-		this.spriteIndex = spriteIndex;
 		this.index = index;
 		this.type = type;
 		requirement = -1;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Icon bindIcon() {
+		IconRegister ir = IconHelper.researchSprites;
+
+		if(unboundIcon == null)
+			return icon = IconHelper.forResearch(ir, this);
+		else {
+			switch(unboundIcon.getSpritesheet()) {
+				case ITEM : ir = MiscHelper.getMc().renderEngine.field_94154_l;
+							break;
+
+				case BLOCK : ir = MiscHelper.getMc().renderEngine.field_94155_m;
+							 break;
+
+				case MAGIC : ir = IconHelper.spellSprites;
+							 break;
+
+			}
+			return icon = unboundIcon.asIcon(ir);
+		}
+	}
+
+	public ResearchNode setUnboundIcon(UnboundIcon icon) {
+		unboundIcon = icon;
+		return this;
 	}
 
 	public ResearchNode setIconicItem(ItemStack stack) {

@@ -8,11 +8,13 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.reference.ItemNames;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemLocationCore
@@ -25,13 +27,20 @@ public class ItemLocationCore extends ItemET {
 
 	public ItemLocationCore(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_INDEX_LOCATING_CORE_BASE;
 		setHasSubtypes(true);
 	}
 
+	Icon[] icons = new Icon[3];
+
 	@Override
-	public int getIconFromDamage(int par1) {
-		return iconIndex + par1;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 3; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
+	}
+
+	@Override
+	public Icon getIconFromDamage(int par1) {
+		return icons[par1];
 	}
 
 	@Override

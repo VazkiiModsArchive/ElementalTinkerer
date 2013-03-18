@@ -8,8 +8,11 @@ package vazkii.tinkerer.item;
 
 import java.awt.Color;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
 
@@ -26,6 +29,14 @@ public class ItemElementiumDetector extends ItemET {
 
 	public ItemElementiumDetector(int par1) {
 		super(par1);
+	}
+
+	Icon[] icons = new Icon[2];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 2; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
@@ -49,8 +60,8 @@ public class ItemElementiumDetector extends ItemET {
 	}
 
 	@Override
-	public int getIconFromDamageForRenderPass(int par1, int par2) {
-		return par2 == 0 ? ResourcesReference.ITEM_INDEX_ELEMENTIUM_DETECTOR_REGULAR : ResourcesReference.ITEM_INDEX_ELEMENTIUM_DETECTOR_COLORIZE;
+	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
+		return icons[par2];
 	}
 
 	static final float hue = 280F / 360F; // Purple tone

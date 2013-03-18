@@ -6,10 +6,11 @@
 // Created @ 12 Mar 2013
 package vazkii.tinkerer.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemFood;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.gui.CreativeTabET;
 import vazkii.tinkerer.reference.MiscReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemETFood
@@ -20,16 +21,14 @@ import vazkii.tinkerer.reference.ResourcesReference;
  */
 public class ItemETFood extends ItemFood {
 
-	public ItemETFood(int par1, int sprite, int par2, float par3, boolean par4) {
+	public ItemETFood(int par1, int par2, float par3, boolean par4) {
 		super(par1 - MiscReference.ITEM_INDEX_SHIFT, par2, par3, par4);
 		// Pass in accurate IDs, negating the index shift
-		iconIndex = sprite;
 		setCreativeTab(CreativeTabET.INSTANCE);
 	}
 
 	@Override
-	public String getTextureFile() {
-		return ResourcesReference.ITEMS_SPRITESHEET;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		iconIndex = IconHelper.forItem(par1IconRegister, this);
 	}
-
 }

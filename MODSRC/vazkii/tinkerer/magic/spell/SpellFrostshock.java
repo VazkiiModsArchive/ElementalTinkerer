@@ -19,7 +19,6 @@ import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.EntityReference;
 import vazkii.tinkerer.reference.PotionReference;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -35,7 +34,6 @@ public class SpellFrostshock extends SpellImpl {
 		super(SpellReference.ID_FROSTSHOCK,
 				SpellReference.LABEL_FROSTSHOCK,
 				SpellReference.DISPLAY_NAME_FROSTSHOCK,
-				ResourcesReference.MAGIC_INDEX_FROSTSHOCK,
 				SpellType.CHARGE,
 				Element.WATER.ordinal());
 		bindNode(ResearchReference.ID_FROSTSHOCK);

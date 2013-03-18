@@ -9,7 +9,6 @@ package vazkii.tinkerer.magic.passive;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -25,7 +24,6 @@ public class PassiveInateSpeed extends PassiveImpl {
 		super(SpellReference.PID_INATE_SPEED,
 				SpellReference.LABEL_INATE_SPEED,
 				SpellReference.DISPLAY_NAME_INATE_SPEED,
-				ResourcesReference.MAGIC_INDEX_INATE_SPEED,
 				Element.AIR.ordinal());
 		bindNode(ResearchReference.ID_INATE_SPEED);
 	}

@@ -11,7 +11,6 @@ import vazkii.tinkerer.entity.EntityFrostBolt;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -27,7 +26,6 @@ public class SpellFrostbolt extends SpellImpl {
 		super(SpellReference.ID_FROSTBOLT,
 				SpellReference.LABEL_FROSTBOLT,
 				SpellReference.DISPLAY_NAME_FROSTBOLT,
-				ResourcesReference.MAGIC_INDEX_FROSTBOLT,
 				SpellType.ACTIVE,
 				Element.WATER.ordinal());
 		bindNode(ResearchReference.ID_FROSTBOLT);

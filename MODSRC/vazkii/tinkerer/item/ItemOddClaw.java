@@ -10,16 +10,18 @@ import java.awt.Color;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.helper.MathHelper;
 import vazkii.tinkerer.reference.GameReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemOddClaw
@@ -32,10 +34,17 @@ public class ItemOddClaw extends ItemET {
 
 	public ItemOddClaw(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_INDEX_ODD_CLAW;
 		setMaxStackSize(1);
 		setMaxDamage(GameReference.ODD_CLAW_RECHARGE_TIME);
 		setNoRepair();
+	}
+
+	Icon[] icons = new Icon[2];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 2; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
@@ -44,8 +53,8 @@ public class ItemOddClaw extends ItemET {
 	}
 
 	@Override
-	public int getIconFromDamageForRenderPass(int par1, int par2) {
-		return par2 == 1 ? iconIndex + 1 : iconIndex;
+	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
+		return par2 == 1 ? icons[1] : icons[0];
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 
 import org.lwjgl.opengl.GL11;
 
@@ -50,7 +51,7 @@ public class TileEntityRenderVoidGateway extends TileEntitySpecialRenderer {
 			GL11.glTranslatef((float) x + 0.5F, (float) y + 0.1F, (float) z + 0.4F + MiscReference.MODEL_DEFAULT_RENDER_SCALE);
 			GL11.glRotatef((float) ClientTickHandler.elapsedClientTicks % 360L / 20.0F * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
             Minecraft mc = MiscHelper.getMc();
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, mc.renderEngine.getTexture(stack.getItem().getTextureFile()));
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, mc.renderEngine.getTexture(stack.getItem().getIconIndex(stack).func_94215_i())); //VAZ_TODO Does this work?
             Tessellator var5 = Tessellator.instance;
             RenderBlocks var6 = new RenderBlocks();
             if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.blocksList[stack.itemID].getRenderType())) {
@@ -62,12 +63,12 @@ public class TileEntityRenderVoidGateway extends TileEntitySpecialRenderer {
     			GL11.glScalef(0.75F, 0.75F, 0.75F);
     			GL11.glRotatef((float) ClientTickHandler.elapsedClientTicks % 360L / 20.0F * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
     			GL11.glTranslatef(-0.5F, 0F, -MiscReference.MODEL_DEFAULT_RENDER_SCALE);
-            	int index = stack.getIconIndex();
-                float var7 = (index % 16 * 16 + 0.0F) / 256.0F;
-                float var8 = (index % 16 * 16 + 15.99F) / 256.0F;
-                float var9 = (index / 16 * 16 + 0.0F) / 256.0F;
-                float var10 = (index / 16 * 16 + 15.99F) / 256.0F;
-                ItemRenderer.renderItemIn2D(var5, var8, var9, var7, var10, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+            	Icon icon = stack.getIconIndex();
+                float f = icon.func_94209_e();
+                float f1 = icon.func_94212_f();
+                float f2 = icon.func_94206_g();
+                float f3 = icon.func_94210_h();
+                ItemRenderer.renderItemIn2D(var5, f1, f2, f, f3, icon.func_94213_j(), icon.func_94208_k(), MiscReference.MODEL_DEFAULT_RENDER_SCALE);
             }
 
             GL11.glColor4f(1F, 1F, 1F, 1F);

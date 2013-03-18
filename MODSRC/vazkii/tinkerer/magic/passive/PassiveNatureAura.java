@@ -10,7 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -26,7 +25,6 @@ public class PassiveNatureAura extends PassiveImpl {
 		super(SpellReference.PID_NATURE_AURA,
 				SpellReference.LABEL_NATURE_AURA,
 				SpellReference.DISPLAY_NAME_NATURE_AURA,
-				ResourcesReference.MAGIC_INDEX_NATURE_AURA,
 				Element.EARTH.ordinal());
 		bindNode(ResearchReference.ID_NATURE_AURA);
 	}
@@ -39,7 +37,7 @@ public class PassiveNatureAura extends PassiveImpl {
 			int y = (int) player.posY - 1;
 			int z = (int) player.posZ;
 			if(player.worldObj.getBlockId(x, y, z) == Block.dirt.blockID)
-				player.worldObj.setBlock(x, y, z, Block.grass.blockID);
+				player.worldObj.setBlockAndMetadataWithNotify(x, y, z, Block.grass.blockID, 0, 2);
 		}
 	}
 }

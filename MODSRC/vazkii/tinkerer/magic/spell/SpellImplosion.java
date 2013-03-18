@@ -10,7 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -26,7 +25,6 @@ public class SpellImplosion extends SpellImpl {
 			super(SpellReference.ID_IMPLOSION,
 					SpellReference.LABEL_IMPLOSION,
 					SpellReference.DISPLAY_NAME_IMPLOSION,
-					ResourcesReference.MAGIC_INDEX_IMPLOSION,
 					SpellType.CHARGE,
 					Element.EARTH.ordinal());
 			bindNode(ResearchReference.ID_IMPLOSION);

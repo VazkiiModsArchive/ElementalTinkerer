@@ -6,11 +6,12 @@
 // Created @ 9 Mar 2013
 package vazkii.tinkerer.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemSword;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.gui.CreativeTabET;
 import vazkii.tinkerer.reference.MiscReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemETSword
@@ -21,15 +22,14 @@ import vazkii.tinkerer.reference.ResourcesReference;
  */
 public class ItemETSword extends ItemSword {
 
-	public ItemETSword(int par1, int par2, EnumToolMaterial par2EnumToolMaterial) {
+	public ItemETSword(int par1, EnumToolMaterial par2EnumToolMaterial) {
 		super(par1 - MiscReference.ITEM_INDEX_SHIFT, par2EnumToolMaterial);
 		// Pass in accurate IDs, negating the index shift
-		iconIndex = par2;
 		setCreativeTab(CreativeTabET.INSTANCE);
 	}
 
 	@Override
-	public String getTextureFile() {
-		return ResourcesReference.ITEMS_SPRITESHEET;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		iconIndex = IconHelper.forItem(par1IconRegister, this);
 	}
 }

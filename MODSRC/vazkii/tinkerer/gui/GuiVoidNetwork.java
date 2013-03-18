@@ -67,23 +67,22 @@ public class GuiVoidNetwork extends GuiScreen {
 
 	public void addButtons() {
 		clearButtons();
-		controlList.add(new GuiButton(0, xStart + 10, yStart + 80, 20, 20, "M"));
-		controlList.add(new GuiButton(1, xStart + 10, yStart + 105, 20, 20, "O"));
-		controlList.add(new GuiButton(2, xStart + 10, yStart + 130, 20, 20, "I"));
-		controlList.add(new GuiButton(3, xStart + 146, yStart + 80, 20, 20, "R"));
-		controlList.add(new GuiButton(4, xStart + 146, yStart + 105, 20, 20, "S"));
-		controlList.add(new GuiButton(5, xStart + 146, yStart + 130, 20, 20, "U"));
+		buttonList.add(new GuiButton(0, xStart + 10, yStart + 80, 20, 20, "M"));
+		buttonList.add(new GuiButton(1, xStart + 10, yStart + 105, 20, 20, "O"));
+		buttonList.add(new GuiButton(2, xStart + 10, yStart + 130, 20, 20, "I"));
+		buttonList.add(new GuiButton(3, xStart + 146, yStart + 80, 20, 20, "R"));
+		buttonList.add(new GuiButton(4, xStart + 146, yStart + 105, 20, 20, "S"));
+		buttonList.add(new GuiButton(5, xStart + 146, yStart + 130, 20, 20, "U"));
 	}
 
 	public void clearButtons() {
-		controlList.clear();
+		buttonList.clear();
 	}
 
 	@Override
 	public void drawScreen(int var1, int var2, float var3) {
-		int texture = mc.renderEngine.getTexture(ResourcesReference.GUI_VOID_NETWORK_TEXTURE);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(texture);
+        mc.renderEngine.func_98187_b(ResourcesReference.GUI_VOID_NETWORK_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
 
         super.drawScreen(var1, var2, var3);
@@ -115,7 +114,7 @@ public class GuiVoidNetwork extends GuiScreen {
         	}
         }
 
-        List<GuiButton> buttons = controlList;
+        List<GuiButton> buttons = buttonList;
         int buttonIndex = 0;
         for(GuiButton button : buttons) {
     		if(var1 >= button.xPosition && var2 >= button.yPosition && var1 < button.xPosition + 20 && var2 < button.yPosition + 20) {

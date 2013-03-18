@@ -68,15 +68,15 @@ public class GuiElementalistTinkeringAltar extends GuiContainer {
 
     	int xPos = xStart + 80;
     	int yPos = yStart + 123;
-		controlList.clear();
-		controlList.add(new GuiInvisibleButton(0, xPos, yPos, 16, 16));
+		buttonList.clear();
+		buttonList.add(new GuiInvisibleButton(0, xPos, yPos, 16, 16));
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-		int texture = mc.renderEngine.getTexture(ResourcesReference.GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE);
+		mc.renderEngine.getTexture(ResourcesReference.GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(texture);
+        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE);
         int xStart = (width - xSize) / 2;
         int yStart = (height - ySize) / 2;
 
@@ -119,7 +119,7 @@ public class GuiElementalistTinkeringAltar extends GuiContainer {
         		itemRender.renderItemIntoGUI(fontRenderer, render, stack, xPos, yPos);
         }
 
-    	if(((GuiInvisibleButton)controlList.get(0)).isHovered()) {
+    	if(((GuiInvisibleButton)buttonList.get(0)).isHovered()) {
     		if(stack != null) {
         		List<String> tooltip = stack.getTooltip(MiscHelper.getClientPlayer(), false);
     			vazkii.tinkerer.client.helper.RenderHelper.renderTooltip(par1 - xStart, par2 - yStart, tooltip);

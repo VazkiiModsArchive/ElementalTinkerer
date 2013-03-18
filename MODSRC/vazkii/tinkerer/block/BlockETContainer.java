@@ -8,8 +8,9 @@ package vazkii.tinkerer.block;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.gui.CreativeTabET;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * BlockETContainer
@@ -20,14 +21,13 @@ import vazkii.tinkerer.reference.ResourcesReference;
  */
 public abstract class BlockETContainer extends BlockContainer {
 
-	public BlockETContainer(int par1, int par2, Material par3Material) {
-		super(par1, par2, par3Material);
+	public BlockETContainer(int par1, Material par3Material) {
+		super(par1, par3Material);
 		setCreativeTab(CreativeTabET.INSTANCE);
 	}
 
 	@Override
-	public String getTextureFile() {
-		return ResourcesReference.BLOCKS_SPRITESHEET;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = IconHelper.forBlock(par1IconRegister, this);
 	}
-
 }

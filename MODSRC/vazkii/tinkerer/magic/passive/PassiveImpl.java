@@ -20,8 +20,8 @@ import vazkii.tinkerer.magic.SpellType;
  */
 public class PassiveImpl extends PassiveSpell {
 
-	public PassiveImpl(short index, String label, String displayName, int spriteIndex, int element) {
-		super(index, label, displayName, spriteIndex, element);
+	public PassiveImpl(short index, String label, String displayName, int element) {
+		super(index, label, displayName, element);
 	}
 
 	@Override

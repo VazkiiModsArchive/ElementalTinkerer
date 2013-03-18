@@ -7,17 +7,19 @@
 package vazkii.tinkerer.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.GuiIDs;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.research.PlayerResearch;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 
@@ -33,12 +35,20 @@ import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 public class BlockElementalistTinkeringAltar extends BlockETContainer {
 
 	public BlockElementalistTinkeringAltar(int par1) {
-		super(par1, ResourcesReference.BLOCK_64_INDEX_ELEMENTALIST_TINKERING_ALTAR, Material.rock);
+		super(par1, Material.rock);
+	}
+
+	Icon[] icons = new Icon[6];
+
+	@Override
+	public void func_94332_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 6; i++)
+			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
 	@Override
-	public int getBlockTextureFromSide(int par1) {
-		return par1 == 1 ? super.getBlockTextureFromSide(par1) + 1 : super.getBlockTextureFromSide(par1);
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return icons[par1];
 	}
 
 	@Override
@@ -64,7 +74,7 @@ public class BlockElementalistTinkeringAltar extends BlockETContainer {
                             EntityItem item = new EntityItem(par1World, par2 + xOffset, par3 + yOffset, par4 + zOffset, new ItemStack(stack.itemID, dropSize, stack.getItemDamage()));
 
                             if (stack.hasTagCompound())
-                                item.func_92014_d().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
+                                item.getEntityItem().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
 
                             item.motionX = (float)par1World.rand.nextGaussian() / 20;
                             item.motionY = (float)par1World.rand.nextGaussian() / 20 + 0.2F;
@@ -97,10 +107,5 @@ public class BlockElementalistTinkeringAltar extends BlockETContainer {
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
 		return new TileEntityElementalTinkeringAltar();
-	}
-
-	@Override
-	public String getTextureFile() {
-		return ResourcesReference.BLOCKS_64_SPRITESHEET;
 	}
 }

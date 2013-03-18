@@ -18,7 +18,6 @@ import net.minecraftforge.common.ForgeDirection;
 import vazkii.tinkerer.helper.ItemNBTHelper;
 import vazkii.tinkerer.helper.MathHelper;
 import vazkii.tinkerer.reference.FormattingCode;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemLocationGem
@@ -33,7 +32,6 @@ public class ItemLocationGem extends ItemET {
 
 	public ItemLocationGem(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_INDEX_LOCATION_GEM;
 	}
 
 	@Override
@@ -63,18 +61,13 @@ public class ItemLocationGem extends ItemET {
 	}
 
 	@Override
-	public boolean requiresMultipleRenderPasses() {
-		return true;
-	}
-
-	@Override
-	public int getIconIndex(ItemStack stack, int pass) {
-		return isAttuned(stack) ? iconIndex : iconIndex + 1;
-	}
-
-	@Override
 	public boolean getShareTag() {
 		return true;
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack par1ItemStack) {
+		return isAttuned(par1ItemStack);
 	}
 
 	public static void setValues(ItemStack stack, int x, int y, int z, int dim, int side) {

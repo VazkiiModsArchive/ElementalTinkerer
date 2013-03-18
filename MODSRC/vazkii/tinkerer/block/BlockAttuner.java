@@ -7,12 +7,14 @@
 package vazkii.tinkerer.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.reference.GuiIDs;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityAttuner;
 
 /**
@@ -26,12 +28,20 @@ import vazkii.tinkerer.tile.TileEntityAttuner;
 public class BlockAttuner extends BlockETContainer {
 
 	public BlockAttuner(int par1) {
-		super(par1, ResourcesReference.BLOCK_INDEX_ATTUNER_TOP, Material.iron);
+		super(par1, Material.iron);
+	}
+
+	Icon[] icons = new Icon[2];
+
+	@Override
+	public void func_94332_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 2; i++)
+			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
 
 	@Override
-	public int getBlockTextureFromSide(int par1) {
-		return par1 == 0 || par1 == 1 ? super.getBlockTextureFromSide(par1) : ResourcesReference.BLOCK_INDEX_ATTUNER_GLASS;
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return par1 == 0 || par1 == 1 ? icons[0] : icons[1];
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class RenderBoulder extends Render {
 	@Override
 	public void doRender(Entity var1, double var2, double var4, double var6, float var8, float var9) {
 		GL11.glPushMatrix();
-        loadTexture(Block.cobblestone.getTextureFile());
+        loadTexture(Block.cobblestone.getBlockTextureFromSide(0).func_94215_i()); //VAZ_TODO does this work?
         GL11.glTranslatef((float)var2, (float)var4, (float)var6);
         renderBlocks.renderBlockAsItem(Block.cobblestone, 0, 1F);
         GL11.glPopMatrix();

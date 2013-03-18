@@ -7,7 +7,6 @@
 package vazkii.tinkerer.magic.passive;
 
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -23,7 +22,6 @@ public class PassiveUndershirt extends PassiveImpl {
 		super(SpellReference.PID_UNDERSHIRT,
 				SpellReference.LABEL_UNDERSHIRT,
 				SpellReference.DISPLAY_NAME_UNDERSHIRT,
-				ResourcesReference.MAGIC_INDEX_UNDERSHIRT,
 				4); // Pure
 		bindNode(ResearchReference.ID_UNDERSHIRT);
 	}

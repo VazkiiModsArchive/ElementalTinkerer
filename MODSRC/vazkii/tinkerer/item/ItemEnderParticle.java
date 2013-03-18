@@ -6,8 +6,11 @@
 // Created @ 18 Feb 2013
 package vazkii.tinkerer.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
 import vazkii.tinkerer.tile.TileEntityElementalTinkeringAltar;
 
@@ -25,9 +28,17 @@ public class ItemEnderParticle extends ItemET implements ICatalyst {
 		super(par1);
 	}
 
+	Icon[] icons = new Icon[7];
+
 	@Override
-	public int getIconFromDamage(int par1) {
-		return SimpleAnimations.ANIMATIONS[SimpleAnimations.ENDER_PARTICLE_ANIM_INDEX].getCurrentValue();
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 7; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
+	}
+
+	@Override
+	public Icon getIconFromDamage(int par1) {
+		return icons[SimpleAnimations.ANIMATIONS[SimpleAnimations.ENDER_PARTICLE_ANIM_INDEX].getCurrentValue()];
 	}
 
 	@Override

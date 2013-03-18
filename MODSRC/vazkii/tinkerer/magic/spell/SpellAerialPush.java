@@ -17,7 +17,6 @@ import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.lightning.Vector3;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -33,7 +32,6 @@ public class SpellAerialPush extends SpellImpl {
 		super(SpellReference.ID_AEREAL_PUSH,
 				SpellReference.LABEL_AEREAL_PUSH,
 				SpellReference.DISPLAY_NAME_AEREAL_PUSH,
-				ResourcesReference.MAGIC_INDEX_AEREAL_PUSH,
 				SpellType.CHARGE,
 				Element.AIR.ordinal());
 		bindNode(ResearchReference.ID_AEREAL_PUSH);

@@ -88,15 +88,6 @@ public class ElementalTinkerer {
 		// Init the config, passing in the configuration file FML suggests for this mod
 		ConfigurationHandler.initConfig(event.getSuggestedConfigurationFile());
 
-		// Proxy: Preloads the textures, in order to avoid possible visual anomalies
-		proxy.preloadTextures();
-
-		// Init the research data
-		ResearchLibrary.initResearch();
-
-		// Proxy: Read the research descriptions
-		proxy.readResearchDescriptions();
-
 		// Init the Spell Data
 		SpellLibrary.initSpells();
 	}
@@ -145,6 +136,12 @@ public class ElementalTinkerer {
 		// Init the mod's Entities
 		ElementalTinkererEntities.init();
 
+		// Init the research data
+		ResearchLibrary.initResearch();
+
+		// Proxy: Read the research descriptions
+		proxy.readResearchDescriptions();
+
 		// Register the World Generation
 		GameRegistry.registerWorldGenerator(WorldGenerationHandler.INSTANCE);
 
@@ -172,8 +169,11 @@ public class ElementalTinkerer {
 
 	@PostInit
 	public void onPostInit(FMLPostInitializationEvent event) {
+		// Proxy: Init the Mod's Custom Spritesheets
+		proxy.initCustomSpritesheets();
+
 		// Register the Thaumcraft 3 compatibility stuff
-		Thaumcraft3Compat.init();
+	    Thaumcraft3Compat.init();
 	}
 
 	@ServerStarting

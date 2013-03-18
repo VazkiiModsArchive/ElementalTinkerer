@@ -7,7 +7,6 @@
 package vazkii.tinkerer.magic.passive;
 
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -23,7 +22,6 @@ public class PassiveEnderAbsorption extends PassiveImpl {
 		super(SpellReference.PID_ENDER_ABSORPTION,
 				SpellReference.LABEL_ENDER_ABSORPTION,
 				SpellReference.DISPLAY_NAME_ENDER_ABSORPTION,
-				ResourcesReference.MAGIC_INDEX_ENDER_ABSORPTION,
 				4); // Pure
 		bindNode(ResearchReference.ID_ENDER_ABSORPTION);
 	}

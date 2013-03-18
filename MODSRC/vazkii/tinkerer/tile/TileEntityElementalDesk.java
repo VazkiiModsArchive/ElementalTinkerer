@@ -214,10 +214,10 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 	public ItemStack getStackOnEnchanting() {
 		int rand = worldObj.rand.nextInt(100);
 		if(rand < TileEntityReference.ELEMENTAL_DESK_ENCHANTED_BOOK_CHANCE) {
-			ItemStack enchantedBook = new ItemStack(Item.field_92053_bW);
+			ItemStack enchantedBook = new ItemStack(Item.enchantedBook);
 			List<EnchantmentData> allEnchants =  EnchantmentHelper.buildEnchantmentList(worldObj.rand, new ItemStack(Item.book), TileEntityReference.ELEMENTAL_DESK_ENCHANTED_BOOK_LEVEL);
 			if(allEnchants != null)
-				Item.field_92053_bW.func_92060_a(enchantedBook, allEnchants.get(worldObj.rand.nextInt(allEnchants.size())));
+				Item.enchantedBook.func_92115_a(enchantedBook, allEnchants.get(worldObj.rand.nextInt(allEnchants.size())));
 			return enchantedBook;
 		} else return new ItemStack(ElementalTinkererItems.elementalBook, 1, new Random().nextInt(4));
 	}
@@ -303,5 +303,15 @@ public class TileEntityElementalDesk extends TileEntity implements IInventory {
 	@Override
 	public void closeChest() {
 		// NO-OP
+	}
+
+	@Override
+	public boolean func_94042_c() {
+		return false;
+	}
+
+	@Override
+	public boolean func_94041_b(int i, ItemStack itemstack) {
+		return false; //Can't "pipe" things in!
 	}
 }

@@ -75,36 +75,36 @@ public final class ElementalTinkererItems {
 				52, new int[]{3, 8, 6, 3}, 26);
 
 		// Construct the items
-		elementiumGem = new ItemElementiumGem(ItemIDs.elementiumGem).setItemName(ItemNames.ELEMENTIUM_GEM_NAME);
-		elementalBook = new ItemElementalBook(ItemIDs.elementalBook).setItemName(ItemNames.ELEMENT_BOOK_NAME);
-		elementalistLexicon = new ItemElementalistLexicon(ItemIDs.elementalistLexicon).setItemName(ItemNames.ELEMENTALIST_LEXICON_NAME);
-		catalyst = new ItemCatalyst(ItemIDs.catalyst).setItemName(ItemNames.CATALYST_ITEM_NAME);
-		elementalBark = new ItemET(ItemIDs.elementalBark).setItemName(ItemNames.ELEMENTAL_BARK_ITEM_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ELEMENTAL_BARK);
-		wand = new ItemWand(ItemIDs.wand).setItemName(ItemNames.WAND_NAME);
-		elementiumIngot = new ItemElementiumIngot(ItemIDs.elementiumIngot).setItemName(ItemNames.ELEMENTIUM_INGOT_NAME);
-		elementiumDust = new ItemET(ItemIDs.elementiumDust).setItemName(ItemNames.ELEMENTIUM_DUST_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ELEMENTIUM_DUST);
-		elementiumDetector = new ItemElementiumDetector(ItemIDs.elementiumDetector).setItemName(ItemNames.ELEMENTIUM_DETECTOR_NAME);
-		oddClaw = new ItemOddClaw(ItemIDs.oddClaw).setItemName(ItemNames.ODD_CLAW_NAME);
-		locationGem = new ItemLocationGem(ItemIDs.locationGem).setItemName(ItemNames.LOCATION_GEM_NAME);
-		gem = new ItemGem(ItemIDs.gem).setItemName(ItemNames.GEM_NAME);
-		enderParticle = new ItemEnderParticle(ItemIDs.enderParticle).setItemName(ItemNames.ENDER_PARTICLE_NAME);
-		gaseousGlowstone = new ItemGlowstoneAir(ItemIDs.gaseousGlowstone).setItemName(ItemNames.GASEOUS_GLOWSTONE_NAME);
-		orichalcum = new ItemET(ItemIDs.orichalcum).setItemName(ItemNames.ORICHALCUM_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_ORICHALCUM);
-		orichalcumBlade = new ItemETSword(ItemIDs.orichalcumBlade, ResourcesReference.ITEM_INDEX_ORICHALCUM_BLADE, orichalcumToolMaterial).setItemName(ItemNames.ORICHALCUM_BLADE_NAME);
-		orichalcumSpade = new ItemETTool(ItemIDs.orichalcumSpade, ResourcesReference.ITEM_INDEX_ORICHALCUM_SPADE, orichalcumToolMaterial, 0).setItemName(ItemNames.ORICHALCUM_SPADE_NAME);
-		orichalcumPick = new ItemETTool(ItemIDs.orichalcumPick, ResourcesReference.ITEM_INDEX_ORICHALCUM_PICK, orichalcumToolMaterial, 1).setItemName(ItemNames.ORICHALCUM_PICK_NAME);
-		orichalcumHatchet = new ItemETTool(ItemIDs.orichalcumHatchet, ResourcesReference.ITEM_INDEX_ORICHALCUM_HATCHET, orichalcumToolMaterial, 2).setItemName(ItemNames.ORICHALCUM_HATCHET_NAME);
-		orichalcumHelmet = new ItemOrichalcumArmor(ItemIDs.orichalcumHelmet, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_HELMET, 0).setItemName(ItemNames.ORICHALCUM_HELMET_NAME);
-		orichalcumChestplate = new ItemOrichalcumArmor(ItemIDs.orichalcumChestplate, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_CHESTPLATE, 1).setItemName(ItemNames.ORICHALCUM_CHESTPLATE_NAME);
-		orichalcumPlatelegs = new ItemOrichalcumArmor(ItemIDs.orichalcumPlatelegs, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_PLATELEGS, 2).setItemName(ItemNames.ORICHALCUM_PLATELEGS_NAME);
-		orichalcumBoots = new ItemOrichalcumArmor(ItemIDs.orichalcumBoots, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_BOOTS, 3).setItemName(ItemNames.ORICHALCUM_BOOTS_NAME);
-		locatingCore = new ItemLocationCore(ItemIDs.locatingCore).setItemName(ItemNames.LOCATING_CORE_NAME);
-		unboundBook = new ItemET(ItemIDs.unboundBook).setItemName(ItemNames.UNBOUND_BOOK_NAME).setIconIndex(ResourcesReference.ITEM_INDEX_UNBOUND_BOOK);
-		spellbindCloth = new ItemSpellbindCloth(ItemIDs.spellbindCloth).setItemName(ItemNames.SPELLBIND_CLOTH_NAME);
-		mysticalTalisman = new ItemMysticalTalisman(ItemIDs.mysticalTalisman).setItemName(ItemNames.MYSTICAL_TALISMAN_NAME);
-		attunedTome = new ItemAttunedTome(ItemIDs.attunedTome).setItemName(ItemNames.ATTUNED_TOME_NAME);
-		roastedCarrot = new ItemETFood(ItemIDs.roastedCarrot, ResourcesReference.ITEM_INDEX_ROASTED_CARROT, 6, 0.4F, false).setItemName(ItemNames.ROASTED_CARROT_NAME);
-		caramel = new ItemETFood(ItemIDs.caramel, ResourcesReference.ITEM_INDEX_CARAMEL, 4, 0.4F, false).setPotionEffect(Potion.moveSpeed.id, 15, 0, 1F).setItemName(ItemNames.CARAMEL_NAME);
+		elementiumGem = new ItemElementiumGem(ItemIDs.elementiumGem).setUnlocalizedName(ItemNames.ELEMENTIUM_GEM_NAME);
+		elementalBook = new ItemElementalBook(ItemIDs.elementalBook).setUnlocalizedName(ItemNames.ELEMENT_BOOK_NAME);
+		elementalistLexicon = new ItemElementalistLexicon(ItemIDs.elementalistLexicon).setUnlocalizedName(ItemNames.ELEMENTALIST_LEXICON_NAME);
+		catalyst = new ItemCatalyst(ItemIDs.catalyst).setUnlocalizedName(ItemNames.CATALYST_ITEM_NAME);
+		elementalBark = new ItemET(ItemIDs.elementalBark).setUnlocalizedName(ItemNames.ELEMENTAL_BARK_ITEM_NAME);
+		wand = new ItemWand(ItemIDs.wand).setUnlocalizedName(ItemNames.WAND_NAME);
+		elementiumIngot = new ItemElementiumIngot(ItemIDs.elementiumIngot).setUnlocalizedName(ItemNames.ELEMENTIUM_INGOT_NAME);
+		elementiumDust = new ItemET(ItemIDs.elementiumDust).setUnlocalizedName(ItemNames.ELEMENTIUM_DUST_NAME);
+		elementiumDetector = new ItemElementiumDetector(ItemIDs.elementiumDetector).setUnlocalizedName(ItemNames.ELEMENTIUM_DETECTOR_NAME);
+		oddClaw = new ItemOddClaw(ItemIDs.oddClaw).setUnlocalizedName(ItemNames.ODD_CLAW_NAME);
+		locationGem = new ItemLocationGem(ItemIDs.locationGem).setUnlocalizedName(ItemNames.LOCATION_GEM_NAME);
+		gem = new ItemGem(ItemIDs.gem).setUnlocalizedName(ItemNames.GEM_NAME);
+		enderParticle = new ItemEnderParticle(ItemIDs.enderParticle).setUnlocalizedName(ItemNames.ENDER_PARTICLE_NAME);
+		gaseousGlowstone = new ItemGlowstoneAir(ItemIDs.gaseousGlowstone).setUnlocalizedName(ItemNames.GASEOUS_GLOWSTONE_NAME);
+		orichalcum = new ItemET(ItemIDs.orichalcum).setUnlocalizedName(ItemNames.ORICHALCUM_NAME);
+		orichalcumBlade = new ItemETSword(ItemIDs.orichalcumBlade, orichalcumToolMaterial).setUnlocalizedName(ItemNames.ORICHALCUM_BLADE_NAME);
+		orichalcumSpade = new ItemETTool(ItemIDs.orichalcumSpade, orichalcumToolMaterial, 0).setUnlocalizedName(ItemNames.ORICHALCUM_SPADE_NAME);
+		orichalcumPick = new ItemETTool(ItemIDs.orichalcumPick, orichalcumToolMaterial, 1).setUnlocalizedName(ItemNames.ORICHALCUM_PICK_NAME);
+		orichalcumHatchet = new ItemETTool(ItemIDs.orichalcumHatchet, orichalcumToolMaterial, 2).setUnlocalizedName(ItemNames.ORICHALCUM_HATCHET_NAME);
+		orichalcumHelmet = new ItemOrichalcumArmor(ItemIDs.orichalcumHelmet, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_HELMET, 0).setUnlocalizedName(ItemNames.ORICHALCUM_HELMET_NAME);
+		orichalcumChestplate = new ItemOrichalcumArmor(ItemIDs.orichalcumChestplate, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_CHESTPLATE, 1).setUnlocalizedName(ItemNames.ORICHALCUM_CHESTPLATE_NAME);
+		orichalcumPlatelegs = new ItemOrichalcumArmor(ItemIDs.orichalcumPlatelegs, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_PLATELEGS, 2).setUnlocalizedName(ItemNames.ORICHALCUM_PLATELEGS_NAME);
+		orichalcumBoots = new ItemOrichalcumArmor(ItemIDs.orichalcumBoots, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_BOOTS, 3).setUnlocalizedName(ItemNames.ORICHALCUM_BOOTS_NAME);
+		locatingCore = new ItemLocationCore(ItemIDs.locatingCore).setUnlocalizedName(ItemNames.LOCATING_CORE_NAME);
+		unboundBook = new ItemET(ItemIDs.unboundBook).setUnlocalizedName(ItemNames.UNBOUND_BOOK_NAME);
+		spellbindCloth = new ItemSpellbindCloth(ItemIDs.spellbindCloth).setUnlocalizedName(ItemNames.SPELLBIND_CLOTH_NAME);
+		mysticalTalisman = new ItemMysticalTalisman(ItemIDs.mysticalTalisman).setUnlocalizedName(ItemNames.MYSTICAL_TALISMAN_NAME);
+		attunedTome = new ItemAttunedTome(ItemIDs.attunedTome).setUnlocalizedName(ItemNames.ATTUNED_TOME_NAME);
+		roastedCarrot = new ItemETFood(ItemIDs.roastedCarrot, 6, 0.4F, false).setUnlocalizedName(ItemNames.ROASTED_CARROT_NAME);
+		caramel = new ItemETFood(ItemIDs.caramel, 4, 0.4F, false).setPotionEffect(Potion.moveSpeed.id, 15, 0, 1F).setUnlocalizedName(ItemNames.CARAMEL_NAME);
 
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
@@ -157,7 +157,7 @@ public final class ElementalTinkererItems {
 
 	public static void initItemRecipes() {
 		// Elementalist Lexicon Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalistLexicon),
+		CraftingManager.getInstance().addRecipe(new ItemStack(elementalistLexicon),
 				" G ", "GBG", " G ",
 				'G', elementiumGem,
 				'B', Item.book);
@@ -172,14 +172,14 @@ public final class ElementalTinkererItems {
 		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTIUM_GEM).bindLatestCraftingRecipe();
 
 		// Elemental Bark Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalBark),
+		CraftingManager.getInstance().addRecipe(new ItemStack(elementalBark),
 				" G ", "GLG", " G ",
 				'G', elementiumGem,
 				'L', new ItemStack(Block.wood, -1));
 		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTAL_BARK).bindLatestCraftingRecipe();
 
 		// Elementium Ingot Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumIngot),
+		CraftingManager.getInstance().addRecipe(new ItemStack(elementiumIngot),
 				"DDD", "DID", "DDD",
 				'D', elementiumDust,
 				'I', Item.ingotGold);
@@ -193,7 +193,7 @@ public final class ElementalTinkererItems {
 		}
 
 		// Elementium Detector Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumDetector),
+		CraftingManager.getInstance().addRecipe(new ItemStack(elementiumDetector),
 				" SG", " SS", "S  ",
 				'S', Item.stick,
 				'G', elementiumGem);
@@ -205,36 +205,36 @@ public final class ElementalTinkererItems {
 		ResearchLibrary.allNodes.get(ResearchReference.ID_UNBOUND_BOOK).bindLatestCraftingRecipe();
 
 		// Orichalcum Items Recipes
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumBlade),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumBlade),
 				"O", "O", "S",
 				'O', ElementalTinkererItems.orichalcum,
 				'S', Item.stick);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumSpade),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumSpade),
 				"O", "S", "S",
 				'O', ElementalTinkererItems.orichalcum,
 				'S', Item.stick);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumPick),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumPick),
 				"OOO", " S ", " S ",
 				'O', ElementalTinkererItems.orichalcum,
 				'S', Item.stick);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumHatchet),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumHatchet),
 				"OO ", "OS ", " S ",
 				'O', ElementalTinkererItems.orichalcum,
 				'S', Item.stick);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumHatchet),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumHatchet),
 				" OO", " SO", " S ",
 				'O', ElementalTinkererItems.orichalcum,
 				'S', Item.stick);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumHelmet),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumHelmet),
 				"OOO", "O O",
 				'O', ElementalTinkererItems.orichalcum);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumChestplate),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumChestplate),
 				"O O", "OOO", "OOO",
 				'O', ElementalTinkererItems.orichalcum);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumPlatelegs),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumPlatelegs),
 				"OOO", "O O", "O O",
 				'O', ElementalTinkererItems.orichalcum);
-		CraftingManager.getInstance().func_92051_a(new ItemStack(orichalcumBoots),
+		CraftingManager.getInstance().addRecipe(new ItemStack(orichalcumBoots),
 				"O O", "O O",
 				'O', ElementalTinkererItems.orichalcum);
 

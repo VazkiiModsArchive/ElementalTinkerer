@@ -93,7 +93,7 @@ public class CommandResearch extends CommandBase {
     }
 
 	@Override
-    public boolean isUsernameIndex(int par1) {
+    public boolean isUsernameIndex(String[] astring, int par1) {
         return par1 == 0;
     }
 

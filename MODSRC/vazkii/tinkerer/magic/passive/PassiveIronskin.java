@@ -8,7 +8,6 @@ package vazkii.tinkerer.magic.passive;
 
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -24,7 +23,6 @@ public class PassiveIronskin extends PassiveImpl {
 		super(SpellReference.PID_IRONSKIN,
 				SpellReference.LABEL_IRONSKIN,
 				SpellReference.DISPLAY_NAME_IRONSKIN,
-				ResourcesReference.MAGIC_INDEX_IRONSKIN,
 				Element.EARTH.ordinal());
 		bindNode(ResearchReference.ID_IRONSKIN);
 	}

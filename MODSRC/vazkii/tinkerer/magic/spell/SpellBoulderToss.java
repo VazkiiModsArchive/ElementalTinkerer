@@ -11,7 +11,6 @@ import vazkii.tinkerer.entity.EntityBoulder;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -27,7 +26,6 @@ public class SpellBoulderToss extends SpellImpl {
 		super(SpellReference.ID_BOULDER_TOSS,
 				SpellReference.LABEL_BOULDER_TOSS,
 				SpellReference.DISPLAY_NAME_BOULDER_TOSS,
-				ResourcesReference.MAGIC_INDEX_BOULDER_TOSS,
 				SpellType.ACTIVE,
 				Element.EARTH.ordinal());
 		bindNode(ResearchReference.ID_BOULDER_TOSS);

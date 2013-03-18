@@ -8,7 +8,11 @@ package vazkii.tinkerer.magic;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.research.PlayerResearch;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Spell
@@ -21,17 +25,23 @@ public abstract class Spell {
 
 	private short boundNode = -1;
 
-	public int spriteIndex;
 	public short index;
 	public String label, displayName;
 	public int element;
 
-	public Spell(short index, String label, String displayName, int spriteIndex, int element) {
+	@SideOnly(Side.CLIENT)
+	public Icon icon;
+
+	public Spell(short index, String label, String displayName, int element) {
 		this.label = label;
 		this.displayName = displayName;
-		this.spriteIndex = spriteIndex;
 		this.index = index;
 		this.element = element;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void bindIcon() {
+		icon = IconHelper.forSpell(IconHelper.spellSprites, this);
 	}
 
 	public Spell bindNode(short node) {

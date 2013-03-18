@@ -10,7 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -26,7 +25,6 @@ public class PassiveFreezingWalk extends PassiveImpl {
 		super(SpellReference.PID_FREEZING_WALK,
 				SpellReference.LABEL_FREEZING_WALK,
 				SpellReference.DISPLAY_NAME_FREEZING_WALK,
-				ResourcesReference.MAGIC_INDEX_FREEZING_WALK,
 				Element.WATER.ordinal());
 		bindNode(ResearchReference.ID_FREEZING_WALK);
 	}
@@ -60,7 +58,7 @@ public class PassiveFreezingWalk extends PassiveImpl {
 				}
 
 				if(place != -1)
-					player.worldObj.setBlockWithNotify(x, y, z, place);
+					player.worldObj.setBlockAndMetadataWithNotify(x, y, z, place, 0, 2);
 			}
 	}
 }

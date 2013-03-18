@@ -13,7 +13,6 @@ import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -29,7 +28,6 @@ public class SpellFlameRing extends SpellImpl {
 		super(SpellReference.ID_FLAME_RING,
 				SpellReference.LABEL_FLAME_RING,
 				SpellReference.DISPLAY_NAME_FLAME_RING,
-				ResourcesReference.MAGIC_INDEX_FLAME_RING,
 				SpellType.CHARGE,
 				Element.FIRE.ordinal());
 		bindNode(ResearchReference.ID_FLAME_RING);

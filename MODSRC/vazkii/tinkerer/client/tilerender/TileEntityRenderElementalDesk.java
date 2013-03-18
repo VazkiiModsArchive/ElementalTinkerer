@@ -74,10 +74,10 @@ public class TileEntityRenderElementalDesk extends TileEntitySpecialRenderer imp
 
         // Render the Book, if present
         ItemStack shouldBeABook = desk.getStackInSlot(4);
-        if(shouldBeABook != null && (shouldBeABook.itemID == Item.book.itemID || shouldBeABook.itemID == ItemIDs.elementalBook || shouldBeABook.itemID == Item.field_92053_bW.itemID || shouldBeABook.itemID == ItemIDs.unboundBook)) {
+        if(shouldBeABook != null && (shouldBeABook.itemID == Item.book.itemID || shouldBeABook.itemID == ItemIDs.elementalBook || shouldBeABook.itemID == Item.enchantedBook.itemID || shouldBeABook.itemID == ItemIDs.unboundBook)) {
         	boolean isNonEnchantedBook = shouldBeABook.itemID == Item.book.itemID;
         	boolean isUnboundBook = shouldBeABook.itemID == ItemIDs.unboundBook;
-        	boolean isEnchantedBook = shouldBeABook.itemID == Item.field_92053_bW.itemID;
+        	boolean isEnchantedBook = shouldBeABook.itemID == Item.enchantedBook.itemID;
         	GL11.glPushMatrix();
             GL11.glTranslatef(0.1F, 0.1F + (desk.getIsAdvancing() ? (float)(Math.cos(ClientTickHandler.elapsedClientTicks / 3D) / 20D) : 0.07F), -0.2F);
             GL11.glRotatef(-1F * 180.0F / (float)Math.PI, 0.0F, 1.0F, 0.0F);

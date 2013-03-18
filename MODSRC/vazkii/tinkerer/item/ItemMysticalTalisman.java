@@ -18,7 +18,6 @@ import net.minecraft.world.World;
 import vazkii.tinkerer.helper.ItemNBTHelper;
 import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.GameReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemMysticalTalisman
@@ -32,7 +31,6 @@ public class ItemMysticalTalisman extends ItemET {
 
 	public ItemMysticalTalisman(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_INDEX_MYSTICAL_TALISMAN;
 		setMaxStackSize(1);
 	}
 

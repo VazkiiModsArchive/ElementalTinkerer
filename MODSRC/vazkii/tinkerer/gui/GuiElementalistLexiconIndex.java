@@ -11,7 +11,6 @@ import java.util.List;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.RenderEngine;
 
 import org.lwjgl.opengl.GL11;
 
@@ -49,7 +48,7 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 		super.initGui();
         xStart = (width - 146) / 2;
         yStart = (height - 180) / 2;
-        controlList.clear();
+        buttonList.clear();
         updateButtons();
 	}
 
@@ -74,11 +73,11 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 	}
 
 	public void updateButtons() {
-		controlList.clear();
+		buttonList.clear();
 		addBookmarkButtons();
 
-		controlList.add(new GuiInvisibleButton(6, xStart + 18, yStart + 158, 15, 12));
-		controlList.add(new GuiInvisibleButton(7, xStart + 115, yStart + 158, 15, 12));
+		buttonList.add(new GuiInvisibleButton(6, xStart + 18, yStart + 158, 15, 12));
+		buttonList.add(new GuiInvisibleButton(7, xStart + 115, yStart + 158, 15, 12));
 
 		updateResearchNodes();
 		addResearchButtons();
@@ -86,17 +85,17 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 	}
 
 	public void addBookmarkButtons() {
-        controlList.add(new GuiInvisibleButton(0, xStart + 136, yStart + 15, 41, 9));
-        controlList.add(new GuiInvisibleButton(1, xStart + 136, yStart + 29, 27, 9));
-        controlList.add(new GuiInvisibleButton(2, xStart + 136, yStart + 43, 31, 9));
-        controlList.add(new GuiInvisibleButton(3, xStart + 136, yStart + 57, 17, 9));
-        controlList.add(new GuiInvisibleButton(4, xStart + 136, yStart + 71, 31, 9));
-        controlList.add(new GuiInvisibleButton(5, xStart + 136, yStart + 85, 23, 9));
+        buttonList.add(new GuiInvisibleButton(0, xStart + 136, yStart + 15, 41, 9));
+        buttonList.add(new GuiInvisibleButton(1, xStart + 136, yStart + 29, 27, 9));
+        buttonList.add(new GuiInvisibleButton(2, xStart + 136, yStart + 43, 31, 9));
+        buttonList.add(new GuiInvisibleButton(3, xStart + 136, yStart + 57, 17, 9));
+        buttonList.add(new GuiInvisibleButton(4, xStart + 136, yStart + 71, 31, 9));
+        buttonList.add(new GuiInvisibleButton(5, xStart + 136, yStart + 85, 23, 9));
 	}
 
 	public void addResearchButtons() {
 		for(int i = 0; i < currentShowingNodes.length; i++)
-			controlList.add(new GuiInvisibleButton(8 + i, xStart + 4, yStart + 16 + i * 12, 120, 9));
+			buttonList.add(new GuiInvisibleButton(8 + i, xStart + 4, yStart + 16 + i * 12, 120, 9));
 	}
 
 	@Override
@@ -128,10 +127,9 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
-		int texture = mc.renderEngine.getTexture(ResourcesReference.GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glEnable(GL11.GL_BLEND);
-        mc.renderEngine.bindTexture(texture);
+        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE);
         int shiftX = xStart + 137;
         int shiftY = yStart + 15;
         int bookmarkDifference = 14;
@@ -173,11 +171,8 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         }
         int i1 = 0;
         for(ResearchNode node : currentShowingNodes) {
-        	boolean isHover = ((GuiInvisibleButton) controlList.get(i1 + 8)).isHovered();
+        	boolean isHover = ((GuiInvisibleButton) buttonList.get(i1 + 8)).isHovered();
         	fontRenderer.drawString((isHover ? "> " : "") + (ResearchHelper.clientResearch.isResearchDone(node.index) ? node.displayName : FormattingCode.ITALICS + "Unknown Chapter"), xStart + 24, yStart + 16 + i1 * 12, 0);
-        	RenderEngine engine = MiscHelper.getMc().renderEngine;
-        	int textureID = engine.getTexture(node.spritesheet);
-        	engine.bindTexture(textureID);
         	GL11.glPushMatrix();
         	GL11.glScalef(0.5F, 0.5F, 0.5F);
         	GL11.glColor3f(0F, 0F, 0F);
@@ -192,9 +187,9 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         }
         fontRenderer.setUnicodeFlag(false); // End the fancy font rendering
 
-		if(((GuiInvisibleButton) controlList.get(6)).isHovered() && prev)
+		if(((GuiInvisibleButton) buttonList.get(6)).isHovered() && prev)
 			RenderHelper.renderTooltip(par1, par2, "Prev. Page");
-		if(((GuiInvisibleButton) controlList.get(7)).isHovered() && next)
+		if(((GuiInvisibleButton) buttonList.get(7)).isHovered() && next)
 			RenderHelper.renderTooltip(par1, par2, "Next Page");
 
         GL11.glDisable(GL11.GL_BLEND);

@@ -21,7 +21,6 @@ import vazkii.tinkerer.lightning.Vector3;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.EffectReference;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -37,7 +36,6 @@ public class SpellThunderbolt extends SpellImpl {
 		super(SpellReference.ID_THUNDERBOLT,
 				SpellReference.LABEL_THUNDERBOLT,
 				SpellReference.DISPLAY_NAME_THUNDERBOLT,
-				ResourcesReference.MAGIC_INDEX_THUNDERBOLT,
 				SpellType.ACTIVE,
 				Element.AIR.ordinal());
 		bindNode(ResearchReference.ID_THUNDERBOLT);
@@ -45,7 +43,7 @@ public class SpellThunderbolt extends SpellImpl {
 
 	@Override
 	public boolean cast(EntityPlayer player, boolean bonus) {
-		Vec3 entityVector = Vec3.vec3dPool.getVecFromPool(player.posX + player.width / 2, player.posY + player.getEyeHeight(), player.posZ + player.width / 2);
+		Vec3 entityVector = Vec3.fakePool.getVecFromPool(player.posX + player.width / 2, player.posY + player.getEyeHeight(), player.posZ + player.width / 2);
 		int range = 8;
 		Vec3 entityLook = player.getLookVec(); // Normalized Vector
 		Vec3 finalVector = entityVector.addVector(entityLook.xCoord * range, entityLook.yCoord * range, entityLook.zCoord * range);

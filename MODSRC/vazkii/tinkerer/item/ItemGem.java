@@ -8,11 +8,13 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.reference.ItemNames;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemGem
@@ -30,6 +32,14 @@ public class ItemGem extends ItemET {
 		setHasSubtypes(true);
 	}
 
+	Icon[] icons = new Icon[16];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 16; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
+	}
+
 	@Override
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int var4 = 0; var4 < 16; ++var4)
@@ -43,10 +53,8 @@ public class ItemGem extends ItemET {
 	}
 
 	@Override
-	public int getIconFromDamage(int par1) {
-		int x = par1 % 4;
-		int y = par1 / 4;
-		return ResourcesReference.ITEM_INDEX_GEM_START + y * 16 + x;
+	public Icon getIconFromDamage(int par1) {
+		return icons[par1];
 	}
 
 	@Override

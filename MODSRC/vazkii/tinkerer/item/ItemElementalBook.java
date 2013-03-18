@@ -9,17 +9,19 @@ package vazkii.tinkerer.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.ItemNames;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.research.PlayerResearch;
 import vazkii.tinkerer.research.ResearchCategory;
 import vazkii.tinkerer.research.ResearchLibrary;
@@ -38,7 +40,14 @@ public class ItemElementalBook extends ItemET {
 		super(par1);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
-		iconIndex = ResourcesReference.ITEM_INDEX_ELEMENTAL_BOOK_START;
+	}
+
+	Icon[] icons = new Icon[4];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 4; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
@@ -92,8 +101,8 @@ public class ItemElementalBook extends ItemET {
 	}
 
 	@Override
-	public int getIconFromDamage(int par1) {
-		return super.getIconFromDamage(par1) + (par1 <= 3 ? par1 : 0);
+	public Icon getIconFromDamage(int par1) {
+		return icons[par1];
 	}
 
 	@Override

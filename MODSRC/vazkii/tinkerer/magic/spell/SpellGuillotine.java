@@ -18,7 +18,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import vazkii.tinkerer.magic.SpellType;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -34,7 +33,6 @@ public class SpellGuillotine extends SpellImpl {
 		super(SpellReference.ID_GUILLOTINE,
 				SpellReference.LABEL_GUILLOTINE,
 				SpellReference.DISPLAY_NAME_GUILLOTINE,
-				ResourcesReference.MAGIC_INDEX_GUILLOTINE,
 				SpellType.ACTIVE,
 				5); // Pure
 		bindNode(ResearchReference.ID_GUILLOTINE);

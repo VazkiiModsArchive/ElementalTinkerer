@@ -50,7 +50,7 @@ public class PotionET extends Potion {
 	public int getStatusIconIndex() {
 		if(useCustomSpritesheet) {
 			RenderEngine render = MiscHelper.getMc().renderEngine;
-			render.bindTexture(render.getTexture(ResourcesReference.POTIONS_SPRITESHEET));
+			render.func_98187_b(ResourcesReference.POTIONS_SPRITESHEET);
 		}
 		return super.getStatusIconIndex();
 	}

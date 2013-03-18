@@ -16,7 +16,7 @@ package vazkii.tinkerer.reference;
 public final class ResourcesReference {
 
 	/** Root location for all resources **/
-	public static final String ROOT = "/vazkii/tinkerer/res/";
+	public static final String ROOT = "/mods/ElementalTinkerer/";
 
 	/** Root location for model texture resources **/
 	public static final String ROOT_MODEL = ROOT + "model/";
@@ -117,14 +117,14 @@ public final class ResourcesReference {
 							ITEM_INDEX_TRANSPARENT = 255;
 
 	/** Integers for the Item Spritesheet Animations **/
-	public static final int ITEM_ANIM_ENDER_PARTICLE_START = 57,
-							ITEM_ANIM_ENDER_PARTICLE_END = 63;
+	public static final int ITEM_ANIM_ENDER_PARTICLE_START = 0,
+							ITEM_ANIM_ENDER_PARTICLE_END = 6;
 
 	/** Integers for the Item Spritesheet (32x) Animations **/
 	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
 							ITEM_32_ANIM_ELEMENTIUM_GEM_END = 7,
-							ITEM_32_ANIM_ELEMENTIUM_INGOT_START = 16,
-							ITEM_32_ANIM_ELEMENTIUM_INGOT_END = 23;
+							ITEM_32_ANIM_ELEMENTIUM_INGOT_START = 0,
+							ITEM_32_ANIM_ELEMENTIUM_INGOT_END = 7;
 
 	/** Integers for the Research Spritesheet indexes **/
 	public static final int RESEARCH_INDEX_QUESTIONMARK = 0,

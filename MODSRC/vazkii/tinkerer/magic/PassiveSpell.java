@@ -17,8 +17,8 @@ package vazkii.tinkerer.magic;
  */
 public abstract class PassiveSpell extends Spell {
 
-	public PassiveSpell(short index, String label, String displayName, int spriteIndex, int element) {
-		super(index, label, displayName, spriteIndex, element);
+	public PassiveSpell(short index, String label, String displayName, int element) {
+		super(index, label, displayName, element);
 	}
 
 	@Override

@@ -18,7 +18,6 @@ import vazkii.tinkerer.block.voidStorage.VoidMap;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.network.packet.PacketVoidStorage;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityVoidGateway;
 
 /**
@@ -33,7 +32,7 @@ import vazkii.tinkerer.tile.TileEntityVoidGateway;
 public class BlockVoidGateway extends BlockETContainer {
 
 	public BlockVoidGateway(int par1) {
-		super(par1, ResourcesReference.BLOCK_INDEX_VOID_GATEWAY, Material.iron);
+		super(par1, Material.iron);
 	}
 
 	@Override
@@ -65,7 +64,7 @@ public class BlockVoidGateway extends BlockETContainer {
 	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		if(par3 > 8 && !par1World.isRemote) {
-			par1World.setBlock(par2, par3, par4, 0);
+			par1World.setBlockAndMetadataWithNotify(par2, par3, par4, 0, 0, 2);
 			dropBlockAsItem(par1World, par2, par3, par4, 0, 0);
 		}
 	}

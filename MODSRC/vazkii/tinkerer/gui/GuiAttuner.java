@@ -49,15 +49,14 @@ public class GuiAttuner extends GuiScreen {
     	super.initGui();
 		xStart = (width - 237) / 2;
 		yStart = (height - 124) / 2;
-		controlList.add(new GuiInvisibleButton(0, xStart + 142, yStart + 20, 8, 8));
+		buttonList.add(new GuiInvisibleButton(0, xStart + 142, yStart + 20, 8, 8));
     }
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
         spellLooking = null;
-		int texture = mc.renderEngine.getTexture(ResourcesReference.GUI_ATTUNER_TEXTURE);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(texture);
+        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ATTUNER_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, 237, 124);
 
         fontRenderer.drawStringWithShadow(lookingAtSpells ? "Spells:" : "Passives:", xStart + 158, yStart + 20, 0xFFFFFF);
@@ -113,7 +112,7 @@ public class GuiAttuner extends GuiScreen {
                 					FormattingCode.RED + "(Can't Equip, Full)"
                 					: FormattingCode.GRAY + "(Click to Equip)");
 
-        if(((GuiInvisibleButton) controlList.get(0)).isHovered())
+        if(((GuiInvisibleButton) buttonList.get(0)).isHovered())
         	RenderHelper.renderTooltip(par1, par2, "Display " + (lookingAtSpells ? "Passives" : "Spells"));
 
 		super.drawScreen(par1, par2, par3);

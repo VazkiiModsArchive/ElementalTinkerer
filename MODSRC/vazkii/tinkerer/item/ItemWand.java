@@ -9,13 +9,16 @@ package vazkii.tinkerer.item;
 import java.awt.Color;
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.handler.InteractionAccessHandler;
 import vazkii.tinkerer.helper.Element;
@@ -44,6 +47,14 @@ public class ItemWand extends ItemET implements IWand {
 		super(par1);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
+	}
+
+	Icon[] icons = new Icon[2];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 2; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
@@ -83,8 +94,8 @@ public class ItemWand extends ItemET implements IWand {
 	}
 
 	@Override
-	public int getIconFromDamageForRenderPass(int par1, int par2) {
-		return par2 == 0 ? ResourcesReference.ITEM_INDEX_WAND_REGULAR : ResourcesReference.ITEM_INDEX_WAND_COLORIZE;
+	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
+		return icons[par2];
 	}
 
 	@Override

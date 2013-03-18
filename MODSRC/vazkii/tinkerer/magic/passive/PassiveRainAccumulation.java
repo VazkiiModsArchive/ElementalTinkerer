@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -30,7 +29,6 @@ public class PassiveRainAccumulation extends PassiveImpl {
 		super(SpellReference.PID_RAIN_ACCUMULATION,
 				SpellReference.LABEL_RAIN_ACCUMULATION,
 				SpellReference.DISPLAY_NAME_RAIN_ACCUMULATION,
-				ResourcesReference.MAGIC_INDEX_RAIN_ACCUMULATION,
 				Element.WATER.ordinal());
 		bindNode(ResearchReference.ID_RAIN_ACCUMULATION);
 	}

@@ -8,13 +8,14 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 
 import org.lwjgl.input.Keyboard;
 
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.gui.CreativeTabET;
 import vazkii.tinkerer.reference.MiscReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemET
@@ -32,15 +33,8 @@ public class ItemET extends Item {
 	}
 
 	@Override
-	public String getTextureFile() {
-		return useDoubleResolution() ? ResourcesReference.ITEMS_32_SPRITESHEET : ResourcesReference.ITEMS_SPRITESHEET;
-	}
-
-	/**
-	 * Flag to set if the item sprite is rendered in 32x32 rather than 16x16.
-	 */
-	public boolean useDoubleResolution() {
-		return false;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		iconIndex = IconHelper.forItem(par1IconRegister, this);
 	}
 
 	/**

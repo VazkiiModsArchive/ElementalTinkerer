@@ -7,12 +7,13 @@
 package vazkii.tinkerer.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.reference.RenderIDs;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * BlockScavenger
@@ -24,7 +25,12 @@ import vazkii.tinkerer.reference.ResourcesReference;
 public abstract class BlockRotatingCubes extends BlockETContainer {
 
 	public BlockRotatingCubes(int par1) {
-		super(par1, ResourcesReference.BLOCK_INDEX_TRANSPARENT, Material.rock);
+		super(par1, Material.rock);
+	}
+
+	@Override
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = IconHelper.NULL(par1IconRegister);
 	}
 
 	/** Returns the GUI ID to open when right clicking this block. **/

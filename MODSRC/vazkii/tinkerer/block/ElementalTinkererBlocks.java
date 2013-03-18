@@ -51,86 +51,86 @@ public final class ElementalTinkererBlocks {
 						.setResistance(5F)
 						.setLightValue(0.8F)
 						.setStepSound(Block.soundStoneFootstep)
-						.setBlockName(BlockNames.ELEMENTIUM_ORE_NAME);
+						.setUnlocalizedName(BlockNames.ELEMENTIUM_ORE_NAME);
 
 		elementiumOreSpawner = new BlockElementiumOreSpawner(BlockIDs.elementiumOreSpawner)
 						.setHardness(2F)
 						.setResistance(5F)
 						.setLightValue(0.8F)
 						.setStepSound(Block.soundStoneFootstep)
-						.setBlockName(BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
+						.setUnlocalizedName(BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
 
 		elementalDesk = new BlockElementalDesk(BlockIDs.elementalDesk)
 						.setHardness(1F)
 						.setStepSound(Block.soundWoodFootstep)
-						.setBlockName(BlockNames.ELEMENTAL_DESK_NAME);
+						.setUnlocalizedName(BlockNames.ELEMENTAL_DESK_NAME);
 
 		elementiumGemBlock = new BlockElementiumGem(BlockIDs.elementiumGemBlock)
 						.setHardness(3.0F)
 						.setResistance(10.0F)
 						.setStepSound(Block.soundMetalFootstep)
-						.setBlockName(BlockNames.ELEMENTIUM_GEM_BLOCK_NAME);
+						.setUnlocalizedName(BlockNames.ELEMENTIUM_GEM_BLOCK_NAME);
 
 		elementalistTinkeringAltar = new BlockElementalistTinkeringAltar(BlockIDs.elementalistTinkeringAltar)
 						.setHardness(5F)
 						.setResistance(2000F)
 						.setStepSound(Block.soundMetalFootstep)
-						.setBlockName(BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
+						.setUnlocalizedName(BlockNames.ELEMENTALIST_TINKERING_ALTAR_NAME);
 
 		catalystCapsule = new BlockCatalystCapsule(BlockIDs.catalystCapsule)
 						.setHardness(8F)
 						.setResistance(2000F)
 						.setLightValue(0.8F)
 						.setStepSound(Block.soundMetalFootstep)
-						.setBlockName(BlockNames.CATALYST_CAPSULE_NAME);
+						.setUnlocalizedName(BlockNames.CATALYST_CAPSULE_NAME);
 
 		attuner = new BlockAttuner(BlockIDs.attuner)
 						.setHardness(8F)
 						.setResistance(2000F)
 						.setLightValue(1F)
 						.setStepSound(Block.soundMetalFootstep)
-						.setBlockName(BlockNames.ATTUNER_NAME);
+						.setUnlocalizedName(BlockNames.ATTUNER_NAME);
 
 		voidGateway = new BlockVoidGateway(BlockIDs.voidGateway)
 						.setHardness(8F)
 						.setResistance(2000F)
 						.setLightValue(0.2F)
 						.setStepSound(Block.soundMetalFootstep)
-						.setBlockName(BlockNames.VOID_GATEWAY_NAME);
+						.setUnlocalizedName(BlockNames.VOID_GATEWAY_NAME);
 
 		voidNetwork = new BlockVoidNetwork(BlockIDs.voidNetwork)
 						.setHardness(8F)
 						.setResistance(2000F)
 						.setLightValue(0.2F)
 						.setStepSound(Block.soundMetalFootstep)
-						.setBlockName(BlockNames.VOID_NETWORK_NAME);
+						.setUnlocalizedName(BlockNames.VOID_NETWORK_NAME);
 
 		glowstoneAir = new BlockGlowstoneAir(BlockIDs.glowstoneAir)
-						.setBlockName(BlockNames.GLOWSTONE_AIR_NAME);
+						.setUnlocalizedName(BlockNames.GLOWSTONE_AIR_NAME);
 
 		waveInputter = new BlockWaveInputter(BlockIDs.waveInputter)
 						.setHardness(1.3F)
 						.setResistance(6F)
 						.setStepSound(Block.soundStoneFootstep)
-						.setBlockName(BlockNames.WAVE_INPUTTER_NAME);
+						.setUnlocalizedName(BlockNames.WAVE_INPUTTER_NAME);
 
 		dislocator = new BlockDislocator(BlockIDs.dislocator)
 						.setHardness(1.3F)
 						.setResistance(6F)
 						.setStepSound(Block.soundStoneFootstep)
-						.setBlockName(BlockNames.DISLOCATOR_NAME);
+						.setUnlocalizedName(BlockNames.DISLOCATOR_NAME);
 
 		scavenger = new BlockScavenger(BlockIDs.scavenger)
 						.setHardness(1.3F)
 						.setResistance(6F)
 						.setStepSound(Block.soundStoneFootstep)
-						.setBlockName(BlockNames.SCAVENGER_NAME);
+						.setUnlocalizedName(BlockNames.SCAVENGER_NAME);
 
 		incinerator = new BlockIncinerator(BlockIDs.incinerator)
 						.setHardness(1.3F)
 						.setResistance(6F)
 						.setStepSound(Block.soundStoneFootstep)
-						.setBlockName(BlockNames.INCINERATOR_NAME);
+						.setUnlocalizedName(BlockNames.INCINERATOR_NAME);
 
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
@@ -173,7 +173,7 @@ public final class ElementalTinkererBlocks {
 
 	public static void initBlockRecipes() {
 		// Elemental Desk Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalDesk),
+		CraftingManager.getInstance().addRecipe(new ItemStack(elementalDesk),
 				"GEG", "BBB", "P P",
 				'G', Item.ingotGold,
 				'E', ElementalTinkererItems.elementiumGem,
@@ -182,12 +182,12 @@ public final class ElementalTinkererBlocks {
 		ResearchLibrary.allNodes.get(ResearchReference.ID_ELEMENTAL_DESK).bindLatestCraftingRecipe();
 
 		// Elementium Block Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(elementiumGemBlock),
+		CraftingManager.getInstance().addRecipe(new ItemStack(elementiumGemBlock),
 				"GGG", "GGG", "GGG",
 				'G', ElementalTinkererItems.elementiumGem);
 
 		// Elementalist Tinkering Altar Recipe
-		CraftingManager.getInstance().func_92051_a(new ItemStack(elementalistTinkeringAltar),
+		CraftingManager.getInstance().addRecipe(new ItemStack(elementalistTinkeringAltar),
 				"GIG", "GCG", "GIG",
 				'C', Block.workbench,
 				'G', ElementalTinkererItems.elementiumGem,

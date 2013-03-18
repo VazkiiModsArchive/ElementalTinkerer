@@ -8,10 +8,12 @@ package vazkii.tinkerer.item;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.helper.ItemNBTHelper;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ItemAttunedTome
@@ -25,14 +27,28 @@ public class ItemAttunedTome extends ItemET {
 
 	public ItemAttunedTome(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_INDEX_ATTUNED_TOME;
 		setMaxStackSize(1);
 	}
 
+	Icon[] icons = new Icon[2];
+
 	@Override
-	public float getSmeltingExperience(ItemStack item) {
-		return super.getSmeltingExperience(item);
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 2; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
+
+	@Override
+	public boolean requiresMultipleRenderPasses() {
+		return true;
+	}
+
+	@Override
+	public Icon getIconFromDamageForRenderPass(int par1, int par2) {
+		return icons[par2];
+	}
+
+	//VAZ_TODO Implement!
 
 	public static boolean hasCmp(ItemStack stack) {
 		return ItemNBTHelper.detectNBT(stack);

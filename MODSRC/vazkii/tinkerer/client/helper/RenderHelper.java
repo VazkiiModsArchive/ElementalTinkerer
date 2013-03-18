@@ -19,6 +19,8 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureStitched;
+import net.minecraft.util.Icon;
 import net.minecraft.util.StringUtils;
 
 import org.lwjgl.opengl.GL11;
@@ -50,12 +52,11 @@ public final class RenderHelper {
 
 	/** Renders a 16x16 icon at the given positions from the
 	 * given spritesheet **/
-	public static void renderIcon(String spritesheet, double x, double y, double z, int xSpritesheet, int ySpritesheet) {
+	public static void renderIcon(TextureStitched icon, double x, double y, double z) {
 		Minecraft mc = MiscHelper.getMc();
     	RenderEngine engine = mc.renderEngine;
-		int textureID = engine.getTexture(spritesheet);
-		engine.bindTexture(textureID);
-		drawTexturedModalRect(x, y, z, xSpritesheet, ySpritesheet, 16, 16);
+		engine.func_98187_b(icon.func_94215_i()); // VAZ_TODO This doesn't work!
+		drawTexturedModalRect(x, y, z, (int) icon.func_94206_g(), (int) icon.func_94206_g(), 16, 16);
 	}
 
 	/** Renders a research icon at the given positions, if checkStatus is true,
@@ -65,59 +66,45 @@ public final class RenderHelper {
 		if(node == null)
     		return;
 
-		String texture = !checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spritesheet : ResourcesReference.RESEARCH_SPRITESHEET;
-    	int index = !checkStatus || ResearchHelper.clientResearch.isResearchDone(node.index) ? ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.spriteIndex : ResourcesReference.RESEARCH_INDEX_ELLIPSES : ResourcesReference.RESEARCH_INDEX_QUESTIONMARK;
-    	int xSpritesheet = index % 16 * 16;
-    	int ySpritesheet = index / 16 * 16;
-    	renderIcon(texture, x, y, z, xSpritesheet, ySpritesheet);
-	}
-
-	public static void renderResearchIconWithBackground(ResearchNode node, boolean checkStatus, double x, double y, double z, int background) {
-		int xCoord = ResourcesReference.RESEARCH_BACKGROUND_X_COORD + background * 16;
-		int yCoord = ResourcesReference.RESEARCH_BACKGROUND_Y_COORD;
-		renderIcon(ResourcesReference.RESEARCH_SPRITESHEET, x, y, z, xCoord, yCoord);
-		renderResearchIcon(node, checkStatus, x, y, z);
+		Icon icon = !checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.icon : ResearchHelper.clientResearch.isResearchCompleted(node.index) ? IconHelper.researchPendingIcon : IconHelper.researchUnknownIcon;
+    	renderIcon((TextureStitched) icon, x, y, z);
 	}
 
 	public static void renderSpellIcon(Spell spell, double x, double y, double z) {
 		if(spell == null)
 			return;
 
-    	int index = spell.spriteIndex;
-    	int xSpritesheet = index % 16 * 16;
-    	int ySpritesheet = index / 16 * 16;
-    	renderIcon(ResourcesReference.MAGIC_SPRITESHEET, x, y, z, xSpritesheet, ySpritesheet);
+		Icon icon = spell.icon;
+    	renderIcon((TextureStitched) icon, x, y, z);
 	}
 
 	public static void renderSpellFrame(double x, double y, double z) {
 		GL11.glPushMatrix();
 		Minecraft mc = MiscHelper.getMc();
 		RenderEngine render = mc.renderEngine;
-		int texture = render.getTexture(ResourcesReference.MAGIC_SPRITESHEET);
-		render.bindTexture(texture);
+		Icon icon = IconHelper.spellFrameIcon;
+		render.func_98187_b(icon.func_94215_i());
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		drawTexturedModalRect((x-1)*2, (y-1)*2, z*2, 0, ResourcesReference.MAGIC_SPRITESHEET_Y_OFFSET_FRAME, 36, 36);
+		drawTexturedModalRect((x-1)*2, (y-1)*2, z*2, (int) icon.func_94206_g(), (int) icon.func_94206_g(), 36, 36);
 		GL11.glPopMatrix();
 	}
 
 	public static void renderCooldown(double x, double y, double z, int cooldown) {
 		if(cooldown > 0) {
 			String time = FormattingCode.RED + "" + FormattingCode.BOLD + StringUtils.ticksToElapsedTime(cooldown);
-			GL11.glPushMatrix();
-			GL11.glScalef(0.5F, 0.5F, 0.5F);
 			FontRenderer fr = MiscHelper.getMc().fontRenderer;
 			int timeStrWidth = fr.getStringWidth(time);
 			fr.drawStringWithShadow(time, (int) ((x + 6) * 2 - timeStrWidth), (int) ((y + 4) * 2), 0xFFFFFF);
 			GL11.glColor3f(1F, 1F, 1F);
-			GL11.glPopMatrix();
 		}
 	}
 
 	public static void renderSpellIconWithBackgroundAndFrame(Spell spell, double x, double y, double z) {
-		int xCoord = ResourcesReference.SPELL_BACKGROUND_X_COORD;
-		int yCoord = ResourcesReference.SPELL_BACKGROUND_Y_COORD;
+		GL11.glPushMatrix();
+		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		renderSpellFrame(x, y, z);
-		renderIcon(ResourcesReference.MAGIC_SPRITESHEET, x, y, z, xCoord, yCoord);
+		renderIcon((TextureStitched) IconHelper.spellBackgroundIcon, x * 2, y, z * 2);
+		GL11.glPopMatrix();
 		renderSpellIcon(spell, x, y, z);
 	}
 

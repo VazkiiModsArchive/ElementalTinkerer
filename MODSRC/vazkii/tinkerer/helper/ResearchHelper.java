@@ -211,6 +211,9 @@ public final class ResearchHelper {
 	/** "Formulates" research data for a player and sends a packet to that player
 	 * telling that a new research has been formulated **/
 	public static boolean formulateResearchNode(short s, EntityPlayer player, String tree) {
+		if(player == null)
+			return false; // Can happen when getting researches trough commands
+
 		PlayerResearch research = ResearchHelper.getResearchDataForPlayer(player.username);
 		ResearchNode node = ResearchLibrary.allNodes.get(s);
 		if(!research.isResearchDone(s) && node.isAvailable(research)) {

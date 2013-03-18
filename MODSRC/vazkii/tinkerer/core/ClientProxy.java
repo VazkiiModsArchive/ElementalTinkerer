@@ -16,6 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
 import vazkii.tinkerer.client.handler.KeybindHandler;
 import vazkii.tinkerer.client.handler.LightningRenderHandler;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.client.hud.HudElementSpellTooltip;
 import vazkii.tinkerer.client.hud.HudElementVignette;
 import vazkii.tinkerer.client.particle.EntityFXColoredPortal;
@@ -45,7 +46,6 @@ import vazkii.tinkerer.network.packet.PacketVerification;
 import vazkii.tinkerer.network.packet.PacketVoidStorage;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.RenderIDs;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityAttuner;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
@@ -95,6 +95,11 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
+	public void initCustomSpritesheets() {
+		IconHelper.initCustonSpritesheets();
+	}
+
+	@Override
 	public void registerClientHandlers() {
 		// Register the Keybind Handler
 		KeybindHandler.INSTANCE = KeybindHandler.createInstance();
@@ -131,13 +136,6 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(BlockIDs.dislocator, TileEntityRenderRotatingCubes.INSTANCE);
 		MinecraftForgeClient.registerItemRenderer(BlockIDs.scavenger, TileEntityRenderRotatingCubes.INSTANCE);
 		MinecraftForgeClient.registerItemRenderer(BlockIDs.incinerator, TileEntityRenderRotatingCubes.INSTANCE);
-	}
-
-	@Override
-	public void preloadTextures() {
-		MinecraftForgeClient.preloadTexture(ResourcesReference.BLOCKS_SPRITESHEET);
-		MinecraftForgeClient.preloadTexture(ResourcesReference.BLOCKS_64_SPRITESHEET);
-		MinecraftForgeClient.preloadTexture(ResourcesReference.ITEMS_32_SPRITESHEET);
 	}
 
 	@Override

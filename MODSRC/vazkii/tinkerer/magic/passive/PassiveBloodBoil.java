@@ -8,7 +8,6 @@ package vazkii.tinkerer.magic.passive;
 
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -24,7 +23,6 @@ public class PassiveBloodBoil extends PassiveImpl {
 		super(SpellReference.PID_BLOOD_BOIL,
 				SpellReference.LABEL_BLOOD_BOIL,
 				SpellReference.DISPLAY_NAME_BLOOD_BOIL,
-				ResourcesReference.MAGIC_INDEX_BLOOD_BOIL,
 				Element.FIRE.ordinal());
 		bindNode(ResearchReference.ID_BLOOD_BOIL);
 	}

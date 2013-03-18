@@ -75,8 +75,8 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		super.initGui();
         xStart = (width - 146) / 2;
         yStart = (height - 180) / 2;
-        controlList.clear();
-        controlList.add(new GuiInvisibleButton(0, xStart + 146, yStart, 20, 20));
+        buttonList.clear();
+        buttonList.add(new GuiInvisibleButton(0, xStart + 146, yStart, 20, 20));
 	}
 
 	@Override
@@ -104,9 +104,8 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		relativeMouseX = par1;
 		relativeMouseY = par2;
 
-		int texture = mc.renderEngine.getTexture(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(texture);
+        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, 146, 180);
         GL11.glPushMatrix();
         GL11.glScalef(2F, 2F, 2F);
@@ -135,11 +134,11 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		fontRenderer.setUnicodeFlag(false);
 
 		fontRenderer.drawStringWithShadow("\u2714", xStart + 150, yStart + 5, 0xFFFFFF);
-		if(((GuiInvisibleButton) controlList.get(0)).isHovered())
+		if(((GuiInvisibleButton) buttonList.get(0)).isHovered())
 			RenderHelper.renderTooltip(par1, par2, "Done");
 
 		if(node.getBoundRecipe() != null && isCompleted) {
-	        mc.renderEngine.bindTexture(texture);
+	        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);
 	        drawTexturedModalRect(xStart + 146 , yStart + 67, 146, 67, 76, 94);
 	        node.getBoundRecipe().getRecipeOutput();
 	        String recipeName = FormattingCode.DARK_GRAY + "Crafting";

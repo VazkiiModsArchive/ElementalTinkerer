@@ -8,8 +8,11 @@ package vazkii.tinkerer.item;
 
 import java.awt.Color;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import vazkii.tinkerer.client.handler.ClientTickHandler;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.simpleanim.SimpleAnimations;
@@ -25,18 +28,20 @@ public class ItemElementiumGem extends ItemET {
 
 	public ItemElementiumGem(int par1) {
 		super(par1);
-		iconIndex = ResourcesReference.ITEM_32_ANIM_ELEMENTIUM_GEM_START;
+	}
+
+	Icon[] icons = new Icon[8];
+
+	@Override
+	public void func_94581_a(IconRegister par1IconRegister) {
+		for(int i = 0; i < 8; i++)
+			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}
 
 	@Override
-	public boolean useDoubleResolution() {
-		return true;
-	}
-
-	@Override
-	public int getIconFromDamage(int par1) {
-		return !ConfigurationHandler.elementiumGemAnimate ? super.getIconFromDamage(par1) :
-			   SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_GEM_ANIM_INDEX].getCurrentValue();
+	public Icon getIconFromDamage(int par1) {
+		return !ConfigurationHandler.elementiumGemAnimate ? icons[0] :
+			   icons[SimpleAnimations.ANIMATIONS[SimpleAnimations.ELEMENTIUM_GEM_ANIM_INDEX].getCurrentValue()];
 	}
 
 	@Override

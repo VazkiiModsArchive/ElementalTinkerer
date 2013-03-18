@@ -8,7 +8,6 @@ package vazkii.tinkerer.magic.passive;
 
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 
 /**
@@ -24,7 +23,6 @@ public class PassiveBurningCloud extends PassiveImpl {
 		super(SpellReference.PID_BURNING_CLOUD,
 				SpellReference.LABEL_BURNING_CLOUD,
 				SpellReference.DISPLAY_NAME_BURNING_CLOUD,
-				ResourcesReference.MAGIC_INDEX_BURNING_CLOUD,
 				Element.EARTH.ordinal());
 		bindNode(ResearchReference.ID_BURNING_CLOUD);
 	}

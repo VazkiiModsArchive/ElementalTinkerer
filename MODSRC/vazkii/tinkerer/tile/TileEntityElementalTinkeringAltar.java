@@ -181,7 +181,7 @@ public class TileEntityElementalTinkeringAltar extends TileEntity implements IIn
                         EntityItem item = new EntityItem(worldObj, xCoord + xOffset, yCoord + yOffset, zCoord + zOffset, new ItemStack(stack.itemID, dropSize, stack.getItemDamage()));
 
                         if (stack.hasTagCompound())
-                            item.func_92014_d().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
+                            item.getEntityItem().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
 
                         item.motionX = (float)worldObj.rand.nextGaussian() / 20;
                         item.motionY = (float)worldObj.rand.nextGaussian() / 20;
@@ -262,6 +262,16 @@ public class TileEntityElementalTinkeringAltar extends TileEntity implements IIn
 	@Override
 	public void closeChest() {
 		// NO-OP
+	}
+
+	@Override
+	public boolean func_94042_c() {
+		return false;
+	}
+
+	@Override
+	public boolean func_94041_b(int i, ItemStack itemstack) {
+		return false; //Can't "pipe" things in!
 	}
 
 }

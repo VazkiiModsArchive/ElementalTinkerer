@@ -6,8 +6,11 @@
 // Created @ 26 Jan 2013
 package vazkii.tinkerer.research;
 
+import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon;
+import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon.Spritesheet;
+import vazkii.tinkerer.magic.Spell;
+import vazkii.tinkerer.magic.SpellLibrary;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
  * ResearchNodeSpell
@@ -19,8 +22,10 @@ import vazkii.tinkerer.reference.ResourcesReference;
  */
 public class ResearchNodeSpell extends ResearchNode {
 
-	public ResearchNodeSpell(short index, String label, String displayName, int spriteIndex, ResearchType type) {
-		super(index, ResourcesReference.MAGIC_SPRITESHEET, label, displayName, spriteIndex, type);
+	public ResearchNodeSpell(short index, String label, String displayName, ResearchType type, short spell, boolean passive) {
+		super(index, label, displayName, type);
+		Spell spellObj = passive ? SpellLibrary.allPassives.get(spell) : SpellLibrary.allSpells.get(spell);
+		setUnboundIcon(new UnboundIcon(Spritesheet.MAGIC, spellObj));
 	}
 
 	@Override

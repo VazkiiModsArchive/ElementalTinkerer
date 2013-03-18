@@ -29,7 +29,7 @@ public class GuillotineTrigger {
 
 	@ForgeSubscribe
 	public void onItemPickup(EntityItemPickupEvent event) {
-		if(event.item.func_92014_d().getItem().itemID == Item.skull.itemID && event.entityPlayer.worldObj.isRemote) {
+		if(event.item.getEntityItem().getItem().itemID == Item.skull.itemID && event.entityPlayer.worldObj.isRemote) {
 			ResearchHelper.getResearchDataForPlayer(event.entityPlayer.username);
 			ResearchHelper.formulateResearchNode(ResearchReference.ID_ENDER_ABSORPTION, event.entityPlayer, ResearchReference.CATEGORY_NAME_PURE);
 		}

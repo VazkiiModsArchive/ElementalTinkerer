@@ -7,12 +7,14 @@
 package vazkii.tinkerer.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.RenderIDs;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 
 /**
@@ -26,12 +28,17 @@ import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 public class BlockCatalystCapsule extends BlockETContainer {
 
 	public BlockCatalystCapsule(int par1) {
-		super(par1, ResourcesReference.BLOCK_INDEX_TRANSPARENT, Material.iron);
+		super(par1, Material.iron);
 	}
 
 	@Override
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving) {
-		super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLiving);
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = IconHelper.NULL(par1IconRegister);
+	}
+
+	@Override
+	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack stack) {
+		super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLiving, stack);
 		int meta = 0;
         if(par1World.getBlockId(par2 + 1, par3, par4) == BlockIDs.elementalistTinkeringAltar)
         	meta = 1;
@@ -42,7 +49,7 @@ public class BlockCatalystCapsule extends BlockETContainer {
         else if(par1World.getBlockId(par2, par3, par4 - 1) == BlockIDs.elementalistTinkeringAltar)
         	meta = 2;
 
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, meta);
+        par1World.setBlockMetadataWithNotify(par2, par3, par4, meta, 2);
 	}
 
 	@Override
@@ -57,7 +64,7 @@ public class BlockCatalystCapsule extends BlockETContainer {
     public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
         if (!canBlockStay(par1World, par2, par3, par4)) {
             dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-            par1World.setBlockWithNotify(par2, par3, par4, 0);
+            par1World.setBlockAndMetadataWithNotify(par2, par3, par4, 0, 0, 2);
         }
     }
 

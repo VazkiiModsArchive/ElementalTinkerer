@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -37,13 +38,13 @@ public class RenderProjectile extends Render {
         GL11.glTranslatef((float)var2, (float)var4, (float)var6);
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glScalef(scale, scale, scale);
-        int var11 = stack.getIconIndex();
-        loadTexture(stack.getItem().getTextureFile());
+        Icon icon = stack.getItem().getIconIndex(stack);
+        loadTexture(icon.func_94215_i()); //VAZ_TODO Does this work?
         Tessellator var12 = Tessellator.instance;
-        float var13 = (var11 % 16 * 16 + 0) / 256.0F;
-        float var14 = (var11 % 16 * 16 + 16) / 256.0F;
-        float var15 = (var11 / 16 * 16 + 0) / 256.0F;
-        float var16 = (var11 / 16 * 16 + 16) / 256.0F;
+        float f = icon.func_94209_e();
+        float f1 = icon.func_94212_f();
+        float f2 = icon.func_94206_g();
+        float f3 = icon.func_94210_h();
         float var17 = 1.0F;
         float var18 = 0.5F;
         float var19 = 0.25F;
@@ -51,10 +52,10 @@ public class RenderProjectile extends Render {
         GL11.glRotatef(-renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         var12.startDrawingQuads();
         var12.setNormal(0.0F, 1.0F, 0.0F);
-        var12.addVertexWithUV(0.0F - var18, 0.0F - var19, 0.0D, var13, var16);
-        var12.addVertexWithUV(var17 - var18, 0.0F - var19, 0.0D, var14, var16);
-        var12.addVertexWithUV(var17 - var18, 1.0F - var19, 0.0D, var14, var15);
-        var12.addVertexWithUV(0.0F - var18, 1.0F - var19, 0.0D, var13, var15);
+        var12.addVertexWithUV(0.0F - var18, 0.0F - var19, 0.0D, f, f3);
+        var12.addVertexWithUV(var17 - var18, 0.0F - var19, 0.0D, f1, f3);
+        var12.addVertexWithUV(var17 - var18, 1.0F - var19, 0.0D, f1, f2);
+        var12.addVertexWithUV(0.0F - var18, 1.0F - var19, 0.0D, f, f2);
         var12.draw();
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glPopMatrix();
