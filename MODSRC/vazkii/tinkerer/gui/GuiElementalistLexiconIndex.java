@@ -172,7 +172,7 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
         int i1 = 0;
         for(ResearchNode node : currentShowingNodes) {
         	boolean isHover = ((GuiInvisibleButton) buttonList.get(i1 + 8)).isHovered();
-        	fontRenderer.drawString((isHover ? "> " : "") + (ResearchHelper.clientResearch.isResearchDone(node.index) ? node.displayName : FormattingCode.ITALICS + "Unknown Chapter"), xStart + 24, yStart + 16 + i1 * 12, 0);
+        	fontRenderer.drawString((isHover ? "* " : "") + (ResearchHelper.clientResearch.isResearchDone(node.index) ? node.displayName : FormattingCode.ITALICS + "Unknown Chapter"), xStart + 24, yStart + 16 + i1 * 12, 0);
         	GL11.glPushMatrix();
         	GL11.glScalef(0.5F, 0.5F, 0.5F);
         	GL11.glColor3f(0F, 0F, 0F);

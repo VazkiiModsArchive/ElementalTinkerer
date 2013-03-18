@@ -33,24 +33,6 @@ public final class ResourcesReference {
 	/** Root location for armor texture resources **/
 	public static final String ROOT_ARMOR = ROOT + "armor/";
 
-	/** The Spritesheet containing the in-world block textures **/
-	public static final String BLOCKS_SPRITESHEET = ROOT + "blocks.png";
-
-	/** The Spritesheet containing the in-world block textures in 64x64 resolution **/
-	public static final String BLOCKS_64_SPRITESHEET = ROOT + "blocks64.png";
-
-	/** The Spritesheet containing the item sprites **/
-	public static final String ITEMS_SPRITESHEET = ROOT + "items.png";
-
-	/** The Spritesheet containing the item sprites in 32x32 resolution **/
-	public static final String ITEMS_32_SPRITESHEET = ROOT + "items32.png";
-
-	/** The Spritesheet containing research sprites **/
-	public static final String RESEARCH_SPRITESHEET = ROOT + "research.png";
-
-	/** The Spritesheet containing the spell sprites **/
-	public static final String MAGIC_SPRITESHEET = ROOT + "magic.png";
-
 	/** The Spritehseet containing the potion effect sprites **/
 	public static final String POTIONS_SPRITESHEET = ROOT_GUI + "potionEffects.png";
 
@@ -70,107 +52,13 @@ public final class ResourcesReference {
 	public static final String LIGHTNING_INNER_TEXTURE = ROOT_LIGHTNING + "inner.png",
 							   LIGHTNING_OUTER_TEXTURE = ROOT_LIGHTNING + "outer.png";
 
-	/** Integers for the Blocks Spritesheet indexes **/
-	public static final int BLOCK_INDEX_ELEMENTIUM_ORE_START = 0,
-							BLOCK_INDEX_ELEMENTIUM_ORE_NON_COLORED = 5,
-							BLOCK_INDEX_ELEMENTIUM_GEM = 16,
-							BLOCK_INDEX_ATTUNER_GLASS = 17,
-							BLOCK_INDEX_ATTUNER_TOP = 18,
-							BLOCK_INDEX_VOID_GATEWAY = 32,
-							BLOCK_INDEX_VOID_NETWORK_REG = 33,
-							BLOCK_INDEX_VOID_NETWORK_TOP = 34,
-							BLOCK_INDEX_TRANSPARENT = 255;
-
-	/** Integers for the Blocks Spritesheet (64x) indexes **/
-	public static final int BLOCK_64_INDEX_ELEMENTALIST_TINKERING_ALTAR = 0;
-
-	/** Integers for the Items Spritesheet indexes **/
-	public static final int ITEM_INDEX_ELEMENTAL_BOOK_START = 0,
-							ITEM_INDEX_ELEMENTALIST_LEXICON = 4,
-							ITEM_INDEX_ELEMENTIUM_DUST = 15,
-							ITEM_INDEX_CATALYST_START = 16,
-							ITEM_INDEX_ELEMENTAL_BARK = 32,
-							ITEM_INDEX_WAND_REGULAR = 33,
-							ITEM_INDEX_WAND_COLORIZE = 34,
-							ITEM_INDEX_ELEMENTIUM_DETECTOR_REGULAR = 49,
-							ITEM_INDEX_ELEMENTIUM_DETECTOR_COLORIZE = 50,
-							ITEM_INDEX_ODD_CLAW = 64,
-							ITEM_INDEX_LOCATION_GEM = 46,
-							ITEM_INDEX_GEM_START = 192,
-							ITEM_INDEX_GASEOUS_GLOWSTONE = 48,
-							ITEM_INDEX_ORICHALCUM = 77,
-							ITEM_INDEX_ORICHALCUM_BLADE = 78,
-							ITEM_INDEX_ORICHALCUM_SPADE = 94,
-							ITEM_INDEX_ORICHALCUM_PICK = 110,
-							ITEM_INDEX_ORICHALCUM_HATCHET = 126,
-							ITEM_INDEX_ORICHALCUM_HELMET = 79,
-							ITEM_INDEX_ORICHALCUM_CHESTPLATE = 95,
-							ITEM_INDEX_ORICHALCUM_PLATELEGS = 111,
-							ITEM_INDEX_ORICHALCUM_BOOTS = 127,
-							ITEM_INDEX_LOCATING_CORE_BASE = 43,
-							ITEM_INDEX_UNBOUND_BOOK = 5,
-							ITEM_INDEX_SPELLBIND_CLOTH = 76,
-							ITEM_INDEX_MYSTICAL_TALISMAN = 75,
-							ITEM_INDEX_ATTUNED_TOME = 6,
-							ITEM_INDEX_ROASTED_CARROT = 80,
-							ITEM_INDEX_CARAMEL = 81,
-							ITEM_INDEX_TRANSPARENT = 255;
-
-	/** Integers for the Item Spritesheet Animations **/
-	public static final int ITEM_ANIM_ENDER_PARTICLE_START = 0,
-							ITEM_ANIM_ENDER_PARTICLE_END = 6;
-
 	/** Integers for the Item Spritesheet (32x) Animations **/
-	public static final int ITEM_32_ANIM_ELEMENTIUM_GEM_START = 0,
-							ITEM_32_ANIM_ELEMENTIUM_GEM_END = 7,
-							ITEM_32_ANIM_ELEMENTIUM_INGOT_START = 0,
-							ITEM_32_ANIM_ELEMENTIUM_INGOT_END = 7;
-
-	/** Integers for the Research Spritesheet indexes **/
-	public static final int RESEARCH_INDEX_QUESTIONMARK = 0,
-							RESEARCH_INDEX_ELLIPSES = 1,
-							RESEARCH_INDEX_ELEMENTIUM_ORE = 2,
-							RESEARCH_INDEX_ELEMENTIUM_GEM = 3,
-							RESEARCH_INDEX_ELEMENTAL_DESK = 4,
-							RESEARCH_INDEX_RESEARCH_BOOKS = 5,
-							RESERACH_INDEX_ELEMENTIUM_INGOT = 6,
-							RESEARCH_INDEX_WAND_START = 7,
-							RESEARCH_INDEX_ELEMENTAL_TINKERING = 11,
-							RESEARCH_INDEX_CATALYST_CAPSULE = 12,
-							RESEARCH_INDEX_ATTUNER = 13,
-							RESEARCH_INDEX_ELEMENTIUM_DETECTOR = 14,
-							RESEARCH_INDEX_VOID_GATEWAY = 15,
-							RESEARCH_INDEX_VOID_NETWORK = 16,
-							RESEARCH_INDEX_WAVE_INPUTTER = 17,
-							RESEARCH_INDEX_DISLOCATOR = 18,
-							RESEARCH_INDEX_SCAVENGER = 19,
-							RESEARCH_INDEX_INCINERATOR = 20,
-							RESEARCH_INDEX_NEW_FOOD = 21,
-							RESEARCH_INDEX_SPELLBIND_CLOTH = 22;
-
-	/** Integers for the Magic Spritesheet indexes **/
-	public static final int MAGIC_INDEX_BACKGROUND = 255,
-							MAGIC_SPRITESHEET_Y_OFFSET_FRAME = 220,
-							MAGIC_INDEX_THUNDERBOLT = 0,
-							MAGIC_INDEX_FROSTBOLT = 1,
-							MAGIC_INDEX_BOULDER_TOSS = 2,
-							MAGIC_INDEX_FIREBALL = 3,
-							MAGIC_INDEX_AEREAL_PUSH = 16,
-							MAGIC_INDEX_FROSTSHOCK = 17,
-							MAGIC_INDEX_IMPLOSION = 18,
-							MAGIC_INDEX_FLAME_RING = 19,
-							MAGIC_INDEX_EXTENDED_BREATH = 4,
-							MAGIC_INDEX_RAIN_ACCUMULATION = 5,
-							MAGIC_INDEX_NATURE_AURA = 6,
-							MAGIC_INDEX_BURNING_CLOUD = 7,
-							MAGIC_INDEX_UNDERSHIRT = 9,
-							MAGIC_INDEX_INATE_SPEED = 20,
-							MAGIC_INDEX_FREEZING_WALK = 21,
-							MAGIC_INDEX_IRONSKIN = 22,
-							MAGIC_INDEX_BLOOD_BOIL = 23,
-							MAGIC_INDEX_ENDER_ABSORPTION = 8,
-							MAGIC_INDEX_GUILLOTINE = 10,
-							MAGIC_INDEX_SHATTERING_RECALL = 11;
+	public static final int ANIM_ENDER_PARTICLE_START = 0,
+							ANIM_ENDER_PARTICLE_END = 6,
+							ANIM_ELEMENTIUM_GEM_START = 0,
+							ANIM_ELEMENTIUM_GEM_END = 7,
+							ANIM_ELEMENTIUM_INGOT_START = 0,
+							ANIM_ELEMENTIUM_INGOT_END = 7;
 
 	/** Integers for the Potion Effect Spritesheet indexes **/
 	public static final int POTION_INDEX_FROZEN = 0;

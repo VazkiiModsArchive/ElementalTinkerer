@@ -45,7 +45,8 @@ public final class ItemIDs {
 							DEFAULT_MYSTICAL_TALISMAN = 21127,
 							DEFAULT_ATTUNED_TOME = 21128,
 							DEFAULT_ROASTED_CARROT = 21129,
-							DEFAULT_CARAMEL = 21130;
+							DEFAULT_CARAMEL = 21130,
+							DEFAULT_DARK_QUARTZ = 21131;
 
 	/** Set via the config **/
 	public static int elementiumGem,
@@ -77,5 +78,6 @@ public final class ItemIDs {
 					  mysticalTalisman,
 					  attunedTome,
 					  roastedCarrot,
-					  caramel;
+					  caramel,
+					  darkQuartz;
 }

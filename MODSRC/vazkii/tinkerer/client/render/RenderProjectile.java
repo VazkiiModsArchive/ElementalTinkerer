@@ -39,7 +39,7 @@ public class RenderProjectile extends Render {
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glScalef(scale, scale, scale);
         Icon icon = stack.getItem().getIconIndex(stack);
-        loadTexture(icon.func_94215_i()); //VAZ_TODO Does this work?
+        loadTexture("/gui/items.png");
         Tessellator var12 = Tessellator.instance;
         float f = icon.func_94209_e();
         float f1 = icon.func_94212_f();

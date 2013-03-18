@@ -16,13 +16,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import vazkii.tinkerer.block.ElementalTinkererBlocks;
-import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon;
-import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon.Spritesheet;
 import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.item.ItemCatalyst;
 import vazkii.tinkerer.item.ItemWand;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.reference.SpellReference;
 import vazkii.tinkerer.research.trigger.EnderAbsorptionTrigger;
 import vazkii.tinkerer.research.trigger.ExperienceItemsTrigger;
@@ -99,7 +96,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_ELEMENTALIST_LEXICON,
 				  ResearchReference.DISPLAY_NAME_ELEMENTALIST_LEXICON,
 				  ResearchType.ITEM)
-				  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.elementalistLexicon))
+				  .setIconObj(ElementalTinkererItems.elementalistLexicon)
 				  .setDefaultEnabled()
 				  .addToCategory(general));
 
@@ -115,8 +112,8 @@ public final class ResearchLibrary {
 						  String.format(ResearchReference.LABEL_CATALSYT, i),
 						  ItemCatalyst.nameFromMeta(i),
 						  ResearchType.ITEM)
-						  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.catalyst, i))
 						  .addToCategory(categories.get((byte) (ItemCatalyst.getElement(i) + 2)));
+			node.setIconObj(ElementalTinkererItems.catalyst, i);
 			if(i <= 3)
 				node.setDefaultEnabled();
 			else node.setRequirement((short) (node.index - 4));
@@ -128,7 +125,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_ELEMENTAL_BARK,
 				  ResearchReference.DISPLAY_NAME_ELEMENTAL_BARK,
 				  ResearchType.ITEM)
-				  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.elementalBark))
+				  .setIconObj(ElementalTinkererItems.elementalBark)
 				  .setDefaultEnabled()
 				  .addToCategory(pure));
 
@@ -137,7 +134,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_ELEMENTIUM_DUST,
 				  ResearchReference.DISPLAY_NAME_ELEMENTIUM_DUST,
 				  ResearchType.ITEM)
-		  		  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.elementiumDust))
+		  		  .setIconObj(ElementalTinkererItems.elementiumDust)
 				  .setDefaultEnabled()
 				  .addToCategory(pure));
 
@@ -261,7 +258,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_ODD_CLAW,
 				  ResearchReference.DISPLAY_NAME_ODD_CLAW,
 				  ResearchType.ITEM)
-				  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.oddClaw))
+				  .setIconObj(ElementalTinkererItems.oddClaw, 0)
 				  .setNoBook()
 				  .addToCategory(pure));
 		MinecraftForge.EVENT_BUS.register(OddClawTrigger.INSTANCE);
@@ -343,7 +340,7 @@ public final class ResearchLibrary {
 				ResearchReference.LABEL_LOCATION_GEM,
 				ResearchReference.DISPLAY_NAME_LOCATION_GEM,
 				ResearchType.ITEM)
-				.setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.locationGem))
+				.setIconObj(ElementalTinkererItems.locationGem)
 				.addToCategory(pure)
 				.setDefaultEnabled());
 
@@ -426,7 +423,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_GASEOUS_GLOWSTONE,
 				  ResearchReference.DISPLAY_NAME_GASEOUS_GLOWSTONE,
 				  ResearchType.ITEM)
-				  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.gaseousGlowstone))
+				  .setIconObj(ElementalTinkererItems.gaseousGlowstone)
 				  .setNoBook()
 				  .addToCategory(pure));
 		MinecraftForge.EVENT_BUS.register(GaseousGlowstoneTrigger.INSTANCE);
@@ -436,7 +433,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_ORICHALCUM,
 				  ResearchReference.DISPLAY_NAME_ORICHALCUM,
 				  ResearchType.ITEM)
-		  		  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.orichalcum))
+		  		  .setIconObj(ElementalTinkererItems.orichalcum)
 				  .setNoBook()
 				  .addToCategory(pure));
 		MinecraftForge.EVENT_BUS.register(OrichalcumTrigger.INSTANCE);
@@ -446,16 +443,16 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_BASIC_CORE_LOCATION,
 				  ResearchReference.DISPLAY_NAME_BASIC_CORE_LOCATION,
 				  ResearchType.ITEM)
-		  		  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.locatingCore, 0))
+		  		  .setIconObj(ElementalTinkererItems.locatingCore, 0)
 				  .setDefaultEnabled()
 				  .addToCategory(pure));
 
 		// Adv Core of Location Research Node
 		registerNode(new ResearchNode(ResearchReference.ID_ADV_CORE_LOCATION,
-				  ResourcesReference.ITEMS_SPRITESHEET,
+				  ResearchReference.LABEL_ADV_CORE_LOCATION,
 				  ResearchReference.DISPLAY_NAME_ADV_CORE_LOCATION,
 				  ResearchType.ITEM)
-				  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.locatingCore, 1))
+				  .setIconObj(ElementalTinkererItems.locatingCore, 1)
 				  .setNoBook()
 				  .addToCategory(pure));
 
@@ -464,6 +461,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_ULTIMATE_CORE_LOCATION,
 				  ResearchReference.DISPLAY_NAME_ULTIMATE_CORE_LOCATION,
 				  ResearchType.ITEM)
+		  		  .setIconObj(ElementalTinkererItems.locatingCore, 2)
 				  .setNoBook()
 				  .addToCategory(pure));
 		MinecraftForge.EVENT_BUS.register(LocationCoresTrigger.INSTANCE);
@@ -473,7 +471,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_UNBOUND_BOOK,
 				  ResearchReference.DISPLAY_NAME_UNBOUND_BOOK,
 				  ResearchType.ITEM)
-				  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.unboundBook))
+				  .setIconObj(ElementalTinkererItems.unboundBook)
 				  .setDefaultEnabled()
 				  .addToCategory(general));
 
@@ -490,7 +488,7 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_WITHHOLD_TALISMAN,
 				  ResearchReference.DISPLAY_NAME_WITHHOLD_TALISMAN,
 				  ResearchType.ITEM)
-		  		  .setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.mysticalTalisman))
+		  		  .setIconObj(ElementalTinkererItems.mysticalTalisman)
 				  .setNoBook()
 				  .addToCategory(pure));
 		MinecraftForge.EVENT_BUS.register(ExperienceItemsTrigger.INSTANCE);
@@ -500,6 +498,15 @@ public final class ResearchLibrary {
 				  ResearchReference.LABEL_NEW_FOOD,
 				  ResearchReference.DISPLAY_NAME_NEW_FOOD,
 				  ResearchType.KNOWLEDGE)
+				  .setDefaultEnabled()
+				  .addToCategory(general));
+
+		// Dark Quartz Research Node
+		registerNode(new ResearchNode(ResearchReference.ID_DARK_QUARTZ,
+				  ResearchReference.LABEL_DARK_QUARTZ,
+				  ResearchReference.DISPLAY_NAME_DARK_QUARTZ,
+				  ResearchType.ITEM)
+		  		  .setIconObj(ElementalTinkererItems.darkQuartz)
 				  .setDefaultEnabled()
 				  .addToCategory(general));
 	}
@@ -603,7 +610,7 @@ public final class ResearchLibrary {
 			'O', Block.obsidian,
 			'G', ElementalTinkererBlocks.voidGateway,
 			'I', ElementalTinkererItems.elementiumIngot,
-			'C', new ItemStack(ElementalTinkererItems.locatingCore, 2),
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1, 2),
 			'E', Block.enderChest);
 			allNodes.get(ResearchReference.ID_VOID_NETWORK).bindLatestTinkeringRecipe();
 
@@ -618,7 +625,7 @@ public final class ResearchLibrary {
 			"SSCSS",
 			'I', Item.ingotIron,
 			'S', Block.stone,
-			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1));
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1, 1));
 			allNodes.get(ResearchReference.ID_WAVE_INPUTTER).bindLatestTinkeringRecipe();
 
 		// Dislocator Recipe
@@ -632,7 +639,7 @@ public final class ResearchLibrary {
 			"SSCSS",
 			'I', Item.ingotIron,
 			'S', Block.stone,
-			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1));
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1, 1));
 			allNodes.get(ResearchReference.ID_DISLOCATOR).bindLatestTinkeringRecipe();
 
 		// Scavenger Recipe
@@ -646,7 +653,7 @@ public final class ResearchLibrary {
 			"SSCSS",
 			'I', Item.ingotIron,
 			'S', Block.stone,
-			'C', new ItemStack(ElementalTinkererItems.locatingCore, 0));
+			'C', new ItemStack(ElementalTinkererItems.locatingCore, 1, 0));
 			allNodes.get(ResearchReference.ID_SCAVENGER).bindLatestTinkeringRecipe();
 
 		// Incinerator Recipe

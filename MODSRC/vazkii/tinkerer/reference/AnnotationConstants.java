@@ -18,7 +18,7 @@ public final class AnnotationConstants {
 	/** Used on the @Mod annotation on the Main mod class **/
 	public static final String MOD_ID = "ElementalTinkerer",
 							   MOD_NAME = "Elemental Tinkerer",
-							   VERSION = "PRE-5";
+							   VERSION = "PRE-5a";
 
 	/** Proxy Class Names **/
 	public static final String CLIENT_PROXY_CLASS = "vazkii.tinkerer.core.ClientProxy",

@@ -31,7 +31,11 @@ public final class BlockIDs {
 							DEFAULT_WAVE_INPUTTER = 2122,
 							DEFAULT_DISLOCATOR = 2123,
 							DEFAULT_SCAVENGER = 2124,
-							DEFAULT_INCINERATOR = 2125;
+							DEFAULT_INCINERATOR = 2125,
+							DEFAULT_DARK_QUARTZ = 2126,
+							DEFAULT_DARK_QUARTZ_STAIRS = 2127,
+							DEFAULT_DARK_QUARTZ_SLAB = 2128,
+							DEFAULT_DARK_QUARTZ_FULL_SLAB = 2129;
 
 	/** Set via the config **/
 	public static int elementiumOre,
@@ -49,5 +53,9 @@ public final class BlockIDs {
 					  waveInputter,
 					  dislocator,
 					  scavenger,
-					  incinerator;
+					  incinerator,
+					  darkQuartz,
+					  darkQuartzStairs,
+					  darkQuartzSlab,
+					  darkQuartzFullSlab;
 }

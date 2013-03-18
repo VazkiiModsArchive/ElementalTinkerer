@@ -6,6 +6,8 @@
 // Created @ 23 Feb 2013
 package vazkii.tinkerer.client.tilerender;
 
+import java.awt.Color;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
@@ -51,7 +53,7 @@ public class TileEntityRenderVoidGateway extends TileEntitySpecialRenderer {
 			GL11.glTranslatef((float) x + 0.5F, (float) y + 0.1F, (float) z + 0.4F + MiscReference.MODEL_DEFAULT_RENDER_SCALE);
 			GL11.glRotatef((float) ClientTickHandler.elapsedClientTicks % 360L / 20.0F * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
             Minecraft mc = MiscHelper.getMc();
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, mc.renderEngine.getTexture(stack.getItem().getIconIndex(stack).func_94215_i())); //VAZ_TODO Does this work?
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, mc.renderEngine.getTexture(stack.getItem() instanceof ItemBlock ? "/terrain.png" : "/gui/items.png"));
             Tessellator var5 = Tessellator.instance;
             RenderBlocks var6 = new RenderBlocks();
             if(stack.getItem() instanceof ItemBlock && RenderBlocks.renderItemIn3d(Block.blocksList[stack.itemID].getRenderType())) {
@@ -60,15 +62,25 @@ public class TileEntityRenderVoidGateway extends TileEntitySpecialRenderer {
             	var6.renderBlockAsItem(Block.blocksList[stack.itemID], stack.getItemDamage(), 1F);
 
             } else {
-    			GL11.glScalef(0.75F, 0.75F, 0.75F);
+            	int renderPass = 0;
+            	GL11.glScalef(0.75F, 0.75F, 0.75F);
     			GL11.glRotatef((float) ClientTickHandler.elapsedClientTicks % 360L / 20.0F * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
     			GL11.glTranslatef(-0.5F, 0F, -MiscReference.MODEL_DEFAULT_RENDER_SCALE);
-            	Icon icon = stack.getIconIndex();
-                float f = icon.func_94209_e();
-                float f1 = icon.func_94212_f();
-                float f2 = icon.func_94206_g();
-                float f3 = icon.func_94210_h();
-                ItemRenderer.renderItemIn2D(var5, f1, f2, f, f3, icon.func_94213_j(), icon.func_94208_k(), MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+            	do {
+                	Icon icon = stack.getItem().getIcon(stack, renderPass);
+                	if(icon != null) {
+                		 Color color = new Color(stack.getItem().getColorFromItemStack(stack, renderPass));
+
+                		 GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
+                		 float f = icon.func_94209_e();
+                         float f1 = icon.func_94212_f();
+                         float f2 = icon.func_94206_g();
+                         float f3 = icon.func_94210_h();
+                         ItemRenderer.renderItemIn2D(var5, f1, f2, f, f3, icon.func_94213_j(), icon.func_94208_k(), MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+                         GL11.glColor3f(1F, 1F, 1F);
+                	}
+                	renderPass++;
+            	} while(renderPass < stack.getItem().getRenderPasses(stack.getItemDamage()));
             }
 
             GL11.glColor4f(1F, 1F, 1F, 1F);

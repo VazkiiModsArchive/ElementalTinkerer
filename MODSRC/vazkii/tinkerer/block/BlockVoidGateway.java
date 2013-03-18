@@ -6,6 +6,9 @@
 // Created @ 22 Feb 2013
 package vazkii.tinkerer.block;
 
+import java.util.Random;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,12 +36,21 @@ public class BlockVoidGateway extends BlockETContainer {
 
 	public BlockVoidGateway(int par1) {
 		super(par1, Material.iron);
+		setTickRandomly(true);
 	}
 
 	@Override
-    public int getRenderBlockPass() {
-        return 0;
-    }
+	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+		VoidEntry entry = VoidMap.theMap.getEntryAtCoord(par2, par4);
+		if(entry != null) {
+			ItemStack stack = entry.stack;
+			if(stack != null && stack.itemID < Block.blocksList.length) {
+				Block block = Block.blocksList[stack.itemID];
+				if(block != null)
+					block.randomDisplayTick(par1World, par2, par3, par4, par5Random);
+			}
+		}
+	}
 
 	@Override
     public boolean isOpaqueCube() {

@@ -9,13 +9,14 @@ package vazkii.tinkerer.research;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.Icon;
 import vazkii.tinkerer.client.helper.IconHelper;
-import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon;
 import vazkii.tinkerer.helper.MiscHelper;
+import vazkii.tinkerer.magic.Spell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -32,7 +33,15 @@ public class ResearchNode implements Comparable<ResearchNode> {
 
 	@SideOnly(Side.CLIENT)
 	public Icon icon;
-	UnboundIcon unboundIcon;
+
+	/** The object to convert into an icon, can be Item or
+	 * Spell and it'll convert accoringly depending on what
+	 * it is. If it's null it'll convert using the instance. **/
+	public Object iconObj;
+
+	/** For cooperation with iconObj, used as "metadata" for
+	 * the IconHelper methods, will be ignored if it's -1 **/
+	public int iconInteger = -1;
 
 	public String label, displayName;
 	public short index;
@@ -69,29 +78,24 @@ public class ResearchNode implements Comparable<ResearchNode> {
 
 	@SideOnly(Side.CLIENT)
 	public Icon bindIcon() {
-		IconRegister ir = IconHelper.researchSprites;
+		IconRegister ir = MiscHelper.getMc().renderEngine.field_94155_m;
 
-		if(unboundIcon == null)
-			return icon = IconHelper.forResearch(ir, this);
-		else {
-			switch(unboundIcon.getSpritesheet()) {
-				case ITEM : ir = MiscHelper.getMc().renderEngine.field_94154_l;
-							break;
+		if(iconObj instanceof Item)
+			return iconInteger != -1 ? (icon = IconHelper.forItem(ir, (Item) iconObj, iconInteger)) : (icon = IconHelper.forItem(ir, (Item) iconObj));
+		else if(iconObj instanceof Spell)
+			return iconInteger != -1 ? (icon = IconHelper.forSpell(ir, (Spell) iconObj, iconInteger)) : (icon = IconHelper.forSpell(ir, (Spell) iconObj));
 
-				case BLOCK : ir = MiscHelper.getMc().renderEngine.field_94155_m;
-							 break;
-
-				case MAGIC : ir = IconHelper.spellSprites;
-							 break;
-
-			}
-			return icon = unboundIcon.asIcon(ir);
-		}
+		return icon = IconHelper.forResearch(ir, this);
 	}
 
-	public ResearchNode setUnboundIcon(UnboundIcon icon) {
-		unboundIcon = icon;
+	public ResearchNode setIconObj(Object icon) {
+		iconObj = icon;
 		return this;
+	}
+
+	public ResearchNode setIconObj(Object icon, int i) {
+		iconInteger = i;
+		return setIconObj(icon);
 	}
 
 	public ResearchNode setIconicItem(ItemStack stack) {

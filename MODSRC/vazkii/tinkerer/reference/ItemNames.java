@@ -45,7 +45,8 @@ public final class ItemNames {
 							   MYSTICAL_TALISMAN_NAME = "mysticalTalisman",
 							   ATTUNED_TOME_NAME = "attunedTome",
 							   ROASTED_CARROT_NAME = "roastedCarrot",
-							   CARAMEL_NAME = "caramel";
+							   CARAMEL_NAME = "caramel",
+							   DARK_QUARTZ_NAME = "darkQuartz";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_GEM_DISPLAY_NAME = "Elementium Gem",
@@ -77,7 +78,8 @@ public final class ItemNames {
 							   MYSTICAL_TALISMAN_DISPLAY_NAME = "Withhold Talisman",
 							   ATTUNED_TOME_DISPLAY_NAME = "Attuned Tome",
 							   ROASTED_CARROT_DISPLAY_NAME = "Roasted Carrot",
-							   CARAMEL_DISPLAY_NAME = "Caramel";
+							   CARAMEL_DISPLAY_NAME = "Caramel",
+							   DARK_QUARTZ_DISPLAY_NAME = "Dark Quartz";
 
 	/** Gem Names **/
 	public static final String[] GEM_NAMES = {

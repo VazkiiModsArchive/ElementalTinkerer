@@ -133,9 +133,17 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		}
 		fontRenderer.setUnicodeFlag(false);
 
+
+		fontRenderer.drawStringWithShadow("\u2714", xStart + 149, yStart + 5, 0);
+		fontRenderer.drawStringWithShadow("\u2714", xStart + 150, yStart + 4, 0);
+		fontRenderer.drawStringWithShadow("\u2714", xStart + 151, yStart + 5, 0);
+		fontRenderer.drawStringWithShadow("\u2714", xStart + 150, yStart + 6, 0);
 		fontRenderer.drawStringWithShadow("\u2714", xStart + 150, yStart + 5, 0xFFFFFF);
+
 		if(((GuiInvisibleButton) buttonList.get(0)).isHovered())
-			RenderHelper.renderTooltip(par1, par2, "Done");
+			RenderHelper.renderTooltip(par1, par2, FormattingCode.AQUA + "Done");
+
+		GL11.glColor3f(1F, 1F, 1F);
 
 		if(node.getBoundRecipe() != null && isCompleted) {
 	        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);

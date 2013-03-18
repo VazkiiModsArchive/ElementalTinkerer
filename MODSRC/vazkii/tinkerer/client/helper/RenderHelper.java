@@ -19,6 +19,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureStitched;
 import net.minecraft.util.Icon;
 import net.minecraft.util.StringUtils;
@@ -50,13 +51,17 @@ import vazkii.tinkerer.research.ResearchNode;
  */
 public final class RenderHelper {
 
+	private static final RenderItem renderItem = new RenderItem();
+
 	/** Renders a 16x16 icon at the given positions from the
 	 * given spritesheet **/
 	public static void renderIcon(TextureStitched icon, double x, double y, double z) {
 		Minecraft mc = MiscHelper.getMc();
     	RenderEngine engine = mc.renderEngine;
-		engine.func_98187_b(icon.func_94215_i()); // VAZ_TODO This doesn't work!
-		drawTexturedModalRect(x, y, z, (int) icon.func_94206_g(), (int) icon.func_94206_g(), 16, 16);
+		engine.func_98187_b("/gui/items.png");
+		// It's binding "/gui/items.png" as that refers to a texture sheet.
+		// I use a hack to store my icons in there
+		renderItem.func_94149_a((int) x, (int) y, icon, 16, 16);
 	}
 
 	/** Renders a research icon at the given positions, if checkStatus is true,
@@ -66,7 +71,7 @@ public final class RenderHelper {
 		if(node == null)
     		return;
 
-		Icon icon = !checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.icon : ResearchHelper.clientResearch.isResearchCompleted(node.index) ? IconHelper.researchPendingIcon : IconHelper.researchUnknownIcon;
+		Icon icon = !checkStatus || ResearchHelper.clientResearch.isResearchCompleted(node.index) ? node.icon : ResearchHelper.clientResearch.isResearchDone(node.index) ? IconHelper.researchPendingIcon : IconHelper.researchUnknownIcon;
     	renderIcon((TextureStitched) icon, x, y, z);
 	}
 
@@ -79,32 +84,31 @@ public final class RenderHelper {
 	}
 
 	public static void renderSpellFrame(double x, double y, double z) {
-		GL11.glPushMatrix();
 		Minecraft mc = MiscHelper.getMc();
 		RenderEngine render = mc.renderEngine;
 		Icon icon = IconHelper.spellFrameIcon;
-		render.func_98187_b(icon.func_94215_i());
-		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		drawTexturedModalRect((x-1)*2, (y-1)*2, z*2, (int) icon.func_94206_g(), (int) icon.func_94206_g(), 36, 36);
-		GL11.glPopMatrix();
+		render.func_98187_b("/gui/items.png");
+		// It's binding "/gui/items.png" as that refers to a texture sheet.
+		// I use a hack to store my icons in there
+		renderItem.func_94149_a((int) x, (int) y, icon, 18, 18);
 	}
 
 	public static void renderCooldown(double x, double y, double z, int cooldown) {
 		if(cooldown > 0) {
+			GL11.glPushMatrix();
+			GL11.glScalef(0.5F, 0.5F, 0.5F);
 			String time = FormattingCode.RED + "" + FormattingCode.BOLD + StringUtils.ticksToElapsedTime(cooldown);
 			FontRenderer fr = MiscHelper.getMc().fontRenderer;
 			int timeStrWidth = fr.getStringWidth(time);
 			fr.drawStringWithShadow(time, (int) ((x + 6) * 2 - timeStrWidth), (int) ((y + 4) * 2), 0xFFFFFF);
+			GL11.glPopMatrix();
 			GL11.glColor3f(1F, 1F, 1F);
 		}
 	}
 
 	public static void renderSpellIconWithBackgroundAndFrame(Spell spell, double x, double y, double z) {
-		GL11.glPushMatrix();
-		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		renderSpellFrame(x, y, z);
-		renderIcon((TextureStitched) IconHelper.spellBackgroundIcon, x * 2, y, z * 2);
-		GL11.glPopMatrix();
+		renderSpellFrame(x - 1, y - 1, z);
+		renderIcon((TextureStitched) IconHelper.spellBackgroundIcon, x, y, z);
 		renderSpellIcon(spell, x, y, z);
 	}
 
@@ -307,7 +311,7 @@ public final class RenderHelper {
 				GL11.glPopMatrix();
 			}
 			renderSpellIconWithBackgroundAndFrame(spell, x - 8, y - 8, z);
-			if(spellData != null && spellData.spellCooldowns.containsKey(spellIndex)) {
+			if(!passives && spellData != null && spellData.spellCooldowns.containsKey(spellIndex)) {
 				int cooldown = spellData.spellCooldowns.get(spellIndex);
 				renderCooldown(x, y, z, cooldown);
 			}
@@ -373,7 +377,7 @@ public final class RenderHelper {
 	}
 
 	// Copy from Gui.drawTexturedModalRect.
-    public static void drawTexturedModalRect(double par1, double par2, double z, int par3, int par4, int par5, int par6) {
+    public static void drawTexturedModalRect(double par1, double par2, double z, double par3, double par4, double par5, double par6) {
         float var7 = 0.00390625F;
         float var8 = 0.00390625F;
         Tessellator var9 = Tessellator.instance;

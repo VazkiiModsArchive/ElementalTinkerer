@@ -75,7 +75,8 @@ public final class ResearchReference {
 							  ID_UNBOUND_BOOK = 65,
 							  ID_SPELLBIND_CLOTH = 66,
 							  ID_WITHHOLD_TALISMAN = 67,
-							  ID_NEW_FOOD = 68;
+							  ID_NEW_FOOD = 68,
+							  ID_DARK_QUARTZ = 69;
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
@@ -87,7 +88,7 @@ public final class ResearchReference {
 							   LABEL_ELEMENTAL_BARK = ItemNames.ELEMENTAL_BARK_ITEM_NAME,
 							   LABEL_ELEMENTIUM_DUST = ItemNames.ELEMENTIUM_DUST_NAME,
 							   LABEL_ELEMENTIUM_INGOT = ItemNames.ELEMENTIUM_INGOT_NAME,
-							   LABEL_WAND = ItemNames.WAND_NAME + "%s",
+							   LABEL_WAND = ItemNames.WAND_NAME + "Rsc%s",
 							   LABEL_ELEMENTAL_TINKERING = "elementalTinkering",
 							   LABEL_CATALYST_CAPSULE = BlockNames.CATALYST_CAPSULE_NAME,
 							   LABEL_ATTUNER = BlockNames.ATTUNER_NAME,
@@ -126,9 +127,10 @@ public final class ResearchReference {
 							   LABEL_ADV_CORE_LOCATION = "advCoreLocation",
 							   LABEL_ULTIMATE_CORE_LOCATION = "ultimateCoreLocation",
 							   LABEL_UNBOUND_BOOK = ItemNames.UNBOUND_BOOK_NAME,
-							   LABEL_SPELLBIND_CLOTH = ItemNames.SPELLBIND_CLOTH_NAME,
+							   LABEL_SPELLBIND_CLOTH = ItemNames.SPELLBIND_CLOTH_NAME + "Rsc",
 							   LABEL_WITHHOLD_TALISMAN = ItemNames.MYSTICAL_TALISMAN_NAME,
-							   LABEL_NEW_FOOD = "newFood";
+							   LABEL_NEW_FOOD = "newFood",
+							   LABEL_DARK_QUARTZ = ItemNames.DARK_QUARTZ_NAME;
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,
@@ -179,7 +181,8 @@ public final class ResearchReference {
 							   DISPLAY_NAME_UNBOUND_BOOK = ItemNames.UNBOUND_BOOK_DISPLAY_NAME + "s",
 							   DISPLAY_NAME_SPELLBIND_CLOTH = ItemNames.SPELLBIND_CLOTH_DISPLAY_NAME,
 							   DISPLAY_NAME_WITHHOLD_TALISMAN = ItemNames.MYSTICAL_TALISMAN_DISPLAY_NAME,
-							   DISPLAY_NAME_NEW_FOOD = "New Food";
+							   DISPLAY_NAME_NEW_FOOD = "New Food",
+							   DISPLAY_NAME_DARK_QUARTZ = ItemNames.DARK_QUARTZ_DISPLAY_NAME;
 
 	/** The Compound Tag name of the Research Data **/
 	public static final String COMPOUND_TAG_NAME = "researchData";

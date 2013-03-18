@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.item.ElementalTinkererItems;
+import vazkii.tinkerer.item.ItemDarkQuartzBlock;
+import vazkii.tinkerer.item.ItemDarkQuartzSlab;
 import vazkii.tinkerer.item.ItemMetadataCompatBlock;
 import vazkii.tinkerer.reference.BlockIDs;
 import vazkii.tinkerer.reference.BlockNames;
@@ -42,7 +44,11 @@ public final class ElementalTinkererBlocks {
 						waveInputter,
 						dislocator,
 						scavenger,
-						incinerator;
+						incinerator,
+						darkQuartz,
+						darkQuartzStairs,
+						darkQuartzSlab,
+						darkQuartzFullSlab;
 
 	public static void init() {
 		// Construct the blocks
@@ -132,6 +138,25 @@ public final class ElementalTinkererBlocks {
 						.setStepSound(Block.soundStoneFootstep)
 						.setUnlocalizedName(BlockNames.INCINERATOR_NAME);
 
+		darkQuartz = new BlockDarkQuartz(BlockIDs.darkQuartz)
+						.setHardness(0.8F)
+						.setUnlocalizedName(BlockNames.DARK_QUARTZ_NAME);
+
+		darkQuartzStairs = new BlockETStairs(BlockIDs.darkQuartzStairs, darkQuartz, 0)
+						 .setUnlocalizedName(BlockNames.DARK_QUARTZ_STAIRS_NAME);
+
+		darkQuartzSlab = new BlockDarkQuartzSlab(BlockIDs.darkQuartzSlab, false)
+						 .setHardness(2.0F)
+						 .setResistance(10.0F)
+						 .setStepSound(Block.soundStoneFootstep)
+						 .setUnlocalizedName(BlockNames.DARK_QUARTZ_SLAB_NAME);
+
+		darkQuartzFullSlab = new BlockDarkQuartzSlab(BlockIDs.darkQuartzFullSlab, true)
+						 .setHardness(2.0F)
+						 .setResistance(10.0F)
+						 .setStepSound(Block.soundStoneFootstep)
+						 .setUnlocalizedName(BlockNames.DARK_QUARTZ_FULL_SLAB_NAME);
+
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
 		GameRegistry.registerBlock(elementiumOreSpawner, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_SPAWNER_NAME);
@@ -147,6 +172,10 @@ public final class ElementalTinkererBlocks {
 		GameRegistry.registerBlock(dislocator, BlockNames.DISLOCATOR_NAME);
 		GameRegistry.registerBlock(scavenger, BlockNames.SCAVENGER_NAME);
 		GameRegistry.registerBlock(incinerator, BlockNames.INCINERATOR_NAME);
+		GameRegistry.registerBlock(darkQuartz, ItemDarkQuartzBlock.class, BlockNames.DARK_QUARTZ_NAME);
+		GameRegistry.registerBlock(darkQuartzStairs, BlockNames.DARK_QUARTZ_STAIRS_NAME);
+		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, BlockNames.DARK_QUARTZ_SLAB_NAME);
+		GameRegistry.registerBlock(darkQuartzFullSlab, ItemDarkQuartzSlab.class, BlockNames.DARK_QUARTZ_FULL_SLAB_NAME);
 
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
@@ -163,6 +192,7 @@ public final class ElementalTinkererBlocks {
 		LanguageRegistry.addName(dislocator, BlockNames.DISLOCATOR_DISPLAY_NAME);
 		LanguageRegistry.addName(scavenger, BlockNames.SCAVENGER_DISPLAY_NAME);
 		LanguageRegistry.addName(incinerator, BlockNames.INCINERATOR_DISPLAY_NAME);
+		LanguageRegistry.addName(darkQuartzStairs, BlockNames.DARK_QUARTZ_STAIRS_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumOre, 1, -1), ResearchReference.ID_ELEMENTIUM_ORE);

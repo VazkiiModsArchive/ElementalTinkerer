@@ -6,9 +6,6 @@
 // Created @ 19 Feb 2013
 package vazkii.tinkerer.research;
 
-import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon;
-import vazkii.tinkerer.client.helper.IconHelper.UnboundIcon.Spritesheet;
-import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.reference.ResearchReference;
 
 /**
@@ -23,7 +20,6 @@ public class ResearchNodeEnderCatalyst extends ResearchNode {
 
 	public ResearchNodeEnderCatalyst(short index, String label, String displayName, ResearchType type) {
 		super(index, label, displayName, type);
-		setUnboundIcon(new UnboundIcon(Spritesheet.ITEM, ElementalTinkererItems.catalyst, 12 + index - ResearchReference.ID_CATALYST_START));
 	}
 
 	@Override

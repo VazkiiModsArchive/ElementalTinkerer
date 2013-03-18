@@ -20,7 +20,6 @@ import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.ItemIDs;
 import vazkii.tinkerer.reference.ItemNames;
 import vazkii.tinkerer.reference.ResearchReference;
-import vazkii.tinkerer.reference.ResourcesReference;
 import vazkii.tinkerer.research.ResearchLibrary;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -62,7 +61,8 @@ public final class ElementalTinkererItems {
 					   mysticalTalisman,
 					   attunedTome,
 					   roastedCarrot,
-					   caramel;
+					   caramel,
+					   darkQuartz;
 
 	public static EnumToolMaterial orichalcumToolMaterial;
 	public static EnumArmorMaterial orichalcumArmorMaterial;
@@ -94,10 +94,10 @@ public final class ElementalTinkererItems {
 		orichalcumSpade = new ItemETTool(ItemIDs.orichalcumSpade, orichalcumToolMaterial, 0).setUnlocalizedName(ItemNames.ORICHALCUM_SPADE_NAME);
 		orichalcumPick = new ItemETTool(ItemIDs.orichalcumPick, orichalcumToolMaterial, 1).setUnlocalizedName(ItemNames.ORICHALCUM_PICK_NAME);
 		orichalcumHatchet = new ItemETTool(ItemIDs.orichalcumHatchet, orichalcumToolMaterial, 2).setUnlocalizedName(ItemNames.ORICHALCUM_HATCHET_NAME);
-		orichalcumHelmet = new ItemOrichalcumArmor(ItemIDs.orichalcumHelmet, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_HELMET, 0).setUnlocalizedName(ItemNames.ORICHALCUM_HELMET_NAME);
-		orichalcumChestplate = new ItemOrichalcumArmor(ItemIDs.orichalcumChestplate, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_CHESTPLATE, 1).setUnlocalizedName(ItemNames.ORICHALCUM_CHESTPLATE_NAME);
-		orichalcumPlatelegs = new ItemOrichalcumArmor(ItemIDs.orichalcumPlatelegs, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_PLATELEGS, 2).setUnlocalizedName(ItemNames.ORICHALCUM_PLATELEGS_NAME);
-		orichalcumBoots = new ItemOrichalcumArmor(ItemIDs.orichalcumBoots, orichalcumArmorMaterial, ResourcesReference.ITEM_INDEX_ORICHALCUM_BOOTS, 3).setUnlocalizedName(ItemNames.ORICHALCUM_BOOTS_NAME);
+		orichalcumHelmet = new ItemOrichalcumArmor(ItemIDs.orichalcumHelmet, orichalcumArmorMaterial, 0).setUnlocalizedName(ItemNames.ORICHALCUM_HELMET_NAME);
+		orichalcumChestplate = new ItemOrichalcumArmor(ItemIDs.orichalcumChestplate, orichalcumArmorMaterial, 1).setUnlocalizedName(ItemNames.ORICHALCUM_CHESTPLATE_NAME);
+		orichalcumPlatelegs = new ItemOrichalcumArmor(ItemIDs.orichalcumPlatelegs, orichalcumArmorMaterial, 2).setUnlocalizedName(ItemNames.ORICHALCUM_PLATELEGS_NAME);
+		orichalcumBoots = new ItemOrichalcumArmor(ItemIDs.orichalcumBoots, orichalcumArmorMaterial, 3).setUnlocalizedName(ItemNames.ORICHALCUM_BOOTS_NAME);
 		locatingCore = new ItemLocationCore(ItemIDs.locatingCore).setUnlocalizedName(ItemNames.LOCATING_CORE_NAME);
 		unboundBook = new ItemET(ItemIDs.unboundBook).setUnlocalizedName(ItemNames.UNBOUND_BOOK_NAME);
 		spellbindCloth = new ItemSpellbindCloth(ItemIDs.spellbindCloth).setUnlocalizedName(ItemNames.SPELLBIND_CLOTH_NAME);
@@ -105,6 +105,7 @@ public final class ElementalTinkererItems {
 		attunedTome = new ItemAttunedTome(ItemIDs.attunedTome).setUnlocalizedName(ItemNames.ATTUNED_TOME_NAME);
 		roastedCarrot = new ItemETFood(ItemIDs.roastedCarrot, 6, 0.4F, false).setUnlocalizedName(ItemNames.ROASTED_CARROT_NAME);
 		caramel = new ItemETFood(ItemIDs.caramel, 4, 0.4F, false).setPotionEffect(Potion.moveSpeed.id, 15, 0, 1F).setUnlocalizedName(ItemNames.CARAMEL_NAME);
+		darkQuartz = new ItemET(ItemIDs.darkQuartz).setUnlocalizedName(ItemNames.DARK_QUARTZ_NAME);
 
 		// Name the items
 		LanguageRegistry.addName(elementiumGem, ItemNames.ELEMENTIUM_GEM_DISPLAY_NAME);
@@ -132,6 +133,7 @@ public final class ElementalTinkererItems {
 		LanguageRegistry.addName(attunedTome, ItemNames.ATTUNED_TOME_DISPLAY_NAME);
 		LanguageRegistry.addName(roastedCarrot, ItemNames.ROASTED_CARROT_DISPLAY_NAME);
 		LanguageRegistry.addName(caramel, ItemNames.CARAMEL_DISPLAY_NAME);
+		LanguageRegistry.addName(darkQuartz, ItemNames.DARK_QUARTZ_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumGem), ResearchReference.ID_ELEMENTIUM_GEM);
@@ -153,6 +155,7 @@ public final class ElementalTinkererItems {
 		ResearchHelper.setIconicItem(new ItemStack(locatingCore, 1, 0), ResearchReference.ID_BASIC_CORE_LOCATION);
 		ResearchHelper.setIconicItem(new ItemStack(locatingCore, 1, 1), ResearchReference.ID_ADV_CORE_LOCATION);
 		ResearchHelper.setIconicItem(new ItemStack(locatingCore, 1, 2), ResearchReference.ID_ULTIMATE_CORE_LOCATION);
+		ResearchHelper.setIconicItem(new ItemStack(darkQuartz), ResearchReference.ID_DARK_QUARTZ);
 	}
 
 	public static void initItemRecipes() {
@@ -243,5 +246,30 @@ public final class ElementalTinkererItems {
 
 		// Caramel Recipe
 		FurnaceRecipes.smelting().addSmelting(Item.sugar.itemID, new ItemStack(ElementalTinkererItems.caramel), 0.2F);
+
+		// Dark Quartz Recipe
+		CraftingManager.getInstance().addRecipe(new ItemStack(darkQuartz, 8),
+				"QQQ", "QCQ", "QQQ",
+				'Q', Item.field_94583_ca,
+				'C', new ItemStack(Item.coal, 1, -1));
+		ResearchLibrary.allNodes.get(ResearchReference.ID_DARK_QUARTZ).bindLatestCraftingRecipe();
+		CraftingManager.getInstance().addRecipe(new ItemStack(ElementalTinkererBlocks.darkQuartz),
+				"QQ", "QQ",
+				'Q', darkQuartz);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ElementalTinkererBlocks.darkQuartzSlab, 6),
+				"QQQ",
+				'Q', ElementalTinkererBlocks.darkQuartz);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ElementalTinkererBlocks.darkQuartz, 2, 2),
+				"Q", "Q",
+				'Q', ElementalTinkererBlocks.darkQuartz);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ElementalTinkererBlocks.darkQuartz, 1, 1),
+				"Q", "Q",
+				'Q', ElementalTinkererBlocks.darkQuartzSlab);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ElementalTinkererBlocks.darkQuartzStairs, 4),
+				"  Q", " QQ", "QQQ",
+				'Q', ElementalTinkererBlocks.darkQuartz);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ElementalTinkererBlocks.darkQuartzStairs, 4),
+				"Q  ", "QQ ", "QQQ",
+				'Q', ElementalTinkererBlocks.darkQuartz);
 	}
 }

@@ -190,7 +190,7 @@ items that need to contain
 the energy unleashed by
 the elements.
 #----------------------------------------------------
-wand0:
+wandRsc0:
 A wand of Elemental Magic
 infused with the properties
 of the Water Element. This
@@ -206,7 +206,7 @@ press C (by default). This
 only applies when spells
 are equipped.
 #----------------------------------------------------
-wand1:
+wandRsc1:
 A wand of Elemental Magic
 infused with the properties
 of the Air Element. This
@@ -222,7 +222,7 @@ press C (by default). This
 only applies when spells
 are equipped.
 #----------------------------------------------------
-wand2:
+wandRsc2:
 A wand of Elemental Magic
 infused with the properties
 of the Earth Element. This
@@ -238,7 +238,7 @@ press C (by default). This
 only applies when spells
 are equipped.
 #----------------------------------------------------
-wand3:
+wandRsc3:
 A wand of Elemental Magic
 infused with the properties
 of the Fire Element. This
@@ -630,7 +630,7 @@ would have, but it can be used
 for research in the Elemental
 Desk.
 #----------------------------------------------------
-spellbindCloth:
+spellbindClothRsc:
 This cloth, when set into a
 crafting grid along with one
 enchanted item, it'll siphon
@@ -662,4 +662,18 @@ a furnace, a carrot or a
 piece of sugar, respectively.
 Caramel gives a slight speed
 increase after being eaten.
+#----------------------------------------------------
+darkQuartz:
+An Elementalist always needs
+to have a spiffy looking home.
+Home is where the heart is, of
+course. While Quartz Blocks can
+do the feature of Marble, the
+new Dark Quartz Blocks can
+work as basalt, they are pretty 
+much an inverted color scheme
+version of Quartz blocks, and 
+are crafted the same way as 
+regular Quartz Blocks, but with 
+the Dark Quartz item instead.
 #----------------------------------------------------

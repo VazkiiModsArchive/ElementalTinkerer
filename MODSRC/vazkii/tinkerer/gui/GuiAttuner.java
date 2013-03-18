@@ -64,8 +64,10 @@ public class GuiAttuner extends GuiScreen {
         List<Short> spells = lookingAtSpells ? SpellHelper.getAvailableSpells(ResearchHelper.clientResearch)
         						: SpellHelper.getAvailablePassives(ResearchHelper.clientResearch);
         int totalPages = (int) Math.ceil(spells.size() / 12D);
-        String pageStr = page + 1 + "/" + totalPages;
+        String pageStr = page + 1 + "/" + Math.max(1, totalPages);
         fontRenderer.drawStringWithShadow(pageStr, xStart + 157, yStart + 94, 0xFFFFFF);
+        if(totalPages == 0)
+        	fontRenderer.drawStringWithShadow(FormattingCode.RED + "No " + (lookingAtSpells ? "Spells" : "Passives"), xStart + 149, yStart + 8, 0xFFFFFF);
 
         drawSpells : {
             for(int i = 0; i < 3; i++) {
@@ -79,6 +81,10 @@ public class GuiAttuner extends GuiScreen {
             		Spell spell = lookingAtSpells ? SpellLibrary.allSpells.get(spells.get(index))
             						: SpellLibrary.allPassives.get(spells.get(index));
             		RenderHelper.renderSpellIconWithBackgroundAndFrame(spell, x, y, zLevel);
+        			if(lookingAtSpells && spell != null && SpellHelper.clientSpells.spellCooldowns.containsKey(spell.index)) {
+        				int cooldown = SpellHelper.clientSpells.spellCooldowns.get(spell.index);
+        				RenderHelper.renderCooldown(x + 8, y + 8, zLevel, cooldown);
+        			}
             		if(par1 >= x && par1 <= x + 18 && par2 >= y && par2 <= y + 18) {
             			spellLooking = spell;
             			add = true;

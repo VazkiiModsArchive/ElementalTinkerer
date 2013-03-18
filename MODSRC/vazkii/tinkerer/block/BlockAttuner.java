@@ -41,7 +41,7 @@ public class BlockAttuner extends BlockETContainer {
 
 	@Override
 	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		return par1 == 0 || par1 == 1 ? icons[0] : icons[1];
+		return par1 == 0 || par1 == 1 ? icons[1] : icons[0];
 	}
 
 	@Override

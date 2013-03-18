@@ -30,7 +30,11 @@ public final class BlockNames {
 							   WAVE_INPUTTER_NAME = "waveInputter",
 							   DISLOCATOR_NAME = "dislocator",
 							   SCAVENGER_NAME = "scavenger",
-							   INCINERATOR_NAME = "incinerator";
+							   INCINERATOR_NAME = "incinerator",
+							   DARK_QUARTZ_NAME = "darkQuartzBlock",
+							   DARK_QUARTZ_STAIRS_NAME = "darkQuartzStairs",
+							   DARK_QUARTZ_SLAB_NAME = "darkQuartzSlab",
+							   DARK_QUARTZ_FULL_SLAB_NAME = "darkQuartzFullSlab";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
@@ -45,5 +49,14 @@ public final class BlockNames {
 							   WAVE_INPUTTER_DISPLAY_NAME = "Wave Inputter",
 							   DISLOCATOR_DISPLAY_NAME = "Dislocator",
 							   SCAVENGER_DISPLAY_NAME = "Scavenger",
-							   INCINERATOR_DISPLAY_NAME = "Incinerator";
+							   INCINERATOR_DISPLAY_NAME = "Incinerator",
+							   DARK_QUARTZ_STAIRS_DISPLAY_NAME = "Dark Quartz Stairs",
+							   DARK_QUARTZ_SLAB_DISPLAY_NAME = "Dark Quartz Slab";
+
+	/** Dark Quartz Block Names **/
+	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {
+		"Block of Dark Quartz",
+		"Chiseled Dark Quartz Block",
+		"Pillar Dark Quartz Block"
+	};
 }

@@ -10,6 +10,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Icon;
 import vazkii.tinkerer.client.helper.IconHelper;
+import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.research.PlayerResearch;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -41,7 +42,7 @@ public abstract class Spell {
 
 	@SideOnly(Side.CLIENT)
 	public void bindIcon() {
-		icon = IconHelper.forSpell(IconHelper.spellSprites, this);
+		icon = IconHelper.forSpell(MiscHelper.getMc().renderEngine.field_94155_m, this);
 	}
 
 	public Spell bindNode(short node) {

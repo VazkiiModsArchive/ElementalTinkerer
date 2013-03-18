@@ -14,7 +14,7 @@ import vazkii.tinkerer.magic.SpellType;
 /**
  * PassiveSpellImpl
  *
- * TODO Add Desc.
+ * Implementation of Passive Spells.
  *
  * @author Vazkii
  */

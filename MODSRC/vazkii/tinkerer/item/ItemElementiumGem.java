@@ -36,6 +36,9 @@ public class ItemElementiumGem extends ItemET {
 	public void func_94581_a(IconRegister par1IconRegister) {
 		for(int i = 0; i < 8; i++)
 			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
+
+		// This is sort of a hack for my mod's other textures to work:
+		IconHelper.initCustonSpritesheets();
 	}
 
 	@Override

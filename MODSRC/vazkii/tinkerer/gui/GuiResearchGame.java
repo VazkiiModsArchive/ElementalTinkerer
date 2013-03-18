@@ -12,6 +12,7 @@ import java.util.Random;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.Icon;
 
 import org.lwjgl.opengl.GL11;
@@ -190,10 +191,9 @@ public class GuiResearchGame extends GuiScreen {
 
         GL11.glPushMatrix();
         GL11.glScalef(8F, 8F, 8F);
-        mc.renderEngine.func_98187_b(background.func_94215_i());
-        drawTexturedModalRect(xPos / 8, yPos / 8, (int) background.func_94209_e() + xSquare * 4, (int) background.func_94206_g() + ySquare * 4, 4, 4);
-        mc.renderEngine.func_98187_b(icon.func_94215_i());
-        drawTexturedModalRect(xPos / 8, yPos / 8, (int) icon.func_94209_e() + xSquare * 4, (int) icon.func_94206_g() + ySquare * 4, 4, 4);
+        mc.renderEngine.func_98187_b("/gui/items.png");
+        drawIcon(background, xPos / 8, yPos / 8, xSquare, ySquare);
+        drawIcon(icon, xPos / 8, yPos / 8, xSquare, ySquare);
         GL11.glPopMatrix();
 
         GL11.glPushMatrix();
@@ -201,6 +201,31 @@ public class GuiResearchGame extends GuiScreen {
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         fontRenderer.drawStringWithShadow("" + (square + 1), xPos * 2, yPos * 2, 0xFFFFFF);
         GL11.glPopMatrix();
+	}
+
+	public void drawIcon(Icon icon, int x, int y, int xBox, int yBox) {
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.startDrawingQuads();
+        float xOrigin = icon.func_94209_e();
+        float xEnd = icon.func_94212_f();
+
+        float yOrigin = icon.func_94206_g();
+        float yEnd = icon.func_94210_h();
+
+        float xDistance = xEnd - xOrigin;
+        float yDistance = yEnd - yOrigin;
+
+        float actualXStart = xOrigin + xDistance / 4 * xBox;
+        float actualYStart = yOrigin + yDistance / 4 * yBox;
+
+        float actualXEnd = xOrigin + xDistance / 4 * (xBox + 1);
+        float actualYEnd = yOrigin + yDistance / 4 * (yBox + 1);
+
+        tessellator.addVertexWithUV((x + 0), (y + 4), zLevel, actualXStart, actualYEnd);
+        tessellator.addVertexWithUV((x + 4), (y + 4), zLevel, actualXEnd, actualYEnd);
+        tessellator.addVertexWithUV((x + 4), (y + 0), zLevel, actualXEnd, actualYStart);
+        tessellator.addVertexWithUV((x + 0), (y + 0), zLevel, actualXStart, actualYStart);
+        tessellator.draw();
 	}
 
 	public void move(int x, int y) {

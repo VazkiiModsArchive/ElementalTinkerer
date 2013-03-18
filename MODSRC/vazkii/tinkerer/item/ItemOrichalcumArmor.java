@@ -26,8 +26,8 @@ import vazkii.tinkerer.reference.ResourcesReference;
  */
 public class ItemOrichalcumArmor extends ItemArmor implements IArmorTextureProvider {
 
-	public ItemOrichalcumArmor(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4) {
-		super(par1 - MiscReference.ITEM_INDEX_SHIFT, par2EnumArmorMaterial, 0, par4);
+	public ItemOrichalcumArmor(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3) {
+		super(par1 - MiscReference.ITEM_INDEX_SHIFT, par2EnumArmorMaterial, 0, par3);
 		// Pass in accurate IDs, negating the index shift
 		setCreativeTab(CreativeTabET.INSTANCE);
 	}

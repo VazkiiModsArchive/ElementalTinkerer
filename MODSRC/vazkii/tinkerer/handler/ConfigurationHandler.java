@@ -70,11 +70,16 @@ public final class ConfigurationHandler {
 		BlockIDs.voidGateway = config.getBlock(BlockNames.VOID_GATEWAY_NAME, BlockIDs.DEFAULT_VOID_GATEWAY).getInt(BlockIDs.DEFAULT_VOID_GATEWAY);
 		BlockIDs.voidNetwork = config.getBlock(BlockNames.VOID_NETWORK_NAME, BlockIDs.DEFAULT_VOID_NETWORK).getInt(BlockIDs.DEFAULT_VOID_NETWORK);
 		// RESERVED
+		// RESERVED
 		BlockIDs.glowstoneAir = config.getBlock(BlockNames.GLOWSTONE_AIR_NAME, BlockIDs.DEFAULT_GLOWSTONE_AIR).getInt(BlockIDs.DEFAULT_GLOWSTONE_AIR);
 		BlockIDs.waveInputter = config.getBlock(BlockNames.WAVE_INPUTTER_NAME, BlockIDs.DEFAULT_WAVE_INPUTTER).getInt(BlockIDs.DEFAULT_WAVE_INPUTTER);
 		BlockIDs.dislocator = config.getBlock(BlockNames.DISLOCATOR_NAME, BlockIDs.DEFAULT_DISLOCATOR).getInt(BlockIDs.DEFAULT_DISLOCATOR);
 		BlockIDs.scavenger = config.getBlock(BlockNames.SCAVENGER_NAME, BlockIDs.DEFAULT_SCAVENGER).getInt(BlockIDs.DEFAULT_SCAVENGER);
 		BlockIDs.incinerator = config.getBlock(BlockNames.INCINERATOR_NAME, BlockIDs.DEFAULT_INCINERATOR).getInt(BlockIDs.DEFAULT_INCINERATOR);
+		BlockIDs.darkQuartz = config.getBlock(BlockNames.DARK_QUARTZ_NAME, BlockIDs.DEFAULT_DARK_QUARTZ).getInt(BlockIDs.DEFAULT_DARK_QUARTZ);
+		BlockIDs.darkQuartzStairs = config.getBlock(BlockNames.DARK_QUARTZ_STAIRS_NAME, BlockIDs.DEFAULT_DARK_QUARTZ_STAIRS).getInt(BlockIDs.DEFAULT_DARK_QUARTZ_STAIRS);
+		BlockIDs.darkQuartzSlab = config.getBlock(BlockNames.DARK_QUARTZ_SLAB_NAME, BlockIDs.DEFAULT_DARK_QUARTZ_SLAB).getInt(BlockIDs.DEFAULT_DARK_QUARTZ_SLAB);
+		BlockIDs.darkQuartzFullSlab = config.getBlock(BlockNames.DARK_QUARTZ_FULL_SLAB_NAME, BlockIDs.DEFAULT_DARK_QUARTZ_FULL_SLAB).getInt(BlockIDs.DEFAULT_DARK_QUARTZ_SLAB);
 
 		// Load Item IDs
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);
@@ -107,6 +112,7 @@ public final class ConfigurationHandler {
 		ItemIDs.attunedTome = config.getItem(ItemNames.ATTUNED_TOME_NAME, ItemIDs.DEFAULT_ATTUNED_TOME).getInt(ItemIDs.DEFAULT_ATTUNED_TOME);
 		ItemIDs.roastedCarrot = config.getItem(ItemNames.ROASTED_CARROT_NAME, ItemIDs.DEFAULT_ROASTED_CARROT).getInt(ItemIDs.DEFAULT_ROASTED_CARROT);
 		ItemIDs.caramel = config.getItem(ItemNames.CARAMEL_NAME, ItemIDs.DEFAULT_CARAMEL).getInt(ItemIDs.DEFAULT_CARAMEL);
+		ItemIDs.darkQuartz = config.getItem(ItemNames.DARK_QUARTZ_NAME, ItemIDs.DEFAULT_DARK_QUARTZ).getInt(ItemIDs.DEFAULT_DARK_QUARTZ);
 
 		// Load Potion IDs
 		PotionReference.idFrozen = config.get(ConfigurationNodes.CATEGORY_POTION_IDS, PotionReference.NAME_FROZEN, PotionReference.ID_DEFAULT_FROZEN).getInt(PotionReference.ID_DEFAULT_FROZEN);

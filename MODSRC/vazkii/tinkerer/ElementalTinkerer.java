@@ -163,15 +163,15 @@ public class ElementalTinkerer {
 		// Proxy: Register the Block Renders
 		proxy.registerBlockRenders();
 
+		// Proxy: Init the Mod's Custom Spritesheets
+		//proxy.initCustomSpritesheets();
+
 		// Proxy: Register the mod's packets
 		proxy.registerPackets();
 	}
 
 	@PostInit
 	public void onPostInit(FMLPostInitializationEvent event) {
-		// Proxy: Init the Mod's Custom Spritesheets
-		proxy.initCustomSpritesheets();
-
 		// Register the Thaumcraft 3 compatibility stuff
 	    Thaumcraft3Compat.init();
 	}
