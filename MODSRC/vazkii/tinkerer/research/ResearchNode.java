@@ -66,6 +66,7 @@ public class ResearchNode implements Comparable<ResearchNode> {
 
 	/** The item that represents this research. This item will be
 	 * used when checking for researches' item recipes. **/
+	@Deprecated
 	private ItemStack iconicItem;
 
 	public ResearchNode(short index, String label, String displayName, ResearchType type) {
@@ -98,6 +99,7 @@ public class ResearchNode implements Comparable<ResearchNode> {
 		return setIconObj(icon);
 	}
 
+	@Deprecated
 	public ResearchNode setIconicItem(ItemStack stack) {
 		iconicItem = stack;
 		return this;
@@ -158,6 +160,7 @@ public class ResearchNode implements Comparable<ResearchNode> {
 		return isDefaultEnabled;
 	}
 
+	@Deprecated
 	public ItemStack getIconicItem() {
 		return iconicItem;
 	}

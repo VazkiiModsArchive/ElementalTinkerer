@@ -28,7 +28,6 @@ import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.FormattingCode;
 import vazkii.tinkerer.reference.GuiReference;
 import vazkii.tinkerer.reference.ResourcesReference;
-import vazkii.tinkerer.research.PlayerResearch;
 import vazkii.tinkerer.research.ResearchLibrary;
 import vazkii.tinkerer.research.ResearchNode;
 import vazkii.tinkerer.research.TinkeringAltarRecipe;
@@ -161,16 +160,12 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		if(tooltipStack != null) {
 			List<String> tooltipData = tooltipStack.getTooltip(MiscHelper.getClientPlayer(), false);
 
-			PlayerResearch research = ResearchHelper.clientResearch;
-			for(Short s : research.researchesDone.keySet()) {
-				ResearchNode node = ResearchLibrary.allNodes.get(s);
-				if(MiscHelper.areStacksEqualIgnoreSize(node.getIconicItem(), tooltipStack) && node != this.node) {
-					redirectResearch = node;
+			short researchID = ResearchHelper.getIconicItem(tooltipStack);
+				if(researchID != -1 && researchID != node.index) {
+					redirectResearch = ResearchLibrary.allNodes.get(researchID);
 					tooltipData.add(FormattingCode.GRAY + "(Click for Entry)");
-					break;
 				}
-				redirectResearch = null;
-			}
+				else redirectResearch = null;
 
 			RenderHelper.renderTooltip(relativeMouseX, relativeMouseY, tooltipData);
 			if(tooltipContainerStack != null)

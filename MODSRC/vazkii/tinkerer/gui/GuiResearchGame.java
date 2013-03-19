@@ -221,10 +221,10 @@ public class GuiResearchGame extends GuiScreen {
         float actualXEnd = xOrigin + xDistance / 4 * (xBox + 1);
         float actualYEnd = yOrigin + yDistance / 4 * (yBox + 1);
 
-        tessellator.addVertexWithUV((x + 0), (y + 4), zLevel, actualXStart, actualYEnd);
-        tessellator.addVertexWithUV((x + 4), (y + 4), zLevel, actualXEnd, actualYEnd);
-        tessellator.addVertexWithUV((x + 4), (y + 0), zLevel, actualXEnd, actualYStart);
-        tessellator.addVertexWithUV((x + 0), (y + 0), zLevel, actualXStart, actualYStart);
+        tessellator.addVertexWithUV(x + 0, y + 4, zLevel, actualXStart, actualYEnd);
+        tessellator.addVertexWithUV(x + 4, y + 4, zLevel, actualXEnd, actualYEnd);
+        tessellator.addVertexWithUV(x + 4, y + 0, zLevel, actualXEnd, actualYStart);
+        tessellator.addVertexWithUV(x + 0, y + 0, zLevel, actualXStart, actualYStart);
         tessellator.draw();
 	}
 

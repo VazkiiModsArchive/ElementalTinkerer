@@ -41,7 +41,8 @@ public final class ConfigurationHandler {
 						  elementiumIngotAnimate = ConfigurationNodes.DEFAULT_ELEMENTIUM_INGOT_ANIMATE,
 						  vignetteLowHealth = true,
 						  vignetteFrozen = true,
-						  vignettePoison = true;
+						  vignettePoison = true,
+						  safeElementiumOre = false;
 
 	/** Player to hold the shared research, this player will keep the
 	 * research data for the entire server and all the players in it,
@@ -131,6 +132,12 @@ public final class ConfigurationHandler {
 		Property researchShareProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_RESEARCH_SHARE, ResearchReference.CONFIG_SHARE_WILDCARD);
 		researchShareProp.comment = ConfigurationNodes.COMMENT_RESEARCH_SHARE;
 		sharedResearch = researchShareProp.getString();
+
+		// Load, and comment the Safe Elementium node
+		// (if on, no mobs will be spawned when mining elementium)
+		Property safeElementiumProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_SAFE_ELEMENTIUM, false);
+		researchShareProp.comment = ConfigurationNodes.COMMENT_SAFE_ELEMENTIUM;
+		safeElementiumOre = safeElementiumProp.getBoolean(false);
 
 		// Save the config if anything went wrong and happened to need changing
 		config.save();

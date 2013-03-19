@@ -251,8 +251,12 @@ public final class ElementalTinkererItems {
 		CraftingManager.getInstance().addRecipe(new ItemStack(darkQuartz, 8),
 				"QQQ", "QCQ", "QQQ",
 				'Q', Item.field_94583_ca,
-				'C', new ItemStack(Item.coal, 1, -1));
+				'C', Item.coal);
 		ResearchLibrary.allNodes.get(ResearchReference.ID_DARK_QUARTZ).bindLatestCraftingRecipe();
+		CraftingManager.getInstance().addRecipe(new ItemStack(darkQuartz, 8),
+				"QQQ", "QCQ", "QQQ",
+				'Q', Item.field_94583_ca,
+				'C', new ItemStack(Item.coal, 1, 1));
 		CraftingManager.getInstance().addRecipe(new ItemStack(ElementalTinkererBlocks.darkQuartz),
 				"QQ", "QQ",
 				'Q', darkQuartz);

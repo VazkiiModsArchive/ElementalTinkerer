@@ -14,6 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.ISidedInventory;
 import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.helper.Element;
 import vazkii.tinkerer.reference.BlockNames;
@@ -28,7 +30,7 @@ import vazkii.tinkerer.reference.TileEntityReference;
  *
  * @author Vazkii
  */
-public class TileEntityScavenger extends TileEntityFilter {
+public class TileEntityScavenger extends TileEntityFilter implements ISidedInventory {
 
 	ItemStack[] inventorySlots = new ItemStack[13];
 
@@ -200,5 +202,15 @@ public class TileEntityScavenger extends TileEntityFilter {
 	@Override
 	public boolean func_94041_b(int i, ItemStack itemstack) {
 		return i == 0;
+	}
+
+	@Override
+	public int getStartInventorySide(ForgeDirection side) {
+		return 0;
+	}
+
+	@Override
+	public int getSizeInventorySide(ForgeDirection side) {
+		return 1;
 	}
 }

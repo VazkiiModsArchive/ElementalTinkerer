@@ -8,6 +8,7 @@ package vazkii.tinkerer.block;
 
 import net.minecraft.world.World;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
+import vazkii.tinkerer.handler.ConfigurationHandler;
 
 /**
  * BlockElementiumOreSpawner
@@ -28,7 +29,7 @@ public class BlockElementiumOreSpawner extends BlockElementiumOre {
 	 * class, except this one spawns a different mob with different particles. **/
 	@Override
     public void onBlockDestroyedByPlayer(World par1World, int par2, int par3, int par4, int par5) {
-        if (!par1World.isRemote) {
+        if (!par1World.isRemote && !ConfigurationHandler.safeElementiumOre) {
             EntityElementiumGuardian entityGuardian = new EntityElementiumGuardian(par1World);
             entityGuardian.setLocationAndAngles(par2 + 0.5D, par3, par4 + 0.5D, 0.0F, 0.0F);
             par1World.spawnEntityInWorld(entityGuardian);

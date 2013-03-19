@@ -226,12 +226,18 @@ public final class ResearchHelper {
 		return false;
 	}
 
+	private static final HashMap<String, Short> researchIconicItems = new HashMap();
+
+	public static short getIconicItem(ItemStack stack) {
+		short _default = -1;
+		String stackString  = stack.itemID + ":" + stack.getItemDamage();
+		return researchIconicItems.containsKey(stackString) ? researchIconicItems.get(stackString) : _default;
+	}
+
 	/** Quick and simple method to set an iconic item for a
 	 * research. **/
-	public static ResearchNode setIconicItem(ItemStack stack, short id) {
-		ResearchNode node = ResearchLibrary.allNodes.get(id);
-		if(node != null)
-			node.setIconicItem(stack);
-		return node;
+	public static void setIconicItem(ItemStack stack, short id) {
+		String stackString = stack.itemID + ":" + stack.getItemDamage();
+		researchIconicItems.put(stackString, id);
 	}
 }

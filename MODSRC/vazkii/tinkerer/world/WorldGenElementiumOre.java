@@ -72,7 +72,7 @@ public class WorldGenElementiumOre extends WorldGenMinable {
                                 int blockID = par2Random.nextInt(100) < WorldGenRates.ELEMENTIUM_ORE_GUARDIAN_CHANCE
                       			      ? BlockIDs.elementiumOreSpawner : BlockIDs.elementiumOre;
                                 if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && block != null &&
-                                		block.isGenMineableReplaceable(par1World, var38, var41, var44, blockID)) {
+                                		block.isGenMineableReplaceable(par1World, var38, var41, var44, Block.stone.blockID)) {
                                     par1World.setBlockAndMetadataWithNotify(var38, var41, var44, blockID, par2Random.nextInt(16), 2);
                                 }
                             }

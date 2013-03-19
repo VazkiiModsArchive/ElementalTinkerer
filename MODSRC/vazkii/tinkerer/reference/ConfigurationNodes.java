@@ -33,7 +33,9 @@ public final class ConfigurationNodes {
 
 	/** Config nodes for the general catergory **/
 	public static final String NODE_RESEARCH_SHARE = "research.share",
-							   COMMENT_RESEARCH_SHARE = "Set to the username of a player to have that player hold all of the research for the server (shared research data), set to '" + ResearchReference.CONFIG_SHARE_WILDCARD + "' to don't have the research being shared, but rather, per player.";
+							   COMMENT_RESEARCH_SHARE = "Set to the username of a player to have that player hold all of the research for the server (shared research data), set to '" + ResearchReference.CONFIG_SHARE_WILDCARD + "' to don't have the research being shared, but rather, per player.",
+							   NODE_SAFE_ELEMENTIUM = BlockNames.ELEMENTIUM_ORE_NAME + ".safe",
+							   COMMENT_SAFE_ELEMENTIUM = "Set to true for Elementium Ore mining to be safe. (Spawning no mobs at all)";
 
 	/** Default nodes for the graphics category **/
 	public static final boolean DEFAULT_ELEMENTIUM_GEM_SPECTRUM = true,
