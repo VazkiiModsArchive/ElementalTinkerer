@@ -5,7 +5,7 @@
   "description": "Tinkering with elemental magic is fun. That's what this mod does.",
   "version": "PRE-5c",
   "mcversion": "1.5+",
-  "logoFile": "/vazkii/tinkerer/res/logo.png",
+  "logoFile": "/mods/ElementalTinkerer/logo.png",
   "url": "",
   "updateUrl": "",
   "authors": ["Vazkii"],
