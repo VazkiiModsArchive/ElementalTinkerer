@@ -35,7 +35,9 @@ public final class ConfigurationNodes {
 	public static final String NODE_RESEARCH_SHARE = "research.share",
 							   COMMENT_RESEARCH_SHARE = "Set to the username of a player to have that player hold all of the research for the server (shared research data), set to '" + ResearchReference.CONFIG_SHARE_WILDCARD + "' to don't have the research being shared, but rather, per player.",
 							   NODE_SAFE_ELEMENTIUM = BlockNames.ELEMENTIUM_ORE_NAME + ".safe",
-							   COMMENT_SAFE_ELEMENTIUM = "Set to true for Elementium Ore mining to be safe. (Spawning no mobs at all)";
+							   COMMENT_SAFE_ELEMENTIUM = "Set to true for Elementium Ore mining to be safe. (Spawning no mobs at all)",
+							   NODE_EASY_RESEARCH = "research.easyMode",
+							   COMMENT_EASY_RESEARCH = "Set to true to change the research game to be a swap puzzle rather than a slide puzzle. Significantly easier!";
 
 	/** Default nodes for the graphics category **/
 	public static final boolean DEFAULT_ELEMENTIUM_GEM_SPECTRUM = true,

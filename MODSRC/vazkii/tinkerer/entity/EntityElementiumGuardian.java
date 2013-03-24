@@ -16,6 +16,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import vazkii.tinkerer.ElementalTinkerer;
 import vazkii.tinkerer.reference.EntityReference;
+import vazkii.tinkerer.reference.ItemIDs;
 import vazkii.tinkerer.reference.ResourcesReference;
 
 /**
@@ -57,8 +58,14 @@ public class EntityElementiumGuardian extends EntitySilverfish {
 		super.onLivingUpdate();
 
 		Color rgbColor = new Color(Color.HSBtoRGB((float) Math.cos((double) ElementalTinkerer.proxy.getGameTicksElapsed() / ResourcesReference.SPECTRUM_DIVISOR_ELEMENTIUM_GUARDIAN), 0.9F, 0.7F));
-		for(int i = 0; i < EntityReference.ELEMENTIUM_GUARDIAN_PARTICLE_COUNT; i++)
+		for(int i = 0; i < EntityReference.ELEMENTIUM_GUARDIAN_PARTICLE_COUNT; i++) {
 			ElementalTinkerer.proxy.spawnColoredPortalParticle(rgbColor, worldObj, posX + (rand.nextDouble() - 0.5D) * width, posY + rand.nextDouble() * height - 0.25D, posZ + (rand.nextDouble() - 0.5D) * width, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D);
+		}
+	}
+
+	@Override
+	protected int getDropItemId() {
+		return ItemIDs.elementiumGem;
 	}
 
 	@Override
@@ -66,10 +73,12 @@ public class EntityElementiumGuardian extends EntitySilverfish {
 		super.attackEntity(par1Entity, par2);
 
 		if(par1Entity instanceof EntityPlayer)
+		 {
 			((EntityPlayer) par1Entity).addPotionEffect(new PotionEffect(EntityReference.ELEMENTIUM_GUARDIAN_DEBUFF_ID,
 																		 EntityReference.ELEMENTIUM_GUARDIAN_DEBUFF_TIME,
 																		 EntityReference.ELEMENTIUM_GUARDIAN_DEBUFF_LEVEL));
 		// Add a Potion Effect to the player, STOP MINING US!
+		}
 	}
 
 	@Override
@@ -78,8 +87,9 @@ public class EntityElementiumGuardian extends EntitySilverfish {
 		   par1DamageSource != DamageSource.fall &&
 		   par1DamageSource != DamageSource.onFire &&
 		   par1DamageSource != DamageSource.lava &&
-		   par1DamageSource != DamageSource.inWall) // Elemental Immunities
-		super.damageEntity(par1DamageSource, par2);
+		   par1DamageSource != DamageSource.inWall) {
+			super.damageEntity(par1DamageSource, par2);
+		}
 	}
 
 }

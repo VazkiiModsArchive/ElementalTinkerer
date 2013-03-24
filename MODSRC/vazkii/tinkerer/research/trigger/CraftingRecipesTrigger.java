@@ -33,14 +33,15 @@ public class CraftingRecipesTrigger implements ICraftingHandler {
 
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
-		if(item != null && item.getItem() != null) {
+		if(item != null && item.getItem() != null && !player.worldObj.isRemote) {
 			if(item.getItem() instanceof ItemCatalyst) {
 				int element = ItemCatalyst.getElement(item.getItemDamage());
 				ResearchHelper.formulateResearchNode((short) (ResearchReference.ID_WAND_START + element), player, Element.getName(element));
-			} else if(item.getItem() instanceof ItemWand)
+			} else if(item.getItem() instanceof ItemWand) {
 				ResearchHelper.formulateResearchNode(ResearchReference.ID_ATTUNER, player, ResearchReference.CATEGORY_NAME_PURE);
-			else if(item.getItem() instanceof ItemLocationGem)
+			} else if(item.getItem() instanceof ItemLocationGem) {
 				ResearchHelper.formulateResearchNode(ResearchReference.ID_SHATTERING_RECALL, player, ResearchReference.CATEGORY_NAME_PURE);
+			}
 		}
 	}
 

@@ -28,7 +28,7 @@ public final class GameReference {
 	public static final int ELEMENTIUM_DUST_PER_LAMP = 2;
 
 	/** The chance of getting elementium dust from mob drops **/
-	public static final float ELEMENTIUM_DUST_MOB_DROP_CHANCE = 0.075F;
+	public static final float ELEMENTIUM_DUST_MOB_DROP_CHANCE = 0.01875F;
 
 	/** The chance of getting ender particles fron enderman kills **/
 	public static final float ENDER_PARTICLE_DROP_CHANCE = 0.15F;

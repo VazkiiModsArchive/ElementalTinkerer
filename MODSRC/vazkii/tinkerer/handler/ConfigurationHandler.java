@@ -42,7 +42,8 @@ public final class ConfigurationHandler {
 						  vignetteLowHealth = true,
 						  vignetteFrozen = true,
 						  vignettePoison = true,
-						  safeElementiumOre = false;
+						  safeElementiumOre = false,
+						  researchEasyMode = false;
 
 	/** Player to hold the shared research, this player will keep the
 	 * research data for the entire server and all the players in it,
@@ -136,8 +137,13 @@ public final class ConfigurationHandler {
 		// Load, and comment the Safe Elementium node
 		// (if on, no mobs will be spawned when mining elementium)
 		Property safeElementiumProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_SAFE_ELEMENTIUM, false);
-		researchShareProp.comment = ConfigurationNodes.COMMENT_SAFE_ELEMENTIUM;
+		safeElementiumProp.comment = ConfigurationNodes.COMMENT_SAFE_ELEMENTIUM;
 		safeElementiumOre = safeElementiumProp.getBoolean(false);
+		
+		// Load, and comment the Easy Mode Research node
+		Property researchEasyProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_EASY_RESEARCH, false);
+		researchEasyProp.comment = ConfigurationNodes.COMMENT_EASY_RESEARCH;
+		researchEasyMode = researchEasyProp.getBoolean(false);
 
 		// Save the config if anything went wrong and happened to need changing
 		config.save();

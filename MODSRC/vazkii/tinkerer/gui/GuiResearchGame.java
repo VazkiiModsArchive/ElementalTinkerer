@@ -19,6 +19,7 @@ import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.client.helper.RenderHelper;
+import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.PacketHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
@@ -40,7 +41,7 @@ public class GuiResearchGame extends GuiScreen {
 	Icon icon;
 
 	boolean usedHotSwap = false,
-			hotSwapActive = false;
+			hotSwapActive = ConfigurationHandler.researchEasyMode;
 	int hotSwapX = -1,
 		hotSwapY = -1;
 
@@ -73,7 +74,8 @@ public class GuiResearchGame extends GuiScreen {
 		buttonList.clear();
 		buttonList.add(new GuiInvisibleButton(0, xStart + 146, yStart, 12, 12));
 		buttonList.add(new GuiInvisibleButton(1, xStart + 146, yStart + 14, 12, 12));
-		buttonList.add(new GuiInvisibleButton(2, xStart + 146, yStart + 134, 12, 12));
+		if(!ConfigurationHandler.researchEasyMode)
+			buttonList.add(new GuiInvisibleButton(2, xStart + 146, yStart + 134, 12, 12));
 	}
 
 	@Override
@@ -114,7 +116,7 @@ public class GuiResearchGame extends GuiScreen {
 			RenderHelper.renderTooltip(par1, par2, "Exit");
 		else if(((GuiInvisibleButton)buttonList.get(1)).isHovered())
 			RenderHelper.renderTooltip(par1, par2, "Re-shuffle");
-		else if(((GuiInvisibleButton)buttonList.get(2)).isHovered())
+		else if(!ConfigurationHandler.researchEasyMode && ((GuiInvisibleButton)buttonList.get(2)).isHovered())
 			RenderHelper.renderTooltip(par1, par2, "Hot Swap", FormattingCode.GRAY + "Swaps two tiles", FormattingCode.GRAY + "Can only be used once per shuffle.");
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         mc.renderEngine.func_98187_b(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
@@ -164,10 +166,10 @@ public class GuiResearchGame extends GuiScreen {
 				squares[swapTile] = looking;
 				squares[lookingTile] = swap;
 				hotSwapX = hotSwapY = -1;
-				hotSwapActive = false;
-				usedHotSwap = true;
+				hotSwapActive = ConfigurationHandler.researchEasyMode;
+				usedHotSwap = !ConfigurationHandler.researchEasyMode;
 				return;
-			} else if(hotSwapActive && !usedHotSwap) {
+			} else if(hotSwapActive && !usedHotSwap || ConfigurationHandler.researchEasyMode) {
 				hotSwapX = xLooking;
 				hotSwapY = yLooking;
 				return;
@@ -306,7 +308,7 @@ public class GuiResearchGame extends GuiScreen {
 	}
 
 	public void randomlyAsignSquares() {
-		Random rand = new Random(); // Seed the random so it's based on the node
+		Random rand = new Random();
 		List<Integer> currentUnusedValues = new ArrayList();
 		for(int i = 0; i < 16; i++) {
 			currentUnusedValues.add(i);
