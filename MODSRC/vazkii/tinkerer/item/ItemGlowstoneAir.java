@@ -38,7 +38,7 @@ public class ItemGlowstoneAir extends ItemET {
 
 		if(air) {
 			if(!par2World.isRemote)
-				par2World.setBlockAndMetadataWithNotify(x, y, z, BlockIDs.glowstoneAir, 5, 2);
+				par2World.setBlock(x, y, z, BlockIDs.glowstoneAir, 5, 2);
 			par2World.scheduleBlockUpdate(x, y, z, BlockIDs.glowstoneAir, 10);
 		}
 

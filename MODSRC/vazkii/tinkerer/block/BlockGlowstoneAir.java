@@ -36,8 +36,8 @@ public class BlockGlowstoneAir extends BlockET {
 	}
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = IconHelper.NULL(par1IconRegister);
+	public void registerIcons(IconRegister par1IconRegister) {
+		blockIcon = IconHelper.NULL(par1IconRegister);
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class BlockGlowstoneAir extends BlockET {
 	private void setAt(World world, int x, int y, int z, int meta) {
 		if(world.isAirBlock(x, y, z) && world.getBlockId(x, y, z) != blockID) {
 			if(!world.isRemote)
-				world.setBlockAndMetadataWithNotify(x, y, z, blockID, meta, 2);
+				world.setBlock(x, y, z, blockID, meta, 2);
 			world.scheduleBlockUpdate(x, y, z, blockID, 10);
 		}
 	}

@@ -37,7 +37,7 @@ public class PassiveNatureAura extends PassiveImpl {
 			int y = (int) player.posY - 1;
 			int z = (int) player.posZ;
 			if(player.worldObj.getBlockId(x, y, z) == Block.dirt.blockID)
-				player.worldObj.setBlockAndMetadataWithNotify(x, y, z, Block.grass.blockID, 0, 2);
+				player.worldObj.setBlock(x, y, z, Block.grass.blockID, 0, 2);
 		}
 	}
 }

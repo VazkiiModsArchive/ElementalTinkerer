@@ -27,7 +27,7 @@ public abstract class BlockETContainer extends BlockContainer {
 	}
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = IconHelper.forBlock(par1IconRegister, this);
+	public void registerIcons(IconRegister par1IconRegister) {
+		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 }

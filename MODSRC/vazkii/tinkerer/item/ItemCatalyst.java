@@ -35,7 +35,7 @@ public class ItemCatalyst extends ItemET implements ICatalyst {
 	Icon[] icons = new Icon[16];
 
 	@Override
-	public void func_94581_a(IconRegister par1IconRegister) {
+	public void updateIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 16; i++)
 			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}

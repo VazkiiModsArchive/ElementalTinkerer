@@ -82,7 +82,7 @@ public class GuiVoidNetwork extends GuiScreen {
 	@Override
 	public void drawScreen(int var1, int var2, float var3) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_VOID_NETWORK_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_VOID_NETWORK_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
 
         super.drawScreen(var1, var2, var3);

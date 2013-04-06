@@ -79,7 +79,7 @@ public class ResearchNode implements Comparable<ResearchNode> {
 
 	@SideOnly(Side.CLIENT)
 	public Icon bindIcon() {
-		IconRegister ir = MiscHelper.getMc().renderEngine.field_94155_m;
+		IconRegister ir = MiscHelper.getMc().renderEngine.textureMapItems;
 
 		if(iconObj instanceof Item)
 			return iconInteger != -1 ? (icon = IconHelper.forItem(ir, (Item) iconObj, iconInteger)) : (icon = IconHelper.forItem(ir, (Item) iconObj));

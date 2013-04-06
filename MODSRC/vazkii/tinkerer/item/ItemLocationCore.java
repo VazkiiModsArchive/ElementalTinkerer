@@ -33,7 +33,7 @@ public class ItemLocationCore extends ItemET {
 	Icon[] icons = new Icon[3];
 
 	@Override
-	public void func_94581_a(IconRegister par1IconRegister) {
+	public void updateIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 3; i++)
 			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}

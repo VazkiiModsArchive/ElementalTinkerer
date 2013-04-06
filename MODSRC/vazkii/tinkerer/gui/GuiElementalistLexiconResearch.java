@@ -104,7 +104,7 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		relativeMouseY = par2;
 
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, 146, 180);
         GL11.glPushMatrix();
         GL11.glScalef(2F, 2F, 2F);
@@ -145,7 +145,7 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		GL11.glColor3f(1F, 1F, 1F);
 
 		if(node.getBoundRecipe() != null && isCompleted) {
-	        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);
+	        mc.renderEngine.bindTexture(ResourcesReference.GUI_ELEMENTALIST_LEXICON_RESEARCH_TEXTURE);
 	        drawTexturedModalRect(xStart + 146 , yStart + 67, 146, 67, 76, 94);
 	        node.getBoundRecipe().getRecipeOutput();
 	        String recipeName = FormattingCode.DARK_GRAY + "Crafting";
@@ -254,7 +254,7 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 		if(block)
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 		RenderEngine renderEngine = MiscHelper.getMc().renderEngine;
-		if(!ForgeHooksClient.renderInventoryItem(new RenderBlocks(), renderEngine, stack, render.field_77024_a, zLevel, xPos, yPos))
+		if(!ForgeHooksClient.renderInventoryItem(new RenderBlocks(), renderEngine, stack, render.renderWithColor, zLevel, xPos, yPos))
 			render.renderItemIntoGUI(fontRenderer, renderEngine, stack, xPos, yPos);
 		render.renderItemOverlayIntoGUI(fontRenderer, renderEngine, stack, xPos, yPos);
 		if(block)

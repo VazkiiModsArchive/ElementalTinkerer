@@ -58,7 +58,7 @@ public class PassiveFreezingWalk extends PassiveImpl {
 				}
 
 				if(place != -1)
-					player.worldObj.setBlockAndMetadataWithNotify(x, y, z, place, 0, 2);
+					player.worldObj.setBlock(x, y, z, place, 0, 2);
 			}
 	}
 }

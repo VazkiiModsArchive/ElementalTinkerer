@@ -42,7 +42,7 @@ public class BlockElementiumOre extends BlockET {
 	Icon[] icons = new Icon[16];
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 16; i++)
 			icons[i] = IconHelper.forName(par1IconRegister, BlockNames.ELEMENTIUM_ORE_NAME + i);
 		// Uses the name rather than the forBlock method for Spawner Blocks to also

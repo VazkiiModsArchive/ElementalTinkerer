@@ -41,7 +41,7 @@ public class BlockElementalistTinkeringAltar extends BlockETContainer {
 	Icon[] icons = new Icon[6];
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 6; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}

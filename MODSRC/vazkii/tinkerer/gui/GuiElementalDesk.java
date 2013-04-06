@@ -68,7 +68,7 @@ public class GuiElementalDesk extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTAL_DESK_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_ELEMENTAL_DESK_TEXTURE);
         int xStart = (width - xSize) / 2;
         int yStart = (height - ySize) / 2;
         drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
@@ -100,7 +100,7 @@ public class GuiElementalDesk extends GuiContainer {
              GL11.glTranslatef((1F - var10) * 0.2F, (1F - var10) * 0.1F, (1F - var10) * 0.25F);
              GL11.glRotatef(-(1F - var10) * 90F - 90F, 0F, 1F, 0F);
              GL11.glRotatef(180F, 1F, 0F, 0F);
-             mc.renderEngine.func_98187_b(shouldBeABook.itemID == ItemIDs.unboundBook ? ResourcesReference.ROOT_BOOK_TEXTURES + "Unbound.png" : "/item/book.png");
+             mc.renderEngine.bindTexture(shouldBeABook.itemID == ItemIDs.unboundBook ? ResourcesReference.ROOT_BOOK_TEXTURES + "Unbound.png" : "/item/book.png");
              GL11.glEnable(GL12.GL_RESCALE_NORMAL);
              bookModel.render(null, 0F, 0F, 0F, (float)deskTile.getProgress() / (float)TileEntityReference.ELEMENTAL_DESK_ENCHANT_TIME, 0F, MiscReference.MODEL_DEFAULT_RENDER_SCALE);
              GL11.glDisable(GL12.GL_RESCALE_NORMAL);

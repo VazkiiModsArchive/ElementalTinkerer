@@ -55,7 +55,7 @@ public class BlockDarkQuartzSlab extends BlockHalfSlab {
 	}
 
 	@Override
-    public void func_94332_a(IconRegister par1IconRegister) {
+    public void registerIcons(IconRegister par1IconRegister) {
 		// NO-OP
 	}
 }

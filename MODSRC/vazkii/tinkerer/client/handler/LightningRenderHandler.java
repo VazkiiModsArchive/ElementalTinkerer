@@ -58,14 +58,14 @@ public class LightningRenderHandler {
 
 		RenderEngine render = MiscHelper.getMc().renderEngine;
 
-		render.func_98187_b(ResourcesReference.LIGHTNING_OUTER_TEXTURE);
+		render.bindTexture(ResourcesReference.LIGHTNING_OUTER_TEXTURE);
 		tessellator.startDrawingQuads();
 		tessellator.setBrightness(0xF000F0);
 		for (LightningBolt bolt : LightningBolt.boltlist)
 			renderBolt(bolt, tessellator, frame, ActiveRenderInfo.rotationX, ActiveRenderInfo.rotationXZ, ActiveRenderInfo.rotationZ, ActiveRenderInfo.rotationXY, 0, false);
 		tessellator.draw();
 
-		render.func_98187_b(ResourcesReference.LIGHTNING_INNER_TEXTURE);
+		render.bindTexture(ResourcesReference.LIGHTNING_INNER_TEXTURE);
 		tessellator.startDrawingQuads();
 		tessellator.setBrightness(0xF000F0);
 		for (LightningBolt bolt : LightningBolt.boltlist)

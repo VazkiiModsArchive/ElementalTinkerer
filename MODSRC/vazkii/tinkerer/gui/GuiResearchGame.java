@@ -119,14 +119,14 @@ public class GuiResearchGame extends GuiScreen {
 		else if(!ConfigurationHandler.researchEasyMode && ((GuiInvisibleButton)buttonList.get(2)).isHovered())
 			RenderHelper.renderTooltip(par1, par2, "Hot Swap", FormattingCode.GRAY + "Swaps two tiles", FormattingCode.GRAY + "Can only be used once per shuffle.");
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, 144, 144);
 
         zLevel += 1;
         for(int i = 0; i < 4; i++)
         	for(int j = 0; j < 4; j++)
         		drawChunk(i, j);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_RESEARCH_GAME_TEXTURE);
 
         zLevel += 1;
         int gridX = par1-xStart-8;
@@ -193,7 +193,7 @@ public class GuiResearchGame extends GuiScreen {
 
         GL11.glPushMatrix();
         GL11.glScalef(8F, 8F, 8F);
-        mc.renderEngine.func_98187_b("/gui/items.png");
+        mc.renderEngine.bindTexture("/gui/items.png");
         drawIcon(background, xPos / 8, yPos / 8, xSquare, ySquare);
         drawIcon(icon, xPos / 8, yPos / 8, xSquare, ySquare);
         GL11.glPopMatrix();
@@ -208,25 +208,25 @@ public class GuiResearchGame extends GuiScreen {
 	public void drawIcon(Icon icon, int x, int y, int xBox, int yBox) {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
-        float xOrigin = icon.func_94209_e();
-        float xEnd = icon.func_94212_f();
+        float uOrigin = icon.getMinU();
+        float uEnd = icon.getMaxU();
 
-        float yOrigin = icon.func_94206_g();
-        float yEnd = icon.func_94210_h();
+        float vOrigin = icon.getMinV();
+        float vEnd = icon.getMaxV();
 
-        float xDistance = xEnd - xOrigin;
-        float yDistance = yEnd - yOrigin;
+        float uDistance = uEnd - uOrigin;
+        float vDistance = vEnd - vOrigin;
 
-        float actualXStart = xOrigin + xDistance / 4 * xBox;
-        float actualYStart = yOrigin + yDistance / 4 * yBox;
+        float actualUStart = uOrigin + uDistance / 4 * xBox;
+        float actualVStart = vOrigin + vDistance / 4 * yBox;
 
-        float actualXEnd = xOrigin + xDistance / 4 * (xBox + 1);
-        float actualYEnd = yOrigin + yDistance / 4 * (yBox + 1);
+        float actualUEnd = uOrigin + uDistance / 4 * (xBox + 1);
+        float actualVEnd = vOrigin + vDistance / 4 * (yBox + 1);
 
-        tessellator.addVertexWithUV(x + 0, y + 4, zLevel, actualXStart, actualYEnd);
-        tessellator.addVertexWithUV(x + 4, y + 4, zLevel, actualXEnd, actualYEnd);
-        tessellator.addVertexWithUV(x + 4, y + 0, zLevel, actualXEnd, actualYStart);
-        tessellator.addVertexWithUV(x + 0, y + 0, zLevel, actualXStart, actualYStart);
+        tessellator.addVertexWithUV(x + 0, y + 4, zLevel, actualUStart, actualVEnd);
+        tessellator.addVertexWithUV(x + 4, y + 4, zLevel, actualUEnd, actualVEnd);
+        tessellator.addVertexWithUV(x + 4, y + 0, zLevel, actualUEnd, actualVStart);
+        tessellator.addVertexWithUV(x + 0, y + 0, zLevel, actualUStart, actualVStart);
         tessellator.draw();
 	}
 

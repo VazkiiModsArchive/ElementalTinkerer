@@ -129,7 +129,7 @@ public class GuiElementalistLexiconIndex extends GuiScreen {
 	public void drawScreen(int par1, int par2, float par3) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glEnable(GL11.GL_BLEND);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_ELEMENTALIST_LEXICON_INDEX_TEXTURE);
         int shiftX = xStart + 137;
         int shiftY = yStart + 15;
         int bookmarkDifference = 14;

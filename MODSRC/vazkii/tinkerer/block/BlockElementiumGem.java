@@ -64,16 +64,16 @@ public class BlockElementiumGem extends BlockET {
         				for(int y = 0; y < 3; y++)
         					for(int z = 0; z < 3; z++) {
         						if(par1World.getBlockId(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z) == Block.glowStone.blockID) {
-        							par1World.setBlockAndMetadataWithNotify(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z, 0, 0, 2);
+        							par1World.setBlock(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z, 0, 0, 2);
         							glowstoneFound += 1;
         						}
         						if(par1World.getBlockId(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z) == Block.redstoneLampIdle.blockID || par1World.getBlockId(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z) == Block.redstoneLampActive.blockID) {
-        							par1World.setBlockAndMetadataWithNotify(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z, 0, 0, 2);
+        							par1World.setBlock(par2 - 1 + x, par3 - 1 + y, par4 - 1 + z, 0, 0, 2);
         							glowstoneFound += 1;
         							lampsFound += 1;
         						}
         					}
-        			par1World.setBlockAndMetadataWithNotify(par2, par3, par4, 0, 0, 2);
+        			par1World.setBlock(par2, par3, par4, 0, 0, 2);
 
         			ItemStack stack = new ItemStack(ElementalTinkererItems.elementiumDust, GameReference.ELEMENTIUM_DUST_PER_BLOCK * glowstoneFound + GameReference.ELEMENTIUM_DUST_PER_LAMP * lampsFound);
         			EntityItem item = new EntityItem(par1World, par2, par3, par4, stack);

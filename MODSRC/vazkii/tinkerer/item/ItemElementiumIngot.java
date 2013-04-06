@@ -28,7 +28,7 @@ public class ItemElementiumIngot extends ItemET {
 	Icon[] icons = new Icon[8];
 
 	@Override
-	public void func_94581_a(IconRegister par1IconRegister) {
+	public void updateIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 8; i++)
 			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}

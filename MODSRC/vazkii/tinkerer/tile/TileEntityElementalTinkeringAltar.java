@@ -265,12 +265,12 @@ public class TileEntityElementalTinkeringAltar extends TileEntity implements IIn
 	}
 
 	@Override
-	public boolean func_94042_c() {
+	public boolean isInvNameLocalized() {
 		return false;
 	}
 
 	@Override
-	public boolean func_94041_b(int i, ItemStack itemstack) {
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
 		return false; //Can't "pipe" things in!
 	}
 

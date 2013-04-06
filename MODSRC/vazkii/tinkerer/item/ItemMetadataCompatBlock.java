@@ -36,7 +36,7 @@ public class ItemMetadataCompatBlock extends ItemBlock {
 	 * the metadata of the ItemStack **/
 	@Override
     public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
-       if (!world.setBlockAndMetadataWithNotify(x, y, z, blockID2, stack.getItemDamage(), 2))
+       if (!world.setBlock(x, y, z, blockID2, stack.getItemDamage(), 2))
                return false;
 
        if (world.getBlockId(x, y, z) == blockID2){

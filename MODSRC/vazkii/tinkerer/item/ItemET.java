@@ -33,7 +33,7 @@ public class ItemET extends Item {
 	}
 
 	@Override
-	public void func_94581_a(IconRegister par1IconRegister) {
+	public void updateIcons(IconRegister par1IconRegister) {
 		iconIndex = IconHelper.forItem(par1IconRegister, this);
 	}
 

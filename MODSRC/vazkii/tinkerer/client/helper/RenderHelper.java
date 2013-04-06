@@ -58,10 +58,10 @@ public final class RenderHelper {
 	public static void renderIcon(TextureStitched icon, double x, double y, double z) {
 		Minecraft mc = MiscHelper.getMc();
     	RenderEngine engine = mc.renderEngine;
-		engine.func_98187_b("/gui/items.png");
+		engine.bindTexture("/gui/items.png");
 		// It's binding "/gui/items.png" as that refers to a texture sheet.
 		// I use a hack to store my icons in there
-		renderItem.func_94149_a((int) x, (int) y, icon, 16, 16);
+		renderItem.renderIcon((int) x, (int) y, icon, 16, 16);
 	}
 
 	/** Renders a research icon at the given positions, if checkStatus is true,
@@ -87,10 +87,10 @@ public final class RenderHelper {
 		Minecraft mc = MiscHelper.getMc();
 		RenderEngine render = mc.renderEngine;
 		Icon icon = IconHelper.spellFrameIcon;
-		render.func_98187_b("/gui/items.png");
+		render.bindTexture("/gui/items.png");
 		// It's binding "/gui/items.png" as that refers to a texture sheet.
 		// I use a hack to store my icons in there
-		renderItem.func_94149_a((int) x, (int) y, icon, 18, 18);
+		renderItem.renderIcon((int) x, (int) y, icon, 18, 18);
 	}
 
 	public static void renderCooldown(double x, double y, double z, int cooldown) {

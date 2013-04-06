@@ -45,7 +45,7 @@ public final class IconHelper {
 			return;
 		initted = true;
 
-		TextureMap map = MiscHelper.getMc().renderEngine.field_94155_m;
+		TextureMap map = MiscHelper.getMc().renderEngine.textureMapItems;
 
 		// Init Research Sprites
 		for(Short s : ResearchLibrary.allNodes.keySet()) {
@@ -76,12 +76,12 @@ public final class IconHelper {
 
 	public static Icon NULL(IconRegister ir) {
 		if(NULL == null)
-			NULL = ir.func_94245_a(AnnotationConstants.MOD_ID + ":null");
+			NULL = forName(ir, "null");
 		return NULL;
 	}
 
 	public static Icon forName(IconRegister ir, String name) {
-		return ir.func_94245_a(AnnotationConstants.MOD_ID + ":" + name);
+		return ir.registerIcon(AnnotationConstants.MOD_ID + ":" + name);
 	}
 
 	public static Icon forBlock(IconRegister ir, Block block) {

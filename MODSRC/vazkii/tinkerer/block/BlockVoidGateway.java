@@ -46,7 +46,7 @@ public class BlockVoidGateway extends BlockETContainer {
 			ItemStack stack = entry.stack;
 			if(stack != null && stack.itemID < Block.blocksList.length) {
 				Block block = Block.blocksList[stack.itemID];
-				if(block != null)
+				if(block != null && block != this)
 					block.randomDisplayTick(par1World, par2, par3, par4, par5Random);
 			}
 		}
@@ -76,7 +76,7 @@ public class BlockVoidGateway extends BlockETContainer {
 	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		if(par3 > 8 && !par1World.isRemote) {
-			par1World.setBlockAndMetadataWithNotify(par2, par3, par4, 0, 0, 2);
+			par1World.setBlock(par2, par3, par4, 0, 0, 2);
 			dropBlockAsItem(par1World, par2, par3, par4, 0, 0);
 		}
 	}

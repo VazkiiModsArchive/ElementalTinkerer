@@ -28,8 +28,8 @@ public class BlockET extends Block {
 	}
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = IconHelper.forBlock(par1IconRegister, this);
+	public void registerIcons(IconRegister par1IconRegister) {
+		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
 
 	/** Does the block register in the creative inv? **/

@@ -29,8 +29,8 @@ public abstract class BlockRotatingCubes extends BlockETContainer {
 	}
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = IconHelper.NULL(par1IconRegister);
+	public void registerIcons(IconRegister par1IconRegister) {
+		blockIcon = IconHelper.NULL(par1IconRegister);
 	}
 
 	/** Returns the GUI ID to open when right clicking this block. **/

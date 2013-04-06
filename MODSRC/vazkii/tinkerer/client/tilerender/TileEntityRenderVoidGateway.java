@@ -72,11 +72,12 @@ public class TileEntityRenderVoidGateway extends TileEntitySpecialRenderer {
                 		 Color color = new Color(stack.getItem().getColorFromItemStack(stack, renderPass));
 
                 		 GL11.glColor3ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue());
-                		 float f = icon.func_94209_e();
-                         float f1 = icon.func_94212_f();
-                         float f2 = icon.func_94206_g();
-                         float f3 = icon.func_94210_h();
-                         ItemRenderer.renderItemIn2D(var5, f1, f2, f, f3, icon.func_94213_j(), icon.func_94208_k(), MiscReference.MODEL_DEFAULT_RENDER_SCALE);
+                		 float f = icon.getMinU();
+                         float f1 = icon.getMaxU();
+                         float f2 = icon.getMinV();
+                         float f3 = icon.getMaxV();
+                         // TODO Is this correct?
+                         ItemRenderer.renderItemIn2D(var5, f1, f2, f, f3, icon.getOriginX(), icon.getOriginY(), MiscReference.MODEL_DEFAULT_RENDER_SCALE);
                          GL11.glColor3f(1F, 1F, 1F);
                 	}
                 	renderPass++;

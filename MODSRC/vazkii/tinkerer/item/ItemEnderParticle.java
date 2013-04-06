@@ -31,7 +31,7 @@ public class ItemEnderParticle extends ItemET implements ICatalyst {
 	Icon[] icons = new Icon[7];
 
 	@Override
-	public void func_94581_a(IconRegister par1IconRegister) {
+	public void updateIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 7; i++)
 			icons[i] =  IconHelper.forItem(par1IconRegister, this, i);
 	}

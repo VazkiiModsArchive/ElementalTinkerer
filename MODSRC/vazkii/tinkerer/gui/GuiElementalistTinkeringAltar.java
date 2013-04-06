@@ -74,9 +74,8 @@ public class GuiElementalistTinkeringAltar extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-		mc.renderEngine.getTexture(ResourcesReference.GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_ELEMENTALIST_TINKERING_ALTAR_TEXTURE);
         int xStart = (width - xSize) / 2;
         int yStart = (height - ySize) / 2;
 
@@ -115,7 +114,7 @@ public class GuiElementalistTinkeringAltar extends GuiContainer {
         	RenderEngine render = MiscHelper.getMc().renderEngine;
         	int xPos = xStart / 2 - 46;
         	int yPos = yStart + 49;
-        	if(!ForgeHooksClient.renderInventoryItem(new RenderBlocks(), render, stack, itemRender.field_77024_a, zLevel, xPos, yPos))
+        	if(!ForgeHooksClient.renderInventoryItem(new RenderBlocks(), render, stack, itemRender.renderWithColor, zLevel, xPos, yPos))
         		itemRender.renderItemIntoGUI(fontRenderer, render, stack, xPos, yPos);
         }
 

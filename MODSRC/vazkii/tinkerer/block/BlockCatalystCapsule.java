@@ -32,8 +32,8 @@ public class BlockCatalystCapsule extends BlockETContainer {
 	}
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = IconHelper.NULL(par1IconRegister);
+	public void registerIcons(IconRegister par1IconRegister) {
+		blockIcon = IconHelper.NULL(par1IconRegister);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class BlockCatalystCapsule extends BlockETContainer {
     public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
         if (!canBlockStay(par1World, par2, par3, par4)) {
             dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-            par1World.setBlockAndMetadataWithNotify(par2, par3, par4, 0, 0, 2);
+            par1World.setBlock(par2, par3, par4, 0, 0, 2);
         }
     }
 

@@ -56,7 +56,7 @@ public class GuiAttuner extends GuiScreen {
 	public void drawScreen(int par1, int par2, float par3) {
         spellLooking = null;
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_ATTUNER_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_ATTUNER_TEXTURE);
         drawTexturedModalRect(xStart, yStart, 0, 0, 237, 124);
 
         fontRenderer.drawStringWithShadow(lookingAtSpells ? "Spells:" : "Passives:", xStart + 158, yStart + 20, 0xFFFFFF);

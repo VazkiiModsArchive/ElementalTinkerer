@@ -35,7 +35,7 @@ public class GuiWaveInputter extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.func_98187_b(ResourcesReference.GUI_WAVE_INPUTTER_TEXTURE);
+        mc.renderEngine.bindTexture(ResourcesReference.GUI_WAVE_INPUTTER_TEXTURE);
         int xStart = (width - xSize) / 2;
         int yStart = (height - ySize) / 2;
         drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);

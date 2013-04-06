@@ -26,12 +26,12 @@ import vazkii.tinkerer.client.helper.IconHelper;
  * @author Vazkii
  */
 public class BlockDarkQuartz extends BlockET {
-	private static final String[] field_94418_b = new String[] {"darkQuartz0", "chiseledDarkQuartz0", "pillarDarkQuartz0", null, null};
-	private Icon[] field_94419_c;
-	private Icon field_94414_cO;
-	private Icon field_94415_cP;
-	private Icon field_94416_cQ;
-	private Icon field_94417_cR;
+	
+	private static final String[] iconNames = new String[] {"darkQuartz0", "chiseledDarkQuartz0", "pillarDarkQuartz0", null, null};
+	private Icon[] darkQuartzIcons;
+	private Icon chiseledDarkQuartzIcon;
+	private Icon pillarDarkQuartzIcon;
+	private Icon darkQuartzTopIcon;
 
 	public BlockDarkQuartz(int par1) {
 		super(par1, Material.rock);
@@ -42,17 +42,17 @@ public class BlockDarkQuartz extends BlockET {
         if (par2 != 2 && par2 != 3 && par2 != 4) {
             if (par1 != 1 && (par1 != 0 || par2 != 1)) {
                 if (par1 == 0)
-                	return field_94417_cR;
+                	return darkQuartzTopIcon;
                 else {
-                    if (par2 < 0 || par2 >= field_94419_c.length)
+                    if (par2 < 0 || par2 >= darkQuartzIcons.length)
                         par2 = 0;
 
-                    return field_94419_c[par2];
+                    return darkQuartzIcons[par2];
                 }
             }
-            else return par2 == 1 ? field_94414_cO : field_94416_cQ;
+            else return par2 == 1 ? chiseledDarkQuartzIcon : darkQuartzTopIcon;
         }
-        else return par2 == 2 && (par1 == 1 || par1 == 0) ? field_94415_cP : par2 == 3 && (par1 == 5 || par1 == 4) ? field_94415_cP : par2 == 4 && (par1 == 2 || par1 == 3) ? field_94415_cP : field_94419_c[par2];
+        else return par2 == 2 && (par1 == 1 || par1 == 0) ? pillarDarkQuartzIcon : par2 == 3 && (par1 == 5 || par1 == 4) ? pillarDarkQuartzIcon : par2 == 4 && (par1 == 2 || par1 == 3) ? pillarDarkQuartzIcon : darkQuartzIcons[par2];
     }
 
 	@Override
@@ -100,18 +100,17 @@ public class BlockDarkQuartz extends BlockET {
 	}
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94419_c = new Icon[field_94418_b.length];
+	public void registerIcons(IconRegister par1IconRegister) {
+		darkQuartzIcons = new Icon[iconNames.length];
 
-		for (int i = 0; i < field_94419_c.length; ++i) {
-			if (field_94418_b[i] == null)
-				field_94419_c[i] = field_94419_c[i - 1];
-			else field_94419_c[i] = IconHelper.forName(par1IconRegister, field_94418_b[i]);
+		for (int i = 0; i < darkQuartzIcons.length; ++i) {
+			if (iconNames[i] == null)
+				darkQuartzIcons[i] = darkQuartzIcons[i - 1];
+			else darkQuartzIcons[i] = IconHelper.forName(par1IconRegister, iconNames[i]);
 		}
 
-		field_94416_cQ = IconHelper.forName(par1IconRegister, "darkQuartz1");
-		field_94414_cO = IconHelper.forName(par1IconRegister, "chiseledDarkQuartz1");
-		field_94415_cP = IconHelper.forName(par1IconRegister, "pillarDarkQuartz1");
-		field_94417_cR = IconHelper.forName(par1IconRegister, "darkQuartz1");
+		darkQuartzTopIcon = IconHelper.forName(par1IconRegister, "darkQuartz1");
+		chiseledDarkQuartzIcon = IconHelper.forName(par1IconRegister, "chiseledDarkQuartz1");
+		pillarDarkQuartzIcon = IconHelper.forName(par1IconRegister, "pillarDarkQuartz1");
 	}
 }

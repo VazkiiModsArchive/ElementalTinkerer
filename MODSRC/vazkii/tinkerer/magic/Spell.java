@@ -42,7 +42,7 @@ public abstract class Spell {
 
 	@SideOnly(Side.CLIENT)
 	public void bindIcon() {
-		icon = IconHelper.forSpell(MiscHelper.getMc().renderEngine.field_94155_m, this);
+		icon = IconHelper.forSpell(MiscHelper.getMc().renderEngine.textureMapItems, this);
 	}
 
 	public Spell bindNode(short node) {

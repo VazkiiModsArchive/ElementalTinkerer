@@ -37,7 +37,7 @@ public class BlockVoidNetwork extends BlockETContainer {
 	Icon[] icons = new Icon[2];
 
 	@Override
-	public void func_94332_a(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		for(int i = 0; i < 2; i++)
 			icons[i] = IconHelper.forBlock(par1IconRegister, this, i);
 	}
