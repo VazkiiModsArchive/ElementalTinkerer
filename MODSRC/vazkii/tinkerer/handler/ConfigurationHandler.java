@@ -139,7 +139,7 @@ public final class ConfigurationHandler {
 		Property safeElementiumProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_SAFE_ELEMENTIUM, false);
 		safeElementiumProp.comment = ConfigurationNodes.COMMENT_SAFE_ELEMENTIUM;
 		safeElementiumOre = safeElementiumProp.getBoolean(false);
-		
+
 		// Load, and comment the Easy Mode Research node
 		Property researchEasyProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_EASY_RESEARCH, false);
 		researchEasyProp.comment = ConfigurationNodes.COMMENT_EASY_RESEARCH;

@@ -269,6 +269,8 @@ public final class RenderHelper {
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glPopMatrix();
+
+		net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
 	}
 
 	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star, PlayerSpellData spellData, boolean passives) {

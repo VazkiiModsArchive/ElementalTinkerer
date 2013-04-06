@@ -26,7 +26,7 @@ import vazkii.tinkerer.client.helper.IconHelper;
  * @author Vazkii
  */
 public class BlockDarkQuartz extends BlockET {
-	
+
 	private static final String[] iconNames = new String[] {"darkQuartz0", "chiseledDarkQuartz0", "pillarDarkQuartz0", null, null};
 	private Icon[] darkQuartzIcons;
 	private Icon chiseledDarkQuartzIcon;

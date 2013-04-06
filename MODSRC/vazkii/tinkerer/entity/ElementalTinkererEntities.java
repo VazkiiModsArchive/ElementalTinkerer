@@ -44,6 +44,10 @@ public final class ElementalTinkererEntities {
 				  							  EntityReference.NAME_FLAME_RING,
 				  							  EntityRegistry.findGlobalUniqueEntityId());
 
+		EntityRegistry.registerGlobalEntityID(EntityElementiumLocator.class,
+											  EntityReference.NAME_ELEMENTIUM_LOCATOR,
+											  EntityRegistry.findGlobalUniqueEntityId());
+
 		// Register the Entities as mod entities
 		EntityRegistry.registerModEntity(EntityFireball.class,
 										 EntityReference.NAME_FIREBALL,
@@ -66,6 +70,12 @@ public final class ElementalTinkererEntities {
 		EntityRegistry.registerModEntity(EntityFlameRing.class,
 										 EntityReference.NAME_FLAME_RING,
 										 EntityReference.LOCAL_ID_FLAME_RING,
+										 ElementalTinkerer.instance,
+										 32, 40, false);
+
+		EntityRegistry.registerModEntity(EntityElementiumLocator.class,
+										 EntityReference.NAME_ELEMENTIUM_LOCATOR,
+										 EntityReference.LOCAL_ID_ELEMENTIUM_LOCATOR,
 										 ElementalTinkerer.instance,
 										 32, 40, false);
 

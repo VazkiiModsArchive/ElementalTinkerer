@@ -111,6 +111,10 @@ public final class ResourcesReference {
 	 ** the divisor for the cosine function's speed that defines the color. **/
 	public static final int SPECTRUM_DIVISOR_INFUSION = 25;
 
+	/** The Elementium Locator entity is colored trough the spectrum, this integer is
+	 ** the divisor for the cosine function's speed that defines the color. **/
+	public static final int SPECTRUM_DIVISOR_ELEMENTIUM_LOCATOR = 20;
+
 	/** The Wands are colored with a varying brightess, this integer is
 	 * the divisor for the consine function's speed that defines the color **/
 	public static final int BRIGHTNESS_DIVISOR_WAND = 35;

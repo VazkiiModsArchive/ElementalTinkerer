@@ -22,13 +22,15 @@ public final class EntityReference {
 							   NAME_FIREBALL = AnnotationConstants.MOD_ID + "_fireball",
 							   NAME_FROSTBOLT = AnnotationConstants.MOD_ID + "_frostbolt",
 							   NAME_BOULDER = AnnotationConstants.MOD_ID + "_boulder",
-							   NAME_FLAME_RING = AnnotationConstants.MOD_ID + "_flameRing";
+							   NAME_FLAME_RING = AnnotationConstants.MOD_ID + "_flameRing",
+							   NAME_ELEMENTIUM_LOCATOR = AnnotationConstants.MOD_ID + "_elementiumLocator";
 
 	/** Internal Local IDs for the entities **/
 	public static final int LOCAL_ID_FIREBALL = 0,
 							LOCAL_ID_FROSTBOLT = 1,
 							LOCAL_ID_BOULDER = 2,
-							LOCAL_ID_FLAME_RING = 3;
+							LOCAL_ID_FLAME_RING = 3,
+							LOCAL_ID_ELEMENTIUM_LOCATOR = 4;
 
 	/** Display Names for the entities **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_GUARDIAN = "Elementium Guardian";

@@ -33,7 +33,6 @@ public class WorldGenElementiumOre extends WorldGenMinable {
 
 	@Override
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5) {
-
 		if(par2Random == null)
 			par2Random = new Random(); // Dirty fix for Mystcraft
 

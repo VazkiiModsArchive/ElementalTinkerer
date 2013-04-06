@@ -24,6 +24,7 @@ import vazkii.tinkerer.client.particle.EntityFXGaseousGlowstone;
 import vazkii.tinkerer.client.particle.EntityFXSteam;
 import vazkii.tinkerer.client.render.RenderBoulder;
 import vazkii.tinkerer.client.render.RenderElementiumGuardian;
+import vazkii.tinkerer.client.render.RenderElementiumLocator;
 import vazkii.tinkerer.client.render.RenderProjectile;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderAttuner;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderCatalystCapsule;
@@ -32,6 +33,7 @@ import vazkii.tinkerer.client.tilerender.TileEntityRenderRotatingCubes;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderVoidGateway;
 import vazkii.tinkerer.entity.EntityBoulder;
 import vazkii.tinkerer.entity.EntityElementiumGuardian;
+import vazkii.tinkerer.entity.EntityElementiumLocator;
 import vazkii.tinkerer.entity.EntityFireball;
 import vazkii.tinkerer.entity.EntityFrostBolt;
 import vazkii.tinkerer.helper.MiscHelper;
@@ -122,6 +124,8 @@ public class ClientProxy extends CommonProxy {
 														 new RenderProjectile(new ItemStack(Item.snowball), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBoulder.class,
 														 new RenderBoulder());
+		RenderingRegistry.registerEntityRenderingHandler(EntityElementiumLocator.class,
+														 new RenderElementiumLocator());
 	}
 
 	@Override
@@ -167,8 +171,8 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
-		EntityFXColoredPortal.spawn(color, world, x, y, z, motionX, motionY, motionZ);
+	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ, boolean staticMotion) {
+		EntityFXColoredPortal.spawn(color, world, x, y, z, motionX, motionY, motionZ, staticMotion);
 	}
 
 	@Override

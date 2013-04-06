@@ -62,4 +62,7 @@ public final class GameReference {
 
 	/** The amount of XP it takes to make a bottle of enchanting **/
 	public static final int ENCHANTING_BOTTLE_COST = 10;
+
+	/** The ammount of ticks a Elementium Locator entity stays in the world **/
+	public static final int ELEMENTIUM_LOCATOR_ENTITY_DURATION = 240;
 }

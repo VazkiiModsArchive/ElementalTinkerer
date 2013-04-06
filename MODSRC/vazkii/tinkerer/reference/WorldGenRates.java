@@ -16,7 +16,7 @@ package vazkii.tinkerer.reference;
 public final class WorldGenRates {
 
 	/** Integers related to the generation of Elementium Ore in the world **/
-	public static final int ELEMENTIUM_ORE_RANGE_CHECK = 2, // Nearby chunk radius to check for veins
+	public static final int ELEMENTIUM_ORE_RANGE_CHECK = 5, // Nearby chunk radius to check for veins
 							ELEMENTIUM_ORE_HEIGHT_MAX = 64,
 							ELEMENTIUM_ORE_HEIGHT_MIN = 16,
 							ELEMENTIUM_ORE_MAX_VEIN_SIZE = 32,

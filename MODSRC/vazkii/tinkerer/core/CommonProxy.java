@@ -38,7 +38,7 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * CommonProxy
- *
+ *ds
  * Common proxy, used between the client and the server.
  * The client and server proxies extend this class to
  * add functionality only available on the specific side.
@@ -136,10 +136,14 @@ public class CommonProxy {
 		return MiscHelper.getServer().isPVPEnabled();
 	}
 
+	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
+		spawnColoredPortalParticle(color, world, x, y, z, motionX, motionY, motionZ, false);
+	}
+
 	/** Used by the client to spawn a colored portal particle at
 	 * the location passed in, with the color and motion passed
 	 * in. NO-OP in server side. **/
-	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ) {
+	public void spawnColoredPortalParticle(Color color, World world, double x, double y, double z, double motionX, double motionY, double motionZ, boolean staticMotion) {
 		// NO-OP
 	}
 
