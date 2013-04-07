@@ -42,7 +42,7 @@ public final class EntityReference {
 	public static final int SPAWN_EGG_FG_COLOR_ELEMENTIUM_GUARDIAN = 0xCDA8F2;
 
 	/** Mob Health Values **/
-	public static final int MOB_HEALTH_ELEMENTIUM_GUARDIAN = 24;
+	public static final int MOB_HEALTH_ELEMENTIUM_GUARDIAN = 18;
 
 	/** Mob Attack Strenght Values **/
 	public static final int DMG_ELEMENTIUM_GUARDIAN = 3,

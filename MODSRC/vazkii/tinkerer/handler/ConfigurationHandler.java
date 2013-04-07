@@ -43,7 +43,8 @@ public final class ConfigurationHandler {
 						  vignetteFrozen = true,
 						  vignettePoison = true,
 						  safeElementiumOre = false,
-						  researchEasyMode = false;
+						  researchEasyMode = false,
+						  researchOldschool = false;
 
 	/** Player to hold the shared research, this player will keep the
 	 * research data for the entire server and all the players in it,
@@ -139,6 +140,11 @@ public final class ConfigurationHandler {
 		Property safeElementiumProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_SAFE_ELEMENTIUM, false);
 		safeElementiumProp.comment = ConfigurationNodes.COMMENT_SAFE_ELEMENTIUM;
 		safeElementiumOre = safeElementiumProp.getBoolean(false);
+
+		// Load, and comment the Oldschool Research node
+		Property researchOldProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_OLD_RESEARCH, false);
+		researchOldProp.comment = ConfigurationNodes.COMMENT_OLD_RESEARCH;
+		researchOldschool = researchOldProp.getBoolean(false);
 
 		// Load, and comment the Easy Mode Research node
 		Property researchEasyProp = config.get(Configuration.CATEGORY_GENERAL, ConfigurationNodes.NODE_EASY_RESEARCH, false);

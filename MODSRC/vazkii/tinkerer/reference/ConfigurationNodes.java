@@ -37,7 +37,9 @@ public final class ConfigurationNodes {
 							   NODE_SAFE_ELEMENTIUM = BlockNames.ELEMENTIUM_ORE_NAME + ".safe",
 							   COMMENT_SAFE_ELEMENTIUM = "Set to true for Elementium Ore mining to be safe. (Spawning no mobs at all)",
 							   NODE_EASY_RESEARCH = "research.easyMode",
-							   COMMENT_EASY_RESEARCH = "Set to true to change the research game to be a swap puzzle rather than a slide puzzle. Significantly easier!";
+							   COMMENT_EASY_RESEARCH = "(For Oldschool research only) Set to true to change the research game to be a swap puzzle rather than a slide puzzle. Significantly easier!",
+							   NODE_OLD_RESEARCH = "research.oldschool",
+							   COMMENT_OLD_RESEARCH = "Set to true to change the research puzzle into the Oldschool slide puzzle.";
 
 	/** Default nodes for the graphics category **/
 	public static final boolean DEFAULT_ELEMENTIUM_GEM_SPECTRUM = true,

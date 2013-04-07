@@ -23,6 +23,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.helper.RenderHelper;
+import vazkii.tinkerer.handler.ConfigurationHandler;
 import vazkii.tinkerer.helper.MiscHelper;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.reference.FormattingCode;
@@ -99,6 +100,12 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 	}
 
 	@Override
+	protected void keyTyped(char par1, int par2) {
+        if (par2 == 1)
+			MiscHelper.getMc().displayGuiScreen(new GuiElementalistLexiconIndex());
+	}
+
+	@Override
 	public void drawScreen(int par1, int par2, float par3) {
 		relativeMouseX = par1;
 		relativeMouseY = par2;
@@ -128,10 +135,9 @@ public class GuiElementalistLexiconResearch extends GuiScreen {
 			++i;
 		} else if(isResearched) {
 			// The research isn't totally done, redirect to the research game gui
-			MiscHelper.getMc().displayGuiScreen(new GuiResearchGame(node, category));
+			MiscHelper.getMc().displayGuiScreen(ConfigurationHandler.researchOldschool ? new GuiResearchGameOld(node, category) : new GuiResearchGame(node, category));
 		}
 		fontRenderer.setUnicodeFlag(false);
-
 
 		fontRenderer.drawStringWithShadow("\u2714", xStart + 149, yStart + 5, 0);
 		fontRenderer.drawStringWithShadow("\u2714", xStart + 150, yStart + 4, 0);
