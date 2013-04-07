@@ -20,6 +20,8 @@ import vazkii.tinkerer.magic.passive.PassiveIronskin;
 import vazkii.tinkerer.magic.passive.PassiveNatureAura;
 import vazkii.tinkerer.magic.passive.PassiveRainAccumulation;
 import vazkii.tinkerer.magic.passive.PassiveUndershirt;
+import vazkii.tinkerer.magic.passive.PassiveUnderwaterHaste;
+import vazkii.tinkerer.magic.passive.PassiveUnderwaterVision;
 import vazkii.tinkerer.magic.passive.handler.EnderParticleDropHandler;
 import vazkii.tinkerer.magic.passive.handler.PlayerDamageHandler;
 import vazkii.tinkerer.magic.spell.SpellAerialPush;
@@ -30,8 +32,10 @@ import vazkii.tinkerer.magic.spell.SpellFrostbolt;
 import vazkii.tinkerer.magic.spell.SpellFrostshock;
 import vazkii.tinkerer.magic.spell.SpellGuillotine;
 import vazkii.tinkerer.magic.spell.SpellImplosion;
+import vazkii.tinkerer.magic.spell.SpellRainCalling;
 import vazkii.tinkerer.magic.spell.SpellShatteringRecall;
 import vazkii.tinkerer.magic.spell.SpellThunderbolt;
+import vazkii.tinkerer.magic.spell.SpellWhirlpool;
 /**
  * SpellLibrary
  *
@@ -56,6 +60,8 @@ public final class SpellLibrary {
 		registerSpell(new SpellFlameRing());
 		registerSpell(new SpellGuillotine());
 		registerSpell(new SpellShatteringRecall());
+		registerSpell(new SpellWhirlpool());
+		registerSpell(new SpellRainCalling());
 
 		registerPassive(new PassiveExtendedBreath());
 		registerPassive(new PassiveRainAccumulation());
@@ -67,6 +73,8 @@ public final class SpellLibrary {
 		registerPassive(new PassiveIronskin());
 		registerPassive(new PassiveBloodBoil());
 		registerPassive(new PassiveEnderAbsorption());
+		registerPassive(new PassiveUnderwaterVision());
+		registerPassive(new PassiveUnderwaterHaste());
 
 		MinecraftForge.EVENT_BUS.register(PlayerDamageHandler.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(EnderParticleDropHandler.INSTANCE);

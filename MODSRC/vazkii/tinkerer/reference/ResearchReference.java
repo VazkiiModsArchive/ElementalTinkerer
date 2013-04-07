@@ -76,7 +76,12 @@ public final class ResearchReference {
 							  ID_SPELLBIND_CLOTH = 66,
 							  ID_WITHHOLD_TALISMAN = 67,
 							  ID_NEW_FOOD = 68,
-							  ID_DARK_QUARTZ = 69;
+							  ID_DARK_QUARTZ = 69,
+							  ID_WHIRLPOOL = 70,
+							  ID_RAIN_CALLING = 71,
+							  //RESERVED
+							  ID_UNDERWATER_VISION = 73,
+							  ID_UNDERWATER_HASTE = 74;
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
@@ -130,7 +135,12 @@ public final class ResearchReference {
 							   LABEL_SPELLBIND_CLOTH = ItemNames.SPELLBIND_CLOTH_NAME + "Rsc",
 							   LABEL_WITHHOLD_TALISMAN = ItemNames.MYSTICAL_TALISMAN_NAME,
 							   LABEL_NEW_FOOD = "newFood",
-							   LABEL_DARK_QUARTZ = ItemNames.DARK_QUARTZ_NAME;
+							   LABEL_DARK_QUARTZ = ItemNames.DARK_QUARTZ_NAME,
+							   LABEL_WHIRLPOOL = SpellReference.LABEL_WHIRLPOOL,
+							   LABEL_RAIN_CALLING = SpellReference.LABEL_RAIN_CALLING,
+							   //RESERVED
+							   LABEL_UNDERWATER_VISION = SpellReference.LABEL_UNDERWATER_VISION,
+							   LABEL_UNDERWATER_HASTE = SpellReference.LABEL_UNDERWATER_HASTE;
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,
@@ -182,7 +192,12 @@ public final class ResearchReference {
 							   DISPLAY_NAME_SPELLBIND_CLOTH = ItemNames.SPELLBIND_CLOTH_DISPLAY_NAME,
 							   DISPLAY_NAME_WITHHOLD_TALISMAN = ItemNames.MYSTICAL_TALISMAN_DISPLAY_NAME,
 							   DISPLAY_NAME_NEW_FOOD = "New Food",
-							   DISPLAY_NAME_DARK_QUARTZ = ItemNames.DARK_QUARTZ_DISPLAY_NAME;
+							   DISPLAY_NAME_DARK_QUARTZ = ItemNames.DARK_QUARTZ_DISPLAY_NAME,
+							   DISPLAY_NAME_WHIRLPOOL = SpellReference.DISPLAY_NAME_WHIRLPOOL,
+							   DISPLAY_NAME_RAIN_CALLING = SpellReference.DISPLAY_NAME_RAIN_CALLING,
+							   //RESERVED
+							   DISPLAY_NAME_UNDERWATER_VISION = SpellReference.DISPLAY_NAME_UNDERWATER_VISION,
+							   DISPLAY_NAME_UNDERWATER_HASTE = SpellReference.DISPLAY_NAME_UNDERWATER_HASTE;
 
 	/** The Compound Tag name of the Research Data **/
 	public static final String COMPOUND_TAG_NAME = "researchData";

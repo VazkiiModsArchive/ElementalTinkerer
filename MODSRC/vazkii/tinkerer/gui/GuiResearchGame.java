@@ -223,7 +223,7 @@ public class GuiResearchGame extends GuiScreen {
 		fontRenderer.setUnicodeFlag(true);
 		final int marks = 8;
 		final int degChangePerMark = 360 / marks;
-		final double startDeg = (ElementalTinkerer.proxy.getGameTicksElapsed() * 4) % 360D;
+		final double startDeg = ElementalTinkerer.proxy.getGameTicksElapsed() * 4 % 360D;
 		final int radius = (int) (20 + Math.cos(ElementalTinkerer.proxy.getGameTicksElapsed() / 5D) * 3);
 
 		for(int i = 0; i < marks; i++) {
@@ -298,7 +298,6 @@ public class GuiResearchGame extends GuiScreen {
 
 	public void randomizeOptions() {
 		List<Short> availableValues = new ArrayList(ResearchLibrary.allNodes.keySet());
-		availableValues.removeAll(getAllCompletedResearches());
 		if(availableValues.contains(node.index))
 			availableValues.remove(availableValues.indexOf(node.index));
 
@@ -323,15 +322,6 @@ public class GuiResearchGame extends GuiScreen {
 
 			this.choiceValues[i] = choiceValues[arrayIndex];
 		}
-	}
-
-	public List<Short> getAllCompletedResearches() {
-		List<Short> theList = new ArrayList();
-		for(Short s : ResearchHelper.clientResearch.researchesDone.keySet())
-			if(ResearchHelper.clientResearch.researchesDone.get(s) == 2)
-				theList.add(s);
-
-				return theList;
 	}
 
 	public boolean isMatchDone() {

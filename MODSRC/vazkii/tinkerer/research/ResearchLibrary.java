@@ -509,6 +509,40 @@ public final class ResearchLibrary {
 		  		  .setIconObj(ElementalTinkererItems.darkQuartz)
 				  .setDefaultEnabled()
 				  .addToCategory(general));
+
+		// Whirlpool Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_WHIRLPOOL,
+				ResearchReference.LABEL_WHIRLPOOL,
+				ResearchReference.DISPLAY_NAME_WHIRLPOOL,
+				ResearchType.SPELL,
+				SpellReference.ID_WHIRLPOOL, false)
+				.addToCategory(water));
+
+		// Rain Calling Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_RAIN_CALLING,
+				ResearchReference.LABEL_RAIN_CALLING,
+				ResearchReference.DISPLAY_NAME_RAIN_CALLING,
+				ResearchType.SPELL,
+				SpellReference.ID_RAIN_CALLING, false)
+				.addToCategory(water));
+
+		// RESERVED
+
+		// Underwater Vision Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_UNDERWATER_VISION,
+				ResearchReference.LABEL_UNDERWATER_VISION,
+				ResearchReference.DISPLAY_NAME_UNDERWATER_VISION,
+				ResearchType.PASSIVE,
+				SpellReference.PID_UNDERWATER_VISION, true)
+				.addToCategory(water));
+
+		// Underwater Haste
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_UNDERWATER_HASTE,
+				ResearchReference.LABEL_UNDERWATER_HASTE,
+				ResearchReference.DISPLAY_NAME_UNDERWATER_HASTE,
+				ResearchType.PASSIVE,
+				SpellReference.PID_UNDERWATER_HASTE, true)
+				.addToCategory(water));
 	}
 
 	public static void initTinkeringRecipes() {

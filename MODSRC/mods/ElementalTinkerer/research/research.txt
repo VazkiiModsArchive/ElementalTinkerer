@@ -655,7 +655,7 @@ it. It shines while it's on.
 #----------------------------------------------------
 newFood:
 An elementalist always needs
-to be health. Foods like
+to be healthy. Foods like
 roasted carrots and caramel
 can be made by cooking, in
 a furnace, a carrot or a
@@ -676,4 +676,40 @@ version of Quartz blocks, and
 are crafted the same way as 
 regular Quartz Blocks, but with 
 the Dark Quartz item instead.
+#----------------------------------------------------
+whirlpool:
+The user creates a whirlpool
+around itself that pulls any
+nearby enemies that are 
+submerged towards itself.
+
+Cooldown: 9.5s
+#----------------------------------------------------
+rainCalling:
+The user calls upon the gods 
+of Atlantis and summons the 
+rain.
+
+Cooldown: 1m
+#----------------------------------------------------
+aquaBullet:
+The user shoots an extremely
+fast moving projectile that
+doesn't apply any damage, but,
+rather, a significant amount
+of knockback.
+
+Cooldown: 12s
+#----------------------------------------------------
+underwaterVision:
+While this passive is active, and
+the user is submerged in water,
+their vision becomes extremely
+bright and clear.
+#----------------------------------------------------
+underwaterHaste:
+While this passive is active, the
+user becomes one with the water,
+and exhibits a powerful diving
+speed.
 #----------------------------------------------------

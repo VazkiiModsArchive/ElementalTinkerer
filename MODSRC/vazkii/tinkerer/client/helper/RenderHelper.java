@@ -231,6 +231,7 @@ public final class RenderHelper {
 			f2 = (f1 - 0.7F) / 0.2F;
 		Random random = new Random(432L);
 
+		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		GL11.glShadeModel(GL11.GL_SMOOTH);
 		GL11.glEnable(GL11.GL_BLEND);
@@ -238,7 +239,6 @@ public final class RenderHelper {
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glDepthMask(false);
-		GL11.glPushMatrix();
 		GL11.glTranslatef(0.0F, -1F, -2F);
 		GL11.glScalef(xScale, yScale, zScale);
 		for (int i = 0; i < (f1 + f1 * f1) / 2F * 90F + 30F; i++) {
@@ -269,8 +269,6 @@ public final class RenderHelper {
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glPopMatrix();
-
-		net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
 	}
 
 	public static List<ObjectPair<Point, Short>> drawSpellCircle(short[] spells, int xCenter, int yCenter, int z, int radius, boolean star, PlayerSpellData spellData, boolean passives) {
