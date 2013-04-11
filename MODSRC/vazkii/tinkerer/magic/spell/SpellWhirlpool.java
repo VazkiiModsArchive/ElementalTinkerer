@@ -32,7 +32,7 @@ public class SpellWhirlpool extends SpellImpl {
 		super(SpellReference.ID_WHIRLPOOL,
 				SpellReference.LABEL_WHIRLPOOL,
 				SpellReference.DISPLAY_NAME_WHIRLPOOL,
-				SpellType.CHARGE,
+				SpellType.ACTIVE,
 				Element.WATER.ordinal());
 		bindNode(ResearchReference.ID_WHIRLPOOL);
 	}

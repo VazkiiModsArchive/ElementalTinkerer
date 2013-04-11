@@ -713,3 +713,31 @@ user becomes one with the water,
 and exhibits a powerful diving
 speed.
 #----------------------------------------------------
+powerOn:
+The caster jolts any nearby
+furnaces with an electrifying
+blast of electricity, shortly
+fueling them.
+
+Cooldown: 5m
+#----------------------------------------------------
+clearSky:
+The user calls upon the gods
+of the Olympus and stops the
+rain.
+
+Cooldown: 1m
+#----------------------------------------------------
+cloudSole:
+While this passive is active, the
+user's soles become infused with
+the power of the clouds, and will
+endure deathly fall damage when
+the user's health is full.
+#----------------------------------------------------
+highStep:
+While this passive is active, the
+user can step higher, and has no
+problem climbing one block high
+ledges as if they were half-slabs.
+#----------------------------------------------------

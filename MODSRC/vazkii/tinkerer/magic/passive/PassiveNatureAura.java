@@ -31,13 +31,10 @@ public class PassiveNatureAura extends PassiveImpl {
 
 	@Override
 	public void cast(EntityPlayer player) {
-		if(!player.worldObj.isRemote) {
-
-			int x = (int) player.posX;
-			int y = (int) player.posY - 1;
-			int z = (int) player.posZ;
-			if(player.worldObj.getBlockId(x, y, z) == Block.dirt.blockID)
-				player.worldObj.setBlock(x, y, z, Block.grass.blockID, 0, 2);
-		}
+		int x = (int) player.posX;
+		int y = (int) player.posY - 1;
+		int z = (int) player.posZ;
+		if(player.worldObj.getBlockId(x, y, z) == Block.dirt.blockID)
+			player.worldObj.setBlock(x, y, z, Block.grass.blockID, 0, 2);
 	}
 }

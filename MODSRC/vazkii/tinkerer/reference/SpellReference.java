@@ -33,8 +33,9 @@ public final class SpellReference {
 							  ID_GUILLOTINE = 8,
 							  ID_SHATTERING_RECALL = 9,
 							  ID_WHIRLPOOL = 10,
-							  ID_RAIN_CALLING = 11;
-							  // RESERVED = 12
+							  ID_RAIN_CALLING = 11,
+							  ID_POWER_ON = 12,
+							  ID_CLEAR_SKY = 13;
 
 	/** Passive IDs **/
 	public static final short PID_EXTENDED_BREATH = 0,
@@ -48,7 +49,9 @@ public final class SpellReference {
 							  PID_BLOOD_BOIL = 8,
 							  PID_ENDER_ABSORPTION = 9,
 							  PID_UNDERWATER_VISION = 10,
-							  PID_UNDERWATER_HASTE = 11;
+							  PID_UNDERWATER_HASTE = 11,
+							  PID_CLOUD_SOLE = 12,
+							  PID_HIGH_STEP = 13;
 
 	/** Spell Labels **/
 	public static final String LABEL_THUNDERBOLT = "thunderbolt",
@@ -73,9 +76,12 @@ public final class SpellReference {
 							   LABEL_SHATTERING_RECALL = "shatteringRecall",
 							   LABEL_WHIRLPOOL = "whirlpool",
 							   LABEL_RAIN_CALLING = "rainCalling",
-							   // RESERVED
 							   LABEL_UNDERWATER_VISION = "underwaterVision",
-							   LABEL_UNDERWATER_HASTE = "underwaterHaste";
+							   LABEL_UNDERWATER_HASTE = "underwaterHaste",
+							   LABEL_POWER_ON = "powerOn",
+							   LABEL_CLEAR_SKY = "clearSky",
+							   LABEL_CLOUD_SOLE = "cloudSole",
+							   LABEL_HIGH_STEP = "highStep";
 
 	/** Spell Display Names **/
 	public static final String DISPLAY_NAME_THUNDERBOLT = "Thunderbolt",
@@ -100,9 +106,12 @@ public final class SpellReference {
 							   DISPLAY_NAME_SHATTERING_RECALL = "Shattering Recall",
 							   DISPLAY_NAME_WHIRLPOOL = "Whirlpool",
 							   DISPLAY_NAME_RAIN_CALLING = "Rain Calling",
-							   // RESERVED
 							   DISPLAY_NAME_UNDERWATER_VISION = "Underwater Vision",
-							   DISPLAY_NAME_UNDERWATER_HASTE = "Underwater Haste";
+							   DISPLAY_NAME_UNDERWATER_HASTE = "Underwater Haste",
+							   DISPLAY_NAME_POWER_ON = "Power On",
+							   DISPLAY_NAME_CLEAR_SKY = "Clear Sky",
+							   DISPLAY_NAME_CLOUD_SOLE = "Cloud Sole",
+							   DISPLAY_NAME_HIGH_STEP = "High Step";
 
 	/** Spell Cooldowns **/
 	public static final int COOLDOWN_FIREBALL = 60,
@@ -116,10 +125,9 @@ public final class SpellReference {
 							COOLDOWN_GUILLOUTINE = 3600,
 							COOLDOWN_SHATTERING_RECALL = 6000,
 							COOLDOWN_WHIRLPOOL = 190,
-							COOLDOWN_RAIN_CALLING = 1200;
-
-	/** Chargable Spells max times **/
-	public static final int MAX_TIME_AEREAL_PUSH = 30;
+							COOLDOWN_RAIN_CALLING = 1200,
+							COOLDOWN_POWER_ON = 6000,
+							COOLDOWN_CLEAR_SKY = 1200;
 
 	/** Spell Damages (direct spell attacks) **/
 	public static final int DMG_THUNDERBOLT = 4,

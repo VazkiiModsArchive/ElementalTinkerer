@@ -52,8 +52,7 @@ public final class ConfigurationHandler {
 	 * handful of players are in the people and don't want to have to
 	 * research multiple times. Setting this to the default (wildcard)
 	 * will have the research not be shared, and rather, individual, per
-	 * player.
-	 */
+	 * player. **/
 	public static String sharedResearch = "*";
 
 	public static void initConfig(File configFile) {

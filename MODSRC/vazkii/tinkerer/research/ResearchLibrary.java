@@ -526,8 +526,6 @@ public final class ResearchLibrary {
 				SpellReference.ID_RAIN_CALLING, false)
 				.addToCategory(water));
 
-		// RESERVED
-
 		// Underwater Vision Research Node
 		registerNode(new ResearchNodeSpell(ResearchReference.ID_UNDERWATER_VISION,
 				ResearchReference.LABEL_UNDERWATER_VISION,
@@ -536,13 +534,45 @@ public final class ResearchLibrary {
 				SpellReference.PID_UNDERWATER_VISION, true)
 				.addToCategory(water));
 
-		// Underwater Haste
+		// Underwater Haste Research Node
 		registerNode(new ResearchNodeSpell(ResearchReference.ID_UNDERWATER_HASTE,
 				ResearchReference.LABEL_UNDERWATER_HASTE,
 				ResearchReference.DISPLAY_NAME_UNDERWATER_HASTE,
 				ResearchType.PASSIVE,
 				SpellReference.PID_UNDERWATER_HASTE, true)
 				.addToCategory(water));
+
+		// Power On Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_POWER_ON,
+				ResearchReference.LABEL_POWER_ON,
+				ResearchReference.DISPLAY_NAME_POWER_ON,
+				ResearchType.SPELL,
+				SpellReference.ID_POWER_ON, false)
+				.addToCategory(air));
+
+		// Clear Sky Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_CLEAR_SKY,
+				ResearchReference.LABEL_CLEAR_SKY,
+				ResearchReference.DISPLAY_NAME_CLEAR_SKY,
+				ResearchType.SPELL,
+				SpellReference.ID_CLEAR_SKY, false)
+				.addToCategory(air));
+
+		// Cloud Sole Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_CLOUD_SOLE,
+				ResearchReference.LABEL_CLOUD_SOLE,
+				ResearchReference.DISPLAY_NAME_CLOUD_SOLE,
+				ResearchType.PASSIVE,
+				SpellReference.PID_CLOUD_SOLE, true)
+				.addToCategory(air));
+
+		// High Step Research Node
+		registerNode(new ResearchNodeSpell(ResearchReference.ID_HIGH_STEP,
+				ResearchReference.LABEL_HIGH_STEP,
+				ResearchReference.DISPLAY_NAME_HIGH_STEP,
+				ResearchType.PASSIVE,
+				SpellReference.PID_HIGH_STEP, true)
+				.addToCategory(air));
 	}
 
 	public static void initTinkeringRecipes() {

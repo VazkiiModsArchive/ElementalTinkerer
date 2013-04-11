@@ -79,9 +79,12 @@ public final class ResearchReference {
 							  ID_DARK_QUARTZ = 69,
 							  ID_WHIRLPOOL = 70,
 							  ID_RAIN_CALLING = 71,
-							  //RESERVED
-							  ID_UNDERWATER_VISION = 73,
-							  ID_UNDERWATER_HASTE = 74;
+							  ID_UNDERWATER_VISION = 72,
+							  ID_UNDERWATER_HASTE = 73,
+							  ID_POWER_ON = 74,
+							  ID_CLEAR_SKY = 75,
+							  ID_CLOUD_SOLE = 76,
+							  ID_HIGH_STEP = 77;
 
 	/** Research Labels **/
 	public static final String LABEL_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_NAME,
@@ -138,9 +141,12 @@ public final class ResearchReference {
 							   LABEL_DARK_QUARTZ = ItemNames.DARK_QUARTZ_NAME,
 							   LABEL_WHIRLPOOL = SpellReference.LABEL_WHIRLPOOL,
 							   LABEL_RAIN_CALLING = SpellReference.LABEL_RAIN_CALLING,
-							   //RESERVED
 							   LABEL_UNDERWATER_VISION = SpellReference.LABEL_UNDERWATER_VISION,
-							   LABEL_UNDERWATER_HASTE = SpellReference.LABEL_UNDERWATER_HASTE;
+							   LABEL_UNDERWATER_HASTE = SpellReference.LABEL_UNDERWATER_HASTE,
+							   LABEL_POWER_ON = SpellReference.LABEL_POWER_ON,
+							   LABEL_CLEAR_SKY = SpellReference.LABEL_CLEAR_SKY,
+							   LABEL_CLOUD_SOLE = SpellReference.LABEL_CLOUD_SOLE,
+							   LABEL_HIGH_STEP = SpellReference.LABEL_HIGH_STEP;
 
 	/** Display Names **/
 	public static final String DISPLAY_NAME_ELEMENTIUM_ORE = BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME,
@@ -195,9 +201,12 @@ public final class ResearchReference {
 							   DISPLAY_NAME_DARK_QUARTZ = ItemNames.DARK_QUARTZ_DISPLAY_NAME,
 							   DISPLAY_NAME_WHIRLPOOL = SpellReference.DISPLAY_NAME_WHIRLPOOL,
 							   DISPLAY_NAME_RAIN_CALLING = SpellReference.DISPLAY_NAME_RAIN_CALLING,
-							   //RESERVED
 							   DISPLAY_NAME_UNDERWATER_VISION = SpellReference.DISPLAY_NAME_UNDERWATER_VISION,
-							   DISPLAY_NAME_UNDERWATER_HASTE = SpellReference.DISPLAY_NAME_UNDERWATER_HASTE;
+							   DISPLAY_NAME_UNDERWATER_HASTE = SpellReference.DISPLAY_NAME_UNDERWATER_HASTE,
+							   DISPLAY_NAME_POWER_ON = SpellReference.DISPLAY_NAME_POWER_ON,
+							   DISPLAY_NAME_CLEAR_SKY = SpellReference.DISPLAY_NAME_CLEAR_SKY,
+							   DISPLAY_NAME_CLOUD_SOLE = SpellReference.DISPLAY_NAME_CLOUD_SOLE,
+							   DISPLAY_NAME_HIGH_STEP = SpellReference.DISPLAY_NAME_HIGH_STEP;
 
 	/** The Compound Tag name of the Research Data **/
 	public static final String COMPOUND_TAG_NAME = "researchData";

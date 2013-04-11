@@ -13,6 +13,7 @@ import java.util.List;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.tinkerer.client.helper.RenderHelper;
@@ -39,7 +40,7 @@ public class GuiAttuner extends GuiScreen {
 	yStart;
 
     static boolean lookingAtSpells = true;
-    static int page = 0; //VAZ_TODO Implement
+    static int page = 0;
 
     Spell spellLooking = null;
     boolean add = false;
@@ -50,6 +51,30 @@ public class GuiAttuner extends GuiScreen {
 		xStart = (width - 237) / 2;
 		yStart = (height - 124) / 2;
 		buttonList.add(new GuiInvisibleButton(0, xStart + 142, yStart + 20, 8, 8));
+    }
+
+    @Override
+    protected void keyTyped(char par1, int par2) {
+    	super.keyTyped(par1, par2);
+
+    	if(par2 == Keyboard.KEY_LEFT)
+    		retreatPage();
+
+    	if(par2 == Keyboard.KEY_RIGHT)
+    		advancePage();
+    }
+
+    public void advancePage() {
+        List<Short> spells = lookingAtSpells ? SpellHelper.getAvailableSpells(ResearchHelper.clientResearch)
+				: SpellHelper.getAvailablePassives(ResearchHelper.clientResearch);
+        int totalPages = (int) Math.ceil(spells.size() / 12D);
+    	if(page + 1 < totalPages)
+    		page++;
+    }
+
+    public void retreatPage() {
+    	if(page != 0)
+    		page--;
     }
 
 	@Override
@@ -72,7 +97,7 @@ public class GuiAttuner extends GuiScreen {
         drawSpells : {
             for(int i = 0; i < 3; i++) {
             	for(int j = 0; j < 4; j++) {
-            		int index = i * 4 + j;
+            		int index = i * 4 + j + page * 12;
             		if(spells.size() <= index)
             			break drawSpells;
 
@@ -109,6 +134,9 @@ public class GuiAttuner extends GuiScreen {
         	}
         }
 
+        if(totalPages > 1)
+        	fontRenderer.drawStringWithShadow("Use the Arrow Keys to Change Pages!", xStart + 12, yStart + 126, 0xFFFFFF);
+
         if(spellLooking != null)
         	RenderHelper.renderTooltip(par1, par2, spellLooking.displayName,
         							!add ? FormattingCode.GRAY + "(Click to Unequip)"
@@ -140,8 +168,10 @@ public class GuiAttuner extends GuiScreen {
 
 	@Override
 	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0)
+		if(par1GuiButton.id == 0) {
 			lookingAtSpells = !lookingAtSpells;
+			page = 0;
+		}
 	}
 
 	@Override
