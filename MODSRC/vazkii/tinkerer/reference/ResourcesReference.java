@@ -44,6 +44,9 @@ public final class ResourcesReference {
 
 	/** The Location of the Texture File for the Model with the Rotating Cubes **/
 	public static final String MODEL_TEX_ROTATING_CUBES = ROOT_MODEL + "rotatingCubes.png";
+	
+	/** The Location of the Texture File for the Cogwheel Model **/
+	public static final String MODEL_TEX_COGWHEEL = ROOT_MODEL + "cogwheel.png";
 
 	/** The location of book textures **/
 	public static final String ROOT_BOOK_TEXTURES = ROOT_MODEL + "book";

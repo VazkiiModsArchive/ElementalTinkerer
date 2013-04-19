@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import vazkii.tinkerer.block.cogwork.BlockRSEmitter;
 import vazkii.tinkerer.helper.ResearchHelper;
 import vazkii.tinkerer.item.ElementalTinkererItems;
 import vazkii.tinkerer.item.ItemDarkQuartzBlock;
@@ -48,7 +49,8 @@ public final class ElementalTinkererBlocks {
 						darkQuartz,
 						darkQuartzStairs,
 						darkQuartzSlab,
-						darkQuartzFullSlab;
+						darkQuartzFullSlab,
+						rsEmitter;
 
 	public static void init() {
 		// Construct the blocks
@@ -156,6 +158,12 @@ public final class ElementalTinkererBlocks {
 						 .setResistance(10.0F)
 						 .setStepSound(Block.soundStoneFootstep)
 						 .setUnlocalizedName(BlockNames.DARK_QUARTZ_FULL_SLAB_NAME);
+		
+		rsEmitter = new BlockRSEmitter(BlockIDs.rsEmitter)
+						 .setHardness(2.0F)
+						 .setResistance(10.0F)
+						 .setStepSound(Block.soundStoneFootstep)
+						 .setUnlocalizedName(BlockNames.RS_EMITTER_NAME);
 
 		// Register them in the game
 		GameRegistry.registerBlock(elementiumOre, ItemMetadataCompatBlock.class, BlockNames.ELEMENTIUM_ORE_NAME);
@@ -176,7 +184,8 @@ public final class ElementalTinkererBlocks {
 		GameRegistry.registerBlock(darkQuartzStairs, BlockNames.DARK_QUARTZ_STAIRS_NAME);
 		GameRegistry.registerBlock(darkQuartzSlab, ItemDarkQuartzSlab.class, BlockNames.DARK_QUARTZ_SLAB_NAME);
 		GameRegistry.registerBlock(darkQuartzFullSlab, ItemDarkQuartzSlab.class, BlockNames.DARK_QUARTZ_FULL_SLAB_NAME);
-
+		GameRegistry.registerBlock(rsEmitter, BlockNames.RS_EMITTER_NAME);
+		
 		// Name the blocks
 		LanguageRegistry.addName(elementiumOre, BlockNames.ELEMENTIUM_ORE_DISPLAY_NAME);
 		LanguageRegistry.addName(elementiumOreSpawner, BlockNames.ELEMENTIUM_ORE_SPAWNER_DISPLAY_NAME);
@@ -193,6 +202,7 @@ public final class ElementalTinkererBlocks {
 		LanguageRegistry.addName(scavenger, BlockNames.SCAVENGER_DISPLAY_NAME);
 		LanguageRegistry.addName(incinerator, BlockNames.INCINERATOR_DISPLAY_NAME);
 		LanguageRegistry.addName(darkQuartzStairs, BlockNames.DARK_QUARTZ_STAIRS_DISPLAY_NAME);
+		LanguageRegistry.addName(rsEmitter, BlockNames.RS_EMITTER_DISPLAY_NAME);
 
 		// Add the items to the researches
 		ResearchHelper.setIconicItem(new ItemStack(elementiumOre, 1, -1), ResearchReference.ID_ELEMENTIUM_ORE);

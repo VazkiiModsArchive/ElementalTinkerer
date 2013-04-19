@@ -34,7 +34,8 @@ public final class BlockNames {
 							   DARK_QUARTZ_NAME = "darkQuartzBlock",
 							   DARK_QUARTZ_STAIRS_NAME = "darkQuartzStairs",
 							   DARK_QUARTZ_SLAB_NAME = "darkQuartzSlab",
-							   DARK_QUARTZ_FULL_SLAB_NAME = "darkQuartzFullSlab";
+							   DARK_QUARTZ_FULL_SLAB_NAME = "darkQuartzFullSlab",
+							   RS_EMITTER_NAME = "rsEmitter";
 
 	/** Display Names **/
 	public static final String ELEMENTIUM_ORE_DISPLAY_NAME = "Elementium Ore",
@@ -51,7 +52,8 @@ public final class BlockNames {
 							   SCAVENGER_DISPLAY_NAME = "Scavenger",
 							   INCINERATOR_DISPLAY_NAME = "Incinerator",
 							   DARK_QUARTZ_STAIRS_DISPLAY_NAME = "Dark Quartz Stairs",
-							   DARK_QUARTZ_SLAB_DISPLAY_NAME = "Dark Quartz Slab";
+							   DARK_QUARTZ_SLAB_DISPLAY_NAME = "Dark Quartz Slab",
+							   RS_EMITTER_DISPLAY_NAME = "EC Redstone Emitter";
 
 	/** Dark Quartz Block Names **/
 	public static final String[] DARK_QUARTZ_BLOCK_NAMES = {

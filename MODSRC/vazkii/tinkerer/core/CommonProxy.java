@@ -32,6 +32,7 @@ import vazkii.tinkerer.tile.TileEntityScavenger;
 import vazkii.tinkerer.tile.TileEntityVoidGateway;
 import vazkii.tinkerer.tile.TileEntityVoidNetwork;
 import vazkii.tinkerer.tile.TileEntityWaveInputter;
+import vazkii.tinkerer.tile.cogwork.TileEntityRSEmitter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -61,6 +62,7 @@ public class CommonProxy {
 		GameRegistry.registerTileEntity(TileEntityDislocator.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.DISLOCATOR_NAME);
 		GameRegistry.registerTileEntity(TileEntityScavenger.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.SCAVENGER_NAME);
 		GameRegistry.registerTileEntity(TileEntityIncinerator.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.INCINERATOR_NAME);
+		GameRegistry.registerTileEntity(TileEntityRSEmitter.class, AnnotationConstants.MOD_NAME + "_" + BlockNames.RS_EMITTER_NAME);
 	}
 
 	/** Registers the mod's packets. Some packets use different

@@ -3,7 +3,7 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  */
-// Created @ 25 Feb 2012
+// Created @ 25 Feb 2013
 package vazkii.tinkerer.client.model;
 
 import java.awt.Color;

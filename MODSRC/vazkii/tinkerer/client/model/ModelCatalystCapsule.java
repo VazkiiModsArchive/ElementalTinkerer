@@ -3,7 +3,7 @@
  * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  */
-// Created @ 13 Jan 2012
+// Created @ 13 Jan 2013
 package vazkii.tinkerer.client.model;
 
 import net.minecraft.client.model.ModelBase;

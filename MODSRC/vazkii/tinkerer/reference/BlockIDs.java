@@ -35,7 +35,8 @@ public final class BlockIDs {
 							DEFAULT_DARK_QUARTZ = 2126,
 							DEFAULT_DARK_QUARTZ_STAIRS = 2127,
 							DEFAULT_DARK_QUARTZ_SLAB = 2128,
-							DEFAULT_DARK_QUARTZ_FULL_SLAB = 2129;
+							DEFAULT_DARK_QUARTZ_FULL_SLAB = 2129,
+							DEFAULT_RS_EMITTER = 2130;
 
 	/** Set via the config **/
 	public static int elementiumOre,
@@ -57,5 +58,6 @@ public final class BlockIDs {
 					  darkQuartz,
 					  darkQuartzStairs,
 					  darkQuartzSlab,
-					  darkQuartzFullSlab;
+					  darkQuartzFullSlab,
+					  rsEmitter;
 }

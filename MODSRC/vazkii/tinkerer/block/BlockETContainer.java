@@ -9,6 +9,8 @@ package vazkii.tinkerer.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import vazkii.tinkerer.client.helper.IconHelper;
 import vazkii.tinkerer.gui.CreativeTabET;
 
@@ -19,7 +21,7 @@ import vazkii.tinkerer.gui.CreativeTabET;
  *
  * @author Vazkii
  */
-public abstract class BlockETContainer extends BlockContainer {
+public abstract class BlockETContainer<T extends TileEntity> extends BlockContainer {
 
 	public BlockETContainer(int par1, Material par3Material) {
 		super(par1, par3Material);
@@ -30,4 +32,6 @@ public abstract class BlockETContainer extends BlockContainer {
 	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = IconHelper.forBlock(par1IconRegister, this);
 	}
+	
+    public abstract T createNewTileEntity(World world);
 }

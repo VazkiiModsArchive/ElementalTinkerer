@@ -28,6 +28,7 @@ import vazkii.tinkerer.client.render.RenderElementiumLocator;
 import vazkii.tinkerer.client.render.RenderProjectile;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderAttuner;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderCatalystCapsule;
+import vazkii.tinkerer.client.tilerender.TileEntityRenderCogwork;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderElementalDesk;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderRotatingCubes;
 import vazkii.tinkerer.client.tilerender.TileEntityRenderVoidGateway;
@@ -53,6 +54,7 @@ import vazkii.tinkerer.tile.TileEntityCatalystCapsule;
 import vazkii.tinkerer.tile.TileEntityElementalDesk;
 import vazkii.tinkerer.tile.TileEntityRotatingCubes;
 import vazkii.tinkerer.tile.TileEntityVoidGateway;
+import vazkii.tinkerer.tile.cogwork.TileEntityCogwork;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -78,6 +80,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAttuner.class, TileEntityRenderAttuner.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVoidGateway.class, TileEntityRenderVoidGateway.INSTANCE);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRotatingCubes.class, TileEntityRenderRotatingCubes.INSTANCE);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCogwork.class, TileEntityRenderCogwork.INSTANCE);
 	}
 
 	@Override

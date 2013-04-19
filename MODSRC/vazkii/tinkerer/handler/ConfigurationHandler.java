@@ -82,7 +82,8 @@ public final class ConfigurationHandler {
 		BlockIDs.darkQuartzStairs = config.getBlock(BlockNames.DARK_QUARTZ_STAIRS_NAME, BlockIDs.DEFAULT_DARK_QUARTZ_STAIRS).getInt(BlockIDs.DEFAULT_DARK_QUARTZ_STAIRS);
 		BlockIDs.darkQuartzSlab = config.getBlock(BlockNames.DARK_QUARTZ_SLAB_NAME, BlockIDs.DEFAULT_DARK_QUARTZ_SLAB).getInt(BlockIDs.DEFAULT_DARK_QUARTZ_SLAB);
 		BlockIDs.darkQuartzFullSlab = config.getBlock(BlockNames.DARK_QUARTZ_FULL_SLAB_NAME, BlockIDs.DEFAULT_DARK_QUARTZ_FULL_SLAB).getInt(BlockIDs.DEFAULT_DARK_QUARTZ_SLAB);
-
+		BlockIDs.rsEmitter = config.getBlock(BlockNames.RS_EMITTER_NAME, BlockIDs.DEFAULT_RS_EMITTER).getInt(BlockIDs.DEFAULT_RS_EMITTER);
+		
 		// Load Item IDs
 		ItemIDs.elementiumGem = config.getItem(ItemNames.ELEMENTIUM_GEM_NAME, ItemIDs.DEFAULT_ELEMENTIUM_GEM).getInt(ItemIDs.DEFAULT_ELEMENTIUM_GEM);
 		ItemIDs.elementalBook = config.getItem(ItemNames.ELEMENT_BOOK_NAME, ItemIDs.DEFAULT_ELEMENTAL_BOOK).getInt(ItemIDs.DEFAULT_ELEMENTAL_BOOK);
